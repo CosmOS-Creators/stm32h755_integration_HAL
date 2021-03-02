@@ -89,19 +89,19 @@
 #ifdef ARCH_8BIT
     typedef unsigned char         BitWidthType;
     #define FORCE_ENUM            0xFF
-    #define REACHED_BARRIER       0xAA
+    #define SECURE_NUMBER       0xAA
 #elif ARCH_16BIT
     typedef unsigned short        BitWidthType;
     #define FORCE_ENUM            0xFFFF
-    #define REACHED_BARRIER       0xAAAA
+    #define SECURE_NUMBER       0xAAAA
 #elif ARCH_32BIT
     typedef unsigned int          BitWidthType;
     #define FORCE_ENUM            0xFFFFFFFF
-    #define REACHED_BARRIER       0xAAAAAAAA
+    #define SECURE_NUMBER       0xAAAAAAAA
 #elif ARCH_64BIT
     typedef unsigned long long    BitWidthType;
     #define FORCE_ENUM            0xFFFFFFFFFFFFFFFF
-    #define REACHED_BARRIER       0xAAAAAAAAAAAAAAAA
+    #define SECURE_NUMBER       0xAAAAAAAAAAAAAAAA
 #else
     #error "Please specify the BitWidth for your microprocessor! (ARCH_NBIT) => N = 8,16,32,64"
 #endif
