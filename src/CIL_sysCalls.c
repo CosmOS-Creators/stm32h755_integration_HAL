@@ -214,19 +214,19 @@ __SEC_STOP(__OS_FUNC_SECTION_STOP)
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CIL_sysCalls_readWrite(BitWidthType id, void * buffer, BitWidthType num) 
+  * @fn CIL_sysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num) 
   * 
   * @brief System call handling read/write from/to buffers or registers.
   * 
   * @param[in]  BitWidthType id
-  * @param[in]  void * buffer
+  * @param[in]  void * entity
   * @param[in]  BitWidthType num
   * 
   * @return BitWidthType
 ********************************************************************************/
 __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
-__OS_FUNC_SECTION BitWidthType CIL_sysCalls_readWrite(BitWidthType id, void * buffer, BitWidthType num)
+__OS_FUNC_SECTION BitWidthType CIL_sysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num)
 {
     BitWidthType returnValue;
 
