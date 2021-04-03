@@ -1,6 +1,6 @@
 /********************************************************************************
 **                                                                             **
-**                         COSMOS FILE | CREATED BY HUMAN                      **
+**                       GENERATED FILE BY COSMOS CustomBox                    **
 **                                                                             **
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
@@ -22,6 +22,7 @@
 ********************************************************************************/
 /* CIL interfaces */
 #include "CIL_boot.h"
+#include "CIL_core.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -35,6 +36,10 @@
   * @ingroup Local_CIL_boot
   * @{    
 ********************************************************************************/
+#define BOOT_ARGS_NUM    (BitWidthType)3
+#define SECTION_NUM_OS    (BitWidthType)2
+#define SECTION_NUM_CORE_0    (BitWidthType)2
+#define SECTION_NUM_CORE_1    (BitWidthType)2
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
@@ -55,11 +60,68 @@
   * @{    
 ********************************************************************************/
 extern unsigned char _s_os_section_consts[];
-extern unsigned char _e_os_section_consts[];
 extern unsigned char _s_os_section_vars[];
+extern unsigned char _s_program_default_CM7_section_init[];
+extern unsigned char _s_program_blinking_led_CM7_section_init[];
+extern unsigned char _s_program_default_CM4_section_init[];
+extern unsigned char _s_program_blinking_led_CM4_section_init[];
+extern unsigned char _e_os_section_consts[];
 extern unsigned char _e_os_section_vars[];
+extern unsigned char _e_program_default_CM7_section_init[];
+extern unsigned char _e_program_blinking_led_CM7_section_init[];
+extern unsigned char _e_program_default_CM4_section_init[];
+extern unsigned char _e_program_blinking_led_CM4_section_init[];
 extern unsigned char _flash_os_section_consts_start[];
 extern unsigned char _flash_os_section_vars_start[];
+extern unsigned char _flash_program_default_CM7_section_init[];
+extern unsigned char _flash_program_blinking_led_CM7_section_init[];
+extern unsigned char _flash_program_default_CM4_section_init[];
+extern unsigned char _flash_program_blinking_led_CM4_section_init[];
+
+
+
+unsigned char * const pogramSectionsCore0[SECTION_NUM_CORE_0][BOOT_ARGS_NUM]
+IS_INITIALIZED_TO
+{
+		{
+        _s_program_default_CM7_section_init,
+        _e_program_default_CM7_section_init,
+        _flash_program_default_CM7_section_init,
+    },
+		{
+        _s_program_blinking_led_CM7_section_init,
+        _e_program_blinking_led_CM7_section_init,
+        _flash_program_blinking_led_CM7_section_init,
+    },
+};
+unsigned char * const pogramSectionsCore1[SECTION_NUM_CORE_1][BOOT_ARGS_NUM]
+IS_INITIALIZED_TO
+{
+		{
+        _s_program_default_CM4_section_init,
+        _e_program_default_CM4_section_init,
+        _flash_program_default_CM4_section_init,
+    },
+		{
+        _s_program_blinking_led_CM4_section_init,
+        _e_program_blinking_led_CM4_section_init,
+        _flash_program_blinking_led_CM4_section_init,
+    },
+};
+unsigned char * const osSections[SECTION_NUM_OS][BOOT_ARGS_NUM]
+IS_INITIALIZED_TO
+{
+    {
+        _s_os_section_consts,
+        _e_os_section_consts,
+        _flash_os_section_consts_start,
+    },
+    {
+        _s_os_section_vars,
+        _e_os_section_vars,
+        _flash_os_section_vars_start,
+    },
+};
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
@@ -144,9 +206,9 @@ __STATIC_FORCEINLINE void CIL_boot_section( unsigned char * sectionStart, unsign
 	  unsigned char *pSrc = sectionStartInFlash;
 
 	  for ( BitWidthType i = 0; i < (size * sizeof(BitWidthType)); i++ )
-	  {
-	  	*pDst++=*pSrc++;
-	  }
+    {
+	  	  *pDst++=*pSrc++;
+    }
 }
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
@@ -164,8 +226,32 @@ __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
 __OS_FUNC_SECTION void CIL_boot_bootOs(void)
 {
-    CIL_boot_section(_s_os_section_consts,_e_os_section_consts,_flash_os_section_consts_start);
-    CIL_boot_section(_s_os_section_vars,_e_os_section_vars,_flash_os_section_vars_start);
+    BitWidthType coreId;
+
+
+    coreId = CIL_core_getCoreId();
+
+    if (coreId IS_EQUAL_TO CORE_0_ID)
+    {
+        for (BitWidthType i=0; i < SECTION_NUM_CORE_0; i++)
+        {
+            CIL_boot_section(pogramSectionsCore0[i][0],pogramSectionsCore0[i][1],pogramSectionsCore0[i][2]);
+        }
+        
+    }
+    if (coreId IS_EQUAL_TO CORE_1_ID)
+    {
+        for (BitWidthType i=0; i < SECTION_NUM_CORE_1; i++)
+        {
+            CIL_boot_section(pogramSectionsCore1[i][0],pogramSectionsCore1[i][1],pogramSectionsCore1[i][2]);
+        }
+        for (BitWidthType i=0; i < SECTION_NUM_OS; i++)
+        {
+            CIL_boot_section(osSections[i][0],osSections[i][1],osSections[i][2]);
+        } 
+        
+    }
+    
 }
 /* @cond S */
 __SEC_STOP(__OS_FUNC_SECTION_STOP)

@@ -147,6 +147,20 @@ __OS_FUNC_SECTION void CIL_memoryProtection_init(void);
   * @return none
 ********************************************************************************/
 __OS_FUNC_SECTION void CIL_memoryProtection_setStackOverflowProtection(AddressType stackLowAddress, AddressType stackHighAddress);
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CIL_memoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress)
+  * 
+  * @brief Set program memory protection DEMO CODE.
+  * 
+  * @param[in]  AddressType lowAddress
+  * @param[in]  AddressType highAddress
+  * 
+  * @return none
+********************************************************************************/
+__OS_FUNC_SECTION void CIL_memoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
