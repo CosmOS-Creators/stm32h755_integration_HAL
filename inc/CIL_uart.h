@@ -1,28 +1,57 @@
 /********************************************************************************
 **                                                                             **
-**                       GENERATED FILE BY COSMOS CustomBox                    **
+**                         COSMOS FILE | CREATED BY HUMAN                      **
 **                                                                             **
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_boot.c
-*********************************************************************************
-<!--                   CIL_boot Unit Local Group Definition                   -->
+** @file CIL_uart.h
 *********************************************************************************	
-** @defgroup Local_CIL_boot Local
-** @ingroup CIL_boot_unit 
-** @brief CIL_boot locals
-** @details lorem 
+<!--                      CIL_uart Unit Group Definition                      -->
+********************************************************************************* 
+** @defgroup CIL_uart_unit CIL_uart Unit 
+** @ingroup CIL_module        
+** @brief CIL_uart Unit 
+** @details lorem                               
+*********************************************************************************	
+<!--                           Version Information                            -->
+*********************************************************************************
+** @version 1.0.0
+** @date 1.8.2020
+** @author https://github.com/PavolKostolansky     
+*********************************************************************************	
+<!--                          Warnings and License                            -->
+*********************************************************************************
+** @warning Modifying code can lead to unexpected behaviour of the whole system
+** @copyright MIT License
+*********************************************************************************
+<!--                 CIL_uart Unit Global Group Definition                    -->
+*********************************************************************************
+** @defgroup Global_CIL_uart Global
+** @ingroup CIL_uart_unit 
+** @brief CIL_uart globals
+** @details lorem  
 ********************************************************************************/
 /********************************************************************************
-**                           START OF THE SOURCE FILE                          **
+**                           START OF THE HEADER FILE                          **
 ********************************************************************************/
+#ifndef __CIL_UARTSTACK_H__
+#define __CIL_UARTSTACK_H__
+/********************************************************************************
+**                         START OF C++ SUPPORT SECTION                        **
+********************************************************************************/
+#ifdef __cplusplus
+ extern "C" {
+#endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
+/* CORE interfaces */
+#include "sysDefs.h"
+#include "memoryMapping.h"
+
 /* CIL interfaces */
-#include "CIL_boot.h"
-#include "CIL_core.h"
+#include "CIL_stdTypes.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -32,19 +61,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_boot_c Macros
-  * @ingroup Local_CIL_boot
+  * @defgroup Macros_CIL_uart_h Macros
+  * @ingroup Global_CIL_uart  
   * @{    
 ********************************************************************************/
-#define BOOT_ARGS_NUM    (BitWidthType)3
-#define SECTION_NUM_OS    (BitWidthType)2
-#define SECTION_NUM_CORE_0    (BitWidthType)2
-#define SECTION_NUM_CORE_1    (BitWidthType)2
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_boot_c  
+  * Macros_CIL_uart_h  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -55,78 +80,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CIL_boot_c Variables  
-  * @ingroup Local_CIL_boot
+  * @defgroup Variables_CIL_uart_h Variables  
+  * @ingroup Global_CIL_uart  
   * @{    
 ********************************************************************************/
-extern unsigned char _s_os_section_consts[];
-extern unsigned char _s_os_section_vars[];
-extern unsigned char _s_program_default_CM7_section_init[];
-extern unsigned char _s_program_blinking_led_CM7_section_init[];
-extern unsigned char _s_program_default_CM4_section_init[];
-extern unsigned char _s_program_blinking_led_CM4_section_init[];
-extern unsigned char _e_os_section_consts[];
-extern unsigned char _e_os_section_vars[];
-extern unsigned char _e_program_default_CM7_section_init[];
-extern unsigned char _e_program_blinking_led_CM7_section_init[];
-extern unsigned char _e_program_default_CM4_section_init[];
-extern unsigned char _e_program_blinking_led_CM4_section_init[];
-extern unsigned char _flash_os_section_consts_start[];
-extern unsigned char _flash_os_section_vars_start[];
-extern unsigned char _flash_program_default_CM7_section_init[];
-extern unsigned char _flash_program_blinking_led_CM7_section_init[];
-extern unsigned char _flash_program_default_CM4_section_init[];
-extern unsigned char _flash_program_blinking_led_CM4_section_init[];
-
-
-
-unsigned char * const pogramSectionsCore0[SECTION_NUM_CORE_0][BOOT_ARGS_NUM]
-IS_INITIALIZED_TO
-{
-		{
-        _s_program_default_CM7_section_init,
-        _e_program_default_CM7_section_init,
-        _flash_program_default_CM7_section_init,
-    },
-		{
-        _s_program_blinking_led_CM7_section_init,
-        _e_program_blinking_led_CM7_section_init,
-        _flash_program_blinking_led_CM7_section_init,
-    },
-};
-unsigned char * const pogramSectionsCore1[SECTION_NUM_CORE_1][BOOT_ARGS_NUM]
-IS_INITIALIZED_TO
-{
-		{
-        _s_program_default_CM4_section_init,
-        _e_program_default_CM4_section_init,
-        _flash_program_default_CM4_section_init,
-    },
-		{
-        _s_program_blinking_led_CM4_section_init,
-        _e_program_blinking_led_CM4_section_init,
-        _flash_program_blinking_led_CM4_section_init,
-    },
-};
-unsigned char * const osSections[SECTION_NUM_OS][BOOT_ARGS_NUM]
-IS_INITIALIZED_TO
-{
-    {
-        _s_os_section_consts,
-        _e_os_section_consts,
-        _flash_os_section_consts_start,
-    },
-    {
-        _s_os_section_vars,
-        _e_os_section_vars,
-        _flash_os_section_vars_start,
-    },
-};
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Variables_CIL_boot_c  
+  * Variables_CIL_uart_h  
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -137,47 +99,59 @@ IS_INITIALIZED_TO
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CIL_boot_c API's  
-  * @ingroup Local_CIL_boot
+  * @defgroup Apis_CIL_uart_h API's 
+  * @ingroup Global_CIL_uart
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_boot_c Getters  
-  * @ingroup Apis_CIL_boot_c                                            
+  * @addtogroup Getters_CIL_uart_h Getters  
+  * @ingroup Apis_CIL_uart_h                                            
   * @{                                                                           
 ********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CIL_uart_togglePin(void *uartStackx, BitWidthType uartStack_Pin)
+  * 
+  * @brief uartStack toggle pin DEMO CODE.
+  * 
+  * @param[in]  none
+  * 
+  * @return none
+********************************************************************************/
+__OS_FUNC_SECTION void CIL_uart_sysJob();
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_boot_c
+  * Getters_CIL_uart_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_boot_c Setters  
-  * @ingroup Apis_CIL_boot_c                                            
+  * @addtogroup Setters_CIL_uart_h Setters  
+  * @ingroup Apis_CIL_uart_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_boot_c   
+  * Setters_CIL_uart_h   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_boot_c General  
-  * @ingroup Apis_CIL_boot_c                                            
+  * @addtogroup General_CIL_uart_h General  
+  * @ingroup Apis_CIL_uart_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_boot_c  
+  * General_CIL_uart_h  
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -186,79 +160,54 @@ IS_INITIALIZED_TO
 **                        Function Definitions | Start                         **
 ********************************************************************************/
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @fn CIL_boot_section( unsigned char * sectionStart, unsigned char * sectionEnd, unsigned char * sectionStartInFlash)
-  * 
-  * @brief Boot of the section.
-  * 
-  * @param[in]  unsigned char * sectionStart
-  * @param[in]  unsigned char * sectionEnd
-  * @param[in]  unsigned char * sectionStartInFlash
-  * 
-  * @return none
+  * @addtogroup Getters_CIL_uart_h Getters  
+  * @ingroup Apis_CIL_uart_h                                            
+  * @{                                                                           
 ********************************************************************************/
-__STATIC_FORCEINLINE void CIL_boot_section( unsigned char * sectionStart, unsigned char * sectionEnd, unsigned char * sectionStartInFlash)
-{
-    BitWidthType size = (BitWidthType)(sectionEnd - sectionStart);
-
-	  unsigned char *pDst = sectionStart;
-	  unsigned char *pSrc = sectionStartInFlash;
-
-	  for ( BitWidthType i = 0; i < (size * sizeof(BitWidthType)); i++ )
-    {
-	  	  *pDst++=*pSrc++;
-    }
-}
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @fn CIL_boot_bootOs(void)
-  * 
-  * @brief Boot of operating system.
-  * 
-  * @param[in]  none
-  * 
-  * @return none
+  * @}       
+  * Getters_CIL_uart_h
 ********************************************************************************/
-/* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION void CIL_boot_bootOs(void)
-{
-    BitWidthType coreId;
-
-
-    coreId = CIL_core_getCoreId();
-
-    if (coreId IS_EQUAL_TO CORE_0_ID)
-    {
-        for (BitWidthType i=0; i < SECTION_NUM_CORE_0; i++)
-        {
-            CIL_boot_section(pogramSectionsCore0[i][0],pogramSectionsCore0[i][1],pogramSectionsCore0[i][2]);
-        }
-        
-    }
-    if (coreId IS_EQUAL_TO CORE_1_ID)
-    {
-        for (BitWidthType i=0; i < SECTION_NUM_CORE_1; i++)
-        {
-            CIL_boot_section(pogramSectionsCore1[i][0],pogramSectionsCore1[i][1],pogramSectionsCore1[i][2]);
-        }
-        for (BitWidthType i=0; i < SECTION_NUM_OS; i++)
-        {
-            CIL_boot_section(osSections[i][0],osSections[i][1],osSections[i][2]);
-        } 
-        
-    }
-    
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup Setters_CIL_uart_h Setters  
+  * @ingroup Apis_CIL_uart_h                                            
+  * @{                                                                           
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}    
+  * Setters_CIL_uart_h   
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup General_CIL_uart_h General  
+  * @ingroup Apis_CIL_uart_h                                            
+  * @{                                                                           
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}
+  * General_CIL_uart_h  
+********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **
 ********************************************************************************/
+#ifdef __cplusplus
+}
+#endif
 /********************************************************************************
-**                           END OF THE SOURCE FILE                            **
+**                         END OF C++ SUPPORT SECTION                          **
+********************************************************************************/
+#endif
+/********************************************************************************
+**                           END OF THE HEADER FILE                            **
 ********************************************************************************/
