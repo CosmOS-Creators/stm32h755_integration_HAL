@@ -22,7 +22,7 @@
 ********************************************************************************/
 /* CORE interfaces */
 #include "os.h"
-#include "CosmOSAssert.h"
+#include "cosmosAssert.h"
 
 /* CIL interfaces */
 #include "CIL_core.h"
@@ -170,7 +170,7 @@ __OS_FUNC_SECTION void CIL_core_setCoreVar(CosmOS_OsVariableType * osVar)
     coreId = CIL_core_getCoreId();
     numberOfCores = os_getOsNumberOfCores( osVar );
 
-    CosmOSAssert( coreId < numberOfCores );
+    cosmosAssert( coreId < numberOfCores );
 
     coreVar = os_getCoreVar( osVar, coreId );
 
