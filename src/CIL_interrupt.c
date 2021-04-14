@@ -145,7 +145,7 @@ __NAKED void SVC_Handler( void )
     __asm volatile ("ITE EQ");
     __asm volatile ("MRSEQ r0, MSP");
     __asm volatile ("MRSNE r0, PSP");
-    __asm volatile ( "B CIL_sysCalls_selector");
+    __asm volatile ( "B CIL_sysCalls_dispatcher");
 }
 
 

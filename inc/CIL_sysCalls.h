@@ -138,7 +138,7 @@
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CIL_sysCalls_selector(BitWidthType *sp) 
+  * @fn CIL_sysCalls_dispatcher(BitWidthType *sp) 
   * 
   * @brief Selector of sysCall function.
   * 
@@ -146,7 +146,7 @@
   * 
   * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION void CIL_sysCalls_selector(BitWidthType *sp);
+__OS_FUNC_SECTION void CIL_sysCalls_dispatcher(BitWidthType *sp);
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **

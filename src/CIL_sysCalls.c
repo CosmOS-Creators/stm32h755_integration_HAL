@@ -125,7 +125,7 @@
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CIL_sysCalls_selector(BitWidthType *sp) 
+  * @fn CIL_sysCalls_dispatcher(BitWidthType *sp) 
   * 
   * @brief Selector of sysCall function DEMO CODE.
   * 
@@ -136,9 +136,10 @@
 /* @cond S */
 __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
-__OS_FUNC_SECTION void CIL_sysCalls_selector(BitWidthType *sp)
+__OS_FUNC_SECTION void CIL_sysCalls_dispatcher(BitWidthType *sp)
 {
-    BitWidthType returnValue;
+    BitWidthType  returnValue,
+                  entityId;
 
     CosmOS_GenericVoidType sysCall;
     CosmOS_OsVariableType * osVar;
@@ -156,6 +157,7 @@ __OS_FUNC_SECTION void CIL_sysCalls_selector(BitWidthType *sp)
     routeVar = os_getOsRoutes( osVar );
 
     sysCall = route_getRoutesFunc( routeVar, sp[0] );
+    entityId = route_getRoutesEntityId( routeVar, sp[0] );
 
     switch ( sysCallId )
     {
@@ -167,7 +169,7 @@ __OS_FUNC_SECTION void CIL_sysCalls_selector(BitWidthType *sp)
 
         case 1 :
         {
-            returnValue = ((CosmOS_GenericBitWidthRWType)sysCall)(sp[0], (void *)sp[1], sp[2]);
+            returnValue = ((CosmOS_GenericBitWidthRWType)sysCall)(entityId, (void *)sp[1], sp[2]);
             break;
         }
 
