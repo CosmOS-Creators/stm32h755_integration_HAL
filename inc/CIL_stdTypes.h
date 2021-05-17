@@ -106,6 +106,7 @@ typedef struct
     volatile BitWidthType R8;
     volatile BitWidthType R10;
     volatile BitWidthType R11;
+    volatile BitWidthType R14;
     volatile BitWidthType R0;
     volatile BitWidthType R1;
     volatile BitWidthType R2;

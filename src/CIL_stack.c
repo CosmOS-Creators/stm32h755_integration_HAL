@@ -145,6 +145,7 @@ __OS_FUNC_SECTION StackPointerType CIL_stack_stackInit(AddressType stackLowAddre
     stack->R2    = 0;
     stack->R1    = 0;
     stack->R0    = 0;
+    stack->R14   = 0xFFFFFFFD;
     stack->R11   = 0;
     stack->R10   = 0;
     stack->R8    = 0;
@@ -175,12 +176,11 @@ __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
 __OS_FUNC_SECTION __NAKED void CIL_stack_setStackPointer(AddressType address)
 {
-    __asm volatile ("LDMIA R0!,{R4-R8,R10,R11}");
+    __asm volatile ("LDMIA R0!,{R4-R8,R10,R11,R14}");
 	  __asm volatile ("MSR PSP,R0");
     __asm volatile ("MOV R0, #0x3");
     __asm volatile ("MSR CONTROL, R0");
     __asm volatile ("ISB");
-    __asm volatile ("MOV R14, #0xFFFFFFFD");
     __asm volatile ("BX R14");
 }
 /* @cond S */

@@ -125,14 +125,25 @@
 ********************************************************************************/ 
 __NAKED void PendSV_Handler(void)
 {
-	  __asm volatile ("MRS R0,PSP");
-	  __asm volatile ("STMDB R0!,{R4-R8,R10,R11}");
-	  __asm volatile ("PUSH {LR}");
-	  __asm volatile ("BL scheduler_scheduleNextInstance");
-	  __asm volatile ("LDMIA R0!,{R4-R8,R10,R11}");
-	  __asm volatile ("MSR PSP,R0");
-	  __asm volatile ("POP {LR}");
-	  __asm volatile ("BX LR");
+    __asm volatile ("MRS R0,PSP");
+    __asm volatile ("ISB");
+
+    __asm volatile ("TST R14, #16");
+    __asm volatile ("IT EQ"); 
+    __asm volatile ("VSTMDBEQ R0!,{S16-S31}"); /* If fp is true save floating point registers on stack */
+    __asm volatile ("STMDB R0!,{R4-R8,R10,R11,R14}");
+
+    __asm volatile ("BL scheduler_scheduleNextInstance");
+    __asm volatile ("ISB");
+
+    __asm volatile ("LDMIA R0!,{R4-R8,R10,R11,R14}");
+    __asm volatile ("TST R14, #16");
+    __asm volatile ("IT EQ"); 
+    __asm volatile ("VLDMIAEQ R0!,{S16-S31}"); /* If fp is true restore floating point registers on stack */
+    __asm volatile ("MSR PSP,R0");
+    __asm volatile ("ISB");
+
+    __asm volatile ("BX R14");
 }
 
 void SysTick_Handler(){
@@ -141,7 +152,7 @@ void SysTick_Handler(){
 
 __NAKED void SVC_Handler( void )
 {
-    __asm volatile ("TST lr, #4");
+    __asm volatile ("TST LR, #4");
     __asm volatile ("ITE EQ");
     __asm volatile ("MRSEQ r0, MSP");
     __asm volatile ("MRSNE r0, PSP");

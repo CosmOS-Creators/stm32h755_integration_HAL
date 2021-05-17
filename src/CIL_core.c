@@ -174,6 +174,7 @@ __OS_FUNC_SECTION void CIL_core_setCoreVar(CosmOS_OsVariableType * osVar)
 
     coreVar = os_getCoreVar( osVar, coreId );
 
+    //must be changed, not valid for all compilers
     __asm volatile("MOV R9,%[coreVariable]" : [coreVariable] "=r" (coreVar));
 }
 /* @cond S */
