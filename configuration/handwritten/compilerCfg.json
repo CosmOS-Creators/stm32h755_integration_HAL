@@ -1,0 +1,31 @@
+{
+   "cores" :
+   {
+      "core_0" : {
+         "name" : "CM7",
+         "flags" : [
+            "-ffixed-r9"
+         ],
+         "defines" : [
+            "CORE_CM7",
+            "STM32H755xx",
+            "USE_HAL_DRIVER",
+            "ARCH_32BIT",
+            "ADDR_32BIT"
+         ]
+      },
+      "core_1" : {
+         "name" : "CM4",
+         "flags" : [
+            "-ffixed-r9"
+         ],
+         "defines" : [
+            "CORE_CM4",
+            "STM32H755xx",
+            "USE_HAL_DRIVER",
+            "ARCH_32BIT",
+            "ADDR_32BIT"
+         ]
+      }
+   }
+}
