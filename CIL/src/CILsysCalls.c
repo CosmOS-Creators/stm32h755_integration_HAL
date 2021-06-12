@@ -5,13 +5,13 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_interrupt.c
+** @file CILsysCalls.c
 *********************************************************************************
-<!--                CIL_interrupt Unit Local Group Definition                 -->
+<!--                 CILsysCalls Unit Local Group Definition                 -->
 *********************************************************************************	
-** @defgroup Local_CIL_interrupt Local
-** @ingroup CIL_interrupt_unit 
-** @brief CIL_interrupt locals
+** @defgroup Local_CILsysCalls Local
+** @ingroup CILsysCalls_unit 
+** @brief CILsysCalls locals
 ** @details lorem 
 ********************************************************************************/
 /********************************************************************************
@@ -21,13 +21,12 @@
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
-#include "scheduler.h"
+#include "os.h"
+#include "route.h"
+#include "routeCfg.h"
 
 /* CIL interfaces */
-#include "CIL_interrupt.h"
-
-/* HAL interfaces */
-#include "stm32h7xx_hal.h"
+#include "CILsysCalls.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -37,15 +36,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_interrupt_c Macros
-  * @ingroup Local_CIL_interrupt
+  * @defgroup Macros_CILsysCalls_c Macros
+  * @ingroup Local_CILsysCalls
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_interrupt_c  
+  * Macros_CILsysCalls_c  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -56,15 +55,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CIL_interrupt_c Variables  
-  * @ingroup Local_CIL_interrupt
+  * @defgroup Variables_CILsysCalls_c Variables  
+  * @ingroup Local_CILsysCalls
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Variables_CIL_interrupt_c  
+  * Variables_CILsysCalls_c  
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -75,107 +74,173 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CIL_interrupt_c API's  
-  * @ingroup Local_CIL_interrupt
+  * @defgroup Apis_CILsysCalls_c API's  
+  * @ingroup Local_CILsysCalls
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_interrupt_c Getters  
-  * @ingroup Apis_CIL_interrupt_c                                            
+  * @addtogroup Getters_CILsysCalls_c Getters  
+  * @ingroup Apis_CILsysCalls_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_interrupt_c
+  * Getters_CILsysCalls_c
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_interrupt_c Setters  
-  * @ingroup Apis_CIL_interrupt_c                                            
+  * @addtogroup Setters_CILsysCalls_c Setters  
+  * @ingroup Apis_CILsysCalls_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_interrupt_c   
+  * Setters_CILsysCalls_c   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_interrupt_c General  
-  * @ingroup Apis_CIL_interrupt_c                                            
+  * @addtogroup General_CILsysCalls_c General  
+  * @ingroup Apis_CILsysCalls_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_interrupt_c  
+  * General_CILsysCalls_c  
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Start                         **
-********************************************************************************/ 
-__NAKED void PendSV_Handler(void)
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILsysCalls_dispatcher(BitWidthType *sp) 
+  * 
+  * @brief Selector of sysCall function DEMO CODE.
+  * 
+  * @param[in] BitWidthType *sp
+  * 
+  * @return none
+********************************************************************************/
+/* @cond S */
+__SEC_START(__OS_FUNC_SECTION_START)
+/* @endcond*/
+__OS_FUNC_SECTION void CILsysCalls_dispatcher(BitWidthType *sp)
 {
-    __asm volatile ("MRS R0,PSP");
-    __asm volatile ("ISB");
+    BitWidthType  returnValue,
+                  entityId;
 
-    __asm volatile ("TST R14, #16");
-    __asm volatile ("IT EQ"); 
-    __asm volatile ("VSTMDBEQ R0!,{S16-S31}"); /* If fp is true save floating point registers on stack */
-    __asm volatile ("STMDB R0!,{R4-R8,R10,R11,R14}");
+    CosmOS_GenericVoidType sysCall;
+    CosmOS_OsVariableType * osVar;
+    CosmOS_RoutesConfigurationType * routeVar;
 
-    __asm volatile ("BL scheduler_scheduleNextInstance");
-    __asm volatile ("ISB");
+  
+    uint8_t *pc = (uint8_t*)(sp[6]);
+    
+    pc-=2;
 
-    __asm volatile ("LDMIA R0!,{R4-R8,R10,R11,R14}");
-    __asm volatile ("TST R14, #16");
-    __asm volatile ("IT EQ"); 
-    __asm volatile ("VLDMIAEQ R0!,{S16-S31}"); /* If fp is true restore floating point registers on stack */
-    __asm volatile ("MSR PSP,R0");
-    __asm volatile ("ISB");
+    osVar = os_getOsVar();
 
-    __asm volatile ("BX R14");
+    uint8_t sysCallId = *pc;
+
+    routeVar = os_getOsRoutes( osVar );
+
+    sysCall = route_getRoutesFunc( routeVar, sp[0] );
+    entityId = route_getRoutesEntityId( routeVar, sp[0] );
+
+    switch ( sysCallId )
+    {
+        case 0 :
+        {
+            sysCall();
+            break;
+        }
+
+        case 1 :
+        {
+            returnValue = ((CosmOS_GenericBitWidthRWType)sysCall)(entityId, (void *)sp[1], sp[2]);
+            break;
+        }
+
+        case 2 :
+        {
+            break;
+        }
+
+        default :
+        {
+            /* PANIC */
+            break;
+        }
+    }
+
+    sp[0] = returnValue;
 }
+/* @cond S */
+__SEC_STOP(__OS_FUNC_SECTION_STOP)
+/* @endcond*/
 
-void SysTick_Handler(){
-    SCB->ICSR |= SCB_ICSR_PENDSVSET_Msk;
-}
-
-__NAKED void SVC_Handler( void )
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILsysCalls_os(BitWidthType id) 
+  * 
+  * @brief System call handling general operating system functionalities.
+  * 
+  * @param[in]  BitWidthType id
+  * 
+  * @return none
+********************************************************************************/
+/* @cond S */
+__SEC_START(__OS_FUNC_SECTION_START)
+/* @endcond*/
+__OS_FUNC_SECTION void CILsysCalls_os(BitWidthType id)
 {
-    __asm volatile ("TST LR, #4");
-    __asm volatile ("ITE EQ");
-    __asm volatile ("MRSEQ r0, MSP");
-    __asm volatile ("MRSNE r0, PSP");
-    __asm volatile ( "B CIL_sysCalls_dispatcher");
+    __asm volatile("SVC #0");
 }
+/* @cond S */
+__SEC_STOP(__OS_FUNC_SECTION_STOP)
+/* @endcond*/
 
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILsysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num) 
+  * 
+  * @brief System call handling read/write from/to buffers or registers.
+  * 
+  * @param[in]  BitWidthType id
+  * @param[in]  void * entity
+  * @param[in]  BitWidthType num
+  * 
+  * @return BitWidthType
+********************************************************************************/
+__SEC_START(__OS_FUNC_SECTION_START)
+/* @endcond*/
+__OS_FUNC_SECTION BitWidthType CILsysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num)
+{
+    BitWidthType returnValue;
 
-//void MemManage_Handler(void) 
-//{
-//
-//    __asm(
-//        "MOV R4, 0x77777777\n\t"
-//        "MOV R5, 0x77777777\n\t"
-//    );
-//}
-//
-//void HardFault_Handler(void)
-//{
-//    __asm(
-//        "MOV R6, 0x77777777\n\t"
-//        "MOV R7, 0x77777777\n\t"
-//    );
-//}
+    __asm volatile("SVC #1");
+    __asm volatile("MOV %0, R0": "=r" (returnValue) ::);
+
+    return returnValue;
+}
+/* @cond S */
+__SEC_STOP(__OS_FUNC_SECTION_STOP)
+/* @endcond*/
+
 /********************************************************************************
 **                        Function Definitions | Stop                          **
 ********************************************************************************/

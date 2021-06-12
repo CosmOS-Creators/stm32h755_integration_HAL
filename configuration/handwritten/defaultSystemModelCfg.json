@@ -66,10 +66,10 @@
                     "group_0": {
                         "tickMultiplicator": "1",
                         "handlers": [
-                            "CIL_uart_sysJob"
+                            "CILuart_sysJob"
                         ],
                         "api_headers": [
-                            "CIL_uart.h"
+                            "CILuart.h"
                         ]
                     }
                 }
@@ -144,10 +144,10 @@
                     "group_0": {
                         "tickMultiplicator": "1",
                         "handlers": [
-                            "CIL_uart_sysJob"
+                            "CILuart_sysJob"
                         ],
                         "api_headers": [
-                            "CIL_uart.h"
+                            "CILuart.h"
                         ]
                     }
                 }

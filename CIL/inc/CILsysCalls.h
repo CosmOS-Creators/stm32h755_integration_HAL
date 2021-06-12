@@ -5,26 +5,53 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_sysTimer.c
-*********************************************************************************
-<!--                 CIL_sysTimer Unit Local Group Definition                 -->
+** @file CILsysCalls.h
 *********************************************************************************	
-** @defgroup Local_CIL_sysTimer Local
-** @ingroup CIL_sysTimer_unit 
-** @brief CIL_sysTimer locals
-** @details lorem 
+<!--                    CILsysCalls Unit Group Definition                    -->
+********************************************************************************* 
+** @defgroup CILsysCalls_unit CILsysCalls Unit 
+** @ingroup CILmodule        
+** @brief CILsysCalls Unit 
+** @details lorem                               
+*********************************************************************************	
+<!--                           Version Information                            -->
+*********************************************************************************
+** @version 1.0.0
+** @date 1.8.2020
+** @author https://github.com/PavolKostolansky     
+*********************************************************************************	
+<!--                          Warnings and License                            -->
+*********************************************************************************
+** @warning Modifying code can lead to unexpected behaviour of the whole system
+** @copyright MIT License
+*********************************************************************************
+<!--                CILsysCalls Unit Global Group Definition                 -->
+*********************************************************************************
+** @defgroup Global_CILsysCalls Global
+** @ingroup CILsysCalls_unit 
+** @brief CILsysCalls globals
+** @details lorem  
 ********************************************************************************/
 /********************************************************************************
-**                           START OF THE SOURCE FILE                          **
+**                           START OF THE HEADER FILE                          **
 ********************************************************************************/
+#ifndef __CILSYSCALLS_H__
+#define __CILSYSCALLS_H__
+/********************************************************************************
+**                         START OF C++ SUPPORT SECTION                        **
+********************************************************************************/
+#ifdef __cplusplus
+ extern "C" {
+#endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
-/* CIL interfaces */
-#include "CIL_sysTimer.h"
+/* CORE interfaces */
+#include "sysDefs.h"
+#include "memoryMapping.h"
 
-/* HAL interfaces */
-#include "stm32h7xx_hal.h"
+/* CIL interfaces */
+#include "CILstdTypes.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -34,15 +61,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_sysTimer_c Macros
-  * @ingroup Local_CIL_sysTimer
+  * @defgroup Macros_CILsysCalls_h Macros
+  * @ingroup Global_CILsysCalls  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_sysTimer_c  
+  * Macros_CILsysCalls_h  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -53,15 +80,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CIL_sysTimer_c Variables  
-  * @ingroup Local_CIL_sysTimer
+  * @defgroup Variables_CILsysCalls_h Variables  
+  * @ingroup Global_CILsysCalls  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Variables_CIL_sysTimer_c  
+  * Variables_CILsysCalls_h  
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -72,94 +99,143 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CIL_sysTimer_c API's  
-  * @ingroup Local_CIL_sysTimer
+  * @defgroup Apis_CILsysCalls_h API's 
+  * @ingroup Global_CILsysCalls
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_sysTimer_c Getters  
-  * @ingroup Apis_CIL_sysTimer_c                                            
+  * @addtogroup Getters_CILsysCalls_h Getters  
+  * @ingroup Apis_CILsysCalls_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_sysTimer_c
+  * Getters_CILsysCalls_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_sysTimer_c Setters  
-  * @ingroup Apis_CIL_sysTimer_c                                            
+  * @addtogroup Setters_CILsysCalls_h Setters  
+  * @ingroup Apis_CILsysCalls_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_sysTimer_c   
+  * Setters_CILsysCalls_h   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_sysTimer_c General  
-  * @ingroup Apis_CIL_sysTimer_c                                            
+  * @addtogroup General_CILsysCalls_h General  
+  * @ingroup Apis_CILsysCalls_h                                            
   * @{                                                                           
 ********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILsysCalls_dispatcher(BitWidthType *sp) 
+  * 
+  * @brief Selector of sysCall function.
+  * 
+  * @param[in] BitWidthType *sp
+  * 
+  * @return none
+********************************************************************************/
+__OS_FUNC_SECTION void CILsysCalls_dispatcher(BitWidthType *sp);
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILsysCalls_os(BitWidthType id) 
+  * 
+  * @brief System call handling general operating system functionalities.
+  * 
+  * @param[in]  BitWidthType id
+  * 
+  * @return none
+********************************************************************************/
+__OS_FUNC_SECTION void CILsysCalls_os(BitWidthType id);
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILsysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num) 
+  * 
+  * @brief System call handling read/write from/to buffers or registers.
+  * 
+  * @param[in]  BitWidthType id
+  * @param[in]  void * entity
+  * @param[in]  BitWidthType num
+  * 
+  * @return BitWidthType
+********************************************************************************/
+__OS_FUNC_SECTION BitWidthType CILsysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_sysTimer_c  
+  * General_CILsysCalls_h  
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Start                         **
-********************************************************************************/ 
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CIL_sysTimer_setTicks(BitWidthType ticks, CosmOS_SchedulerSyncStateType schedulersSyncState)
-  * 
-  * @brief Disable system timer DEMO CODE.
-  * 
-  * @param[in]  BitWidthType ticks
-  * @param[in]  CosmOS_SchedulerSyncStateType schedulersSyncState
-  * 
-  * @return none
 ********************************************************************************/
-/* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION void CIL_sysTimer_setTicks(BitWidthType ticks, CosmOS_SchedulerSyncStateType schedulersSyncState)
-{
-    if( schedulersSyncState IS_NOT_EQUAL_TO SCHEDULER_SYNC_STATE_ENUM__IN_SYNC ) 
-    {
-        BitWidthType delay;
-        delay = SysTick->LOAD - SysTick->VAL;
-        
-        SysTick->LOAD  = (uint32_t)(((ticks*TICKCOUNT)-delay) - 1UL);         /* set reload register */
-    }
-    else
-    {
-        SysTick->LOAD  = (uint32_t)(((ticks*TICKCOUNT)) - 1UL);               /* set reload register */
-    }
-
-    SysTick->VAL   = 0UL;                                                     /* Load the SysTick Counter Value */
-    SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk |
-                   SysTick_CTRL_TICKINT_Msk   |
-                   SysTick_CTRL_ENABLE_Msk;                                   /* Enable SysTick IRQ and SysTick Timer */
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup Getters_CILsysCalls_h Getters  
+  * @ingroup Apis_CILsysCalls_h                                            
+  * @{                                                                           
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}       
+  * Getters_CILsysCalls_h
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup Setters_CILsysCalls_h Setters  
+  * @ingroup Apis_CILsysCalls_h                                            
+  * @{                                                                           
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}    
+  * Setters_CILsysCalls_h   
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup General_CILsysCalls_h General  
+  * @ingroup Apis_CILsysCalls_h                                            
+  * @{                                                                           
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}
+  * General_CILsysCalls_h  
+********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **
 ********************************************************************************/
+#ifdef __cplusplus
+}
+#endif
 /********************************************************************************
-**                           END OF THE SOURCE FILE                            **
+**                         END OF C++ SUPPORT SECTION                          **
+********************************************************************************/
+#endif
+/********************************************************************************
+**                           END OF THE HEADER FILE                            **
 ********************************************************************************/

@@ -5,13 +5,13 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_uart.c
+** @file CILGPIO.c
 *********************************************************************************
-<!--                    CIL_uart Unit Local Group Definition                  -->
+<!--                   CILGPIO Unit Local Group Definition                   -->
 *********************************************************************************	
-** @defgroup Local_CIL_uart Local
-** @ingroup CIL_uart_unit 
-** @brief CIL_uart locals
+** @defgroup Local_CILGPIO Local
+** @ingroup CILGPIO_unit 
+** @brief CILGPIO locals
 ** @details lorem 
 ********************************************************************************/
 /********************************************************************************
@@ -21,7 +21,7 @@
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CIL interfaces */
-#include "CIL_uart.h"
+#include "CILGPIO.h"
 
 /* HAL interfaces */
 #include "stm32h7xx_hal.h"
@@ -34,15 +34,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_uart_c Macros
-  * @ingroup Local_CIL_uart
+  * @defgroup Macros_CILGPIO_c Macros
+  * @ingroup Local_CILGPIO
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_uart_c  
+  * Macros_CILGPIO_c  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -53,15 +53,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CIL_uart_c Variables  
-  * @ingroup Local_CIL_uart
+  * @defgroup Variables_CILGPIO_c Variables  
+  * @ingroup Local_CILGPIO
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Variables_CIL_uart_c  
+  * Variables_CILGPIO_c  
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -72,47 +72,47 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CIL_uart_c API's  
-  * @ingroup Local_CIL_uart
+  * @defgroup Apis_CILGPIO_c API's  
+  * @ingroup Local_CILGPIO
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_uart_c Getters  
-  * @ingroup Apis_CIL_uart_c                                            
+  * @addtogroup Getters_CILGPIO_c Getters  
+  * @ingroup Apis_CILGPIO_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_uart_c
+  * Getters_CILGPIO_c
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_uart_c Setters  
-  * @ingroup Apis_CIL_uart_c                                            
+  * @addtogroup Setters_CILGPIO_c Setters  
+  * @ingroup Apis_CILGPIO_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_uart_c   
+  * Setters_CILGPIO_c   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_uart_c General  
-  * @ingroup Apis_CIL_uart_c                                            
+  * @addtogroup General_CILGPIO_c General  
+  * @ingroup Apis_CILGPIO_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_uart_c  
+  * General_CILGPIO_c  
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -123,9 +123,9 @@
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CIL_uart_togglePin(void *uartStackx, BitWidthType uartStack_Pin)
+  * @fn CILGPIO_togglePin(void *GPIOx, BitWidthType GPIO_Pin)
   * 
-  * @brief uartStack toggle pin DEMO CODE.
+  * @brief GPIO toggle pin DEMO CODE.
   * 
   * @param[in]  none
   * 
@@ -134,17 +134,9 @@
 /* @cond S */
 __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
-__OS_FUNC_SECTION void CIL_uart_sysJob()
+__OS_FUNC_SECTION void CILGPIO_togglePin(void *GPIOx, BitWidthType GPIO_Pin)
 {    
-
-    //RX SIDE
-    //check where is user and switch him if his buffer is empty
-    //check if DMA is in red zone, if yes check if user is on the same buffer, then switch to the other if DMA is not active
-
-    //TX SIDE
-    //check where is DMA and switch it if its buffer is empty
-    //check if user is in red zone, if yes check if DMA is on the same buffer, then switch to the other
-    //HAL_UART_Receive_DMA()
+    HAL_GPIO_TogglePin( GPIOx, (uint16_t)GPIO_Pin );
 }
 /* @cond S */
 __SEC_STOP(__OS_FUNC_SECTION_STOP)

@@ -5,13 +5,13 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_baseTypes.h                                      
+** @file CILbaseTypes.h                                      
 *********************************************************************************	
-<!--                   CIL_baseTypes Unit Group Definition                    -->
+<!--                   CILbaseTypes Unit Group Definition                    -->
 ********************************************************************************* 
-** @defgroup CIL_baseTypes_unit CIL_baseTypes Unit 
+** @defgroup CILbaseTypes_unit CILbaseTypes Unit 
 ** @ingroup cosmosTypes_module        
-** @brief CIL_baseTypes Unit 
+** @brief CILbaseTypes Unit 
 ** @details lorem                               
 *********************************************************************************	
 <!--                           Version Information                            -->
@@ -25,18 +25,18 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License       	
 *********************************************************************************
-<!--                 CIL_baseTypes Unit Global Group Definition               -->
+<!--                 CILbaseTypes Unit Global Group Definition               -->
 *********************************************************************************	
-** @defgroup Global_CIL_baseTypes Global
-** @ingroup CIL_baseTypes_unit 
-** @brief CIL_baseTypes globals
+** @defgroup Global_CILbaseTypes Global
+** @ingroup CILbaseTypes_unit 
+** @brief CILbaseTypes globals
 ** @details lorem 
 ********************************************************************************/ 
 /********************************************************************************
 **                           START OF THE HEADER FILE                          **
 ********************************************************************************/
-#ifndef __CIL_BASETYPES_H__
-#define __CIL_BASETYPES_H__
+#ifndef __CILBASETYPES_H__
+#define __CILBASETYPES_H__
 /********************************************************************************
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
@@ -57,15 +57,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_baseTypes_h Macros
-  * @ingroup Global_CIL_baseTypes  
+  * @defgroup Macros_CILbaseTypes_h Macros
+  * @ingroup Global_CILbaseTypes  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_baseTypes_h  
+  * Macros_CILbaseTypes_h  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -76,8 +76,8 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Typedefs_CIL_baseTypesCfg_h Typedefs
-  * @ingroup Global_CIL_baseTypes  
+  * @defgroup Typedefs_CILbaseTypesCfg_h Typedefs
+  * @ingroup Global_CILbaseTypes  
   * @{    
 ********************************************************************************/
 /********************************************************************************
@@ -126,7 +126,7 @@
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Typedefs_CIL_baseTypes_h  
+  * Typedefs_CILbaseTypes_h  
 ********************************************************************************/
 /********************************************************************************
 **                              Typedefs | Stop                                **

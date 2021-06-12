@@ -5,23 +5,53 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_stack.c
-*********************************************************************************
-<!--                   CIL_stack Unit Local Group Definition                  -->
+** @file CILcore.h
 *********************************************************************************	
-** @defgroup Local_CIL_stack Local
-** @ingroup CIL_stack_unit 
-** @brief CIL_stack locals
-** @details lorem 
+<!--                      CILcore Unit Group Definition                      -->
+********************************************************************************* 
+** @defgroup CILcore_unit CILcore Unit 
+** @ingroup CILmodule        
+** @brief CILcore Unit 
+** @details lorem                               
+*********************************************************************************	
+<!--                           Version Information                            -->
+*********************************************************************************
+** @version 1.0.0
+** @date 1.8.2020
+** @author https://github.com/PavolKostolansky     
+*********************************************************************************	
+<!--                          Warnings and License                            -->
+*********************************************************************************
+** @warning Modifying code can lead to unexpected behaviour of the whole system
+** @copyright MIT License
+*********************************************************************************
+<!--                  CILcore Unit Global Group Definition                   -->
+*********************************************************************************
+** @defgroup Global_CILcore Global
+** @ingroup CILcore_unit 
+** @brief CILcore globals
+** @details lorem  
 ********************************************************************************/
 /********************************************************************************
-**                           START OF THE SOURCE FILE                          **
+**                           START OF THE HEADER FILE                          **
 ********************************************************************************/
+#ifndef __CILCORE_H__
+#define __CILCORE_H__
+/********************************************************************************
+**                         START OF C++ SUPPORT SECTION                        **
+********************************************************************************/
+#ifdef __cplusplus
+ extern "C" {
+#endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
+/* CORE interfaces */
+#include "sysDefs.h"
+#include "memoryMapping.h"
+
 /* CIL interfaces */
-#include "CIL_stack.h"
+#include "CILstdTypes.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -31,15 +61,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_stack_c Macros
-  * @ingroup Local_CIL_stack
+  * @defgroup Macros_CILcore_h Macros
+  * @ingroup Global_CILcore  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_stack_c  
+  * Macros_CILcore_h  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -50,15 +80,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CIL_stack_c Variables  
-  * @ingroup Local_CIL_stack
+  * @defgroup Variables_CILcore_h Variables  
+  * @ingroup Global_CILcore  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Variables_CIL_stack_c  
+  * Variables_CILcore_h  
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -69,126 +99,144 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CIL_stack_c API's  
-  * @ingroup Local_CIL_stack
+  * @defgroup Apis_CILcore_h API's 
+  * @ingroup Global_CILcore
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_stack_c Getters  
-  * @ingroup Apis_CIL_stack_c                                            
+  * @addtogroup Getters_CILcore_h Getters  
+  * @ingroup Apis_CILcore_h                                            
   * @{                                                                           
 ********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILcore_getCoreId(void)
+  * 
+  * @brief Get core identificator.
+  * 
+  * @param[in]  none
+  * 
+  * @return BitWidthType
+********************************************************************************/
+__OS_FUNC_SECTION BitWidthType CILcore_getCoreId(void);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_stack_c
+  * Getters_CILcore_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_stack_c Setters  
-  * @ingroup Apis_CIL_stack_c                                            
+  * @addtogroup Setters_CILcore_h Setters  
+  * @ingroup Apis_CILcore_h                                            
   * @{                                                                           
 ********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILcore_setCoreVar(CosmOS_OsVariableType * osVar)
+  * 
+  * @brief Set core variable to the R9 platform register.
+  * 
+  * @param[in]  CosmOS_OsVariableType * osVar
+  * 
+  * @return void
+********************************************************************************/
+__OS_FUNC_SECTION void CILcore_setCoreVar(CosmOS_OsVariableType * osVar);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_stack_c   
+  * Setters_CILcore_h   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_stack_c General  
-  * @ingroup Apis_CIL_stack_c                                            
+  * @addtogroup General_CILcore_h General  
+  * @ingroup Apis_CILcore_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_stack_c  
+  * General_CILcore_h  
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Start                         **
-********************************************************************************/ 
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup Getters_CILcore_h Getters  
+  * @ingroup Apis_CILcore_h                                            
+  * @{                                                                           
+********************************************************************************/
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CIL_stack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress)
+  * @fn CILcore_getCoreVar(void) 
   * 
-  * @brief Task stack initialization DEMO CODE.
+  * @brief Get coreVar DEMO CODE.
   * 
-  * @param[in]  AddressType stackLowAddress
-  * @param[in]  AddressType stackHighAddress
-  * @param[in]  AddressType handlerAddress
+  * @param[in]  none
   * 
-  * @return StackPointerType
+  * @return CosmOS_CoreVariableType *
 ********************************************************************************/
-/* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION StackPointerType CIL_stack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress)
-{
-    CosmOS_StackType *stack = ( CosmOS_StackType* )( stackHighAddress - (AddressType)sizeof(CosmOS_StackType) );
-
-    stack->XPSR  = 0x01000000;
-    stack->PC    = handlerAddress;
-    stack->LR    = 0xFFFFFFFD;
-    stack->R12   = 0;
-    stack->R3    = 0;
-    stack->R2    = 0;
-    stack->R1    = 0;
-    stack->R0    = 0;
-    stack->R14   = 0xFFFFFFFD;
-    stack->R11   = 0;
-    stack->R10   = 0;
-    stack->R8    = 0;
-    stack->R7    = 0;
-    stack->R6    = 0;
-    stack->R5    = 0;
-    stack->R4    = 0;
-
-    return (StackPointerType)(&(stack->R4));
+__STATIC_FORCEINLINE CosmOS_CoreVariableType * CILcore_getCoreVar(void)
+{    
+    uint32_t result;
+    __asm volatile ("MOV %[resultVariable], R9":  [resultVariable] "=r" (result) );
+    return (CosmOS_CoreVariableType *)result;
 }
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
-
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @fn CIL_stack_setStackPointer(BitWidthType address)
-  * 
-  * @brief Set stack pointer DEMO CODE.
-  * 
-  * @param[in]  AddressType address
-  * 
-  * @return none
+  * @}       
+  * Getters_CILcore_h
 ********************************************************************************/
-/* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION __NAKED void CIL_stack_setStackPointer(AddressType address)
-{
-    __asm volatile ("LDMIA R0!,{R4-R8,R10,R11,R14}");
-	  __asm volatile ("MSR PSP,R0");
-    __asm volatile ("MOV R0, #0x3");
-    __asm volatile ("MSR CONTROL, R0");
-    __asm volatile ("ISB");
-    __asm volatile ("BX R14");
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup Setters_CILcore_h Setters  
+  * @ingroup Apis_CILcore_h                                            
+  * @{                                                                           
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}    
+  * Setters_CILcore_h   
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup General_CILcore_h General  
+  * @ingroup Apis_CILcore_h                                            
+  * @{                                                                           
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}
+  * General_CILcore_h  
+********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **
 ********************************************************************************/
+#ifdef __cplusplus
+}
+#endif
 /********************************************************************************
-**                           END OF THE SOURCE FILE                            **
+**                         END OF C++ SUPPORT SECTION                          **
+********************************************************************************/
+#endif
+/********************************************************************************
+**                           END OF THE HEADER FILE                            **
 ********************************************************************************/

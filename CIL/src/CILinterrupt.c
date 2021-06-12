@@ -5,13 +5,13 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_core.c
+** @file CILinterrupt.c
 *********************************************************************************
-<!--                   CIL_core Unit Local Group Definition                   -->
+<!--                CILinterrupt Unit Local Group Definition                 -->
 *********************************************************************************	
-** @defgroup Local_CIL_core Local
-** @ingroup CIL_core_unit 
-** @brief CIL_core locals
+** @defgroup Local_CILinterrupt Local
+** @ingroup CILinterrupt_unit 
+** @brief CILinterrupt locals
 ** @details lorem 
 ********************************************************************************/
 /********************************************************************************
@@ -21,11 +21,10 @@
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
-#include "os.h"
-#include "cosmosAssert.h"
+#include "scheduler.h"
 
 /* CIL interfaces */
-#include "CIL_core.h"
+#include "CILinterrupt.h"
 
 /* HAL interfaces */
 #include "stm32h7xx_hal.h"
@@ -38,15 +37,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_core_c Macros
-  * @ingroup Local_CIL_core
+  * @defgroup Macros_CILinterrupt_c Macros
+  * @ingroup Local_CILinterrupt
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_core_c  
+  * Macros_CILinterrupt_c  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -57,15 +56,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CIL_core_c Variables  
-  * @ingroup Local_CIL_core
+  * @defgroup Variables_CILinterrupt_c Variables  
+  * @ingroup Local_CILinterrupt
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Variables_CIL_core_c  
+  * Variables_CILinterrupt_c  
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -76,110 +75,107 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CIL_core_c API's  
-  * @ingroup Local_CIL_core
+  * @defgroup Apis_CILinterrupt_c API's  
+  * @ingroup Local_CILinterrupt
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_core_c Getters  
-  * @ingroup Apis_CIL_core_c                                            
+  * @addtogroup Getters_CILinterrupt_c Getters  
+  * @ingroup Apis_CILinterrupt_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_core_c
+  * Getters_CILinterrupt_c
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_core_c Setters  
-  * @ingroup Apis_CIL_core_c                                            
+  * @addtogroup Setters_CILinterrupt_c Setters  
+  * @ingroup Apis_CILinterrupt_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_core_c   
+  * Setters_CILinterrupt_c   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_core_c General  
-  * @ingroup Apis_CIL_core_c                                            
+  * @addtogroup General_CILinterrupt_c General  
+  * @ingroup Apis_CILinterrupt_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_core_c  
+  * General_CILinterrupt_c  
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Start                         **
-********************************************************************************/
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CIL_core_getCoreId(void)
-  * 
-  * @brief Get core identificator.
-  * 
-  * @param[in]  none
-  * 
-  * @return BitWidthType
-********************************************************************************/
-/* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION BitWidthType CIL_core_getCoreId(void)
-{    
-    return (HAL_GetCurrentCPUID() == CM7_CPUID) ? CORE_0_ID : CORE_1_ID;
+********************************************************************************/ 
+__NAKED void PendSV_Handler(void)
+{
+    __asm volatile ("MRS R0,PSP");
+    __asm volatile ("ISB");
+
+    __asm volatile ("TST R14, #16");
+    __asm volatile ("IT EQ"); 
+    __asm volatile ("VSTMDBEQ R0!,{S16-S31}"); /* If fp is true save floating point registers on stack */
+    __asm volatile ("STMDB R0!,{R4-R8,R10,R11,R14}");
+
+    __asm volatile ("BL scheduler_scheduleNextInstance");
+    __asm volatile ("ISB");
+
+    __asm volatile ("LDMIA R0!,{R4-R8,R10,R11,R14}");
+    __asm volatile ("TST R14, #16");
+    __asm volatile ("IT EQ"); 
+    __asm volatile ("VLDMIAEQ R0!,{S16-S31}"); /* If fp is true restore floating point registers on stack */
+    __asm volatile ("MSR PSP,R0");
+    __asm volatile ("ISB");
+
+    __asm volatile ("BX R14");
 }
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
 
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CIL_core_setCoreVar(CosmOS_OsVariableType * osVar)
-  * 
-  * @brief Set core variable to the R9 platform register.
-  * 
-  * @param[in]  CosmOS_OsVariableType * osVar
-  * 
-  * @return void
-********************************************************************************/
-/* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION void CIL_core_setCoreVar(CosmOS_OsVariableType * osVar)
-{    
-    BitWidthType coreId,
-                numberOfCores;
-
-    CosmOS_CoreVariableType * coreVar;
-
-    coreId = CIL_core_getCoreId();
-    numberOfCores = os_getOsNumberOfCores( osVar );
-
-    cosmosAssert( coreId < numberOfCores );
-
-    coreVar = os_getCoreVar( osVar, coreId );
-
-    //must be changed, not valid for all compilers
-    __asm volatile("MOV R9,%[coreVariable]" : [coreVariable] "=r" (coreVar));
+void SysTick_Handler(){
+    SCB->ICSR |= SCB_ICSR_PENDSVSET_Msk;
 }
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
+
+__NAKED void SVC_Handler( void )
+{
+    __asm volatile ("TST LR, #4");
+    __asm volatile ("ITE EQ");
+    __asm volatile ("MRSEQ r0, MSP");
+    __asm volatile ("MRSNE r0, PSP");
+    __asm volatile ( "B CILsysCalls_dispatcher");
+}
+
+
+//void MemManage_Handler(void) 
+//{
+//
+//    __asm(
+//        "MOV R4, 0x77777777\n\t"
+//        "MOV R5, 0x77777777\n\t"
+//    );
+//}
+//
+//void HardFault_Handler(void)
+//{
+//    __asm(
+//        "MOV R6, 0x77777777\n\t"
+//        "MOV R7, 0x77777777\n\t"
+//    );
+//}
 /********************************************************************************
 **                        Function Definitions | Stop                          **
 ********************************************************************************/

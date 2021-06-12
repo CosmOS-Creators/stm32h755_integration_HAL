@@ -5,13 +5,13 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_stdTypes.h                                      
+** @file CILstdTypes.h                                      
 *********************************************************************************	
-<!--                    CIL_stdTypes Unit Group Definition                    -->
+<!--                    CILstdTypes Unit Group Definition                    -->
 ********************************************************************************* 
-** @defgroup CIL_stdTypes_unit CIL_stdTypes Unit 
+** @defgroup CILstdTypes_unit CILstdTypes Unit 
 ** @ingroup cosmosTypes_module        
-** @brief CIL_stdTypes Unit 
+** @brief CILstdTypes Unit 
 ** @details lorem                               
 *********************************************************************************	
 <!--                           Version Information                            -->
@@ -25,18 +25,18 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License       	
 *********************************************************************************
-<!--                CIL_stdTypes Unit Global Group Definition                 -->
+<!--                CILstdTypes Unit Global Group Definition                 -->
 *********************************************************************************	
-** @defgroup Global_CIL_stdTypes Global
-** @ingroup CIL_stdTypes_unit 
-** @brief CIL_stdTypes globals
+** @defgroup Global_CILstdTypes Global
+** @ingroup CILstdTypes_unit 
+** @brief CILstdTypes globals
 ** @details lorem 
 ********************************************************************************/ 
 /********************************************************************************
 **                           START OF THE HEADER FILE                          **
 ********************************************************************************/
-#ifndef __CIL_STDTYPES_H__
-#define __CIL_STDTYPES_H__
+#ifndef __CILSTDTYPES_H__
+#define __CILSTDTYPES_H__
 /********************************************************************************
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
@@ -47,8 +47,8 @@
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CIL interfaces */
-#include "CIL_baseTypes.h"
-#include "CIL_macros.h"
+#include "CILbaseTypes.h"
+#include "CILmacros.h"
 #include "cosmosTypesMacros.h" 
 
 /* CMSIS interfaces */
@@ -62,15 +62,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_stdTypes_h Macros
-  * @ingroup Global_CIL_stdTypes  
+  * @defgroup Macros_CILstdTypes_h Macros
+  * @ingroup Global_CILstdTypes  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_stdTypes_h  
+  * Macros_CILstdTypes_h  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -81,8 +81,8 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Typedefs_CIL_stdTypesCfg_h Typedefs
-  * @ingroup Global_CIL_stdTypes  
+  * @defgroup Typedefs_CILstdTypesCfg_h Typedefs
+  * @ingroup Global_CILstdTypes  
   * @{    
 ********************************************************************************/
 /********************************************************************************
@@ -121,7 +121,7 @@ typedef struct
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Typedefs_CIL_stdTypes_h  
+  * Typedefs_CILstdTypes_h  
 ********************************************************************************/
 /********************************************************************************
 **                              Typedefs | Stop                                **

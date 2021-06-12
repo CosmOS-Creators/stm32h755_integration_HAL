@@ -5,28 +5,53 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_sysCalls.c
-*********************************************************************************
-<!--                 CIL_sysCalls Unit Local Group Definition                 -->
+** @file CILmemoryProtection.h
 *********************************************************************************	
-** @defgroup Local_CIL_sysCalls Local
-** @ingroup CIL_sysCalls_unit 
-** @brief CIL_sysCalls locals
-** @details lorem 
+<!--                CILmemoryProtection Unit Group Definition                -->
+********************************************************************************* 
+** @defgroup CILmemoryProtection_unit CILmemoryProtection Unit 
+** @ingroup CILmodule        
+** @brief CILmemoryProtection Unit 
+** @details lorem                               
+*********************************************************************************	
+<!--                           Version Information                            -->
+*********************************************************************************
+** @version 1.0.0
+** @date 1.8.2020
+** @author https://github.com/PavolKostolansky     
+*********************************************************************************	
+<!--                          Warnings and License                            -->
+*********************************************************************************
+** @warning Modifying code can lead to unexpected behaviour of the whole system
+** @copyright MIT License
+*********************************************************************************
+<!--           CILmemoryProtection Unit Global Group Definition              -->
+*********************************************************************************
+** @defgroup Global_CILmemoryProtection Global
+** @ingroup CILmemoryProtection_unit 
+** @brief CILmemoryProtection globals
+** @details lorem  
 ********************************************************************************/
 /********************************************************************************
-**                           START OF THE SOURCE FILE                          **
+**                           START OF THE HEADER FILE                          **
 ********************************************************************************/
+#ifndef __CILMEMORYPROTECTION_H__
+#define __CILMEMORYPROTECTION_H__
+/********************************************************************************
+**                         START OF C++ SUPPORT SECTION                        **
+********************************************************************************/
+#ifdef __cplusplus
+ extern "C" {
+#endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
-#include "os.h"
-#include "route.h"
-#include "routeCfg.h"
+#include "sysDefs.h"
+#include "memoryMapping.h"
 
 /* CIL interfaces */
-#include "CIL_sysCalls.h"
+#include "CILstdTypes.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -36,15 +61,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_sysCalls_c Macros
-  * @ingroup Local_CIL_sysCalls
+  * @defgroup Macros_CILmemoryProtection_h Macros
+  * @ingroup Global_CILmemoryProtection  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_sysCalls_c  
+  * Macros_CILmemoryProtection_h  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -55,15 +80,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CIL_sysCalls_c Variables  
-  * @ingroup Local_CIL_sysCalls
+  * @defgroup Variables_CILmemoryProtection_h Variables  
+  * @ingroup Global_CILmemoryProtection  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Variables_CIL_sysCalls_c  
+  * Variables_CILmemoryProtection_h  
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -74,47 +99,86 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CIL_sysCalls_c API's  
-  * @ingroup Local_CIL_sysCalls
+  * @defgroup Apis_CILmemoryProtection_h API's 
+  * @ingroup Global_CILmemoryProtection
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_sysCalls_c Getters  
-  * @ingroup Apis_CIL_sysCalls_c                                            
+  * @addtogroup Getters_CILmemoryProtection_h Getters  
+  * @ingroup Apis_CILmemoryProtection_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_sysCalls_c
+  * Getters_CILmemoryProtection_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_sysCalls_c Setters  
-  * @ingroup Apis_CIL_sysCalls_c                                            
+  * @addtogroup Setters_CILmemoryProtection_h Setters  
+  * @ingroup Apis_CILmemoryProtection_h                                            
   * @{                                                                           
 ********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILmemoryProtection_init(void)
+  * 
+  * @brief Init MPU DEMO CODE.
+  * 
+  * @param[in]  none
+  * 
+  * @return none
+********************************************************************************/
+__OS_FUNC_SECTION void CILmemoryProtection_init(void);
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILmemoryProtection_setStackOverflowProtection(AddressType stackLowAddress, AddressType stackHighAddress)
+  * 
+  * @brief Set stack overflow protection.
+  * 
+  * @param[in]  AddressType stackLowAddress
+  * @param[in]  AddressType stackHighAddress
+  * 
+  * @return none
+********************************************************************************/
+__OS_FUNC_SECTION void CILmemoryProtection_setStackOverflowProtection(AddressType stackLowAddress, AddressType stackHighAddress);
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILmemoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress)
+  * 
+  * @brief Set program memory protection DEMO CODE.
+  * 
+  * @param[in]  AddressType lowAddress
+  * @param[in]  AddressType highAddress
+  * 
+  * @return none
+********************************************************************************/
+__OS_FUNC_SECTION void CILmemoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_sysCalls_c   
+  * Setters_CILmemoryProtection_h   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_sysCalls_c General  
-  * @ingroup Apis_CIL_sysCalls_c                                            
+  * @addtogroup General_CILmemoryProtection_h General  
+  * @ingroup Apis_CILmemoryProtection_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_sysCalls_c  
+  * General_CILmemoryProtection_h  
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -123,127 +187,54 @@
 **                        Function Definitions | Start                         **
 ********************************************************************************/
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @fn CIL_sysCalls_dispatcher(BitWidthType *sp) 
-  * 
-  * @brief Selector of sysCall function DEMO CODE.
-  * 
-  * @param[in] BitWidthType *sp
-  * 
-  * @return none
+  * @addtogroup Getters_CILmemoryProtection_h Getters  
+  * @ingroup Apis_CILmemoryProtection_h                                            
+  * @{                                                                           
 ********************************************************************************/
-/* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION void CIL_sysCalls_dispatcher(BitWidthType *sp)
-{
-    BitWidthType  returnValue,
-                  entityId;
-
-    CosmOS_GenericVoidType sysCall;
-    CosmOS_OsVariableType * osVar;
-    CosmOS_RoutesConfigurationType * routeVar;
-
-  
-    uint8_t *pc = (uint8_t*)(sp[6]);
-    
-    pc-=2;
-
-    osVar = os_getOsVar();
-
-    uint8_t sysCallId = *pc;
-
-    routeVar = os_getOsRoutes( osVar );
-
-    sysCall = route_getRoutesFunc( routeVar, sp[0] );
-    entityId = route_getRoutesEntityId( routeVar, sp[0] );
-
-    switch ( sysCallId )
-    {
-        case 0 :
-        {
-            sysCall();
-            break;
-        }
-
-        case 1 :
-        {
-            returnValue = ((CosmOS_GenericBitWidthRWType)sysCall)(entityId, (void *)sp[1], sp[2]);
-            break;
-        }
-
-        case 2 :
-        {
-            break;
-        }
-
-        default :
-        {
-            /* PANIC */
-            break;
-        }
-    }
-
-    sp[0] = returnValue;
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
-
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @fn CIL_sysCalls_os(BitWidthType id) 
-  * 
-  * @brief System call handling general operating system functionalities.
-  * 
-  * @param[in]  BitWidthType id
-  * 
-  * @return none
+  * @}       
+  * Getters_CILmemoryProtection_h
 ********************************************************************************/
-/* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION void CIL_sysCalls_os(BitWidthType id)
-{
-    __asm volatile("SVC #0");
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
-
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @fn CIL_sysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num) 
-  * 
-  * @brief System call handling read/write from/to buffers or registers.
-  * 
-  * @param[in]  BitWidthType id
-  * @param[in]  void * entity
-  * @param[in]  BitWidthType num
-  * 
-  * @return BitWidthType
+  * @addtogroup Setters_CILmemoryProtection_h Setters  
+  * @ingroup Apis_CILmemoryProtection_h                                            
+  * @{                                                                           
 ********************************************************************************/
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION BitWidthType CIL_sysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num)
-{
-    BitWidthType returnValue;
-
-    __asm volatile("SVC #1");
-    __asm volatile("MOV %0, R0": "=r" (returnValue) ::);
-
-    return returnValue;
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
-
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}    
+  * Setters_CILmemoryProtection_h   
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup General_CILmemoryProtection_h General  
+  * @ingroup Apis_CILmemoryProtection_h                                            
+  * @{                                                                           
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}
+  * General_CILmemoryProtection_h  
+********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **
 ********************************************************************************/
+#ifdef __cplusplus
+}
+#endif
 /********************************************************************************
-**                           END OF THE SOURCE FILE                            **
+**                         END OF C++ SUPPORT SECTION                          **
+********************************************************************************/
+#endif
+/********************************************************************************
+**                           END OF THE HEADER FILE                            **
 ********************************************************************************/

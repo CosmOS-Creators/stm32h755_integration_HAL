@@ -5,13 +5,13 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_core.h
+** @file CILsysTimer.h
 *********************************************************************************	
-<!--                      CIL_core Unit Group Definition                      -->
+<!--                    CILsysTimer Unit Group Definition                    -->
 ********************************************************************************* 
-** @defgroup CIL_core_unit CIL_core Unit 
-** @ingroup CIL_module        
-** @brief CIL_core Unit 
+** @defgroup CILsysTimer_unit CILsysTimer Unit 
+** @ingroup CILmodule        
+** @brief CILsysTimer Unit 
 ** @details lorem                               
 *********************************************************************************	
 <!--                           Version Information                            -->
@@ -25,18 +25,18 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--                  CIL_core Unit Global Group Definition                   -->
+<!--                CILsysTimer Unit Global Group Definition                 -->
 *********************************************************************************
-** @defgroup Global_CIL_core Global
-** @ingroup CIL_core_unit 
-** @brief CIL_core globals
+** @defgroup Global_CILsysTimer Global
+** @ingroup CILsysTimer_unit 
+** @brief CILsysTimer globals
 ** @details lorem  
 ********************************************************************************/
 /********************************************************************************
 **                           START OF THE HEADER FILE                          **
 ********************************************************************************/
-#ifndef __CIL_CORE_H__
-#define __CIL_CORE_H__
+#ifndef __CILSYSTIMER_H__
+#define __CILSYSTIMER_H__
 /********************************************************************************
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
@@ -51,7 +51,7 @@
 #include "memoryMapping.h"
 
 /* CIL interfaces */
-#include "CIL_stdTypes.h"
+#include "CILstdTypes.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -61,15 +61,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_core_h Macros
-  * @ingroup Global_CIL_core  
+  * @defgroup Macros_CILsysTimer_h Macros
+  * @ingroup Global_CILsysTimer  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_core_h  
+  * Macros_CILsysTimer_h  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -80,15 +80,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CIL_core_h Variables  
-  * @ingroup Global_CIL_core  
+  * @defgroup Variables_CILsysTimer_h Variables  
+  * @ingroup Global_CILsysTimer  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Variables_CIL_core_h  
+  * Variables_CILsysTimer_h  
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -99,71 +99,60 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CIL_core_h API's 
-  * @ingroup Global_CIL_core
+  * @defgroup Apis_CILsysTimer_h API's 
+  * @ingroup Global_CILsysTimer
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_core_h Getters  
-  * @ingroup Apis_CIL_core_h                                            
+  * @addtogroup Getters_CILsysTimer_h Getters  
+  * @ingroup Apis_CILsysTimer_h                                            
   * @{                                                                           
 ********************************************************************************/
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CIL_core_getCoreId(void)
-  * 
-  * @brief Get core identificator.
-  * 
-  * @param[in]  none
-  * 
-  * @return BitWidthType
-********************************************************************************/
-__OS_FUNC_SECTION BitWidthType CIL_core_getCoreId(void);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_core_h
+  * Getters_CILsysTimer_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_core_h Setters  
-  * @ingroup Apis_CIL_core_h                                            
+  * @addtogroup Setters_CILsysTimer_h Setters  
+  * @ingroup Apis_CILsysTimer_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CIL_core_setCoreVar(CosmOS_OsVariableType * osVar)
+  * @fn CILsysTimer_setTicks(BitWidthType ticks, CosmOS_SchedulerSyncStateType schedulersSyncState)
   * 
-  * @brief Set core variable to the R9 platform register.
+  * @brief Disable system timer DEMO CODE.
   * 
-  * @param[in]  CosmOS_OsVariableType * osVar
+  * @param[in]  BitWidthType ticks
+  * @param[in]  CosmOS_SchedulerSyncStateType schedulersSyncState
   * 
-  * @return void
+  * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION void CIL_core_setCoreVar(CosmOS_OsVariableType * osVar);
+__OS_FUNC_SECTION void CILsysTimer_setTicks(BitWidthType ticks, CosmOS_SchedulerSyncStateType schedulersSyncState);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_core_h   
+  * Setters_CILsysTimer_h   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_core_h General  
-  * @ingroup Apis_CIL_core_h                                            
+  * @addtogroup General_CILsysTimer_h General  
+  * @ingroup Apis_CILsysTimer_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_core_h  
+  * General_CILsysTimer_h  
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -174,58 +163,41 @@ __OS_FUNC_SECTION void CIL_core_setCoreVar(CosmOS_OsVariableType * osVar);
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_core_h Getters  
-  * @ingroup Apis_CIL_core_h                                            
+  * @addtogroup Getters_CILsysTimer_h Getters  
+  * @ingroup Apis_CILsysTimer_h                                            
   * @{                                                                           
 ********************************************************************************/
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CIL_core_getCoreVar(void) 
-  * 
-  * @brief Get coreVar DEMO CODE.
-  * 
-  * @param[in]  none
-  * 
-  * @return CosmOS_CoreVariableType *
-********************************************************************************/
-__STATIC_FORCEINLINE CosmOS_CoreVariableType * CIL_core_getCoreVar(void)
-{    
-    uint32_t result;
-    __asm volatile ("MOV %[resultVariable], R9":  [resultVariable] "=r" (result) );
-    return (CosmOS_CoreVariableType *)result;
-}
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_core_h
+  * Getters_CILsysTimer_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_core_h Setters  
-  * @ingroup Apis_CIL_core_h                                            
+  * @addtogroup Setters_CILsysTimer_h Setters  
+  * @ingroup Apis_CILsysTimer_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_core_h   
+  * Setters_CILsysTimer_h   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_core_h General  
-  * @ingroup Apis_CIL_core_h                                            
+  * @addtogroup General_CILsysTimer_h General  
+  * @ingroup Apis_CILsysTimer_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_core_h  
+  * General_CILsysTimer_h  
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

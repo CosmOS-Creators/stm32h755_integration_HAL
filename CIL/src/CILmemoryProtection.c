@@ -5,13 +5,13 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_memoryProtection.c
+** @file CILmemoryProtection.c
 *********************************************************************************
-<!--              CIL_memoryProtection Unit Local Group Definition            -->
+<!--              CILmemoryProtection Unit Local Group Definition            -->
 *********************************************************************************	
-** @defgroup Local_CIL_memoryProtection Local
-** @ingroup CIL_memoryProtection_unit 
-** @brief CIL_memoryProtection locals
+** @defgroup Local_CILmemoryProtection Local
+** @ingroup CILmemoryProtection_unit 
+** @brief CILmemoryProtection locals
 ** @details lorem 
 ********************************************************************************/
 /********************************************************************************
@@ -21,8 +21,8 @@
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CIL interfaces */
-#include "CIL_memoryProtection.h"
-#include "CIL_core.h"
+#include "CILmemoryProtection.h"
+#include "CILcore.h"
 
 /* HAL interfaces */
 #include "stm32h7xx_hal.h" 
@@ -35,15 +35,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_memoryProtection_c Macros
-  * @ingroup Local_CIL_memoryProtection
+  * @defgroup Macros_CILmemoryProtection_c Macros
+  * @ingroup Local_CILmemoryProtection
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_memoryProtection_c  
+  * Macros_CILmemoryProtection_c  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -54,8 +54,8 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CIL_memoryProtection_c Variables  
-  * @ingroup Local_CIL_memoryProtection
+  * @defgroup Variables_CILmemoryProtection_c Variables  
+  * @ingroup Local_CILmemoryProtection
   * @{    
 ********************************************************************************/
 extern unsigned char _s_os_section_consts[];
@@ -66,7 +66,7 @@ extern unsigned char _e_os_section_vars[];
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Variables_CIL_memoryProtection_c  
+  * Variables_CILmemoryProtection_c  
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -77,46 +77,46 @@ extern unsigned char _e_os_section_vars[];
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CIL_memoryProtection_c API's  
-  * @ingroup Local_CIL_memoryProtection
+  * @defgroup Apis_CILmemoryProtection_c API's  
+  * @ingroup Local_CILmemoryProtection
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_memoryProtection_c Getters  
-  * @ingroup Apis_CIL_memoryProtection_c                                            
+  * @addtogroup Getters_CILmemoryProtection_c Getters  
+  * @ingroup Apis_CILmemoryProtection_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_memoryProtection_c
+  * Getters_CILmemoryProtection_c
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_memoryProtection_c Setters  
-  * @ingroup Apis_CIL_memoryProtection_c                                            
+  * @addtogroup Setters_CILmemoryProtection_c Setters  
+  * @ingroup Apis_CILmemoryProtection_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_memoryProtection_c   
+  * Setters_CILmemoryProtection_c   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_memoryProtection_c General  
-  * @ingroup Apis_CIL_memoryProtection_c                                            
+  * @addtogroup General_CILmemoryProtection_c General  
+  * @ingroup Apis_CILmemoryProtection_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CIL_memoryProtection_fastLogBase2(BitWidthType stackSize)
+  * @fn CILmemoryProtection_fastLogBase2(BitWidthType stackSize)
   * 
   * @brief Calculate fast log with base 2.
   * 
@@ -124,12 +124,12 @@ extern unsigned char _e_os_section_vars[];
   * 
   * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION static BitWidthType CIL_memoryProtection_fastLogBase2(BitWidthType stackSize);
+__OS_FUNC_SECTION static BitWidthType CILmemoryProtection_fastLogBase2(BitWidthType stackSize);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_memoryProtection_c  
+  * General_CILmemoryProtection_c  
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -140,7 +140,7 @@ __OS_FUNC_SECTION static BitWidthType CIL_memoryProtection_fastLogBase2(BitWidth
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CIL_memoryProtection_fastLogBase2(BitWidthType stackSize)
+  * @fn CILmemoryProtection_fastLogBase2(BitWidthType stackSize)
   * 
   * @brief Calculate fast log with base 2.
   * 
@@ -148,7 +148,7 @@ __OS_FUNC_SECTION static BitWidthType CIL_memoryProtection_fastLogBase2(BitWidth
   * 
   * @return none
 ********************************************************************************/
-__STATIC_FORCEINLINE BitWidthType CIL_memoryProtection_fastLogBase2(BitWidthType stackSize)
+__STATIC_FORCEINLINE BitWidthType CILmemoryProtection_fastLogBase2(BitWidthType stackSize)
 {
     BitWidthType result;
 
@@ -172,7 +172,7 @@ __STATIC_FORCEINLINE BitWidthType CIL_memoryProtection_fastLogBase2(BitWidthType
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CIL_memoryProtection_init(void)
+  * @fn CILmemoryProtection_init(void)
   * 
   * @brief Init memory protection DEMO CODE.
   * 
@@ -183,13 +183,13 @@ __STATIC_FORCEINLINE BitWidthType CIL_memoryProtection_fastLogBase2(BitWidthType
 /* @cond S */
 __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
-__OS_FUNC_SECTION void CIL_memoryProtection_init(void)
+__OS_FUNC_SECTION void CILmemoryProtection_init(void)
 {
     MPU_Region_InitTypeDef MPU_InitStruct = {0};
     BitWidthType core,
                  address;
 
-    core = CIL_core_getCoreId();
+    core = CILcore_getCoreId();
 
     HAL_MPU_Disable();
 
@@ -250,7 +250,7 @@ __OS_FUNC_SECTION void CIL_memoryProtection_init(void)
     MPU_InitStruct.Enable = MPU_REGION_ENABLE;
     MPU_InitStruct.Number = MPU_REGION_NUMBER2;
     MPU_InitStruct.BaseAddress =  (BitWidthType)_s_os_section_consts;
-    MPU_InitStruct.Size = (CIL_memoryProtection_fastLogBase2( (BitWidthType)( _e_os_section_consts - _s_os_section_consts )));
+    MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( (BitWidthType)( _e_os_section_consts - _s_os_section_consts )));
     MPU_InitStruct.SubRegionDisable = 0x00;
     MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
     MPU_InitStruct.AccessPermission = MPU_REGION_PRIV_RO_URO;
@@ -264,7 +264,7 @@ __OS_FUNC_SECTION void CIL_memoryProtection_init(void)
     MPU_InitStruct.Enable = MPU_REGION_ENABLE;
     MPU_InitStruct.Number = MPU_REGION_NUMBER3;
     MPU_InitStruct.BaseAddress = (BitWidthType)_s_os_section_vars;
-    MPU_InitStruct.Size = (CIL_memoryProtection_fastLogBase2( (BitWidthType)(_e_os_section_vars - _s_os_section_vars )));
+    MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( (BitWidthType)(_e_os_section_vars - _s_os_section_vars )));
     MPU_InitStruct.SubRegionDisable = 0x00;
     MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
     MPU_InitStruct.AccessPermission = MPU_REGION_PRIV_RW_URO;
@@ -285,7 +285,7 @@ __SEC_STOP(__OS_FUNC_SECTION_STOP)
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CIL_memoryProtection_setStackOverflowProtection(AddressType stackLowAddress, AddressType stackHighAddress)
+  * @fn CILmemoryProtection_setStackOverflowProtection(AddressType stackLowAddress, AddressType stackHighAddress)
   * 
   * @brief Set stack overflow protection DEMO CODE.
   * 
@@ -297,7 +297,7 @@ __SEC_STOP(__OS_FUNC_SECTION_STOP)
 /* @cond S */
 __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
-__OS_FUNC_SECTION void CIL_memoryProtection_setStackOverflowProtection(AddressType stackLowAddress, AddressType stackHighAddress)
+__OS_FUNC_SECTION void CILmemoryProtection_setStackOverflowProtection(AddressType stackLowAddress, AddressType stackHighAddress)
 {
     MPU_Region_InitTypeDef MPU_InitStruct = {0};
 
@@ -308,7 +308,7 @@ __OS_FUNC_SECTION void CIL_memoryProtection_setStackOverflowProtection(AddressTy
     MPU_InitStruct.Enable = MPU_REGION_ENABLE;
     MPU_InitStruct.Number = MPU_REGION_NUMBER7;
     MPU_InitStruct.BaseAddress = (stackLowAddress);
-    MPU_InitStruct.Size = (CIL_memoryProtection_fastLogBase2( stackHighAddress - stackLowAddress ));
+    MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( stackHighAddress - stackLowAddress ));
     MPU_InitStruct.SubRegionDisable = 0x00;
     MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
     MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
@@ -328,7 +328,7 @@ __SEC_STOP(__OS_FUNC_SECTION_STOP)
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CIL_memoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress)
+  * @fn CILmemoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress)
   * 
   * @brief Set program memory protection DEMO CODE.
   * 
@@ -340,7 +340,7 @@ __SEC_STOP(__OS_FUNC_SECTION_STOP)
 /* @cond S */
 __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
-__OS_FUNC_SECTION void CIL_memoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress)
+__OS_FUNC_SECTION void CILmemoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress)
 {
     MPU_Region_InitTypeDef MPU_InitStruct = {0};
 
@@ -351,7 +351,7 @@ __OS_FUNC_SECTION void CIL_memoryProtection_setProgramMemoryProtection(AddressTy
     MPU_InitStruct.Enable = MPU_REGION_ENABLE;
     MPU_InitStruct.Number = MPU_REGION_NUMBER6;
     MPU_InitStruct.BaseAddress = (lowAddress);
-    MPU_InitStruct.Size = (CIL_memoryProtection_fastLogBase2( highAddress - lowAddress ));
+    MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( highAddress - lowAddress ));
     MPU_InitStruct.SubRegionDisable = 0x00;
     MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
     MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;

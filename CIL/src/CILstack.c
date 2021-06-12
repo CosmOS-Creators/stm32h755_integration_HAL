@@ -5,13 +5,13 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_GPIO.c
+** @file CILstack.c
 *********************************************************************************
-<!--                   CIL_GPIO Unit Local Group Definition                   -->
+<!--                   CILstack Unit Local Group Definition                  -->
 *********************************************************************************	
-** @defgroup Local_CIL_GPIO Local
-** @ingroup CIL_GPIO_unit 
-** @brief CIL_GPIO locals
+** @defgroup Local_CILstack Local
+** @ingroup CILstack_unit 
+** @brief CILstack locals
 ** @details lorem 
 ********************************************************************************/
 /********************************************************************************
@@ -21,10 +21,7 @@
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CIL interfaces */
-#include "CIL_GPIO.h"
-
-/* HAL interfaces */
-#include "stm32h7xx_hal.h"
+#include "CILstack.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -34,15 +31,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_GPIO_c Macros
-  * @ingroup Local_CIL_GPIO
+  * @defgroup Macros_CILstack_c Macros
+  * @ingroup Local_CILstack
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_GPIO_c  
+  * Macros_CILstack_c  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -53,15 +50,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CIL_GPIO_c Variables  
-  * @ingroup Local_CIL_GPIO
+  * @defgroup Variables_CILstack_c Variables  
+  * @ingroup Local_CILstack
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Variables_CIL_GPIO_c  
+  * Variables_CILstack_c  
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -72,71 +69,119 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CIL_GPIO_c API's  
-  * @ingroup Local_CIL_GPIO
+  * @defgroup Apis_CILstack_c API's  
+  * @ingroup Local_CILstack
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_GPIO_c Getters  
-  * @ingroup Apis_CIL_GPIO_c                                            
+  * @addtogroup Getters_CILstack_c Getters  
+  * @ingroup Apis_CILstack_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_GPIO_c
+  * Getters_CILstack_c
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_GPIO_c Setters  
-  * @ingroup Apis_CIL_GPIO_c                                            
+  * @addtogroup Setters_CILstack_c Setters  
+  * @ingroup Apis_CILstack_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_GPIO_c   
+  * Setters_CILstack_c   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_GPIO_c General  
-  * @ingroup Apis_CIL_GPIO_c                                            
+  * @addtogroup General_CILstack_c General  
+  * @ingroup Apis_CILstack_c                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_GPIO_c  
+  * General_CILstack_c  
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Start                         **
-********************************************************************************/
+********************************************************************************/ 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CIL_GPIO_togglePin(void *GPIOx, BitWidthType GPIO_Pin)
+  * @fn CILstack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress)
   * 
-  * @brief GPIO toggle pin DEMO CODE.
+  * @brief Task stack initialization DEMO CODE.
   * 
-  * @param[in]  none
+  * @param[in]  AddressType stackLowAddress
+  * @param[in]  AddressType stackHighAddress
+  * @param[in]  AddressType handlerAddress
+  * 
+  * @return StackPointerType
+********************************************************************************/
+/* @cond S */
+__SEC_START(__OS_FUNC_SECTION_START)
+/* @endcond*/
+__OS_FUNC_SECTION StackPointerType CILstack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress)
+{
+    CosmOS_StackType *stack = ( CosmOS_StackType* )( stackHighAddress - (AddressType)sizeof(CosmOS_StackType) );
+
+    stack->XPSR  = 0x01000000;
+    stack->PC    = handlerAddress;
+    stack->LR    = 0xFFFFFFFD;
+    stack->R12   = 0;
+    stack->R3    = 0;
+    stack->R2    = 0;
+    stack->R1    = 0;
+    stack->R0    = 0;
+    stack->R14   = 0xFFFFFFFD;
+    stack->R11   = 0;
+    stack->R10   = 0;
+    stack->R8    = 0;
+    stack->R7    = 0;
+    stack->R6    = 0;
+    stack->R5    = 0;
+    stack->R4    = 0;
+
+    return (StackPointerType)(&(stack->R4));
+}
+/* @cond S */
+__SEC_STOP(__OS_FUNC_SECTION_STOP)
+/* @endcond*/
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILstack_setStackPointer(BitWidthType address)
+  * 
+  * @brief Set stack pointer DEMO CODE.
+  * 
+  * @param[in]  AddressType address
   * 
   * @return none
 ********************************************************************************/
 /* @cond S */
 __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
-__OS_FUNC_SECTION void CIL_GPIO_togglePin(void *GPIOx, BitWidthType GPIO_Pin)
-{    
-    HAL_GPIO_TogglePin( GPIOx, (uint16_t)GPIO_Pin );
+__OS_FUNC_SECTION __NAKED void CILstack_setStackPointer(AddressType address)
+{
+    __asm volatile ("LDMIA R0!,{R4-R8,R10,R11,R14}");
+	  __asm volatile ("MSR PSP,R0");
+    __asm volatile ("MOV R0, #0x3");
+    __asm volatile ("MSR CONTROL, R0");
+    __asm volatile ("ISB");
+    __asm volatile ("BX R14");
 }
 /* @cond S */
 __SEC_STOP(__OS_FUNC_SECTION_STOP)

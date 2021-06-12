@@ -5,13 +5,13 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_stack.h
+** @file CILinterrupt.h
 *********************************************************************************	
-<!--                      CIL_stack Unit Group Definition                     -->
+<!--                    CILinterrupt Unit Group Definition                   -->
 ********************************************************************************* 
-** @defgroup CIL_stack_unit CIL_stack Unit 
-** @ingroup CIL_module        
-** @brief CIL_stack Unit 
+** @defgroup CILinterrupt_unit CILinterrupt Unit 
+** @ingroup CILmodule        
+** @brief CILinterrupt Unit 
 ** @details lorem                               
 *********************************************************************************	
 <!--                           Version Information                            -->
@@ -25,18 +25,18 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--                 CIL_stack Unit Global Group Definition                   -->
+<!--               CILinterrupt Unit Global Group Definition                 -->
 *********************************************************************************
-** @defgroup Global_CIL_stack Global
-** @ingroup CIL_stack_unit 
-** @brief CIL_stack globals
+** @defgroup Global_CILinterrupt Global
+** @ingroup CILinterrupt_unit 
+** @brief CILinterrupt globals
 ** @details lorem  
 ********************************************************************************/
 /********************************************************************************
 **                           START OF THE HEADER FILE                          **
 ********************************************************************************/
-#ifndef __CIL_STACK_H__
-#define __CIL_STACK_H__
+#ifndef __CILINTERRUPT_H__
+#define __CILINTERRUPT_H__
 /********************************************************************************
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
@@ -51,7 +51,7 @@
 #include "memoryMapping.h"
 
 /* CIL interfaces */
-#include "CIL_stdTypes.h"
+#include "CILstdTypes.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -61,15 +61,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_stack_h Macros
-  * @ingroup Global_CIL_stack  
+  * @defgroup Macros_CILinterrupt_h Macros
+  * @ingroup Global_CILinterrupt  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_stack_h  
+  * Macros_CILinterrupt_h  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -80,15 +80,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CIL_stack_h Variables  
-  * @ingroup Global_CIL_stack  
+  * @defgroup Variables_CILinterrupt_h Variables  
+  * @ingroup Global_CILinterrupt  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Variables_CIL_stack_h  
+  * Variables_CILinterrupt_h  
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -99,61 +99,47 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CIL_stack_h API's 
-  * @ingroup Global_CIL_stack
+  * @defgroup Apis_CILinterrupt_h API's 
+  * @ingroup Global_CILinterrupt
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_stack_h Getters  
-  * @ingroup Apis_CIL_stack_h                                            
+  * @addtogroup Getters_CILinterrupt_h Getters  
+  * @ingroup Apis_CILinterrupt_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_stack_h
+  * Getters_CILinterrupt_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_stack_h Setters  
-  * @ingroup Apis_CIL_stack_h                                            
+  * @addtogroup Setters_CILinterrupt_h Setters  
+  * @ingroup Apis_CILinterrupt_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_stack_h   
+  * Setters_CILinterrupt_h   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_stack_h General  
-  * @ingroup Apis_CIL_stack_h                                            
+  * @addtogroup General_CILinterrupt_h General  
+  * @ingroup Apis_CILinterrupt_h                                            
   * @{                                                                           
 ********************************************************************************/
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CIL_stack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress)
-  * 
-  * @brief Task stack initialization.
-  * 
-  * @param[in]  AddressType stackLowAddress
-  * @param[in]  AddressType stackHighAddress
-  * @param[in]  AddressType handlerAddress
-  * 
-  * @return StackPointerType
-********************************************************************************/
-__OS_FUNC_SECTION StackPointerType CIL_stack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_stack_h  
+  * General_CILinterrupt_h  
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -164,53 +150,41 @@ __OS_FUNC_SECTION StackPointerType CIL_stack_stackInit(AddressType stackLowAddre
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_stack_h Getters  
-  * @ingroup Apis_CIL_stack_h                                            
+  * @addtogroup Getters_CILinterrupt_h Getters  
+  * @ingroup Apis_CILinterrupt_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_stack_h
+  * Getters_CILinterrupt_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_stack_h Setters  
-  * @ingroup Apis_CIL_stack_h                                            
+  * @addtogroup Setters_CILinterrupt_h Setters  
+  * @ingroup Apis_CILinterrupt_h                                            
   * @{                                                                           
 ********************************************************************************/
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CIL_stack_setStackPointer(AddressType address)
-  * 
-  * @brief Set stack pointer DEMO CODE.
-  * 
-  * @param[in]  AddressType address
-  * 
-  * @return none
-********************************************************************************/
-__OS_FUNC_SECTION __NAKED void CIL_stack_setStackPointer(AddressType address);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_stack_h   
+  * Setters_CILinterrupt_h   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_stack_h General  
-  * @ingroup Apis_CIL_stack_h                                            
+  * @addtogroup General_CILinterrupt_h General  
+  * @ingroup Apis_CILinterrupt_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_stack_h  
+  * General_CILinterrupt_h  
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

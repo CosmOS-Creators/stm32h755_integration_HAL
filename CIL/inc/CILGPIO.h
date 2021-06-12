@@ -5,13 +5,13 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_sysCalls.h
+** @file CILGPIO.h
 *********************************************************************************	
-<!--                    CIL_sysCalls Unit Group Definition                    -->
+<!--                      CILGPIO Unit Group Definition                      -->
 ********************************************************************************* 
-** @defgroup CIL_sysCalls_unit CIL_sysCalls Unit 
-** @ingroup CIL_module        
-** @brief CIL_sysCalls Unit 
+** @defgroup CILGPIO_unit CILGPIO Unit 
+** @ingroup CILmodule        
+** @brief CILGPIO Unit 
 ** @details lorem                               
 *********************************************************************************	
 <!--                           Version Information                            -->
@@ -25,18 +25,18 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--                CIL_sysCalls Unit Global Group Definition                 -->
+<!--                  CILGPIO Unit Global Group Definition                   -->
 *********************************************************************************
-** @defgroup Global_CIL_sysCalls Global
-** @ingroup CIL_sysCalls_unit 
-** @brief CIL_sysCalls globals
+** @defgroup Global_CILGPIO Global
+** @ingroup CILGPIO_unit 
+** @brief CILGPIO globals
 ** @details lorem  
 ********************************************************************************/
 /********************************************************************************
 **                           START OF THE HEADER FILE                          **
 ********************************************************************************/
-#ifndef __CIL_SYSCALLS_H__
-#define __CIL_SYSCALLS_H__
+#ifndef __CILGPIO_H__
+#define __CILGPIO_H__
 /********************************************************************************
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
@@ -51,7 +51,7 @@
 #include "memoryMapping.h"
 
 /* CIL interfaces */
-#include "CIL_stdTypes.h"
+#include "CILstdTypes.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -61,15 +61,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_sysCalls_h Macros
-  * @ingroup Global_CIL_sysCalls  
+  * @defgroup Macros_CILGPIO_h Macros
+  * @ingroup Global_CILGPIO  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_sysCalls_h  
+  * Macros_CILGPIO_h  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -80,15 +80,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CIL_sysCalls_h Variables  
-  * @ingroup Global_CIL_sysCalls  
+  * @defgroup Variables_CILGPIO_h Variables  
+  * @ingroup Global_CILGPIO  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Variables_CIL_sysCalls_h  
+  * Variables_CILGPIO_h  
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -99,87 +99,59 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CIL_sysCalls_h API's 
-  * @ingroup Global_CIL_sysCalls
+  * @defgroup Apis_CILGPIO_h API's 
+  * @ingroup Global_CILGPIO
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_sysCalls_h Getters  
-  * @ingroup Apis_CIL_sysCalls_h                                            
+  * @addtogroup Getters_CILGPIO_h Getters  
+  * @ingroup Apis_CILGPIO_h                                            
   * @{                                                                           
 ********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILGPIO_togglePin(void *GPIOx, BitWidthType GPIO_Pin)
+  * 
+  * @brief GPIO toggle pin DEMO CODE.
+  * 
+  * @param[in]  none
+  * 
+  * @return none
+********************************************************************************/
+__OS_FUNC_SECTION void CILGPIO_togglePin(void *GPIOx, BitWidthType GPIO_Pin);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_sysCalls_h
+  * Getters_CILGPIO_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_sysCalls_h Setters  
-  * @ingroup Apis_CIL_sysCalls_h                                            
+  * @addtogroup Setters_CILGPIO_h Setters  
+  * @ingroup Apis_CILGPIO_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_sysCalls_h   
+  * Setters_CILGPIO_h   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_sysCalls_h General  
-  * @ingroup Apis_CIL_sysCalls_h                                            
+  * @addtogroup General_CILGPIO_h General  
+  * @ingroup Apis_CILGPIO_h                                            
   * @{                                                                           
 ********************************************************************************/
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CIL_sysCalls_dispatcher(BitWidthType *sp) 
-  * 
-  * @brief Selector of sysCall function.
-  * 
-  * @param[in] BitWidthType *sp
-  * 
-  * @return none
-********************************************************************************/
-__OS_FUNC_SECTION void CIL_sysCalls_dispatcher(BitWidthType *sp);
-
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CIL_sysCalls_os(BitWidthType id) 
-  * 
-  * @brief System call handling general operating system functionalities.
-  * 
-  * @param[in]  BitWidthType id
-  * 
-  * @return none
-********************************************************************************/
-__OS_FUNC_SECTION void CIL_sysCalls_os(BitWidthType id);
-
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CIL_sysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num) 
-  * 
-  * @brief System call handling read/write from/to buffers or registers.
-  * 
-  * @param[in]  BitWidthType id
-  * @param[in]  void * entity
-  * @param[in]  BitWidthType num
-  * 
-  * @return BitWidthType
-********************************************************************************/
-__OS_FUNC_SECTION BitWidthType CIL_sysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_sysCalls_h  
+  * General_CILGPIO_h  
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -190,41 +162,41 @@ __OS_FUNC_SECTION BitWidthType CIL_sysCalls_readWrite(BitWidthType id, void * en
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_sysCalls_h Getters  
-  * @ingroup Apis_CIL_sysCalls_h                                            
+  * @addtogroup Getters_CILGPIO_h Getters  
+  * @ingroup Apis_CILGPIO_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_sysCalls_h
+  * Getters_CILGPIO_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_sysCalls_h Setters  
-  * @ingroup Apis_CIL_sysCalls_h                                            
+  * @addtogroup Setters_CILGPIO_h Setters  
+  * @ingroup Apis_CILGPIO_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_sysCalls_h   
+  * Setters_CILGPIO_h   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_sysCalls_h General  
-  * @ingroup Apis_CIL_sysCalls_h                                            
+  * @addtogroup General_CILGPIO_h General  
+  * @ingroup Apis_CILGPIO_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_sysCalls_h  
+  * General_CILGPIO_h  
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

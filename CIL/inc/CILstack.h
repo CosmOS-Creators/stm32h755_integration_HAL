@@ -5,13 +5,13 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CIL_memoryProtection.h
+** @file CILstack.h
 *********************************************************************************	
-<!--                CIL_memoryProtection Unit Group Definition                -->
+<!--                      CILstack Unit Group Definition                     -->
 ********************************************************************************* 
-** @defgroup CIL_memoryProtection_unit CIL_memoryProtection Unit 
-** @ingroup CIL_module        
-** @brief CIL_memoryProtection Unit 
+** @defgroup CILstack_unit CILstack Unit 
+** @ingroup CILmodule        
+** @brief CILstack Unit 
 ** @details lorem                               
 *********************************************************************************	
 <!--                           Version Information                            -->
@@ -25,18 +25,18 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--           CIL_memoryProtection Unit Global Group Definition              -->
+<!--                 CILstack Unit Global Group Definition                   -->
 *********************************************************************************
-** @defgroup Global_CIL_memoryProtection Global
-** @ingroup CIL_memoryProtection_unit 
-** @brief CIL_memoryProtection globals
+** @defgroup Global_CILstack Global
+** @ingroup CILstack_unit 
+** @brief CILstack globals
 ** @details lorem  
 ********************************************************************************/
 /********************************************************************************
 **                           START OF THE HEADER FILE                          **
 ********************************************************************************/
-#ifndef __CIL_MEMORYPROTECTION_H__
-#define __CIL_MEMORYPROTECTION_H__
+#ifndef __CILSTACK_H__
+#define __CILSTACK_H__
 /********************************************************************************
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
@@ -51,7 +51,7 @@
 #include "memoryMapping.h"
 
 /* CIL interfaces */
-#include "CIL_stdTypes.h"
+#include "CILstdTypes.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -61,15 +61,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CIL_memoryProtection_h Macros
-  * @ingroup Global_CIL_memoryProtection  
+  * @defgroup Macros_CILstack_h Macros
+  * @ingroup Global_CILstack  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Macros_CIL_memoryProtection_h  
+  * Macros_CILstack_h  
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -80,15 +80,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CIL_memoryProtection_h Variables  
-  * @ingroup Global_CIL_memoryProtection  
+  * @defgroup Variables_CILstack_h Variables  
+  * @ingroup Global_CILstack  
   * @{    
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}  
-  * Variables_CIL_memoryProtection_h  
+  * Variables_CILstack_h  
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -99,86 +99,61 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CIL_memoryProtection_h API's 
-  * @ingroup Global_CIL_memoryProtection
+  * @defgroup Apis_CILstack_h API's 
+  * @ingroup Global_CILstack
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_memoryProtection_h Getters  
-  * @ingroup Apis_CIL_memoryProtection_h                                            
+  * @addtogroup Getters_CILstack_h Getters  
+  * @ingroup Apis_CILstack_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_memoryProtection_h
+  * Getters_CILstack_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_memoryProtection_h Setters  
-  * @ingroup Apis_CIL_memoryProtection_h                                            
+  * @addtogroup Setters_CILstack_h Setters  
+  * @ingroup Apis_CILstack_h                                            
   * @{                                                                           
 ********************************************************************************/
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CIL_memoryProtection_init(void)
-  * 
-  * @brief Init MPU DEMO CODE.
-  * 
-  * @param[in]  none
-  * 
-  * @return none
-********************************************************************************/
-__OS_FUNC_SECTION void CIL_memoryProtection_init(void);
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CIL_memoryProtection_setStackOverflowProtection(AddressType stackLowAddress, AddressType stackHighAddress)
-  * 
-  * @brief Set stack overflow protection.
-  * 
-  * @param[in]  AddressType stackLowAddress
-  * @param[in]  AddressType stackHighAddress
-  * 
-  * @return none
-********************************************************************************/
-__OS_FUNC_SECTION void CIL_memoryProtection_setStackOverflowProtection(AddressType stackLowAddress, AddressType stackHighAddress);
-
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CIL_memoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress)
-  * 
-  * @brief Set program memory protection DEMO CODE.
-  * 
-  * @param[in]  AddressType lowAddress
-  * @param[in]  AddressType highAddress
-  * 
-  * @return none
-********************************************************************************/
-__OS_FUNC_SECTION void CIL_memoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_memoryProtection_h   
+  * Setters_CILstack_h   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_memoryProtection_h General  
-  * @ingroup Apis_CIL_memoryProtection_h                                            
+  * @addtogroup General_CILstack_h General  
+  * @ingroup Apis_CILstack_h                                            
   * @{                                                                           
 ********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILstack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress)
+  * 
+  * @brief Task stack initialization.
+  * 
+  * @param[in]  AddressType stackLowAddress
+  * @param[in]  AddressType stackHighAddress
+  * @param[in]  AddressType handlerAddress
+  * 
+  * @return StackPointerType
+********************************************************************************/
+__OS_FUNC_SECTION StackPointerType CILstack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_memoryProtection_h  
+  * General_CILstack_h  
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -189,41 +164,53 @@ __OS_FUNC_SECTION void CIL_memoryProtection_setProgramMemoryProtection(AddressTy
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CIL_memoryProtection_h Getters  
-  * @ingroup Apis_CIL_memoryProtection_h                                            
+  * @addtogroup Getters_CILstack_h Getters  
+  * @ingroup Apis_CILstack_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}       
-  * Getters_CIL_memoryProtection_h
+  * Getters_CILstack_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CIL_memoryProtection_h Setters  
-  * @ingroup Apis_CIL_memoryProtection_h                                            
+  * @addtogroup Setters_CILstack_h Setters  
+  * @ingroup Apis_CILstack_h                                            
   * @{                                                                           
 ********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILstack_setStackPointer(AddressType address)
+  * 
+  * @brief Set stack pointer DEMO CODE.
+  * 
+  * @param[in]  AddressType address
+  * 
+  * @return none
+********************************************************************************/
+__OS_FUNC_SECTION __NAKED void CILstack_setStackPointer(AddressType address);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}    
-  * Setters_CIL_memoryProtection_h   
+  * Setters_CILstack_h   
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CIL_memoryProtection_h General  
-  * @ingroup Apis_CIL_memoryProtection_h                                            
+  * @addtogroup General_CILstack_h General  
+  * @ingroup Apis_CILstack_h                                            
   * @{                                                                           
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CIL_memoryProtection_h  
+  * General_CILstack_h  
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **
