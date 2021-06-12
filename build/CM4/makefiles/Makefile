@@ -29,7 +29,7 @@ A2L=arm-none-eabi-addr2line
 ##					    PROJECT DIRECTORIES					    ##
 ##################################################################
 ROOT		 		= 	../../../../..
-MCU 				=  	IntegrationLayer
+MCU 				=  	stm32h755_integration
 OS 					= 	$(ROOT)/Cosmos
 OS_CORE		 		= 	$(ROOT)/Cosmos/Core
 OS_IL		 		= 	$(ROOT)/Cosmos/$(MCU)/CIL
