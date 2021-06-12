@@ -10,7 +10,7 @@
 <!--                   CIL_baseTypes Unit Group Definition                    -->
 ********************************************************************************* 
 ** @defgroup CIL_baseTypes_unit CIL_baseTypes Unit 
-** @ingroup CosmOSTypes_module        
+** @ingroup cosmosTypes_module        
 ** @brief CIL_baseTypes Unit 
 ** @details lorem                               
 *********************************************************************************	

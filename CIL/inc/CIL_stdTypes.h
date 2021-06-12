@@ -10,7 +10,7 @@
 <!--                    CIL_stdTypes Unit Group Definition                    -->
 ********************************************************************************* 
 ** @defgroup CIL_stdTypes_unit CIL_stdTypes Unit 
-** @ingroup CosmOSTypes_module        
+** @ingroup cosmosTypes_module        
 ** @brief CIL_stdTypes Unit 
 ** @details lorem                               
 *********************************************************************************	
@@ -49,7 +49,7 @@
 /* CIL interfaces */
 #include "CIL_baseTypes.h"
 #include "CIL_macros.h"
-#include "CosmOSTypesMacros.h" 
+#include "cosmosTypesMacros.h" 
 
 /* CMSIS interfaces */
 #include "cmsis_gcc.h"

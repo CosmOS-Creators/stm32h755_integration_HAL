@@ -10,7 +10,7 @@
 <!--                     CIL_macros Unit Group Definition                     -->
 ********************************************************************************* 
 ** @defgroup CIL_macros_unit CIL_macros Unit 
-** @ingroup CosmOSTypes_module        
+** @ingroup cosmosTypes_module        
 ** @brief CIL_macros Unit 
 ** @details lorem                               
 *********************************************************************************	
