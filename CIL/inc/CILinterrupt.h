@@ -7,7 +7,7 @@
 *****************************************************************************//**
 ** @file CILinterrupt.h
 *********************************************************************************	
-<!--                    CILinterrupt Unit Group Definition                   -->
+<!--                     CILinterrupt Unit Group Definition                   -->
 ********************************************************************************* 
 ** @defgroup CILinterrupt_unit CILinterrupt Unit 
 ** @ingroup CILmodule        
@@ -25,7 +25,7 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--               CILinterrupt Unit Global Group Definition                 -->
+<!--                CILinterrupt Unit Global Group Definition                 -->
 *********************************************************************************
 ** @defgroup Global_CILinterrupt Global
 ** @ingroup CILinterrupt_unit 

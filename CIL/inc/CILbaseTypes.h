@@ -7,10 +7,10 @@
 *****************************************************************************//**
 ** @file CILbaseTypes.h                                      
 *********************************************************************************	
-<!--                   CILbaseTypes Unit Group Definition                    -->
+<!--                    CILbaseTypes Unit Group Definition                    -->
 ********************************************************************************* 
 ** @defgroup CILbaseTypes_unit CILbaseTypes Unit 
-** @ingroup cosmosTypes_module        
+** @ingroup CILmodule        
 ** @brief CILbaseTypes Unit 
 ** @details lorem                               
 *********************************************************************************	
@@ -25,7 +25,7 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License       	
 *********************************************************************************
-<!--                 CILbaseTypes Unit Global Group Definition               -->
+<!--                  CILbaseTypes Unit Global Group Definition               -->
 *********************************************************************************	
 ** @defgroup Global_CILbaseTypes Global
 ** @ingroup CILbaseTypes_unit 

@@ -7,7 +7,7 @@
 *****************************************************************************//**
 ** @file CILinterrupt.c
 *********************************************************************************
-<!--                CILinterrupt Unit Local Group Definition                 -->
+<!--                 CILinterrupt Unit Local Group Definition                 -->
 *********************************************************************************	
 ** @defgroup Local_CILinterrupt Local
 ** @ingroup CILinterrupt_unit 

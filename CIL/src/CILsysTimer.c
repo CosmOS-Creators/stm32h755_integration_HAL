@@ -7,7 +7,7 @@
 *****************************************************************************//**
 ** @file CILsysTimer.c
 *********************************************************************************
-<!--                 CILsysTimer Unit Local Group Definition                 -->
+<!--                  CILsysTimer Unit Local Group Definition                 -->
 *********************************************************************************	
 ** @defgroup Local_CILsysTimer Local
 ** @ingroup CILsysTimer_unit 

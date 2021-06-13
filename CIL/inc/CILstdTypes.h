@@ -7,10 +7,10 @@
 *****************************************************************************//**
 ** @file CILstdTypes.h                                      
 *********************************************************************************	
-<!--                    CILstdTypes Unit Group Definition                    -->
+<!--                     CILstdTypes Unit Group Definition                    -->
 ********************************************************************************* 
 ** @defgroup CILstdTypes_unit CILstdTypes Unit 
-** @ingroup cosmosTypes_module        
+** @ingroup CILmodule        
 ** @brief CILstdTypes Unit 
 ** @details lorem                               
 *********************************************************************************	
@@ -25,7 +25,7 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License       	
 *********************************************************************************
-<!--                CILstdTypes Unit Global Group Definition                 -->
+<!--                 CILstdTypes Unit Global Group Definition                 -->
 *********************************************************************************	
 ** @defgroup Global_CILstdTypes Global
 ** @ingroup CILstdTypes_unit 

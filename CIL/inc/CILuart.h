@@ -7,7 +7,7 @@
 *****************************************************************************//**
 ** @file CILuart.h
 *********************************************************************************	
-<!--                      CILuart Unit Group Definition                      -->
+<!--                       CILuart Unit Group Definition                      -->
 ********************************************************************************* 
 ** @defgroup CILuart_unit CILuart Unit 
 ** @ingroup CILmodule        
@@ -25,7 +25,7 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--                 CILuart Unit Global Group Definition                    -->
+<!--                  CILuart Unit Global Group Definition                    -->
 *********************************************************************************
 ** @defgroup Global_CILuart Global
 ** @ingroup CILuart_unit 

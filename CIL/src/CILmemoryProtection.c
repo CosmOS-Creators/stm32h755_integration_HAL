@@ -7,7 +7,7 @@
 *****************************************************************************//**
 ** @file CILmemoryProtection.c
 *********************************************************************************
-<!--              CILmemoryProtection Unit Local Group Definition            -->
+<!--               CILmemoryProtection Unit Local Group Definition            -->
 *********************************************************************************	
 ** @defgroup Local_CILmemoryProtection Local
 ** @ingroup CILmemoryProtection_unit 

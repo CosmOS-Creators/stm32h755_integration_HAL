@@ -7,7 +7,7 @@
 *****************************************************************************//**
 ** @file CILsysTimer.h
 *********************************************************************************	
-<!--                    CILsysTimer Unit Group Definition                    -->
+<!--                     CILsysTimer Unit Group Definition                    -->
 ********************************************************************************* 
 ** @defgroup CILsysTimer_unit CILsysTimer Unit 
 ** @ingroup CILmodule        
@@ -25,7 +25,7 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--                CILsysTimer Unit Global Group Definition                 -->
+<!--                 CILsysTimer Unit Global Group Definition                 -->
 *********************************************************************************
 ** @defgroup Global_CILsysTimer Global
 ** @ingroup CILsysTimer_unit 

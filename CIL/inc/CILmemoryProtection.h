@@ -7,7 +7,7 @@
 *****************************************************************************//**
 ** @file CILmemoryProtection.h
 *********************************************************************************	
-<!--                CILmemoryProtection Unit Group Definition                -->
+<!--                 CILmemoryProtection Unit Group Definition                -->
 ********************************************************************************* 
 ** @defgroup CILmemoryProtection_unit CILmemoryProtection Unit 
 ** @ingroup CILmodule        
@@ -25,7 +25,7 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--           CILmemoryProtection Unit Global Group Definition              -->
+<!--            CILmemoryProtection Unit Global Group Definition              -->
 *********************************************************************************
 ** @defgroup Global_CILmemoryProtection Global
 ** @ingroup CILmemoryProtection_unit 

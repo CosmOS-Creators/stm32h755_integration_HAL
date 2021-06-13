@@ -7,7 +7,7 @@
 *****************************************************************************//**
 ** @file CILstack.h
 *********************************************************************************	
-<!--                      CILstack Unit Group Definition                     -->
+<!--                       CILstack Unit Group Definition                     -->
 ********************************************************************************* 
 ** @defgroup CILstack_unit CILstack Unit 
 ** @ingroup CILmodule        
@@ -25,7 +25,7 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--                 CILstack Unit Global Group Definition                   -->
+<!--                  CILstack Unit Global Group Definition                   -->
 *********************************************************************************
 ** @defgroup Global_CILstack Global
 ** @ingroup CILstack_unit 

@@ -7,7 +7,7 @@
 *****************************************************************************//**
 ** @file CILsysCalls.h
 *********************************************************************************	
-<!--                    CILsysCalls Unit Group Definition                    -->
+<!--                     CILsysCalls Unit Group Definition                    -->
 ********************************************************************************* 
 ** @defgroup CILsysCalls_unit CILsysCalls Unit 
 ** @ingroup CILmodule        
@@ -25,7 +25,7 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--                CILsysCalls Unit Global Group Definition                 -->
+<!--                 CILsysCalls Unit Global Group Definition                 -->
 *********************************************************************************
 ** @defgroup Global_CILsysCalls Global
 ** @ingroup CILsysCalls_unit 

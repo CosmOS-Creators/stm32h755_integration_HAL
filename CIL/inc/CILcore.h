@@ -7,7 +7,7 @@
 *****************************************************************************//**
 ** @file CILcore.h
 *********************************************************************************	
-<!--                      CILcore Unit Group Definition                      -->
+<!--                       CILcore Unit Group Definition                      -->
 ********************************************************************************* 
 ** @defgroup CILcore_unit CILcore Unit 
 ** @ingroup CILmodule        
@@ -25,7 +25,7 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--                  CILcore Unit Global Group Definition                   -->
+<!--                   CILcore Unit Global Group Definition                   -->
 *********************************************************************************
 ** @defgroup Global_CILcore Global
 ** @ingroup CILcore_unit 

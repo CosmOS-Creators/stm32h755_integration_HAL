@@ -7,7 +7,7 @@
 *****************************************************************************//**
 ** @file CILGPIO.h
 *********************************************************************************	
-<!--                      CILGPIO Unit Group Definition                      -->
+<!--                       CILGPIO Unit Group Definition                      -->
 ********************************************************************************* 
 ** @defgroup CILGPIO_unit CILGPIO Unit 
 ** @ingroup CILmodule        
@@ -25,7 +25,7 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--                  CILGPIO Unit Global Group Definition                   -->
+<!--                   CILGPIO Unit Global Group Definition                   -->
 *********************************************************************************
 ** @defgroup Global_CILGPIO Global
 ** @ingroup CILGPIO_unit 

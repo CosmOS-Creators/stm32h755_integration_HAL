@@ -7,10 +7,10 @@
 *****************************************************************************//**
 ** @file CILmacros.h                                      
 *********************************************************************************	
-<!--                     CILmacros Unit Group Definition                     -->
+<!--                      CILmacros Unit Group Definition                     -->
 ********************************************************************************* 
 ** @defgroup CILmacros_unit CILmacros Unit 
-** @ingroup cosmosTypes_module        
+** @ingroup CILmodule        
 ** @brief CILmacros Unit 
 ** @details lorem                               
 *********************************************************************************	
@@ -25,7 +25,7 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License       	
 *********************************************************************************
-<!--                 CILmacros Unit Global Group Definition                  -->
+<!--                  CILmacros Unit Global Group Definition                  -->
 *********************************************************************************	
 ** @defgroup Global_CILmacros Global
 ** @ingroup CILmacros_unit 
