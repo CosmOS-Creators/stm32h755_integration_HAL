@@ -1,0 +1,70 @@
+{
+	"version": "1.0.0",
+
+	"attributes": {
+		"memory": {
+			"label": "Memory location",
+			"type": "selection",
+			"elements": "memories/name"
+		},
+		"name": {
+			"label": "Memory name",
+			"type": "string"
+		},
+		"size": {
+			"label": "size of this memory location",
+			"type": "hex"
+		},
+		"low_address": {
+			"label": "Starting address of this memory",
+			"type": "hex"
+		},
+		"cores": {
+			"label": "",
+			"type": "referenceList"
+		}
+	},
+
+	"elements": {
+		"memory_0": [
+			{
+				"target": "name",
+				"value": "DTCM"
+			},
+			{
+				"target": "size",
+				"value": "0x20000"
+			},
+			{
+				"target": "low_address",
+				"value": "0x20000000"
+			},
+			{
+				"target": "cores",
+				"value": [
+					"cores/core_0"
+				]
+			}
+		],
+		"memory_1": [
+			{
+				"target": "name",
+				"value": "SRAM1"
+			},
+			{
+				"target": "size",
+				"value": "0x20000"
+			},
+			{
+				"target": "low_address",
+				"value": "0x10000000"
+			},
+			{
+				"target": "cores",
+				"value": [
+					"cores/core_1"
+				]
+			}
+		]
+	}
+}

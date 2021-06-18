@@ -1,0 +1,81 @@
+{
+	"version": "1.0.0",
+
+	"attributes": {
+		"stackMemory": {
+			"inherit": "memories/memory",
+			"label": "Memory location of the Stack"
+		},
+		"stackAddress": {
+			"label": "Starting address of the stack",
+			"type": "hex"
+		},
+		"stackRamSize": {
+			"label": "Ram size of the stack",
+			"type": "hex"
+		},
+		"flashPartitionStartAddress": {
+			"label": "Start address of the flash partition",
+			"type": "hex"
+		},
+		"flashPartitionSize": {
+			"label": "Size of the flash partition",
+			"type": "hex"
+		}
+	},
+
+	"elements": {
+		"CM7": [
+			{
+				"parentReference": "cores/core_0",
+				"name": "core"
+			},
+			{
+				"target": "stackMemory",
+				"value": "DTCM"
+			},
+			{
+				"target": "stackAddress",
+				"value": "0x20020000"
+			},
+			{
+				"target": "stackRamSize",
+				"value": "0x20000"
+			},
+			{
+				"target": "flashPartitionStartAddress",
+				"value": "0x8100000"
+			},
+			{
+				"target": "flashPartitionSize",
+				"value": "0x100000"
+			}
+		],
+		"CM4": [
+			{
+				"parentReference": "cores/core_1",
+				"name": "core"
+			},
+			{
+				"target": "stackMemory",
+				"value": "SRAM1"
+			},
+			{
+				"target": "stackAddress",
+				"value": "0x10020000"
+			},
+			{
+				"target": "stackRamSize",
+				"value": "0x20000"
+			},
+			{
+				"target": "flashPartitionStartAddress",
+				"value": "0x8100000"
+			},
+			{
+				"target": "flashPartitionSize",
+				"value": "0x100000"
+			}
+		]
+	}
+}

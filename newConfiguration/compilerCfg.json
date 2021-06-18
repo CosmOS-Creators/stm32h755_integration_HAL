@@ -1,0 +1,73 @@
+{
+	"version": "1.0.0",
+
+	"attributes": {
+		"buildName": {
+			"label": "Name of the build",
+			"type": "string"
+		},
+		"flags": {
+			"label": "List of compiler flags for this build",
+			"type": "stringList"
+		},
+		"defines": {
+			"label": "List of defines for this build",
+			"type": "stringList"
+		}
+	},
+
+	"elements": {
+		"CM7": [
+			{
+				"parentReference": "cores/core_0",
+				"name": "core"
+			},
+			{
+				"target": "buildName",
+				"value": "CM7"
+			},
+			{
+				"target": "flags",
+				"value": [
+					"-ffixed-r9"
+				]
+			},
+			{
+				"target": "defines",
+				"value": [
+					"CORE_CM7",
+					"STM32H755xx",
+					"USE_HAL_DRIVER",
+					"ARCH_32BIT",
+					"ADDR_32BIT"
+				]
+			}
+		],
+		"CM4": [
+			{
+				"parentReference": "cores/core_1",
+				"name": "core"
+			},
+			{
+				"target": "buildName",
+				"value": "CM4"
+			},
+			{
+				"target": "flags",
+				"value": [
+					"-ffixed-r9"
+				]
+			},
+			{
+				"target": "defines",
+				"value": [
+					"CORE_CM4",
+					"STM32H755xx",
+					"USE_HAL_DRIVER",
+					"ARCH_32BIT",
+					"ADDR_32BIT"
+				]
+			}
+		]
+	}
+}

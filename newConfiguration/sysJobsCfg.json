@@ -1,0 +1,19 @@
+{
+	"version": "1.0.0",
+
+	"attributes": {
+		"name": {
+			"label": "Name of the sysjob",
+			"type": "string"
+		}
+	},
+
+	"elements": {
+		"sysJob_0": [
+			{
+				"target": "name",
+				"value": "CILuart_sysJob"
+			}
+		]
+	}
+}
