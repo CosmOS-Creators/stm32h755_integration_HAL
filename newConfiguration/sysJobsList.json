@@ -3,8 +3,9 @@
 
 	"attributes": {
 		"name": {
-			"label": "Name of the sysjob",
-			"type": "string"
+			"label": "Name of the sysJob",
+			"type": "string",
+			"tooltip": "Implemented system job in the integration layer"
 		}
 	},
 

@@ -4,15 +4,18 @@
 	"attributes": {
 		"buildName": {
 			"label": "Name of the build",
-			"type": "string"
+			"type": "string",
+			"tooltip": "Binary file name for the current CPU"
 		},
 		"flags": {
-			"label": "List of compiler flags for this build",
-			"type": "stringList"
+			"label": "List of compiler flags",
+			"type": "stringList",
+			"tooltip": "List of compiler flags for the current CPU"
 		},
 		"defines": {
-			"label": "List of defines for this build",
-			"type": "stringList"
+			"label": "List of defines",
+			"type": "stringList",
+			"tooltip": "List of compiler defines for the current CPU"
 		}
 	},
 

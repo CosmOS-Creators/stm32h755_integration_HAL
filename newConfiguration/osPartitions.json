@@ -1,0 +1,53 @@
+{
+	"version": "1.0.0",
+
+	"attributes": {
+		"name": {
+			"label": "Name of partition",
+			"type": "string",
+			"tooltip": "Name of the partition cannot be changed by user because it is used in linker script generation process"
+		},
+		"partitionMemory": {
+			"inherit": "memories/memory",
+			"label": "Memory location of the current partition",
+			"tooltip": "Memory location of the current partition can be picked from available memories for current MCU"
+		},
+		"size": {
+			"label": "Size of the current partition",
+			"type": "hex",
+			"tooltip": "Size in bytes for the current partition"
+
+		}
+	},
+
+	"elements": {
+		"partition_0": [
+			{
+				"target": "name",
+				"value": "constants_partition"
+			},
+			{
+				"target": "partitionMemory",
+				"value": "SRAM4"
+			},
+			{
+				"target": "size",
+				"value": "0x8000"
+			}
+		],
+		"partition_1": [
+			{
+				"target": "name",
+				"value": "variables_partition"
+			},
+			{
+				"target": "partitionMemory",
+				"value": "SRAM4"
+			},
+			{
+				"target": "size",
+				"value": "0x8000"
+			}
+		]
+	}
+}

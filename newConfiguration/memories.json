@@ -9,19 +9,23 @@
 		},
 		"name": {
 			"label": "Memory name",
-			"type": "string"
+			"type": "string",
+			"tooltip": "Name of the current memory consistent with the current MCU datasheet"
 		},
 		"size": {
-			"label": "size of this memory location",
-			"type": "hex"
+			"label": "Size of the memory",
+			"type": "hex",
+			"tooltip": "Size of the current memory consistent with the current MCU datasheet"
 		},
-		"low_address": {
+		"lowAddress": {
 			"label": "Starting address of this memory",
-			"type": "hex"
+			"type": "hex",
+			"tooltip": "Low address of the current memory consistent with the current MCU datasheet"
 		},
 		"cores": {
-			"label": "",
-			"type": "referenceList"
+			"label": "CPU access",
+			"type": "referenceList",
+			"tooltip": "CPU access of the current memory consistent with the current MCU datasheet"
 		}
 	},
 
@@ -36,7 +40,7 @@
 				"value": "0x20000"
 			},
 			{
-				"target": "low_address",
+				"target": "lowAddress",
 				"value": "0x20000000"
 			},
 			{
@@ -56,12 +60,160 @@
 				"value": "0x20000"
 			},
 			{
-				"target": "low_address",
+				"target": "lowAddress",
 				"value": "0x10000000"
 			},
 			{
 				"target": "cores",
 				"value": [
+					"cores/core_0",
+					"cores/core_1"
+				]
+			}
+		],
+		"memory_2": [
+			{
+				"target": "name",
+				"value": "SRAM4"
+			},
+			{
+				"target": "size",
+				"value": "0x10000"
+			},
+			{
+				"target": "lowAddress",
+				"value": "0x38000000"
+			},
+			{
+				"target": "cores",
+				"value": [
+					"cores/core_0",
+					"cores/core_1"
+				]
+			}
+		],
+		"memory_3": [
+			{
+				"target": "name",
+				"value": "SRAM2"
+			},
+			{
+				"target": "size",
+				"value": "0x10000"
+			},
+			{
+				"target": "lowAddress",
+				"value": "0x30020000"
+			},
+			{
+				"target": "cores",
+				"value": [
+					"cores/core_0",
+					"cores/core_1"
+				]
+			}
+		],
+		"memory_4": [
+			{
+				"target": "name",
+				"value": "SRAM3"
+			},
+			{
+				"target": "size",
+				"value": "0x8000"
+			},
+			{
+				"target": "lowAddress",
+				"value": "0x30040000"
+			},
+			{
+				"target": "cores",
+				"value": [
+					"cores/core_0",
+					"cores/core_1"
+				]
+			}
+		],
+		"memory_5": [
+			{
+				"target": "name",
+				"value": "AXI SRAM"
+			},
+			{
+				"target": "size",
+				"value": "0x80000"
+			},
+			{
+				"target": "lowAddress",
+				"value": "0x24000000"
+			},
+			{
+				"target": "cores",
+				"value": [
+					"cores/core_0",
+					"cores/core_1"
+				]
+			}
+		],
+		"memory_6": [
+			{
+				"target": "name",
+				"value": "Backup RAM"
+			},
+			{
+				"target": "size",
+				"value": "0x1000"
+			},
+			{
+				"target": "lowAddress",
+				"value": "0x38800000"
+			},
+			{
+				"target": "cores",
+				"value": [
+					"cores/core_0",
+					"cores/core_1"
+				]
+			}
+		],
+		"memory_7": [
+			{
+				"target": "name",
+				"value": "Flash bank 1"
+			},
+			{
+				"target": "size",
+				"value": "0x100000"
+			},
+			{
+				"target": "lowAddress",
+				"value": "0x08000000"
+			},
+			{
+				"target": "cores",
+				"value": [
+					"cores/core_0",
+					"cores/core_1"
+				]
+			}
+		],
+		"memory_8": [
+			{
+				"target": "name",
+				"value": "Flash bank 2"
+			},
+			{
+				"target": "size",
+				"value": "0x100000"
+			},
+			{
+				"target": "lowAddress",
+				"value": "0x08100000"
+			},
+			{
+				"target": "cores",
+				"value": [
+					"cores/core_0",
 					"cores/core_1"
 				]
 			}

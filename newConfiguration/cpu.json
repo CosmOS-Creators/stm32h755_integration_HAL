@@ -1,0 +1,94 @@
+{
+	"version": "1.0.0",
+
+	"attributes": {
+		"stackMemory": {
+			"inherit": "memories/memory",
+			"label": "Memory location of the kernel/task/thread stacks"
+		},
+		"flashMemory": {
+			"inherit": "memories/memory",
+			"label": "Memory location of the local code"
+		},
+		"systemTimerWidth": {
+			"label": "System Timer bit width",
+			"type": "int"
+		},
+		"systemTimerFrequency": {
+			"label": "System timer frequency in Hz",
+			"type": "int"
+		},
+		"systemTimerTickCount": {
+			"label": "System timer one tick count",
+			"type": "int"
+		},
+		"memoryProtection": {
+			"label": "MPU engine available",
+			"type": "bool",
+			"tooltip": "Presence of the MPU in current CPU"
+		}
+	},
+
+	"elements": {
+		"CM7": [
+			{
+				"parentReference": "cores/core_0",
+				"name": "core"
+			},
+			{
+				"target": "stackMemory",
+				"value": "DTCM"
+			},
+			{
+				"target": "flashMemory",
+				"value": "Flash bank 1"
+			},
+			{
+				"target": "systemTimerWidth",
+				"value": 24
+			},
+			{
+				"target": "systemTimerFrequency",
+				"value": 100000000
+			},
+			{
+				"target": "systemTimerTickCount",
+				"value": 10000
+			},
+			{
+				"target": "memoryProtection",
+				"value": true
+			}
+		],
+		"CM4": [
+			{
+				"parentReference": "cores/core_1",
+				"name": "core"
+			},
+			{
+				"target": "stackMemory",
+				"value": "SRAM1"
+			},
+			{
+				"target": "flashMemory",
+				"value": "Flash bank 2"
+			},
+			{
+				"target": "systemTimerWidth",
+				"value": 24
+			},
+			{
+				"target": "systemTimerFrequency",
+				"value": 100000000
+			},
+			{
+				"target": "systemTimerTickCount",
+				"value": 10000
+			},
+			{
+				"target": "memoryProtection",
+				"value": true
+			}
+		]
+	}
+}
