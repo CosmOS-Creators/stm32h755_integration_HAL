@@ -16,6 +16,11 @@
 			"label": "Bit width of the address bus",
 			"type": "int",
 			"tooltip": "Address bus bitwidth defined by datasheet"
+		},
+		"architecture": {
+			"label": "Architecture",
+			"type": "string",
+			"tooltip": "Architecture of the MCU (must be picked from the integrated architectures list)"
 		}
 	},
 
@@ -32,6 +37,10 @@
 			{
 				"target": "addressBitWidth",
 				"value": 32
+			},
+			{
+				"target": "architecture",
+				"value": "ARMv7"
 			}
 		]
 	}

@@ -7,7 +7,7 @@
 			"type": "string",
 			"tooltip": "Name of the partition cannot be changed by user because it is used in linker script generation process"
 		},
-		"partitionMemory": {
+		"memory": {
 			"inherit": "memories/:memory",
 			"label": "Memory location of the current partition",
 			"tooltip": "Memory location of the current partition can be picked from available memories for current MCU"
@@ -16,7 +16,14 @@
 			"label": "Size of the current partition",
 			"type": "hex",
 			"tooltip": "Size in bytes for the current partition"
-
+		},
+		"lowAddress": {
+			"placeholder": true,
+			"type": "int"
+		},
+		"highAddress": {
+			"placeholder": true,
+			"type": "int"
 		}
 	},
 
@@ -27,12 +34,18 @@
 				"value": "constants_partition"
 			},
 			{
-				"target": "partitionMemory",
+				"target": "memory",
 				"value": "SRAM4"
 			},
 			{
 				"target": "size",
 				"value": "0x8000"
+			},
+			{
+				"target": "lowAddress"
+			},
+			{
+				"target": "highAddress"
 			}
 		],
 		"partition_1": [
@@ -41,12 +54,18 @@
 				"value": "variables_partition"
 			},
 			{
-				"target": "partitionMemory",
+				"target": "memory",
 				"value": "SRAM4"
 			},
 			{
 				"target": "size",
 				"value": "0x8000"
+			},
+			{
+				"target": "lowAddress"
+			},
+			{
+				"target": "highAddress"
 			}
 		]
 	}

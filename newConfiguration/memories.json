@@ -26,11 +26,18 @@
 			"label": "CPU access",
 			"type": "referenceList",
 			"tooltip": "CPU access of the current memory consistent with the current MCU datasheet"
+		},
+		"freeChunks": {
+			"placeholder": true,
+			"type": "referenceList"
 		}
 	},
 
 	"elements": {
 		"memory_0": [
+			{
+				"target":"freeChunks"
+			},
 			{
 				"target": "name",
 				"value": "DTCM"
@@ -51,6 +58,9 @@
 			}
 		],
 		"memory_1": [
+			{
+				"target":"freeChunks"
+			},
 			{
 				"target": "name",
 				"value": "SRAM1"
@@ -73,6 +83,9 @@
 		],
 		"memory_2": [
 			{
+				"target":"freeChunks"
+			},
+			{
 				"target": "name",
 				"value": "SRAM4"
 			},
@@ -93,6 +106,9 @@
 			}
 		],
 		"memory_3": [
+			{
+				"target":"freeChunks"
+			},
 			{
 				"target": "name",
 				"value": "SRAM2"
@@ -115,6 +131,9 @@
 		],
 		"memory_4": [
 			{
+				"target":"freeChunks"
+			},
+			{
 				"target": "name",
 				"value": "SRAM3"
 			},
@@ -135,6 +154,9 @@
 			}
 		],
 		"memory_5": [
+			{
+				"target":"freeChunks"
+			},
 			{
 				"target": "name",
 				"value": "AXI SRAM"
@@ -157,6 +179,9 @@
 		],
 		"memory_6": [
 			{
+				"target":"freeChunks"
+			},
+			{
 				"target": "name",
 				"value": "Backup RAM"
 			},
@@ -178,6 +203,9 @@
 		],
 		"memory_7": [
 			{
+				"target":"freeChunks"
+			},
+			{
 				"target": "name",
 				"value": "Flash bank 1"
 			},
@@ -198,6 +226,9 @@
 			}
 		],
 		"memory_8": [
+			{
+				"target":"freeChunks"
+			},
 			{
 				"target": "name",
 				"value": "Flash bank 2"
