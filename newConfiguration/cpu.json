@@ -26,14 +26,17 @@
 			"label": "MPU engine available",
 			"type": "bool",
 			"tooltip": "Presence of the MPU in current CPU"
+		},
+		"core": {
+			"type": "parentReference"
 		}
 	},
 
 	"elements": {
 		"CM7": [
 			{
-				"parentReference": "cores/core_0",
-				"name": "core"
+				"target": "core",
+				"value": "cores/core_0"
 			},
 			{
 				"target": "stackMemory",
@@ -62,8 +65,8 @@
 		],
 		"CM4": [
 			{
-				"parentReference": "cores/core_1",
-				"name": "core"
+				"target": "core",
+				"value": "cores/core_1"
 			},
 			{
 				"target": "stackMemory",
