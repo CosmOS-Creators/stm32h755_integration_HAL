@@ -3,11 +3,11 @@
 
 	"attributes": {
 		"stackMemory": {
-			"inherit": "memories/memory",
+			"inherit": "memories/:memory",
 			"label": "Memory location of the kernel/task/thread stacks"
 		},
 		"flashMemory": {
-			"inherit": "memories/memory",
+			"inherit": "memories/:memory",
 			"label": "Memory location of the local code"
 		},
 		"systemTimerWidth": {

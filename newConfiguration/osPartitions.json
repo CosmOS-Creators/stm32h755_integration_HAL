@@ -8,7 +8,7 @@
 			"tooltip": "Name of the partition cannot be changed by user because it is used in linker script generation process"
 		},
 		"partitionMemory": {
-			"inherit": "memories/memory",
+			"inherit": "memories/:memory",
 			"label": "Memory location of the current partition",
 			"tooltip": "Memory location of the current partition can be picked from available memories for current MCU"
 		},
