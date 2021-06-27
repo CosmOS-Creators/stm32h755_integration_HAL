@@ -26,18 +26,11 @@
 			"label": "MPU engine available",
 			"type": "bool",
 			"tooltip": "Presence of the MPU in current CPU"
-		},
-		"core": {
-			"type": "parentReference"
 		}
 	},
 
 	"elements": {
 		"CM7": [
-			{
-				"target": "core",
-				"value": "cores/core_0"
-			},
 			{
 				"target": "stackMemory",
 				"value": "DTCM"
@@ -64,10 +57,6 @@
 			}
 		],
 		"CM4": [
-			{
-				"target": "core",
-				"value": "cores/core_1"
-			},
 			{
 				"target": "stackMemory",
 				"value": "SRAM1"
