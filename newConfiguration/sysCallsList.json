@@ -1,0 +1,26 @@
+{
+	"version": "1.0.0",
+
+	"attributes": {
+		"name": {
+			"label": "Name of the sysCall",
+			"type": "string",
+			"tooltip": "Name of the core system call integrated also in the integration layer"
+		}
+	},
+
+	"elements": {
+		"sysCall_0": [
+			{
+				"target": "name",
+				"value": "sysCalls_os"
+			}
+		],
+		"sysCall_1": [
+			{
+				"target": "name",
+				"value": "sysCalls_readWrite"
+			}
+		]
+	}
+}
