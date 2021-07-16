@@ -1,57 +1,27 @@
 {
 	"version": "1.0.0",
 
-	"attributes": {
-		"memory": {
-			"label": "Memory location",
-			"type": "selection",
-			"elements": "memories/name"
-		},
-		"name": {
-			"label": "Memory name",
-			"type": "string",
-			"tooltip": "Name of the current memory consistent with the current MCU datasheet"
-		},
-		"size": {
-			"label": "Size of the memory",
-			"type": "hex",
-			"tooltip": "Size of the current memory consistent with the current MCU datasheet"
-		},
-		"lowAddress": {
-			"label": "Starting address of this memory",
-			"type": "hex",
-			"tooltip": "Low address of the current memory consistent with the current MCU datasheet"
-		},
-		"cores": {
-			"label": "CPU access",
-			"type": "referenceList",
-			"tooltip": "CPU access of the current memory consistent with the current MCU datasheet"
-		},
-		"freeChunks": {
-			"placeholder": true,
-			"type": "referenceList"
-		}
-	},
+	"attributes": {},
 
 	"elements": {
 		"memory_0": [
 			{
-				"target":"freeChunks"
+				"target":"memoriesAttributes/:freeChunks"
 			},
 			{
-				"target": "name",
+				"target": "memoriesAttributes/:name",
 				"value": "DTCM"
 			},
 			{
-				"target": "size",
+				"target": "memoriesAttributes/:size",
 				"value": "0x20000"
 			},
 			{
-				"target": "lowAddress",
+				"target": "memoriesAttributes/:lowAddress",
 				"value": "0x20000000"
 			},
 			{
-				"target": "cores",
+				"target": "memoriesAttributes/:cores",
 				"value": [
 					"cores/core_0"
 				]
@@ -59,22 +29,22 @@
 		],
 		"memory_1": [
 			{
-				"target":"freeChunks"
+				"target":"memoriesAttributes/:freeChunks"
 			},
 			{
-				"target": "name",
+				"target": "memoriesAttributes/:name",
 				"value": "SRAM1"
 			},
 			{
-				"target": "size",
+				"target": "memoriesAttributes/:size",
 				"value": "0x20000"
 			},
 			{
-				"target": "lowAddress",
+				"target": "memoriesAttributes/:lowAddress",
 				"value": "0x10000000"
 			},
 			{
-				"target": "cores",
+				"target": "memoriesAttributes/:cores",
 				"value": [
 					"cores/core_0",
 					"cores/core_1"
@@ -83,22 +53,22 @@
 		],
 		"memory_2": [
 			{
-				"target":"freeChunks"
+				"target":"memoriesAttributes/:freeChunks"
 			},
 			{
-				"target": "name",
+				"target": "memoriesAttributes/:name",
 				"value": "SRAM4"
 			},
 			{
-				"target": "size",
+				"target": "memoriesAttributes/:size",
 				"value": "0x10000"
 			},
 			{
-				"target": "lowAddress",
+				"target": "memoriesAttributes/:lowAddress",
 				"value": "0x38000000"
 			},
 			{
-				"target": "cores",
+				"target": "memoriesAttributes/:cores",
 				"value": [
 					"cores/core_0",
 					"cores/core_1"
@@ -107,22 +77,22 @@
 		],
 		"memory_3": [
 			{
-				"target":"freeChunks"
+				"target":"memoriesAttributes/:freeChunks"
 			},
 			{
-				"target": "name",
+				"target": "memoriesAttributes/:name",
 				"value": "SRAM2"
 			},
 			{
-				"target": "size",
+				"target": "memoriesAttributes/:size",
 				"value": "0x10000"
 			},
 			{
-				"target": "lowAddress",
+				"target": "memoriesAttributes/:lowAddress",
 				"value": "0x30020000"
 			},
 			{
-				"target": "cores",
+				"target": "memoriesAttributes/:cores",
 				"value": [
 					"cores/core_0",
 					"cores/core_1"
@@ -131,22 +101,22 @@
 		],
 		"memory_4": [
 			{
-				"target":"freeChunks"
+				"target":"memoriesAttributes/:freeChunks"
 			},
 			{
-				"target": "name",
+				"target": "memoriesAttributes/:name",
 				"value": "SRAM3"
 			},
 			{
-				"target": "size",
+				"target": "memoriesAttributes/:size",
 				"value": "0x8000"
 			},
 			{
-				"target": "lowAddress",
+				"target": "memoriesAttributes/:lowAddress",
 				"value": "0x30040000"
 			},
 			{
-				"target": "cores",
+				"target": "memoriesAttributes/:cores",
 				"value": [
 					"cores/core_0",
 					"cores/core_1"
@@ -155,22 +125,22 @@
 		],
 		"memory_5": [
 			{
-				"target":"freeChunks"
+				"target":"memoriesAttributes/:freeChunks"
 			},
 			{
-				"target": "name",
+				"target": "memoriesAttributes/:name",
 				"value": "AXI SRAM"
 			},
 			{
-				"target": "size",
+				"target": "memoriesAttributes/:size",
 				"value": "0x80000"
 			},
 			{
-				"target": "lowAddress",
+				"target": "memoriesAttributes/:lowAddress",
 				"value": "0x24000000"
 			},
 			{
-				"target": "cores",
+				"target": "memoriesAttributes/:cores",
 				"value": [
 					"cores/core_0",
 					"cores/core_1"
@@ -179,22 +149,22 @@
 		],
 		"memory_6": [
 			{
-				"target":"freeChunks"
+				"target":"memoriesAttributes/:freeChunks"
 			},
 			{
-				"target": "name",
+				"target": "memoriesAttributes/:name",
 				"value": "Backup RAM"
 			},
 			{
-				"target": "size",
+				"target": "memoriesAttributes/:size",
 				"value": "0x1000"
 			},
 			{
-				"target": "lowAddress",
+				"target": "memoriesAttributes/:lowAddress",
 				"value": "0x38800000"
 			},
 			{
-				"target": "cores",
+				"target": "memoriesAttributes/:cores",
 				"value": [
 					"cores/core_0",
 					"cores/core_1"
@@ -203,22 +173,22 @@
 		],
 		"memory_7": [
 			{
-				"target":"freeChunks"
+				"target":"memoriesAttributes/:freeChunks"
 			},
 			{
-				"target": "name",
+				"target": "memoriesAttributes/:name",
 				"value": "Flash bank 1"
 			},
 			{
-				"target": "size",
+				"target": "memoriesAttributes/:size",
 				"value": "0x100000"
 			},
 			{
-				"target": "lowAddress",
+				"target": "memoriesAttributes/:lowAddress",
 				"value": "0x08000000"
 			},
 			{
-				"target": "cores",
+				"target": "memoriesAttributes/:cores",
 				"value": [
 					"cores/core_0",
 					"cores/core_1"
@@ -227,22 +197,22 @@
 		],
 		"memory_8": [
 			{
-				"target":"freeChunks"
+				"target":"memoriesAttributes/:freeChunks"
 			},
 			{
-				"target": "name",
+				"target": "memoriesAttributes/:name",
 				"value": "Flash bank 2"
 			},
 			{
-				"target": "size",
+				"target": "memoriesAttributes/:size",
 				"value": "0x100000"
 			},
 			{
-				"target": "lowAddress",
+				"target": "memoriesAttributes/:lowAddress",
 				"value": "0x08100000"
 			},
 			{
-				"target": "cores",
+				"target": "memoriesAttributes/:cores",
 				"value": [
 					"cores/core_0",
 					"cores/core_1"

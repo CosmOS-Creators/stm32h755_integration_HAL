@@ -1,71 +1,47 @@
 {
 	"version": "1.0.0",
 
-	"attributes": {
-		"name": {
-			"label": "Name of partition",
-			"type": "string",
-			"tooltip": "Name of the partition cannot be changed by user because it is used in linker script generation process"
-		},
-		"memory": {
-			"inherit": "memories/:memory",
-			"label": "Memory location of the current partition",
-			"tooltip": "Memory location of the current partition can be picked from available memories for current MCU"
-		},
-		"size": {
-			"label": "Size of the current partition",
-			"type": "hex",
-			"tooltip": "Size in bytes for the current partition"
-		},
-		"lowAddress": {
-			"placeholder": true,
-			"type": "int"
-		},
-		"highAddress": {
-			"placeholder": true,
-			"type": "int"
-		}
-	},
+	"attributes": {},
 
 	"elements": {
 		"partition_0": [
 			{
-				"target": "name",
+				"target": "osPartitionsAttributes/:name",
 				"value": "consts"
 			},
 			{
-				"target": "memory",
+				"target": "osPartitionsAttributes/:memory",
 				"value": "SRAM4"
 			},
 			{
-				"target": "size",
+				"target": "osPartitionsAttributes/:size",
 				"value": "0x8000"
 			},
 			{
-				"target": "lowAddress"
+				"target": "osPartitionsAttributes/:lowAddress"
 			},
 			{
-				"target": "highAddress"
+				"target": "osPartitionsAttributes/:highAddress"
 			}
 		],
 		"partition_1": [
 			{
-				"target": "name",
+				"target": "osPartitionsAttributes/:name",
 				"value": "vars"
 			},
 			{
-				"target": "memory",
+				"target": "osPartitionsAttributes/:memory",
 				"value": "SRAM4"
 			},
 			{
-				"target": "size",
+				"target": "osPartitionsAttributes/:size",
 				"value": "0x8000"
 			},
 			{
-				"target": "lowAddress"
+				"target": "osPartitionsAttributes/:lowAddress"
 			},
 			{
-				"target": "highAddress"
+				"target": "osPartitionsAttributes/:highAddress"
 			}
 		]
 	}

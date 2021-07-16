@@ -1,45 +1,26 @@
 {
 	"version": "1.0.0",
 
-	"attributes": {
-		"buildName": {
-			"label": "Name of the build",
-			"type": "string",
-			"tooltip": "Binary file name for the current CPU"
-		},
-		"flags": {
-			"label": "List of compiler flags",
-			"type": "stringList",
-			"tooltip": "List of compiler flags for the current CPU"
-		},
-		"defines": {
-			"label": "List of defines",
-			"type": "stringList",
-			"tooltip": "List of compiler defines for the current CPU"
-		},
-		"core": {
-			"type": "parentReference"
-		}
-	},
+	"attributes": {},
 
 	"elements": {
 		"CM7": [
 			{
-				"target": "core",
+				"target": "compilerAttributes/:core",
 				"value": "cores/core_0"
 			},
 			{
-				"target": "buildName",
+				"target": "compilerAttributes/:buildName",
 				"value": "CM7"
 			},
 			{
-				"target": "flags",
+				"target": "compilerAttributes/:flags",
 				"value": [
 					"-ffixed-r9"
 				]
 			},
 			{
-				"target": "defines",
+				"target": "compilerAttributes/:defines",
 				"value": [
 					"CORE_CM7",
 					"STM32H755xx",
@@ -51,21 +32,21 @@
 		],
 		"CM4": [
 			{
-				"target": "core",
+				"target": "compilerAttributes/:core",
 				"value": "cores/core_1"
 			},
 			{
-				"target": "buildName",
+				"target": "compilerAttributes/:buildName",
 				"value": "CM4"
 			},
 			{
-				"target": "flags",
+				"target": "compilerAttributes/:flags",
 				"value": [
 					"-ffixed-r9"
 				]
 			},
 			{
-				"target": "defines",
+				"target": "compilerAttributes/:defines",
 				"value": [
 					"CORE_CM4",
 					"STM32H755xx",

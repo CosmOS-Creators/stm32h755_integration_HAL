@@ -1,45 +1,24 @@
 {
 	"version": "1.0.0",
 
-	"attributes": {
-		"mcuName": {
-			"label": "Name of the MCU",
-			"type": "string",
-			"tooltip": "Name of the integrated MCU with CosmOS"
-		},
-		"cpuBitWidth": {
-			"label": "Bit width of the CPU architecture",
-			"type": "int",
-			"tooltip": "CPU bitwidth defined by datasheet"
-		},
-		"addressBitWidth": {
-			"label": "Bit width of the address bus",
-			"type": "int",
-			"tooltip": "Address bus bitwidth defined by datasheet"
-		},
-		"architecture": {
-			"label": "Architecture",
-			"type": "string",
-			"tooltip": "Architecture of the MCU (must be picked from the integrated architectures list)"
-		}
-	},
+	"attributes": {},
 
 	"elements": {
 		"MCU": [
 			{
-				"target": "mcuName",
+				"target": "mcuAttributes/:mcuName",
 				"value": "stm32h755"
 			},
 			{
-				"target": "cpuBitWidth",
+				"target": "mcuAttributes/:cpuBitWidth",
 				"value": 32
 			},
 			{
-				"target": "addressBitWidth",
+				"target": "mcuAttributes/:addressBitWidth",
 				"value": 32
 			},
 			{
-				"target": "architecture",
+				"target": "mcuAttributes/:architecture",
 				"value": "ARMv7"
 			}
 		]
