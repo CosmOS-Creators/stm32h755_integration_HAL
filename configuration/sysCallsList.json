@@ -1,0 +1,20 @@
+{
+	"version": "1.0.0",
+
+	"attributes": {},
+
+	"elements": {
+		"sysCall_0": [
+			{
+				"target": "sysCallsListAttributes/:name",
+				"value": "sysCalls_os"
+			}
+		],
+		"sysCall_1": [
+			{
+				"target": "sysCallsListAttributes/:name",
+				"value": "sysCalls_readWrite"
+			}
+		]
+	}
+}

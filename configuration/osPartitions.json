@@ -1,0 +1,48 @@
+{
+	"version": "1.0.0",
+
+	"attributes": {},
+
+	"elements": {
+		"partition_0": [
+			{
+				"target": "osPartitionsAttributes/:name",
+				"value": "consts"
+			},
+			{
+				"target": "osPartitionsAttributes/:memory",
+				"value": "SRAM4"
+			},
+			{
+				"target": "osPartitionsAttributes/:size",
+				"value": "0x8000"
+			},
+			{
+				"target": "osPartitionsAttributes/:lowAddress"
+			},
+			{
+				"target": "osPartitionsAttributes/:highAddress"
+			}
+		],
+		"partition_1": [
+			{
+				"target": "osPartitionsAttributes/:name",
+				"value": "vars"
+			},
+			{
+				"target": "osPartitionsAttributes/:memory",
+				"value": "SRAM4"
+			},
+			{
+				"target": "osPartitionsAttributes/:size",
+				"value": "0x8000"
+			},
+			{
+				"target": "osPartitionsAttributes/:lowAddress"
+			},
+			{
+				"target": "osPartitionsAttributes/:highAddress"
+			}
+		]
+	}
+}

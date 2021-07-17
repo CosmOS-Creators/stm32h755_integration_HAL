@@ -1,0 +1,60 @@
+{
+	"version": "1.0.0",
+
+	"attributes": {},
+
+	"elements": {
+		"CM7": [
+			{
+				"target": "compilerAttributes/:core",
+				"value": "cores/core_0"
+			},
+			{
+				"target": "compilerAttributes/:buildName",
+				"value": "CM7"
+			},
+			{
+				"target": "compilerAttributes/:flags",
+				"value": [
+					"-ffixed-r9"
+				]
+			},
+			{
+				"target": "compilerAttributes/:defines",
+				"value": [
+					"CORE_CM7",
+					"STM32H755xx",
+					"USE_HAL_DRIVER",
+					"ARCH_32BIT",
+					"ADDR_32BIT"
+				]
+			}
+		],
+		"CM4": [
+			{
+				"target": "compilerAttributes/:core",
+				"value": "cores/core_1"
+			},
+			{
+				"target": "compilerAttributes/:buildName",
+				"value": "CM4"
+			},
+			{
+				"target": "compilerAttributes/:flags",
+				"value": [
+					"-ffixed-r9"
+				]
+			},
+			{
+				"target": "compilerAttributes/:defines",
+				"value": [
+					"CORE_CM4",
+					"STM32H755xx",
+					"USE_HAL_DRIVER",
+					"ARCH_32BIT",
+					"ADDR_32BIT"
+				]
+			}
+		]
+	}
+}

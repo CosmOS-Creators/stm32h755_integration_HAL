@@ -1,0 +1,14 @@
+{
+	"version": "1.0.0",
+
+	"attributes": {},
+
+	"elements": {
+		"sysJob_0": [
+			{
+				"target": "sysJobsListAttributes/:name",
+				"value": "CILuart_sysJob"
+			}
+		]
+	}
+}

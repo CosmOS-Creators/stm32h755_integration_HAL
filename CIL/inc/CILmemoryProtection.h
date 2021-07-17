@@ -6,20 +6,20 @@
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
 ** @file CILmemoryProtection.h
-*********************************************************************************	
+*********************************************************************************
 <!--                 CILmemoryProtection Unit Group Definition                -->
-********************************************************************************* 
-** @defgroup CILmemoryProtection_unit CILmemoryProtection Unit 
-** @ingroup CILmodule        
-** @brief CILmemoryProtection Unit 
-** @details lorem                               
-*********************************************************************************	
+*********************************************************************************
+** @defgroup CILmemoryProtection_unit CILmemoryProtection Unit
+** @ingroup CILmodule
+** @brief CILmemoryProtection Unit
+** @details lorem
+*********************************************************************************
 <!--                           Version Information                            -->
 *********************************************************************************
 ** @version 1.0.0
 ** @date 1.8.2020
-** @author https://github.com/PavolKostolansky     
-*********************************************************************************	
+** @author https://github.com/PavolKostolansky
+*********************************************************************************
 <!--                          Warnings and License                            -->
 *********************************************************************************
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
@@ -28,9 +28,9 @@
 <!--            CILmemoryProtection Unit Global Group Definition              -->
 *********************************************************************************
 ** @defgroup Global_CILmemoryProtection Global
-** @ingroup CILmemoryProtection_unit 
+** @ingroup CILmemoryProtection_unit
 ** @brief CILmemoryProtection globals
-** @details lorem  
+** @details lorem
 ********************************************************************************/
 /********************************************************************************
 **                           START OF THE HEADER FILE                          **
@@ -62,14 +62,14 @@
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
   * @defgroup Macros_CILmemoryProtection_h Macros
-  * @ingroup Global_CILmemoryProtection  
-  * @{    
+  * @ingroup Global_CILmemoryProtection
+  * @{
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}  
-  * Macros_CILmemoryProtection_h  
+  * @}
+  * Macros_CILmemoryProtection_h
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -80,15 +80,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CILmemoryProtection_h Variables  
-  * @ingroup Global_CILmemoryProtection  
-  * @{    
+  * @defgroup Variables_CILmemoryProtection_h Variables
+  * @ingroup Global_CILmemoryProtection
+  * @{
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}  
-  * Variables_CILmemoryProtection_h  
+  * @}
+  * Variables_CILmemoryProtection_h
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -99,38 +99,38 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CILmemoryProtection_h API's 
+  * @defgroup Apis_CILmemoryProtection_h API's
   * @ingroup Global_CILmemoryProtection
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CILmemoryProtection_h Getters  
-  * @ingroup Apis_CILmemoryProtection_h                                            
-  * @{                                                                           
+  * @addtogroup Getters_CILmemoryProtection_h Getters
+  * @ingroup Apis_CILmemoryProtection_h
+  * @{
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}       
+  * @}
   * Getters_CILmemoryProtection_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CILmemoryProtection_h Setters  
-  * @ingroup Apis_CILmemoryProtection_h                                            
-  * @{                                                                           
+  * @addtogroup Setters_CILmemoryProtection_h Setters
+  * @ingroup Apis_CILmemoryProtection_h
+  * @{
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
   * @fn CILmemoryProtection_init(void)
-  * 
+  *
   * @brief Init MPU DEMO CODE.
-  * 
+  *
   * @param[in]  none
-  * 
+  *
   * @return none
 ********************************************************************************/
 __OS_FUNC_SECTION void CILmemoryProtection_init(void);
@@ -138,12 +138,12 @@ __OS_FUNC_SECTION void CILmemoryProtection_init(void);
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
   * @fn CILmemoryProtection_setStackOverflowProtection(AddressType stackLowAddress, AddressType stackHighAddress)
-  * 
+  *
   * @brief Set stack overflow protection.
-  * 
+  *
   * @param[in]  AddressType stackLowAddress
   * @param[in]  AddressType stackHighAddress
-  * 
+  *
   * @return none
 ********************************************************************************/
 __OS_FUNC_SECTION void CILmemoryProtection_setStackOverflowProtection(AddressType stackLowAddress, AddressType stackHighAddress);
@@ -152,33 +152,33 @@ __OS_FUNC_SECTION void CILmemoryProtection_setStackOverflowProtection(AddressTyp
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
   * @fn CILmemoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress)
-  * 
+  *
   * @brief Set program memory protection DEMO CODE.
-  * 
+  *
   * @param[in]  AddressType lowAddress
   * @param[in]  AddressType highAddress
-  * 
+  *
   * @return none
 ********************************************************************************/
 __OS_FUNC_SECTION void CILmemoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}    
-  * Setters_CILmemoryProtection_h   
+  * @}
+  * Setters_CILmemoryProtection_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CILmemoryProtection_h General  
-  * @ingroup Apis_CILmemoryProtection_h                                            
-  * @{                                                                           
+  * @addtogroup General_CILmemoryProtection_h General
+  * @ingroup Apis_CILmemoryProtection_h
+  * @{
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CILmemoryProtection_h  
+  * General_CILmemoryProtection_h
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -189,41 +189,41 @@ __OS_FUNC_SECTION void CILmemoryProtection_setProgramMemoryProtection(AddressTyp
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CILmemoryProtection_h Getters  
-  * @ingroup Apis_CILmemoryProtection_h                                            
-  * @{                                                                           
-********************************************************************************/
-/********************************************************************************
-  * DOXYGEN STOP GROUP                                                         **
-  * *************************************************************************//**
-  * @}       
-  * Getters_CILmemoryProtection_h
-********************************************************************************/
-/********************************************************************************
-  * DOXYGEN START GROUP                                                        **
-  * *************************************************************************//**
-  * @addtogroup Setters_CILmemoryProtection_h Setters  
-  * @ingroup Apis_CILmemoryProtection_h                                            
-  * @{                                                                           
-********************************************************************************/
-/********************************************************************************
-  * DOXYGEN STOP GROUP                                                         **
-  * *************************************************************************//**
-  * @}    
-  * Setters_CILmemoryProtection_h   
-********************************************************************************/
-/********************************************************************************
-  * DOXYGEN START GROUP                                                        **
-  * *************************************************************************//**
-  * @addtogroup General_CILmemoryProtection_h General  
-  * @ingroup Apis_CILmemoryProtection_h                                            
-  * @{                                                                           
+  * @addtogroup Getters_CILmemoryProtection_h Getters
+  * @ingroup Apis_CILmemoryProtection_h
+  * @{
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CILmemoryProtection_h  
+  * Getters_CILmemoryProtection_h
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup Setters_CILmemoryProtection_h Setters
+  * @ingroup Apis_CILmemoryProtection_h
+  * @{
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}
+  * Setters_CILmemoryProtection_h
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup General_CILmemoryProtection_h General
+  * @ingroup Apis_CILmemoryProtection_h
+  * @{
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}
+  * General_CILmemoryProtection_h
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

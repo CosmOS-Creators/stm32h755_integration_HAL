@@ -1,0 +1,26 @@
+{
+	"version": "1.0.0",
+
+	"attributes": {},
+
+	"elements": {
+		"MCU": [
+			{
+				"target": "mcuAttributes/:mcuName",
+				"value": "stm32h755"
+			},
+			{
+				"target": "mcuAttributes/:cpuBitWidth",
+				"value": 32
+			},
+			{
+				"target": "mcuAttributes/:addressBitWidth",
+				"value": 32
+			},
+			{
+				"target": "mcuAttributes/:architecture",
+				"value": "ARMv7"
+			}
+		]
+	}
+}

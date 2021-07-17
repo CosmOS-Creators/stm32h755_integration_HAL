@@ -1,0 +1,60 @@
+{
+	"version": "1.0.0",
+
+	"attributes": {},
+
+	"elements": {
+		"CM7": [
+			{
+				"target": "cpuAttributes/:stackMemory",
+				"value": "DTCM"
+			},
+			{
+				"target": "cpuAttributes/:flashMemory",
+				"value": "Flash bank 1"
+			},
+			{
+				"target": "cpuAttributes/:systemTimerWidth",
+				"value": 24
+			},
+			{
+				"target": "cpuAttributes/:systemTimerFrequency",
+				"value": 100000000
+			},
+			{
+				"target": "cpuAttributes/:systemTimerTickCount",
+				"value": 10000
+			},
+			{
+				"target": "cpuAttributes/:memoryProtection",
+				"value": true
+			}
+		],
+		"CM4": [
+			{
+				"target": "cpuAttributes/:stackMemory",
+				"value": "SRAM1"
+			},
+			{
+				"target": "cpuAttributes/:flashMemory",
+				"value": "Flash bank 2"
+			},
+			{
+				"target": "cpuAttributes/:systemTimerWidth",
+				"value": 24
+			},
+			{
+				"target": "cpuAttributes/:systemTimerFrequency",
+				"value": 100000000
+			},
+			{
+				"target": "cpuAttributes/:systemTimerTickCount",
+				"value": 10000
+			},
+			{
+				"target": "cpuAttributes/:memoryProtection",
+				"value": true
+			}
+		]
+	}
+}
