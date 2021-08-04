@@ -5,23 +5,59 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CILstack.c
+** @file CILspinlock.h
 *********************************************************************************
-<!--                    CILstack Unit Local Group Definition                  -->
+<!--                   CILspinlock Module Group Definition                    -->
 *********************************************************************************
-** @defgroup Local_CILstack Local
-** @ingroup CILstack_unit
-** @brief CILstack locals
+** @defgroup CILspinlock_module CILspinlock
+** @brief CILspinlock Module
+** @details lorem
+*********************************************************************************
+<!--                    CILspinlock Unit Group Definition                     -->
+*********************************************************************************
+** @defgroup CILspinlock_unit CILspinlock Unit
+** @ingroup CILspinlock_module
+** @brief CILspinlock Unit
+** @details lorem
+*********************************************************************************
+<!--                           Version Information                            -->
+*********************************************************************************
+** @version 1.0.0
+** @date 1.8.2020
+** @author https://github.com/PavolKostolansky
+*********************************************************************************
+<!--                          Warnings and License                            -->
+*********************************************************************************
+** @warning Modifying code can lead to unexpected behaviour of the whole system
+** @copyright MIT License
+*********************************************************************************
+<!--                 CILspinlock Unit Global Group Definition                 -->
+*********************************************************************************
+** @defgroup Global_CILspinlock Global
+** @ingroup CILspinlock_unit
+** @brief CILspinlock globals
 ** @details lorem
 ********************************************************************************/
 /********************************************************************************
-**                           START OF THE SOURCE FILE                          **
+**                           START OF THE HEADER FILE                          **
 ********************************************************************************/
+#ifndef __CILSPINLOCK_H__
+#define __CILSPINLOCK_H__
+/********************************************************************************
+**                         START OF C++ SUPPORT SECTION                        **
+********************************************************************************/
+#ifdef __cplusplus
+ extern "C" {
+#endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
+/* CORE interfaces */
+#include "sysDefs.h"
+#include "memoryMapping.h"
+
 /* CIL interfaces */
-#include "CILstack.h"
+#include "CILstdTypes.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -31,15 +67,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CILstack_c Macros
-  * @ingroup Local_CILstack
+  * @defgroup Macros_CILspinlock_h Macros
+  * @ingroup Global_CILspinlock
   * @{
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * Macros_CILstack_c
+  * Macros_CILspinlock_h
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -50,15 +86,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CILstack_c Variables
-  * @ingroup Local_CILstack
+  * @defgroup Variables_CILspinlock_h Variables
+  * @ingroup Global_CILspinlock
   * @{
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * Variables_CILstack_c
+  * Variables_CILspinlock_h
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -69,47 +105,84 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CILstack_c API's
-  * @ingroup Local_CILstack
+  * @defgroup Apis_CILspinlock_h API's
+  * @ingroup Global_CILspinlock
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CILstack_c Getters
-  * @ingroup Apis_CILstack_c
+  * @addtogroup Getters_CILspinlock_h Getters
+  * @ingroup Apis_CILspinlock_h
+  * @{
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILspinlock_getSpinlock(AddressType * spinlockPointer )
+  *
+  * @brief Get spinlock DEMO CODE.
+  *
+  * @param[in]  AddressType * spinlockPointer
+  *
+  * @return CosmOS_SpinlockStateType
+********************************************************************************/
+__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_getSpinlock(AddressType * spinlockPointer);
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}
+  * Getters_CILspinlock_h
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup Setters_CILspinlock_h Setters
+  * @ingroup Apis_CILspinlock_h
   * @{
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * Getters_CILstack_c
+  * Setters_CILspinlock_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CILstack_c Setters
-  * @ingroup Apis_CILstack_c
+  * @addtogroup General_CILspinlock_h General
+  * @ingroup Apis_CILspinlock_h
   * @{
 ********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILspinlock_trySpinlock(AddressType * spinlockPointer)
+  *
+  * @brief Try to get spinlock DEMO CODE.
+  *
+  * @param[in]  BitWidthType id
+  *
+  * @return CosmOS_SpinlockStateType
+********************************************************************************/
+__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_trySpinlock(AddressType * spinlockPointer);
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILspinlock_releaseSpinlock(AddressType * spinlockPointer)
+  *
+  * @brief Release spinlock DEMO CODE.
+  *
+  * @param[in]  AddressType * spinlockPointer
+  *
+  * @return CosmOS_SpinlockStateType
+********************************************************************************/
+__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_releaseSpinlock(AddressType * spinlockPointer);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * Setters_CILstack_c
-********************************************************************************/
-/********************************************************************************
-  * DOXYGEN START GROUP                                                        **
-  * *************************************************************************//**
-  * @addtogroup General_CILstack_c General
-  * @ingroup Apis_CILstack_c
-  * @{
-********************************************************************************/
-/********************************************************************************
-  * DOXYGEN STOP GROUP                                                         **
-  * *************************************************************************//**
-  * @}
-  * General_CILstack_c
+  * General_CILspinlock_h
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -118,77 +191,54 @@
 **                        Function Definitions | Start                         **
 ********************************************************************************/
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @fn CILstack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress)
-  *
-  * @brief Task stack initialization DEMO CODE.
-  *
-  * @param[in]  AddressType stackLowAddress
-  * @param[in]  AddressType stackHighAddress
-  * @param[in]  AddressType handlerAddress
-  *
-  * @return StackPointerType
+  * @addtogroup Getters_CILspinlock_h Getters
+  * @ingroup Apis_CILspinlock_h
+  * @{
 ********************************************************************************/
-/* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION StackPointerType CILstack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress)
-{
-    CosmOS_StackType *stack = ( CosmOS_StackType* )( stackHighAddress - (AddressType)sizeof(CosmOS_StackType) );
-
-    stack->XPSR  = 0x01000000;
-    stack->PC    = handlerAddress;
-    stack->LR    = 0xFFFFFFFD;
-    stack->R12   = 0;
-    stack->R3    = 0;
-    stack->R2    = 0;
-    stack->R1    = 0;
-    stack->R0    = 0;
-    stack->R14   = 0xFFFFFFFD;
-    stack->R11   = 0;
-    stack->R10   = 0;
-    stack->R8    = 0;
-    stack->R7    = 0;
-    stack->R6    = 0;
-    stack->R5    = 0;
-    stack->R4    = 0;
-
-    return (StackPointerType)(&(stack->R4));
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
-
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @fn CILstack_setStackPointer(BitWidthType address)
-  *
-  * @brief Set stack pointer DEMO CODE.
-  *
-  * @param[in]  AddressType address
-  *
-  * @return none
+  * @}
+  * Getters_CILspinlock_h
 ********************************************************************************/
-/* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION __NAKED void CILstack_setStackPointer(AddressType address)
-{
-    __asm volatile ("LDMIA R0!,{R4-R8,R10,R11,R14}");
-	__asm volatile ("MSR PSP,R0");
-    __asm volatile ("MOV R0, #0x3");
-    __asm volatile ("MSR CONTROL, R0");
-    __asm volatile ("ISB");
-    __asm volatile ("BX R14");
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup Setters_CILspinlock_h Setters
+  * @ingroup Apis_CILspinlock_h
+  * @{
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}
+  * Setters_CILspinlock_h
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN START GROUP                                                        **
+  * *************************************************************************//**
+  * @addtogroup General_CILspinlock_h General
+  * @ingroup Apis_CILspinlock_h
+  * @{
+********************************************************************************/
+/********************************************************************************
+  * DOXYGEN STOP GROUP                                                         **
+  * *************************************************************************//**
+  * @}
+  * General_CILspinlock_h
+********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **
 ********************************************************************************/
+#ifdef __cplusplus
+}
+#endif
 /********************************************************************************
-**                           END OF THE SOURCE FILE                            **
+**                         END OF C++ SUPPORT SECTION                          **
+********************************************************************************/
+#endif
+/********************************************************************************
+**                           END OF THE HEADER FILE                            **
 ********************************************************************************/
