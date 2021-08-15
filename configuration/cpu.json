@@ -3,6 +3,10 @@
 
 	"attributes": {},
 
+	"ui": {
+		"use_page": "cpus"
+	},
+
 	"elements": {
 		"CM7": [
 			{

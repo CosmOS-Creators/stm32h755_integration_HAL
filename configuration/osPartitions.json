@@ -3,6 +3,10 @@
 
 	"attributes": {},
 
+	"ui": {
+		"use_page": "os_partitions"
+	},
+
 	"elements": {
 		"partition_0": [
 			{

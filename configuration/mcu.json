@@ -3,6 +3,10 @@
 
 	"attributes": {},
 
+	"ui": {
+		"use_page": "mcu"
+	},
+
 	"elements": {
 		"MCU": [
 			{

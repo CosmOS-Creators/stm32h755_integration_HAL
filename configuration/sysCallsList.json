@@ -3,6 +3,10 @@
 
 	"attributes": {},
 
+	"ui": {
+		"use_page": "sys_calls_list"
+	},
+
 	"elements": {
 		"sysCall_0": [
 			{

@@ -3,6 +3,10 @@
 
 	"attributes": {},
 
+	"ui": {
+		"use_page": "sys_jobs_list"
+	},
+
 	"elements": {
 		"sysJob_0": [
 			{

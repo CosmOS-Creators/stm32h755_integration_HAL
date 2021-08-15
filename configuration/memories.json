@@ -3,6 +3,10 @@
 
 	"attributes": {},
 
+	"ui": {
+		"use_page": "memories"
+	},
+
 	"elements": {
 		"memory_0": [
 			{
