@@ -181,6 +181,36 @@
   * @{
 ********************************************************************************/
 /********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILinterrupt_enableInterrupts(void)
+  *
+  * @brief Enable interrupts for the current core.
+  *
+  * @param[in] none
+  *
+  * @return none
+********************************************************************************/
+__STATIC_FORCEINLINE void CILinterrupt_enableInterrupts(void)
+{
+		__enable_irq();
+}
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILinterrupt_disableInterrupts(void)
+  *
+  * @brief Disable interrupts for the current core.
+  *
+  * @param[in]  none
+  *
+  * @return none
+********************************************************************************/
+__STATIC_FORCEINLINE void CILinterrupt_disableInterrupts(void)
+{
+		__disable_irq();
+}
+/********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
