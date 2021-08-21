@@ -180,7 +180,7 @@ __OS_FUNC_SECTION void CILsysCalls_dispatcher(BitWidthType *sp)
 
         default :
         {
-            /* PANIC */
+            os_kernelPanic();
             break;
         }
     }
