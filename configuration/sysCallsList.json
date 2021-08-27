@@ -1,12 +1,9 @@
 {
 	"version": "1.0.0",
-
 	"attributes": {},
-
 	"ui": {
 		"use_page": "sys_calls_list"
 	},
-
 	"elements": {
 		"sysCall_0": [
 			{
