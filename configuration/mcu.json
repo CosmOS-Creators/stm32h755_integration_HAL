@@ -1,5 +1,5 @@
 {
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"attributes": {},
 	"ui": {
 		"use_page": "mcu"
@@ -23,5 +23,6 @@
 				"value": "ARMv7"
 			}
 		]
-	}
+	},
+	"checksum": 3554886068343122555
 }
