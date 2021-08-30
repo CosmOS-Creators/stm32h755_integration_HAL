@@ -62,6 +62,21 @@ extern unsigned char _s_os_section_consts[];
 extern unsigned char _e_os_section_consts[];
 extern unsigned char _s_os_section_vars[];
 extern unsigned char _e_os_section_vars[];
+extern unsigned char _s_unprotected_section[];
+extern unsigned char _e_unprotected_section[];
+
+/* @cond S */
+__SEC_START(__OS_CONSTS_SECTION_START)
+/* @endcond*/
+const int MultiplyDeBruijnBitPosition[32] __OS_CONSTS_SECTION
+IS_INITIALIZED_TO
+{
+	0, 9, 1, 10, 13, 21, 2, 29, 11, 14, 16, 18, 22, 25, 3, 30,
+	8, 12, 20, 28, 15, 17, 24, 7, 19, 27, 23, 6, 26, 5, 4, 31
+};
+/* @cond S */
+__SEC_STOP(__OS_CONSTS_SECTION_STOP)
+/* @endcond*/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
@@ -152,12 +167,6 @@ __STATIC_FORCEINLINE BitWidthType CILmemoryProtection_fastLogBase2(BitWidthType 
 {
     BitWidthType result;
 
-    static const int MultiplyDeBruijnBitPosition[32] =
-    {
-      0, 9, 1, 10, 13, 21, 2, 29, 11, 14, 16, 18, 22, 25, 3, 30,
-      8, 12, 20, 28, 15, 17, 24, 7, 19, 27, 23, 6, 26, 5, 4, 31
-    };
-
     stackSize |= stackSize >> 1;
     stackSize |= stackSize >> 2;
     stackSize |= stackSize >> 4;
@@ -168,7 +177,6 @@ __STATIC_FORCEINLINE BitWidthType CILmemoryProtection_fastLogBase2(BitWidthType 
 
     return (result-1);
 }
-
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
@@ -187,7 +195,7 @@ __OS_FUNC_SECTION void CILmemoryProtection_init(void)
 {
     MPU_Region_InitTypeDef MPU_InitStruct = {0};
     BitWidthType core,
-                 address;
+					address;
 
     core = CILcore_getCoreId();
 
@@ -268,6 +276,20 @@ __OS_FUNC_SECTION void CILmemoryProtection_init(void)
     MPU_InitStruct.SubRegionDisable = 0x00;
     MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
     MPU_InitStruct.AccessPermission = MPU_REGION_PRIV_RW_URO;
+    MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
+    MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
+    MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
+    MPU_InitStruct.IsBufferable = MPU_ACCESS_BUFFERABLE;
+
+    HAL_MPU_ConfigRegion(&MPU_InitStruct);
+
+	MPU_InitStruct.Enable = MPU_REGION_ENABLE;
+    MPU_InitStruct.Number = MPU_REGION_NUMBER4;
+    MPU_InitStruct.BaseAddress = (BitWidthType)_s_unprotected_section;
+    MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( (BitWidthType)(_e_unprotected_section - _s_unprotected_section )));
+    MPU_InitStruct.SubRegionDisable = 0x00;
+    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
+    MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
     MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
     MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
     MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
