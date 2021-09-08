@@ -147,6 +147,7 @@ __OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_getSpinlock(AddressType *
 	__asm volatile("BNE tryLock");
     __asm volatile("MOV %[value], R1":  [value] "=r" (spinlockState) );
 
+	__SUPRESS_UNUSED_VAR(spinlockPointer);
     return spinlockState;
 }
 /* @cond S */
@@ -182,6 +183,7 @@ __OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_trySpinlock(AddressType *
 	__asm volatile("MOVEQ R1, #0x2");
 	__asm volatile("MOV %[value], R1":  [value] "=r" (spinlockState) );
 
+	__SUPRESS_UNUSED_VAR(spinlockPointer);
     return spinlockState;
 }
 /* @cond S */
@@ -217,6 +219,7 @@ __OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_releaseSpinlock(AddressTy
 	__asm volatile("BNE tryUnlock");
     __asm volatile("MOV %[value], R1":  [value] "=r" (spinlockState) );
 
+	__SUPRESS_UNUSED_VAR(spinlockPointer);
     return spinlockState;
 }
 /* @cond S */

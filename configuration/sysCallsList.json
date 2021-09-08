@@ -13,7 +13,7 @@
 		"sysCall_1": [
 			{
 				"target": "sysCallsListAttributes/:name",
-				"value": "sysCalls_readWrite"
+				"value": "sysCalls_voidPtr_bitWidthType_ret_bitWidthType"
 			}
 		]
 	}

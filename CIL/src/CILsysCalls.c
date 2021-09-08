@@ -138,8 +138,8 @@ __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
 __OS_FUNC_SECTION void CILsysCalls_dispatcher(BitWidthType *sp)
 {
-    BitWidthType  returnValue,
-                  entityId;
+    BitWidthType 	returnValue,
+					entityId;
 
     CosmOS_GenericVoidType sysCall;
     CosmOS_OsVariableType * osVar;
@@ -169,12 +169,13 @@ __OS_FUNC_SECTION void CILsysCalls_dispatcher(BitWidthType *sp)
 
         case 1 :
         {
-            returnValue = ((CosmOS_GenericBitWidthRWType)sysCall)(entityId, (void *)sp[1], sp[2]);
+            returnValue = ((CosmOS_Generic_bitWidthType_ret_bitWidthType)sysCall)(entityId, (BitWidthType)sp[1]);
             break;
         }
 
         case 2 :
         {
+			returnValue = ((CosmOS_Generic_voidPtr_bitWidthType_ret_bitWidthType)sysCall)(entityId, (void *)sp[1], sp[2]);
             break;
         }
 
@@ -208,6 +209,8 @@ __SEC_START(__OS_FUNC_SECTION_START)
 __OS_FUNC_SECTION void CILsysCalls_os(BitWidthType id)
 {
     __asm volatile("SVC #0");
+
+	__SUPRESS_UNUSED_VAR(id);
 }
 /* @cond S */
 __SEC_STOP(__OS_FUNC_SECTION_STOP)
@@ -216,31 +219,62 @@ __SEC_STOP(__OS_FUNC_SECTION_STOP)
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILsysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num)
+  * @fn sysCalls_bitWidthType_ret_bitWidthType(BitWidthType id, BitWidthType arg)
   *
-  * @brief System call handling read/write from/to buffers or registers.
+  * @brief System call for bitWidthType args and ret bitWidthType.
   *
   * @param[in]  BitWidthType id
-  * @param[in]  void * entity
-  * @param[in]  BitWidthType num
+  * @param[in]  BitWidthType arg
   *
   * @return BitWidthType
 ********************************************************************************/
 __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
-__OS_FUNC_SECTION BitWidthType CILsysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num)
+__OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_ret_bitWidthType(BitWidthType id, BitWidthType arg)
 {
     BitWidthType returnValue;
 
     __asm volatile("SVC #1");
     __asm volatile("MOV %0, R0": "=r" (returnValue) ::);
 
+	__SUPRESS_UNUSED_VAR(id);
+	__SUPRESS_UNUSED_VAR(arg);
     return returnValue;
 }
 /* @cond S */
 __SEC_STOP(__OS_FUNC_SECTION_STOP)
 /* @endcond*/
 
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILsysCalls_voidPtr_bitWidthType_ret_bitWidthType(BitWidthType id, void * entity, BitWidthType num)
+  *
+  * @brief System call handling read/write from/to buffers or registers.
+  *
+  * @param[in]  BitWidthType id
+  * @param[in]  void * ptr
+  * @param[in]  BitWidthType arg
+  *
+  * @return BitWidthType
+********************************************************************************/
+__SEC_START(__OS_FUNC_SECTION_START)
+/* @endcond*/
+__OS_FUNC_SECTION BitWidthType CILsysCalls_voidPtr_bitWidthType_ret_bitWidthType(BitWidthType id, void * ptr, BitWidthType arg)
+{
+    BitWidthType returnValue;
+
+    __asm volatile("SVC #2");
+    __asm volatile("MOV %0, R0": "=r" (returnValue) ::);
+
+	__SUPRESS_UNUSED_VAR(id);
+	__SUPRESS_UNUSED_VAR(ptr);
+	__SUPRESS_UNUSED_VAR(arg);
+    return returnValue;
+}
+/* @cond S */
+__SEC_STOP(__OS_FUNC_SECTION_STOP)
+/* @endcond*/
 /********************************************************************************
 **                        Function Definitions | Stop                          **
 ********************************************************************************/
