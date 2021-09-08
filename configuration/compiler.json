@@ -1,9 +1,5 @@
 {
 	"version": "1.1.0",
-	"attributes": {},
-	"ui": {
-		"use_page": "compiler"
-	},
 	"elements": {
 		"CM7": [
 			{
@@ -58,5 +54,9 @@
 			}
 		]
 	},
-	"checksum": "4e6244b3d62b6edc61da3786599641bc"
+	"attributes": {},
+	"checksum": "4e6244b3d62b6edc61da3786599641bc",
+	"ui": {
+		"use_page": "compiler"
+	}
 }

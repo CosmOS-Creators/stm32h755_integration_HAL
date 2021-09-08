@@ -1,9 +1,5 @@
 {
 	"version": "1.1.0",
-	"attributes": {},
-	"ui": {
-		"use_page": "sys_jobs_list"
-	},
 	"elements": {
 		"sysJob_0": [
 			{
@@ -12,5 +8,9 @@
 			}
 		]
 	},
-	"checksum": "55558bf4e8de881d08640a741f052090"
+	"attributes": {},
+	"checksum": "55558bf4e8de881d08640a741f052090",
+	"ui": {
+		"use_page": "sys_jobs_list"
+	}
 }

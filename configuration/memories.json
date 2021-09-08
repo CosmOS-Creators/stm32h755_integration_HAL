@@ -1,9 +1,5 @@
 {
 	"version": "1.1.0",
-	"attributes": {},
-	"ui": {
-		"use_page": "memories"
-	},
 	"elements": {
 		"memory_0": [
 			{
@@ -221,5 +217,9 @@
 			}
 		]
 	},
-	"checksum": "308f1d31f3e27571f2896e3cf24d6699"
+	"attributes": {},
+	"checksum": "308f1d31f3e27571f2896e3cf24d6699",
+	"ui": {
+		"use_page": "memories"
+	}
 }
