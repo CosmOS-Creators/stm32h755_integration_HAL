@@ -7,13 +7,13 @@
 		"sysCall_0": [
 			{
 				"target": "sysCallsListAttributes/:name",
-				"value": "sysCalls_os"
+				"value": "sysCalls_bitWidthType_ret_void"
 			}
 		],
 		"sysCall_1": [
 			{
 				"target": "sysCallsListAttributes/:name",
-				"value": "sysCalls_voidPtr_bitWidthType_ret_bitWidthType"
+				"value": "sysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType"
 			}
 		]
 	}

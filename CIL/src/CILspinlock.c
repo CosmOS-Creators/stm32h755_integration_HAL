@@ -212,11 +212,13 @@ __OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_releaseSpinlock(AddressTy
     __asm volatile("tryUnlock:");
 	__asm volatile("LDREXH R3, [R0]");
 	__asm volatile("CMP R3, #1");
-	__asm volatile("ITT EQ");
+	__asm volatile("ITTE EQ");
 	__asm volatile("STREXHEQ R3, R1, [R0]");
 	__asm volatile("CMPEQ R3, #0");
+	__asm volatile("BNE released");
 	__asm volatile("IT NE");
 	__asm volatile("BNE tryUnlock");
+	__asm volatile("released:");
     __asm volatile("MOV %[value], R1":  [value] "=r" (spinlockState) );
 
 	__SUPRESS_UNUSED_VAR(spinlockPointer);
