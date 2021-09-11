@@ -154,6 +154,7 @@ __OS_FUNC_SECTION StackPointerType CILstack_stackInit(AddressType stackLowAddres
     stack->R5    = 0;
     stack->R4    = 0;
 
+	__SUPRESS_UNUSED_VAR(stackLowAddress);
     return (StackPointerType)(&(stack->R4));
 }
 /* @cond S */
@@ -182,6 +183,8 @@ __OS_FUNC_SECTION __NAKED void CILstack_setStackPointer(AddressType address)
     __asm volatile ("MSR CONTROL, R0");
     __asm volatile ("ISB");
     __asm volatile ("BX R14");
+
+	__SUPRESS_UNUSED_VAR(address);
 }
 /* @cond S */
 __SEC_STOP(__OS_FUNC_SECTION_STOP)
