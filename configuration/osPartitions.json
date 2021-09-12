@@ -1,5 +1,10 @@
 {
 	"version": "1.1.0",
+	"checksum": "3354d27800801d4608ff2844920f19e2",
+	"ui": {
+		"use_page": "os_partitions"
+	},
+	"attributes": {},
 	"elements": {
 		"partition_0": [
 			{
@@ -41,10 +46,5 @@
 				"target": "osPartitionsAttributes/:highAddress"
 			}
 		]
-	},
-	"attributes": {},
-	"checksum": "3354d27800801d4608ff2844920f19e2",
-	"ui": {
-		"use_page": "os_partitions"
 	}
 }

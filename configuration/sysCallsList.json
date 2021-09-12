@@ -1,5 +1,10 @@
 {
 	"version": "1.1.0",
+	"checksum": "f9e40e6370fe5d9fe3dbd80d5cce724c",
+	"ui": {
+		"use_page": "sys_calls_list"
+	},
+	"attributes": {},
 	"elements": {
 		"sysCall_0": [
 			{
@@ -13,10 +18,5 @@
 				"value": "sysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType"
 			}
 		]
-	},
-	"attributes": {},
-	"checksum": "0d43d0f25aa612fdd0acaaadad487d5d",
-	"ui": {
-		"use_page": "sys_calls_list"
 	}
 }

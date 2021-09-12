@@ -1,5 +1,10 @@
 {
 	"version": "1.1.0",
+	"checksum": "19682aecb0c3e85db037f4548d5b7f3e",
+	"ui": {
+		"use_page": "mcu"
+	},
+	"attributes": {},
 	"elements": {
 		"MCU": [
 			{
@@ -19,10 +24,5 @@
 				"value": "ARMv7"
 			}
 		]
-	},
-	"attributes": {},
-	"checksum": "19682aecb0c3e85db037f4548d5b7f3e",
-	"ui": {
-		"use_page": "mcu"
 	}
 }
