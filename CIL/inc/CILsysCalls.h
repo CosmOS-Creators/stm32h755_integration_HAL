@@ -151,7 +151,7 @@ __OS_FUNC_SECTION void CILsysCalls_dispatcher(BitWidthType *sp);
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILsysCalls_os(BitWidthType id)
+  * @fn CILsysCalls_bitWidthType_ret_void(BitWidthType id)
   *
   * @brief System call handling general operating system functionalities.
   *
@@ -159,22 +159,49 @@ __OS_FUNC_SECTION void CILsysCalls_dispatcher(BitWidthType *sp);
   *
   * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION void CILsysCalls_os(BitWidthType id);
+__OS_FUNC_SECTION void CILsysCalls_bitWidthType_ret_void(BitWidthType id);
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILsysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num)
+  * @fn CILsysCalls_bitWidthType_ret_bitWidthType(BitWidthType id)
+  *
+  * @brief System call for bitWidthType args and ret bitWidthType.
+  *
+  * @param[in]  BitWidthType id
+  *
+  * @return BitWidthType
+********************************************************************************/
+__OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_ret_bitWidthType(BitWidthType id);
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILsysCalls_bitWidthType_bitWidthType_ret_bitWidthType(BitWidthType id, BitWidthType arg)
+  *
+  * @brief System call for bitWidthType args and ret bitWidthType.
+  *
+  * @param[in]  BitWidthType id
+  * @param[in]  BitWidthType arg
+  *
+  * @return BitWidthType
+********************************************************************************/
+__OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_bitWidthType_ret_bitWidthType(BitWidthType id, BitWidthType arg);
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType(BitWidthType id, void * entity, BitWidthType num)
   *
   * @brief System call handling read/write from/to buffers or registers.
   *
   * @param[in]  BitWidthType id
-  * @param[in]  void * entity
-  * @param[in]  BitWidthType num
+  * @param[in]  void * ptr
+  * @param[in]  BitWidthType arg
   *
   * @return BitWidthType
 ********************************************************************************/
-__OS_FUNC_SECTION BitWidthType CILsysCalls_readWrite(BitWidthType id, void * entity, BitWidthType num);
+__OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType(BitWidthType id, void * ptr, BitWidthType arg);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
