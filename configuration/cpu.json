@@ -1,8 +1,10 @@
 {
-	"version": "1.0.0",
-
+	"version": "1.1.0",
+	"checksum": "67958ef85d1e5d2b7ad255f9a1276bf4",
+	"ui": {
+		"use_page": "cpus"
+	},
 	"attributes": {},
-
 	"elements": {
 		"CM7": [
 			{

@@ -1,8 +1,10 @@
 {
-	"version": "1.0.0",
-
+	"version": "1.1.0",
+	"checksum": "5901ad39baf3a6839f3a64e610d2f4b8",
+	"ui": {
+		"use_page": "os_partitions"
+	},
 	"attributes": {},
-
 	"elements": {
 		"partition_0": [
 			{

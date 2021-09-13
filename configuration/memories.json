@@ -1,12 +1,14 @@
 {
-	"version": "1.0.0",
-
+	"version": "1.1.0",
+	"checksum": "4a1a1f473636224b9c58ef9cfe40b6c7",
+	"ui": {
+		"use_page": "memories"
+	},
 	"attributes": {},
-
 	"elements": {
 		"memory_0": [
 			{
-				"target":"memoriesAttributes/:freeChunks"
+				"target": "memoriesAttributes/:freeChunks"
 			},
 			{
 				"target": "memoriesAttributes/:name",
@@ -29,7 +31,7 @@
 		],
 		"memory_1": [
 			{
-				"target":"memoriesAttributes/:freeChunks"
+				"target": "memoriesAttributes/:freeChunks"
 			},
 			{
 				"target": "memoriesAttributes/:name",
@@ -53,7 +55,7 @@
 		],
 		"memory_2": [
 			{
-				"target":"memoriesAttributes/:freeChunks"
+				"target": "memoriesAttributes/:freeChunks"
 			},
 			{
 				"target": "memoriesAttributes/:name",
@@ -77,7 +79,7 @@
 		],
 		"memory_3": [
 			{
-				"target":"memoriesAttributes/:freeChunks"
+				"target": "memoriesAttributes/:freeChunks"
 			},
 			{
 				"target": "memoriesAttributes/:name",
@@ -101,7 +103,7 @@
 		],
 		"memory_4": [
 			{
-				"target":"memoriesAttributes/:freeChunks"
+				"target": "memoriesAttributes/:freeChunks"
 			},
 			{
 				"target": "memoriesAttributes/:name",
@@ -125,7 +127,7 @@
 		],
 		"memory_5": [
 			{
-				"target":"memoriesAttributes/:freeChunks"
+				"target": "memoriesAttributes/:freeChunks"
 			},
 			{
 				"target": "memoriesAttributes/:name",
@@ -149,7 +151,7 @@
 		],
 		"memory_6": [
 			{
-				"target":"memoriesAttributes/:freeChunks"
+				"target": "memoriesAttributes/:freeChunks"
 			},
 			{
 				"target": "memoriesAttributes/:name",
@@ -173,7 +175,7 @@
 		],
 		"memory_7": [
 			{
-				"target":"memoriesAttributes/:freeChunks"
+				"target": "memoriesAttributes/:freeChunks"
 			},
 			{
 				"target": "memoriesAttributes/:name",
@@ -185,7 +187,7 @@
 			},
 			{
 				"target": "memoriesAttributes/:lowAddress",
-				"value": "0x08000000"
+				"value": "0x8000000"
 			},
 			{
 				"target": "memoriesAttributes/:cores",
@@ -197,7 +199,7 @@
 		],
 		"memory_8": [
 			{
-				"target":"memoriesAttributes/:freeChunks"
+				"target": "memoriesAttributes/:freeChunks"
 			},
 			{
 				"target": "memoriesAttributes/:name",
@@ -209,7 +211,7 @@
 			},
 			{
 				"target": "memoriesAttributes/:lowAddress",
-				"value": "0x08100000"
+				"value": "0x8100000"
 			},
 			{
 				"target": "memoriesAttributes/:cores",
