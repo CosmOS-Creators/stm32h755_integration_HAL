@@ -1,6 +1,6 @@
 {
 	"version": "1.1.0",
-	"checksum": "3354d27800801d4608ff2844920f19e2",
+	"checksum": "5901ad39baf3a6839f3a64e610d2f4b8",
 	"ui": {
 		"use_page": "os_partitions"
 	},
