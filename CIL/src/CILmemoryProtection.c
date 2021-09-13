@@ -22,7 +22,6 @@
 ********************************************************************************/
 /* CIL interfaces */
 #include "CILmemoryProtection.h"
-#include "CILcore.h"
 
 /* HAL interfaces */
 #include "stm32h7xx_hal.h"
@@ -129,18 +128,6 @@ __SEC_STOP(__OS_CONSTS_SECTION_STOP)
   * @{
 ********************************************************************************/
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CILmemoryProtection_fastLogBase2(BitWidthType stackSize)
-  *
-  * @brief Calculate fast log with base 2.
-  *
-  * @param[in]  BitWidthType stackSize
-  *
-  * @return none
-********************************************************************************/
-__OS_FUNC_SECTION static BitWidthType CILmemoryProtection_fastLogBase2(BitWidthType stackSize);
-/********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
@@ -155,96 +142,87 @@ __OS_FUNC_SECTION static BitWidthType CILmemoryProtection_fastLogBase2(BitWidthT
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILmemoryProtection_fastLogBase2(BitWidthType stackSize)
+  * @fn CILmemoryProtection_fastLogBase2(BitWidthType size)
   *
   * @brief Calculate fast log with base 2.
   *
-  * @param[in]  BitWidthType stackSize
+  * @param[in]  BitWidthType size
   *
   * @return none
 ********************************************************************************/
-__STATIC_FORCEINLINE BitWidthType CILmemoryProtection_fastLogBase2(BitWidthType stackSize)
+__STATIC_FORCEINLINE BitWidthType CILmemoryProtection_fastLogBase2(BitWidthType size)
 {
     BitWidthType result;
 
-    stackSize |= stackSize >> 1;
-    stackSize |= stackSize >> 2;
-    stackSize |= stackSize >> 4;
-    stackSize |= stackSize >> 8;
-    stackSize |= stackSize >> 16;
+    size |= size >> 1;
+    size |= size >> 2;
+    size |= size >> 4;
+    size |= size >> 8;
+    size |= size >> 16;
 
-    result = MultiplyDeBruijnBitPosition[(uint32_t)(stackSize * 0x07C4ACDDU) >> 27];
+    result = MultiplyDeBruijnBitPosition[(uint32_t)(size * 0x07C4ACDDU) >> 27];
 
     return (result-1);
 }
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILmemoryProtection_init(void)
+  * @fn CILmemoryProtection_init(AddressType codeMemoryHighAddress,\
+  *							AddressType codeMemoryLowAddress, \
+  *							AddressType stackMemoryHighAddress, \
+  *							AddressType stackMemoryLowAddress)
   *
   * @brief Init memory protection DEMO CODE.
   *
-  * @param[in]  none
-  *
+  * @param[in]  AddressType codeMemoryHighAddress
+  * @param[in]  AddressType codeMemoryLowAddress
+  * @param[in]  AddressType stackMemoryHighAddress
+  * @param[in]  AddressType stackMemoryLowAddress
   * @return none
 ********************************************************************************/
 /* @cond S */
 __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
-__OS_FUNC_SECTION void CILmemoryProtection_init(void)
+__OS_FUNC_SECTION void CILmemoryProtection_init(AddressType codeMemoryHighAddress,\
+												AddressType codeMemoryLowAddress, \
+												AddressType stackMemoryHighAddress, \
+												AddressType stackMemoryLowAddress)
 {
     MPU_Region_InitTypeDef MPU_InitStruct = {0};
-    BitWidthType core,
-					address;
-
-    core = CILcore_getCoreId();
 
     HAL_MPU_Disable();
 
-    if( core IS_EQUAL_TO CORE_0_ID){
+    //MPU_InitStruct.Enable = MPU_REGION_ENABLE;
+    //MPU_InitStruct.Number = MPU_REGION_NUMBER0;
+    //MPU_InitStruct.BaseAddress = codeMemoryLowAddress;
+    //MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( (BitWidthType)( codeMemoryHighAddress - codeMemoryLowAddress )));
+    //MPU_InitStruct.SubRegionDisable = 0x00;
+    //MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
+    //MPU_InitStruct.AccessPermission = MPU_REGION_PRIV_RO_URO;
+    //MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
+    //MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
+    //MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
+    //MPU_InitStruct.IsBufferable = MPU_ACCESS_BUFFERABLE;
 
-        MPU_InitStruct.Enable = MPU_REGION_ENABLE;
-        MPU_InitStruct.Number = MPU_REGION_NUMBER0;
-        MPU_InitStruct.BaseAddress = 0x08000000;
-        MPU_InitStruct.Size = MPU_REGION_SIZE_2MB;
-        MPU_InitStruct.SubRegionDisable = 0x00;
-        MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
-        MPU_InitStruct.AccessPermission = MPU_REGION_PRIV_RO_URO;
-        MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
-        MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
-        MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
-        MPU_InitStruct.IsBufferable = MPU_ACCESS_BUFFERABLE;
+	//TODO: Patched cause MPU should take in count whole FLASH - functions from the routes are used from the local core flash bank which booted the os consts to RAM
+	MPU_InitStruct.Enable = MPU_REGION_ENABLE;
+    MPU_InitStruct.Number = MPU_REGION_NUMBER0;
+    MPU_InitStruct.BaseAddress = 0x08000000;
+    MPU_InitStruct.Size = MPU_REGION_SIZE_2MB;
+    MPU_InitStruct.SubRegionDisable = 0x00;
+    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
+    MPU_InitStruct.AccessPermission = MPU_REGION_PRIV_RO_URO;
+    MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
+    MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
+    MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
+    MPU_InitStruct.IsBufferable = MPU_ACCESS_BUFFERABLE;
 
-        HAL_MPU_ConfigRegion(&MPU_InitStruct);
-
-        address = 0x20000000;
-
-    }
-    else
-    {
-
-        MPU_InitStruct.Enable = MPU_REGION_ENABLE;
-        MPU_InitStruct.Number = MPU_REGION_NUMBER0;
-        MPU_InitStruct.BaseAddress = 0x08000000;
-        MPU_InitStruct.Size = MPU_REGION_SIZE_2MB;
-        MPU_InitStruct.SubRegionDisable = 0x00;
-        MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
-        MPU_InitStruct.AccessPermission = MPU_REGION_PRIV_RO_URO;
-        MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
-        MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
-        MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
-        MPU_InitStruct.IsBufferable = MPU_ACCESS_BUFFERABLE;
-
-        HAL_MPU_ConfigRegion(&MPU_InitStruct);
-
-        address = 0x10000000;
-
-    }
+    HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
     MPU_InitStruct.Enable = MPU_REGION_ENABLE;
     MPU_InitStruct.Number = MPU_REGION_NUMBER1;
-    MPU_InitStruct.BaseAddress = address;
-    MPU_InitStruct.Size = MPU_REGION_SIZE_128KB;
+    MPU_InitStruct.BaseAddress = stackMemoryLowAddress;
+    MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( (BitWidthType)( stackMemoryHighAddress - stackMemoryLowAddress )));
     MPU_InitStruct.SubRegionDisable = 0x00;
     MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
     MPU_InitStruct.AccessPermission = MPU_REGION_PRIV_RW_URO;
@@ -299,6 +277,8 @@ __OS_FUNC_SECTION void CILmemoryProtection_init(void)
 
     HAL_MPU_Enable(MPU_HFNMI_PRIVDEF);
 
+	__SUPRESS_UNUSED_VAR(codeMemoryHighAddress);
+	__SUPRESS_UNUSED_VAR(codeMemoryLowAddress);
 }
 /* @cond S */
 __SEC_STOP(__OS_FUNC_SECTION_STOP)

@@ -125,16 +125,29 @@
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILsysTimer_setTicks(BitWidthType ticks, CosmOS_SchedulerSyncStateType schedulersSyncState)
+  * @fn CILsysTimer_startTimer(BitWidthType ticks, BitWidthType timerTickCount)
   *
-  * @brief Disable system timer DEMO CODE.
+  * @brief Start system timer DEMO CODE.
   *
   * @param[in]  BitWidthType ticks
-  * @param[in]  CosmOS_SchedulerSyncStateType schedulersSyncState
+  * @param[in]  BitWidthType timerTickCount
   *
   * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION void CILsysTimer_setTicks(BitWidthType ticks, CosmOS_SchedulerSyncStateType schedulersSyncState);
+__OS_FUNC_SECTION void CILsysTimer_startTimer(BitWidthType ticks, BitWidthType timerTickCount);
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILsysTimer_setTicks(BitWidthType ticks, BitWidthType timerTickCount)
+  *
+  * @brief Set ticks on system timer DEMO CODE.
+  *
+  * @param[in]  BitWidthType ticks
+  * @param[in]  BitWidthType timerTickCount
+  *
+  * @return none
+********************************************************************************/
+__OS_FUNC_SECTION void CILsysTimer_setTicks(BitWidthType ticks, BitWidthType timerTickCount);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**

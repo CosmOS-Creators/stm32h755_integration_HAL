@@ -20,6 +20,10 @@
 				"value": "0x8000"
 			},
 			{
+				"target": "osPartitionsAttributes/:boot",
+				"value": true
+			},
+			{
 				"target": "osPartitionsAttributes/:lowAddress"
 			},
 			{
@@ -38,6 +42,10 @@
 			{
 				"target": "osPartitionsAttributes/:size",
 				"value": "0x8000"
+			},
+			{
+				"target": "osPartitionsAttributes/:boot",
+				"value": true
 			},
 			{
 				"target": "osPartitionsAttributes/:lowAddress"
