@@ -118,15 +118,19 @@
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILspinlock_getSpinlock(AddressType * spinlockPointer )
+  * @fn CILspinlock_getSpinlock(AddressType * spinlockPointer, BitWidthType spinlockId, BitWidthType schedulableId )
   *
   * @brief Get spinlock DEMO CODE.
   *
   * @param[in]  AddressType * spinlockPointer
-  *
+  * @param[in]  BitWidthType spinlockId
+  * @param[in]  BitWidthType schedulableId
+	*
   * @return CosmOS_SpinlockStateType
 ********************************************************************************/
-__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_getSpinlock(AddressType * spinlockPointer);
+__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_getSpinlock(AddressType * spinlockPointer, \
+																	BitWidthType spinlockId, \
+																	BitWidthType schedulableId );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
@@ -156,28 +160,36 @@ __OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_getSpinlock(AddressType *
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILspinlock_trySpinlock(AddressType * spinlockPointer)
+  * @fn CILspinlock_trySpinlock(AddressType * spinlockPointer, BitWidthType spinlockId, BitWidthType schedulableId )
   *
   * @brief Try to get spinlock DEMO CODE.
   *
-  * @param[in]  BitWidthType id
-  *
+  * @param[in]  AddressType * spinlockPointer
+  * @param[in]  BitWidthType spinlockId
+  * @param[in]  BitWidthType schedulableId
+	*
   * @return CosmOS_SpinlockStateType
 ********************************************************************************/
-__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_trySpinlock(AddressType * spinlockPointer);
+__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_trySpinlock(AddressType * spinlockPointer,\
+																	BitWidthType spinlockId, \
+																	BitWidthType schedulableId );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILspinlock_releaseSpinlock(AddressType * spinlockPointer)
+  * @fn CILspinlock_releaseSpinlock(AddressType * spinlockPointer, BitWidthType spinlockId, BitWidthType schedulableId )
   *
   * @brief Release spinlock DEMO CODE.
   *
   * @param[in]  AddressType * spinlockPointer
-  *
+  * @param[in]  BitWidthType spinlockId
+  * @param[in]  BitWidthType schedulableId
+	*
   * @return CosmOS_SpinlockStateType
 ********************************************************************************/
-__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_releaseSpinlock(AddressType * spinlockPointer);
+__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_releaseSpinlock(AddressType * spinlockPointer, \
+																		BitWidthType spinlockId, \
+																		BitWidthType schedulableId );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**

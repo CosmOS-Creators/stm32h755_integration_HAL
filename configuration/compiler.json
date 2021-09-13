@@ -26,7 +26,8 @@
 					"STM32H755xx",
 					"USE_HAL_DRIVER",
 					"ARCH_32BIT",
-					"ADDR_32BIT"
+					"ADDR_32BIT",
+					"USE_MULTI_CORE_SHARED_CODE"
 				]
 			}
 		],
@@ -52,7 +53,8 @@
 					"STM32H755xx",
 					"USE_HAL_DRIVER",
 					"ARCH_32BIT",
-					"ADDR_32BIT"
+					"ADDR_32BIT",
+					"USE_MULTI_CORE_SHARED_CODE"
 				]
 			}
 		]

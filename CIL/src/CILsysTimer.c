@@ -123,36 +123,57 @@
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILsysTimer_setTicks(BitWidthType ticks, CosmOS_SchedulerSyncStateType schedulersSyncState)
+  * @fn CILsysTimer_startTimer(BitWidthType ticks, BitWidthType timerTickCount)
   *
-  * @brief Disable system timer DEMO CODE.
+  * @brief Start system timer DEMO CODE.
   *
   * @param[in]  BitWidthType ticks
-  * @param[in]  CosmOS_SchedulerSyncStateType schedulersSyncState
+  * @param[in]  BitWidthType timerTickCount
   *
   * @return none
 ********************************************************************************/
 /* @cond S */
 __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
-__OS_FUNC_SECTION void CILsysTimer_setTicks(BitWidthType ticks, CosmOS_SchedulerSyncStateType schedulersSyncState)
+__OS_FUNC_SECTION void CILsysTimer_startTimer(BitWidthType ticks, BitWidthType timerTickCount)
 {
-    if( schedulersSyncState IS_NOT_EQUAL_TO SCHEDULER_SYNC_STATE_ENUM__IN_SYNC )
-    {
-        BitWidthType delay;
-        delay = SysTick->LOAD - SysTick->VAL;
 
-        SysTick->LOAD  = (uint32_t)(((ticks*TICKCOUNT)-delay) - 1UL);         /* set reload register */
-    }
-    else
-    {
-        SysTick->LOAD  = (uint32_t)(((ticks*TICKCOUNT)) - 1UL);               /* set reload register */
-    }
+	SysTick->LOAD  = (uint32_t)(((ticks*timerTickCount)) - 1UL);
+	SysTick->VAL   = 0UL;
+	SysTick->CTRL  = 	SysTick_CTRL_CLKSOURCE_Msk |
+						SysTick_CTRL_TICKINT_Msk   |
+						SysTick_CTRL_ENABLE_Msk;
+}
+/* @cond S */
+__SEC_STOP(__OS_FUNC_SECTION_STOP)
+/* @endcond*/
 
-    SysTick->VAL   = 0UL;                                                     /* Load the SysTick Counter Value */
-    SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk |
-                   SysTick_CTRL_TICKINT_Msk   |
-                   SysTick_CTRL_ENABLE_Msk;                                   /* Enable SysTick IRQ and SysTick Timer */
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILsysTimer_setTicks(BitWidthType ticks, BitWidthType timerTickCount)
+  *
+  * @brief Set ticks on system timer DEMO CODE.
+  *
+  * @param[in]  BitWidthType ticks
+  * @param[in]  BitWidthType timerTickCount
+  *
+  * @return none
+********************************************************************************/
+/* @cond S */
+__SEC_START(__OS_FUNC_SECTION_START)
+/* @endcond*/
+__OS_FUNC_SECTION void CILsysTimer_setTicks(BitWidthType ticks, BitWidthType timerTickCount)
+{
+	SysTick->CTRL = 0;
+
+	SysTick->LOAD  = (uint32_t)(((ticks*timerTickCount)-\
+								(SysTick->LOAD - SysTick->VAL)) - 1UL);
+
+	SysTick->VAL   = 0UL;
+	SysTick->CTRL  = 	SysTick_CTRL_CLKSOURCE_Msk |
+						SysTick_CTRL_TICKINT_Msk   |
+						SysTick_CTRL_ENABLE_Msk;
 }
 /* @cond S */
 __SEC_STOP(__OS_FUNC_SECTION_STOP)

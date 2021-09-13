@@ -177,7 +177,7 @@
 			},
 			{
 				"target": "memoriesAttributes/:name",
-				"value": "Flash bank 1"
+				"value": "Flash_bank_1"
 			},
 			{
 				"target": "memoriesAttributes/:size",
@@ -201,7 +201,7 @@
 			},
 			{
 				"target": "memoriesAttributes/:name",
-				"value": "Flash bank 2"
+				"value": "Flash_bank_2"
 			},
 			{
 				"target": "memoriesAttributes/:size",

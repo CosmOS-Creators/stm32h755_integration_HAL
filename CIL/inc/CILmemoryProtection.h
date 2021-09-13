@@ -125,15 +125,23 @@
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILmemoryProtection_init(void)
+  * @fn CILmemoryProtection_init(AddressType codeMemoryHighAddress,\
+  *							AddressType codeMemoryLowAddress, \
+  *							AddressType stackMemoryHighAddress, \
+  *							AddressType stackMemoryLowAddress)
   *
-  * @brief Init MPU DEMO CODE.
+  * @brief Init memory protection DEMO CODE.
   *
-  * @param[in]  none
-  *
+  * @param[in]  AddressType codeMemoryHighAddress
+  * @param[in]  AddressType codeMemoryLowAddress
+  * @param[in]  AddressType stackMemoryHighAddress
+  * @param[in]  AddressType stackMemoryLowAddress
   * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION void CILmemoryProtection_init(void);
+__OS_FUNC_SECTION void CILmemoryProtection_init(AddressType codeMemoryHighAddress,\
+												AddressType codeMemoryLowAddress, \
+												AddressType stackMemoryHighAddress, \
+												AddressType stackMemoryLowAddress);
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**

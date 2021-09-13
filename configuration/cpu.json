@@ -11,7 +11,7 @@
 			},
 			{
 				"target": "cpuAttributes/:flashMemory",
-				"value": "Flash bank 1"
+				"value": "Flash_bank_1"
 			},
 			{
 				"target": "cpuAttributes/:systemTimerWidth",
@@ -37,7 +37,7 @@
 			},
 			{
 				"target": "cpuAttributes/:flashMemory",
-				"value": "Flash bank 2"
+				"value": "Flash_bank_2"
 			},
 			{
 				"target": "cpuAttributes/:systemTimerWidth",
