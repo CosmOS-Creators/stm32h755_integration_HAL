@@ -52,6 +52,9 @@
 
 /* CIL interfaces */
 #include "CILstdTypes.h"
+
+/* HAL interfaces */
+#include "stm32h7xx_hal.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -209,6 +212,22 @@ __STATIC_FORCEINLINE void CILinterrupt_enableInterrupts(void)
 __STATIC_FORCEINLINE void CILinterrupt_disableInterrupts(void)
 {
 		__disable_irq();
+}
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILinterrupt_contextSwitchRoutineTrigger(void)
+  *
+  * @brief Context switch routine trigger.
+  *
+  * @param[in] none
+  *
+  * @return none
+********************************************************************************/
+__STATIC_FORCEINLINE void CILinterrupt_contextSwitchRoutineTrigger(void)
+{
+		SCB->ICSR |= SCB_ICSR_PENDSVSET_Msk;
 }
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **

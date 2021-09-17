@@ -21,6 +21,7 @@
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
+#include "core.h"
 #include "scheduler.h"
 
 /* CIL interfaces */
@@ -123,8 +124,20 @@
 /********************************************************************************
 **                        Function Definitions | Start                         **
 ********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn PendSV_Handler(void)
+  *
+  * @brief PendSV handler.
+  *
+  * @param[in]  none
+  *
+  * @return none
+********************************************************************************/
 __NAKED void PendSV_Handler(void)
 {
+	__asm volatile ("cpsid i" : : : "memory");
     __asm volatile ("MRS R0,PSP");
     __asm volatile ("ISB");
 
@@ -142,14 +155,46 @@ __NAKED void PendSV_Handler(void)
     __asm volatile ("VLDMIAEQ R0!,{S16-S31}"); /* If fp is true restore floating point registers on stack */
     __asm volatile ("MSR PSP,R0");
     __asm volatile ("ISB");
-
+	__asm volatile ("cpsie i" : : : "memory");
     __asm volatile ("BX R14");
 }
 
-void SysTick_Handler(){
-    SCB->ICSR |= SCB_ICSR_PENDSVSET_Msk;
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn SysTick_Handler(void)
+  *
+  * @brief SysTick handler.
+  *
+  * @param[in]  none
+  *
+  * @return none
+********************************************************************************/
+void SysTick_Handler( void )
+{
+	CosmOS_CoreVariableType * coreVar;
+	CosmOS_SchedulerVariableType * schedulerVar;
+
+
+	coreVar = core_getCoreVar();
+	schedulerVar = core_getCoreSchedulerVar( coreVar );
+
+	schedulerVar->rescheduleTriggerState = RESCHEDULE_TRIGGER_STATE_ENUM__TIMER;
+
+	CILinterrupt_contextSwitchRoutineTrigger();
 }
 
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn SVC_Handler(void)
+  *
+  * @brief SVC handler.
+  *
+  * @param[in]  none
+  *
+  * @return none
+********************************************************************************/
 __NAKED void SVC_Handler( void )
 {
     __asm volatile ("TST LR, #4");
@@ -158,24 +203,6 @@ __NAKED void SVC_Handler( void )
     __asm volatile ("MRSNE r0, PSP");
     __asm volatile ( "B CILsysCalls_dispatcher");
 }
-
-
-//void MemManage_Handler(void)
-//{
-//
-//    __asm(
-//        "MOV R4, 0x77777777\n\t"
-//        "MOV R5, 0x77777777\n\t"
-//    );
-//}
-//
-//void HardFault_Handler(void)
-//{
-//    __asm(
-//        "MOV R6, 0x77777777\n\t"
-//        "MOV R7, 0x77777777\n\t"
-//    );
-//}
 /********************************************************************************
 **                        Function Definitions | Stop                          **
 ********************************************************************************/
