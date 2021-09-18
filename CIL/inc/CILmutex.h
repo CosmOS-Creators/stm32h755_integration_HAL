@@ -5,28 +5,59 @@
 *********************************************************************************
 **                       DOXYGEN DOCUMENTATION INFORMATION                     **
 *****************************************************************************//**
-** @file CILsysCalls.c
+** @file CILmutex.h
 *********************************************************************************
-<!--                  CILsysCalls Unit Local Group Definition                 -->
+<!--                 		  CILmutex Module Group Definition                    -->
 *********************************************************************************
-** @defgroup Local_CILsysCalls Local
-** @ingroup CILsysCalls_unit
-** @brief CILsysCalls locals
+** @defgroup CILmutex_module CILmutex
+** @brief CILmutex Module
+** @details lorem
+*********************************************************************************
+<!--                  	  CILmutex Unit Group Definition                      -->
+*********************************************************************************
+** @defgroup CILmutex_unit CILmutex Unit
+** @ingroup CILmutex_module
+** @brief CILmutex Unit
+** @details lorem
+*********************************************************************************
+<!--                           Version Information                            -->
+*********************************************************************************
+** @version 1.0.0
+** @date 1.8.2020
+** @author https://github.com/PavolKostolansky
+*********************************************************************************
+<!--                          Warnings and License                            -->
+*********************************************************************************
+** @warning Modifying code can lead to unexpected behaviour of the whole system
+** @copyright MIT License
+*********************************************************************************
+<!--                 CILmutex Unit Global Group Definition                 -->
+*********************************************************************************
+** @defgroup Global_CILmutex Global
+** @ingroup CILmutex_unit
+** @brief CILmutex globals
 ** @details lorem
 ********************************************************************************/
 /********************************************************************************
-**                           START OF THE SOURCE FILE                          **
+**                           START OF THE HEADER FILE                          **
 ********************************************************************************/
+#ifndef __CILMUTEX_H__
+#define __CILMUTEX_H__
+/********************************************************************************
+**                         START OF C++ SUPPORT SECTION                        **
+********************************************************************************/
+#ifdef __cplusplus
+ extern "C" {
+#endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
-#include "os.h"
-#include "route.h"
-#include "routeCfg.h"
+#include "sysDefs.h"
+#include "memoryMapping.h"
 
 /* CIL interfaces */
-#include "CILsysCalls.h"
+#include "CILstdTypes.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -36,15 +67,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Macros_CILsysCalls_c Macros
-  * @ingroup Local_CILsysCalls
+  * @defgroup Macros_CILmutex_h Macros
+  * @ingroup Global_CILmutex
   * @{
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * Macros_CILsysCalls_c
+  * Macros_CILmutex_h
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -55,15 +86,15 @@
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @defgroup Variables_CILsysCalls_c Variables
-  * @ingroup Local_CILsysCalls
+  * @defgroup Variables_CILmutex_h Variables
+  * @ingroup Global_CILmutex
   * @{
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * Variables_CILsysCalls_c
+  * Variables_CILmutex_h
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -74,47 +105,72 @@
 /********************************************************************************
   * DOXYGEN DEF GROUP                                                          **
   * *************************************************************************//**
-  * @defgroup Apis_CILsysCalls_c API's
-  * @ingroup Local_CILsysCalls
+  * @defgroup Apis_CILmutex_h API's
+  * @ingroup Global_CILmutex
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Getters_CILsysCalls_c Getters
-  * @ingroup Apis_CILsysCalls_c
+  * @addtogroup Getters_CILmutex_h Getters
+  * @ingroup Apis_CILmutex_h
   * @{
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * Getters_CILsysCalls_c
+  * Getters_CILmutex_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup Setters_CILsysCalls_c Setters
-  * @ingroup Apis_CILsysCalls_c
+  * @addtogroup Setters_CILmutex_h Setters
+  * @ingroup Apis_CILmutex_h
   * @{
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * Setters_CILsysCalls_c
+  * Setters_CILmutex_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @addtogroup General_CILsysCalls_c General
-  * @ingroup Apis_CILsysCalls_c
+  * @addtogroup General_CILmutex_h General
+  * @ingroup Apis_CILmutex_h
   * @{
 ********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILmutex_tryMutex(AddressType * mutexPointer, BitWidthType mutexId, BitWidthType schedulableId )
+  *
+  * @brief Try to get mutex DEMO CODE.
+  *
+  * @param[in]  AddressType * mutexPointer
+  *
+  * @return CosmOS_MutexStateType
+********************************************************************************/
+__OS_FUNC_SECTION CosmOS_MutexStateType CILmutex_tryMutex(AddressType * mutexPointer);
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILmutex_releaseMutex(AddressType * mutexPointer, BitWidthType mutexId, BitWidthType schedulableId )
+  *
+  * @brief Release mutex DEMO CODE.
+  *
+  * @param[in]  AddressType * mutexPointer
+  *
+  * @return CosmOS_MutexStateType
+********************************************************************************/
+__OS_FUNC_SECTION CosmOS_MutexStateType CILmutex_releaseMutex(AddressType * mutexPointer);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @}
-  * General_CILsysCalls_c
+  * General_CILmutex_h
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -123,229 +179,54 @@
 **                        Function Definitions | Start                         **
 ********************************************************************************/
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @fn CILsysCalls_dispatcher(BitWidthType *sp)
-  *
-  * @brief Selector of sysCall function DEMO CODE.
-  *
-  * @param[in] BitWidthType *sp
-  *
-  * @return none
+  * @addtogroup Getters_CILmutex_h Getters
+  * @ingroup Apis_CILmutex_h
+  * @{
 ********************************************************************************/
-/* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION void CILsysCalls_dispatcher(BitWidthType *sp)
-{
-    BitWidthType 	returnValue,
-					entityId;
-
-    CosmOS_GenericVoidType sysCall;
-    CosmOS_OsVariableType * osVar;
-    CosmOS_RoutesConfigurationType * routeVar;
-
-
-    uint8_t *pc = (uint8_t*)(sp[6]);
-
-    pc-=2;
-
-    osVar = os_getOsVar();
-
-    uint8_t sysCallId = *pc;
-
-    routeVar = os_getOsRoutes( osVar );
-
-    sysCall = route_getRoutesFunc( routeVar, sp[0] );
-    entityId = route_getRoutesEntityId( routeVar, sp[0] );
-
-    switch ( sysCallId )
-    {
-        case 0 :
-        {
-            ((CosmOS_Generic_bitWidthType_ret_void)sysCall)(entityId);
-            break;
-        }
-
-		case 1 :
-        {
-            returnValue = ((CosmOS_Generic_bitWidthType_ret_bitWidthType)sysCall)(entityId);
-            break;
-        }
-
-        case 2 :
-        {
-            returnValue = ((CosmOS_Generic_bitWidthType_bitWidthType_ret_bitWidthType)sysCall)(entityId, (BitWidthType)sp[1]);
-            break;
-        }
-
-        case 3 :
-        {
-			returnValue = ((CosmOS_Generic_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType)sysCall)(entityId, (void *)sp[1], sp[2]);
-            break;
-        }
-
-		case 4 :
-        {
-			returnValue = ((CosmOS_Generic_bitWidthType_voidPtr_ret_bitWidthType)sysCall)(entityId, (void *)sp[1]);
-            break;
-        }
-
-        default :
-        {
-            /* PANIC */
-            break;
-        }
-    }
-
-    sp[0] = returnValue;
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
-
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @fn CILsysCalls_bitWidthType_ret_void(BitWidthType id)
-  *
-  * @brief System call handling general operating system functionalities.
-  *
-  * @param[in]  BitWidthType id
-  *
-  * @return none
+  * @}
+  * Getters_CILmutex_h
 ********************************************************************************/
-/* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION void CILsysCalls_bitWidthType_ret_void(BitWidthType id)
-{
-    __asm volatile("SVC #0");
-
-	__SUPRESS_UNUSED_VAR(id);
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
-
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @fn CILsysCalls_bitWidthType_ret_bitWidthType(BitWidthType id)
-  *
-  * @brief System call for bitWidthType args and ret bitWidthType.
-  *
-  * @param[in]  BitWidthType id
-  *
-  * @return BitWidthType
+  * @addtogroup Setters_CILmutex_h Setters
+  * @ingroup Apis_CILmutex_h
+  * @{
 ********************************************************************************/
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_ret_bitWidthType(BitWidthType id)
-{
-    BitWidthType returnValue;
-
-    __asm volatile("SVC #1");
-    __asm volatile("MOV %0, R0": "=r" (returnValue) ::);
-
-	__SUPRESS_UNUSED_VAR(id);
-    return returnValue;
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
-
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @fn CILsysCalls_bitWidthType_bitWidthType_ret_bitWidthType(BitWidthType id, BitWidthType arg)
-  *
-  * @brief System call for bitWidthType args and ret bitWidthType.
-  *
-  * @param[in]  BitWidthType id
-  * @param[in]  BitWidthType arg
-  *
-  * @return BitWidthType
+  * @}
+  * Setters_CILmutex_h
 ********************************************************************************/
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_bitWidthType_ret_bitWidthType(BitWidthType id, BitWidthType arg)
-{
-    BitWidthType returnValue;
-
-    __asm volatile("SVC #2");
-    __asm volatile("MOV %0, R0": "=r" (returnValue) ::);
-
-	__SUPRESS_UNUSED_VAR(id);
-	__SUPRESS_UNUSED_VAR(arg);
-    return returnValue;
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
-
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN START GROUP                                                        **
   * *************************************************************************//**
-  * @fn CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType(BitWidthType id, void * ptr, BitWidthType arg)
-  *
-  * @brief System call for voidPtr,bitWidthType args and ret bitWidthType.
-  *
-  * @param[in]  BitWidthType id
-  * @param[in]  void * ptr
-  * @param[in]  BitWidthType arg
-  *
-  * @return BitWidthType
+  * @addtogroup General_CILmutex_h General
+  * @ingroup Apis_CILmutex_h
+  * @{
 ********************************************************************************/
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType(BitWidthType id, void * ptr, BitWidthType arg)
-{
-    BitWidthType returnValue;
-
-    __asm volatile("SVC #3");
-    __asm volatile("MOV %0, R0": "=r" (returnValue) ::);
-
-	__SUPRESS_UNUSED_VAR(id);
-	__SUPRESS_UNUSED_VAR(ptr);
-	__SUPRESS_UNUSED_VAR(arg);
-    return returnValue;
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
-
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @fn CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType(BitWidthType id, void * ptr)
-  *
-  * @brief System call for voidPtr and ret bitWidthType.
-  *
-  * @param[in]  BitWidthType id
-  * @param[in]  void * ptr
-  *
-  * @return BitWidthType
+  * @}
+  * General_CILmutex_h
 ********************************************************************************/
-__SEC_START(__OS_FUNC_SECTION_START)
-/* @endcond*/
-__OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType(BitWidthType id, void * ptr)
-{
-    BitWidthType returnValue;
-
-    __asm volatile("SVC #4");
-    __asm volatile("MOV %0, R0": "=r" (returnValue) ::);
-
-	__SUPRESS_UNUSED_VAR(id);
-	__SUPRESS_UNUSED_VAR(ptr);
-    return returnValue;
-}
-/* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
-/* @endcond*/
 /********************************************************************************
 **                        Function Definitions | Stop                          **
 ********************************************************************************/
+#ifdef __cplusplus
+}
+#endif
 /********************************************************************************
-**                           END OF THE SOURCE FILE                            **
+**                         END OF C++ SUPPORT SECTION                          **
+********************************************************************************/
+#endif
+/********************************************************************************
+**                           END OF THE HEADER FILE                            **
 ********************************************************************************/

@@ -191,9 +191,9 @@ __OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_bitWidthType_ret_bitWidt
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType(BitWidthType id, void * entity, BitWidthType num)
+  * @fn CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType(BitWidthType id, void * ptr, BitWidthType arg)
   *
-  * @brief System call handling read/write from/to buffers or registers.
+  * @brief System call for voidPtr,bitWidthType args and ret bitWidthType.
   *
   * @param[in]  BitWidthType id
   * @param[in]  void * ptr
@@ -202,6 +202,20 @@ __OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_bitWidthType_ret_bitWidt
   * @return BitWidthType
 ********************************************************************************/
 __OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType(BitWidthType id, void * ptr, BitWidthType arg);
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType(BitWidthType id, void * ptr)
+  *
+  * @brief System call for voidPtr and ret bitWidthType.
+  *
+  * @param[in]  BitWidthType id
+  * @param[in]  void * ptr
+  *
+  * @return BitWidthType
+********************************************************************************/
+__OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType(BitWidthType id, void *ptr);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
