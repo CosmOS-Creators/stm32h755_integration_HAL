@@ -131,7 +131,7 @@
 			},
 			{
 				"target": "memoriesAttributes/:name",
-				"value": "AXI SRAM"
+				"value": "AXI_SRAM"
 			},
 			{
 				"target": "memoriesAttributes/:size",
@@ -155,7 +155,7 @@
 			},
 			{
 				"target": "memoriesAttributes/:name",
-				"value": "Backup RAM"
+				"value": "Backup_RAM"
 			},
 			{
 				"target": "memoriesAttributes/:size",

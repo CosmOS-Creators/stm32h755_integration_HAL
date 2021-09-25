@@ -135,7 +135,7 @@ __SEC_START(__OS_FUNC_SECTION_START)
 /* @endcond*/
 __OS_FUNC_SECTION StackPointerType CILstack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress)
 {
-    CosmOS_StackType *stack = ( CosmOS_StackType* )( stackHighAddress - (AddressType)sizeof(CosmOS_StackType) );
+    CosmOS_ContextType *stack = ( CosmOS_ContextType* )( stackHighAddress - (AddressType)sizeof(CosmOS_ContextType) );
 
     stack->XPSR  = 0x01000000;
     stack->PC    = handlerAddress;

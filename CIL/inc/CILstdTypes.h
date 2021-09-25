@@ -95,7 +95,7 @@ typedef AddressType StackPointerType;
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @brief  CosmOS_StackType struct type
+  * @brief  CosmOS_ContextType struct type
 ********************************************************************************/
 typedef struct
 {
@@ -116,7 +116,7 @@ typedef struct
     volatile BitWidthType PC;
     volatile BitWidthType XPSR;
 
-} CosmOS_StackType;
+} CosmOS_ContextType;
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
