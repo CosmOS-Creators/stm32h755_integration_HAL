@@ -169,6 +169,20 @@ __OS_FUNC_SECTION void CILmemoryProtection_setStackOverflowProtection(AddressTyp
   * @return none
 ********************************************************************************/
 __OS_FUNC_SECTION void CILmemoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress);
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILmemoryProtection_setSchedulablePeripheralProtection(AddressType lowAddress, AddressType highAddress)
+  *
+  * @brief Set schedulable peripheral protection DEMO CODE.
+  *
+  * @param[in]  AddressType lowAddress
+  * @param[in]  AddressType highAddress
+  *
+  * @return none
+********************************************************************************/
+__OS_FUNC_SECTION void CILmemoryProtection_setSchedulablePeripheralProtection(AddressType lowAddress, AddressType highAddress);
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**

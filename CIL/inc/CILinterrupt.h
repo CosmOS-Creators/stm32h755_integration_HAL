@@ -198,6 +198,23 @@ __STATIC_FORCEINLINE void CILinterrupt_enableInterrupts(void)
 {
 		__enable_irq();
 }
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILinterrupt_enableInterrupt(BitWidthType ISR)
+  *
+  * @brief Enable specific interrupt for the current core.
+  *
+  * @param[in]  BitWidthType ISR
+  *
+  * @return none
+********************************************************************************/
+__STATIC_FORCEINLINE void CILinterrupt_enableInterrupt(BitWidthType ISR)
+{
+		__NVIC_EnableIRQ(ISR);
+}
+
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
@@ -212,6 +229,22 @@ __STATIC_FORCEINLINE void CILinterrupt_enableInterrupts(void)
 __STATIC_FORCEINLINE void CILinterrupt_disableInterrupts(void)
 {
 		__disable_irq();
+}
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * *************************************************************************//**
+  * @fn CILinterrupt_disableInterrupt(BitWidthType ISR)
+  *
+  * @brief Disable specific interrupt for the current core.
+  *
+  * @param[in]  BitWidthType ISR
+  *
+  * @return none
+********************************************************************************/
+__STATIC_FORCEINLINE void CILinterrupt_disableInterrupt(BitWidthType ISR)
+{
+		__NVIC_DisableIRQ(ISR);
 }
 
 /********************************************************************************
