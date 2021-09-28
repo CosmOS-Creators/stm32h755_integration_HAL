@@ -167,17 +167,20 @@ __STATIC_FORCEINLINE BitWidthType CILmemoryProtection_fastLogBase2(BitWidthType 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILmemoryProtection_init(AddressType codeMemoryHighAddress,\
-  *							AddressType codeMemoryLowAddress, \
-  *							AddressType stackMemoryHighAddress, \
-  *							AddressType stackMemoryLowAddress)
-  *
+  * @fn CILmemoryProtection_init(AddressType codeMemoryHighAddress,
+  *							AddressType codeMemoryLowAddress,
+  *							AddressType stackMemoryHighAddress,
+  *							AddressType stackMemoryLowAddress,
+  *							AddressType unprotectedMemoryLowAddress,
+  *							AddressType unprotectedMemoryHighAddress)
   * @brief Init memory protection DEMO CODE.
   *
   * @param[in]  AddressType codeMemoryHighAddress
   * @param[in]  AddressType codeMemoryLowAddress
   * @param[in]  AddressType stackMemoryHighAddress
-  * @param[in]  AddressType stackMemoryLowAddress
+  * @param[in]  AddressType unprotectedMemoryLowAddress
+  * @param[in]  AddressType unprotectedMemoryHighAddress
+	*
   * @return none
 ********************************************************************************/
 /* @cond S */
@@ -186,7 +189,9 @@ __SEC_START(__OS_FUNC_SECTION_START)
 __OS_FUNC_SECTION void CILmemoryProtection_init(AddressType codeMemoryHighAddress,\
 												AddressType codeMemoryLowAddress, \
 												AddressType stackMemoryHighAddress, \
-												AddressType stackMemoryLowAddress)
+												AddressType stackMemoryLowAddress, \
+												AddressType unprotectedMemoryLowAddress, \
+												AddressType unprotectedMemoryHighAddress)
 {
     MPU_Region_InitTypeDef MPU_InitStruct = {0};
 
@@ -210,12 +215,12 @@ __OS_FUNC_SECTION void CILmemoryProtection_init(AddressType codeMemoryHighAddres
     MPU_InitStruct.BaseAddress = 0x08000000;
     MPU_InitStruct.Size = MPU_REGION_SIZE_2MB;
     MPU_InitStruct.SubRegionDisable = 0x00;
-    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
+    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
     MPU_InitStruct.AccessPermission = MPU_REGION_PRIV_RO_URO;
     MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
     MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
     MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
-    MPU_InitStruct.IsBufferable = MPU_ACCESS_BUFFERABLE;
+    MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
 
     HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
@@ -224,33 +229,33 @@ __OS_FUNC_SECTION void CILmemoryProtection_init(AddressType codeMemoryHighAddres
     MPU_InitStruct.BaseAddress = stackMemoryLowAddress;
     MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( (BitWidthType)( stackMemoryHighAddress - stackMemoryLowAddress )));
     MPU_InitStruct.SubRegionDisable = 0x00;
-    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
+    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
     MPU_InitStruct.AccessPermission = MPU_REGION_PRIV_RW_URO;
     MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
     MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
     MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
-    MPU_InitStruct.IsBufferable = MPU_ACCESS_BUFFERABLE;
+    MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
 
     HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
     MPU_InitStruct.Enable = MPU_REGION_ENABLE;
     MPU_InitStruct.Number = MPU_REGION_NUMBER2;
-    MPU_InitStruct.BaseAddress =  (BitWidthType)_s_os_section_consts;
-    MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( (BitWidthType)( _e_os_section_consts - _s_os_section_consts )));
+    MPU_InitStruct.BaseAddress =  (BitWidthType)OS_CONSTS_PARTITION_LOW_ADDRESS;
+    MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( (BitWidthType)( OS_CONSTS_PARTITION_HIGH_ADDRESS - OS_CONSTS_PARTITION_LOW_ADDRESS )));
     MPU_InitStruct.SubRegionDisable = 0x00;
-    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
+    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
     MPU_InitStruct.AccessPermission = MPU_REGION_PRIV_RO_URO;
     MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
     MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
     MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
-    MPU_InitStruct.IsBufferable = MPU_ACCESS_BUFFERABLE;
+    MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
 
     HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
     MPU_InitStruct.Enable = MPU_REGION_ENABLE;
     MPU_InitStruct.Number = MPU_REGION_NUMBER3;
-    MPU_InitStruct.BaseAddress = (BitWidthType)_s_os_section_vars;
-    MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( (BitWidthType)(_e_os_section_vars - _s_os_section_vars )));
+    MPU_InitStruct.BaseAddress = (BitWidthType)OS_VARS_PARTITION_LOW_ADDRESS;
+    MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( (BitWidthType)( OS_VARS_PARTITION_HIGH_ADDRESS - OS_VARS_PARTITION_LOW_ADDRESS )));
     MPU_InitStruct.SubRegionDisable = 0x00;
     MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
     MPU_InitStruct.AccessPermission = MPU_REGION_PRIV_RW_URO;
@@ -263,16 +268,15 @@ __OS_FUNC_SECTION void CILmemoryProtection_init(AddressType codeMemoryHighAddres
 
 	MPU_InitStruct.Enable = MPU_REGION_ENABLE;
     MPU_InitStruct.Number = MPU_REGION_NUMBER4;
-    MPU_InitStruct.BaseAddress = (BitWidthType)_s_unprotected_section;
-    MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( (BitWidthType)(_e_unprotected_section - _s_unprotected_section )));
+    MPU_InitStruct.BaseAddress = (BitWidthType)unprotectedMemoryLowAddress;
+    MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( (BitWidthType)(unprotectedMemoryHighAddress - unprotectedMemoryLowAddress )));
     MPU_InitStruct.SubRegionDisable = 0x00;
     MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
     MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
     MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
     MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
-    MPU_InitStruct.IsCacheable = MPU_ACCESS_NOT_CACHEABLE;
-    MPU_InitStruct.IsBufferable = MPU_ACCESS_BUFFERABLE;
-
+    MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
+    MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
     HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
     HAL_MPU_Enable(MPU_HFNMI_PRIVDEF);
@@ -312,12 +316,12 @@ __OS_FUNC_SECTION void CILmemoryProtection_setStackOverflowProtection(AddressTyp
     MPU_InitStruct.BaseAddress = (stackLowAddress);
     MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( stackHighAddress - stackLowAddress ));
     MPU_InitStruct.SubRegionDisable = 0x00;
-    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
+    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
     MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
     MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
     MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
     MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
-    MPU_InitStruct.IsBufferable = MPU_ACCESS_BUFFERABLE;
+    MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
 
     HAL_MPU_ConfigRegion(&MPU_InitStruct);
     /* Enables the MPU */
@@ -355,12 +359,12 @@ __OS_FUNC_SECTION void CILmemoryProtection_setProgramMemoryProtection(AddressTyp
     MPU_InitStruct.BaseAddress = (lowAddress);
     MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( highAddress - lowAddress ));
     MPU_InitStruct.SubRegionDisable = 0x00;
-    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
+    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
     MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
     MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
     MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
     MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
-    MPU_InitStruct.IsBufferable = MPU_ACCESS_BUFFERABLE;
+    MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
 
     HAL_MPU_ConfigRegion(&MPU_InitStruct);
     /* Enables the MPU */
