@@ -315,7 +315,7 @@ __OS_FUNC_SECTION void CILmemoryProtection_setStackOverflowProtection(AddressTyp
     MPU_InitStruct.Number = MPU_REGION_NUMBER7;
     MPU_InitStruct.BaseAddress = (stackLowAddress);
     MPU_InitStruct.Size = (CILmemoryProtection_fastLogBase2( stackHighAddress - stackLowAddress ));
-    MPU_InitStruct.SubRegionDisable = 0x00;
+    MPU_InitStruct.SubRegionDisable = 0b00000001; //this is waste of the memory btw, but it is able to catch stack overflows
     MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
     MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
     MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
