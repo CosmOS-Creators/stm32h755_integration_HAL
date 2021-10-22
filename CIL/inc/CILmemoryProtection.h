@@ -41,14 +41,15 @@
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
-#include "sysDefs.h"
 #include "memoryMapping.h"
+#include "sysDefs.h"
+
 
 /* CIL interfaces */
 #include "CILstdTypes.h"
@@ -126,11 +127,11 @@
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
   * @fn CILmemoryProtection_init(AddressType codeMemoryHighAddress,
-  *							AddressType codeMemoryLowAddress,
-  *							AddressType stackMemoryHighAddress,
-  *							AddressType stackMemoryLowAddress,
-  *							AddressType unprotectedMemoryLowAddress,
-  *							AddressType unprotectedMemoryHighAddress)
+  * AddressType codeMemoryLowAddress,
+  * AddressType stackMemoryHighAddress,
+  * AddressType stackMemoryLowAddress,
+  * AddressType unprotectedMemoryLowAddress,
+  * AddressType unprotectedMemoryHighAddress)
   * @brief Init memory protection DEMO CODE.
   *
   * @param[in]  AddressType codeMemoryHighAddress
@@ -138,15 +139,17 @@
   * @param[in]  AddressType stackMemoryHighAddress
   * @param[in]  AddressType unprotectedMemoryLowAddress
   * @param[in]  AddressType unprotectedMemoryHighAddress
-	*
+  *
   * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION void CILmemoryProtection_init(AddressType codeMemoryHighAddress,
-												AddressType codeMemoryLowAddress,
-												AddressType stackMemoryHighAddress,
-												AddressType stackMemoryLowAddress,
-												AddressType unprotectedMemoryLowAddress,
-												AddressType unprotectedMemoryHighAddress);
+__OS_FUNC_SECTION void
+CILmemoryProtection_init(
+    AddressType codeMemoryHighAddress,
+    AddressType codeMemoryLowAddress,
+    AddressType stackMemoryHighAddress,
+    AddressType stackMemoryLowAddress,
+    AddressType unprotectedMemoryLowAddress,
+    AddressType unprotectedMemoryHighAddress );
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
@@ -159,7 +162,10 @@ __OS_FUNC_SECTION void CILmemoryProtection_init(AddressType codeMemoryHighAddres
   *
   * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION void CILmemoryProtection_setStackOverflowProtection(AddressType stackLowAddress, AddressType stackHighAddress);
+__OS_FUNC_SECTION void
+CILmemoryProtection_setStackOverflowProtection(
+    AddressType stackLowAddress,
+    AddressType stackHighAddress );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
@@ -173,7 +179,10 @@ __OS_FUNC_SECTION void CILmemoryProtection_setStackOverflowProtection(AddressTyp
   *
   * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION void CILmemoryProtection_setProgramMemoryProtection(AddressType lowAddress, AddressType highAddress);
+__OS_FUNC_SECTION void
+CILmemoryProtection_setProgramMemoryProtection(
+    AddressType lowAddress,
+    AddressType highAddress );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
@@ -187,7 +196,10 @@ __OS_FUNC_SECTION void CILmemoryProtection_setProgramMemoryProtection(AddressTyp
   *
   * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION void CILmemoryProtection_setSchedulablePeripheralProtection(AddressType lowAddress, AddressType highAddress);
+__OS_FUNC_SECTION void
+CILmemoryProtection_setSchedulablePeripheralProtection(
+    AddressType lowAddress,
+    AddressType highAddress );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**

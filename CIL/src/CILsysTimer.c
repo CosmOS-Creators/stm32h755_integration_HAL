@@ -133,19 +133,18 @@
   * @return none
 ********************************************************************************/
 /* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
+__SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
-__OS_FUNC_SECTION void CILsysTimer_startTimer(BitWidthType ticks, BitWidthType timerTickCount)
+__OS_FUNC_SECTION void
+CILsysTimer_startTimer( BitWidthType ticks, BitWidthType timerTickCount )
 {
-
-	SysTick->LOAD  = (uint32_t)(((ticks*timerTickCount)) - 1UL);
-	SysTick->VAL   = 0UL;
-	SysTick->CTRL  = 	SysTick_CTRL_CLKSOURCE_Msk |
-						SysTick_CTRL_TICKINT_Msk   |
-						SysTick_CTRL_ENABLE_Msk;
+    SysTick->LOAD = ( uint32_t )( ( ( ticks * timerTickCount ) ) - 1UL );
+    SysTick->VAL = 0UL;
+    SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk |
+                    SysTick_CTRL_ENABLE_Msk;
 }
 /* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
 
 /********************************************************************************
@@ -161,22 +160,23 @@ __SEC_STOP(__OS_FUNC_SECTION_STOP)
   * @return none
 ********************************************************************************/
 /* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
+__SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
-__OS_FUNC_SECTION void CILsysTimer_setTicks(BitWidthType ticks, BitWidthType timerTickCount)
+__OS_FUNC_SECTION void
+CILsysTimer_setTicks( BitWidthType ticks, BitWidthType timerTickCount )
 {
-	SysTick->CTRL = 0;
+    SysTick->CTRL = 0;
 
-	SysTick->LOAD  = (uint32_t)(((ticks*timerTickCount)-\
-								(SysTick->LOAD - SysTick->VAL)) - 1UL);
+    SysTick->LOAD = ( uint32_t )(
+        ( ( ticks * timerTickCount ) - ( SysTick->LOAD - SysTick->VAL ) ) -
+        1UL );
 
-	SysTick->VAL   = 0UL;
-	SysTick->CTRL  = 	SysTick_CTRL_CLKSOURCE_Msk |
-						SysTick_CTRL_TICKINT_Msk   |
-						SysTick_CTRL_ENABLE_Msk;
+    SysTick->VAL = 0UL;
+    SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk |
+                    SysTick_CTRL_ENABLE_Msk;
 }
 /* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

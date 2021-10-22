@@ -125,40 +125,41 @@
   * @return CosmOS_MutexStateType
 ********************************************************************************/
 /* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
+__SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
-__OS_FUNC_SECTION CosmOS_MutexStateType CILmutex_tryMutex(AddressType * mutexPointer)
+__OS_FUNC_SECTION CosmOS_MutexStateType
+CILmutex_tryMutex( AddressType * mutexPointer )
 {
     CosmOS_MutexStateType mutexState;
 
-	__disable_irq();
-	__asm volatile("MOV R1, #0x1");
-	__asm volatile("LDR R3, [R0]");
-	__asm volatile("CMP R3, #0");
-	__asm volatile("ITTE EQ");
-	__asm volatile("STREQ R1, [R0]");
-	__asm volatile("MOVEQ R1, #0x2");
-	__asm volatile("MOVNE R1, #0x1");
-	__asm volatile("MOV %[value], R1":  [value] "=r" (mutexState) );
-	__enable_irq();
+    __disable_irq();
+    __asm volatile( "MOV R1, #0x1" );
+    __asm volatile( "LDR R3, [R0]" );
+    __asm volatile( "CMP R3, #0" );
+    __asm volatile( "ITTE EQ" );
+    __asm volatile( "STREQ R1, [R0]" );
+    __asm volatile( "MOVEQ R1, #0x2" );
+    __asm volatile( "MOVNE R1, #0x1" );
+    __asm volatile( "MOV %[value], R1" : [value] "=r"( mutexState ) );
+    __enable_irq();
 
-	/* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
-	//__asm volatile("MOV R1, #0x1");
-	//__asm volatile("LDREXH R3, [R0]");
-	//__asm volatile("CMP R3, #0");
-	//__asm volatile("ITT EQ");
-	//__asm volatile("STREXHEQ R3, R1, [R0]");
-	//__asm volatile("CMPEQ R3, #0");
-	//__asm volatile("ITE NE");
-	//__asm volatile("MOVNE R1, #0x1");
-	//__asm volatile("MOVEQ R1, #0x2");
-	//__asm volatile("MOV %[value], R1":  [value] "=r" (mutexState) );
+    /* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
+    //__asm volatile("MOV R1, #0x1");
+    //__asm volatile("LDREXH R3, [R0]");
+    //__asm volatile("CMP R3, #0");
+    //__asm volatile("ITT EQ");
+    //__asm volatile("STREXHEQ R3, R1, [R0]");
+    //__asm volatile("CMPEQ R3, #0");
+    //__asm volatile("ITE NE");
+    //__asm volatile("MOVNE R1, #0x1");
+    //__asm volatile("MOVEQ R1, #0x2");
+    //__asm volatile("MOV %[value], R1":  [value] "=r" (mutexState) );
 
-	__SUPRESS_UNUSED_VAR(mutexPointer);
+    __SUPRESS_UNUSED_VAR( mutexPointer );
     return mutexState;
 }
 /* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
 
 /********************************************************************************
@@ -173,37 +174,38 @@ __SEC_STOP(__OS_FUNC_SECTION_STOP)
   * @return CosmOS_mutexStateType
 ********************************************************************************/
 /* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
+__SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
-__OS_FUNC_SECTION CosmOS_MutexStateType CILmutex_releaseMutex(AddressType * mutexPointer)
+__OS_FUNC_SECTION CosmOS_MutexStateType
+CILmutex_releaseMutex( AddressType * mutexPointer )
 {
     CosmOS_MutexStateType mutexState;
 
-	__disable_irq();
-	__asm volatile("MOV R1, #0x0");
-	__asm volatile("STR R1, [R0]");
-    __asm volatile("MOV %[value], R1":  [value] "=r" (mutexState) );
-	__enable_irq();
+    __disable_irq();
+    __asm volatile( "MOV R1, #0x0" );
+    __asm volatile( "STR R1, [R0]" );
+    __asm volatile( "MOV %[value], R1" : [value] "=r"( mutexState ) );
+    __enable_irq();
 
-	/* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
-	//__asm volatile("MOV R1, #0x0");
+    /* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
+    //__asm volatile("MOV R1, #0x0");
     //__asm volatile("tryUnlock:");
-	//__asm volatile("LDREXH R3, [R0]");
-	//__asm volatile("CMP R3, #1");
-	//__asm volatile("ITTE EQ");
-	//__asm volatile("STREXHEQ R3, R1, [R0]");
-	//__asm volatile("CMPEQ R3, #0");
-	//__asm volatile("BNE released");
-	//__asm volatile("IT NE");
-	//__asm volatile("BNE tryUnlock");
-	//__asm volatile("released:");
+    //__asm volatile("LDREXH R3, [R0]");
+    //__asm volatile("CMP R3, #1");
+    //__asm volatile("ITTE EQ");
+    //__asm volatile("STREXHEQ R3, R1, [R0]");
+    //__asm volatile("CMPEQ R3, #0");
+    //__asm volatile("BNE released");
+    //__asm volatile("IT NE");
+    //__asm volatile("BNE tryUnlock");
+    //__asm volatile("released:");
     //__asm volatile("MOV %[value], R1":  [value] "=r" (mutexState) );
 
-	__SUPRESS_UNUSED_VAR(mutexPointer);
+    __SUPRESS_UNUSED_VAR( mutexPointer );
     return mutexState;
 }
 /* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

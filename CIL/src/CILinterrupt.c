@@ -135,28 +135,33 @@
   *
   * @return none
 ********************************************************************************/
-__NAKED void PendSV_Handler(void)
+__NAKED void
+PendSV_Handler( void )
 {
-	__asm volatile ("cpsid i" : : : "memory");
-    __asm volatile ("MRS R0,PSP");
-    __asm volatile ("ISB");
+    __asm volatile( "cpsid i" : : : "memory" );
+    __asm volatile( "MRS R0,PSP" );
+    __asm volatile( "ISB" );
 
-    __asm volatile ("TST R14, #16");
-    __asm volatile ("IT EQ");
-    __asm volatile ("VSTMDBEQ R0!,{S16-S31}"); /* If fp is true save floating point registers on stack */
-    __asm volatile ("STMDB R0!,{R4-R8,R10,R11,R14}");
+    __asm volatile( "TST R14, #16" );
+    __asm volatile( "IT EQ" );
+    __asm volatile(
+        "VSTMDBEQ R0!,{S16-S31}" ); /* If fp is true save floating point
+        registers on stack */
+    __asm volatile( "STMDB R0!,{R4-R8,R10,R11,R14}" );
 
-    __asm volatile ("BL scheduler_scheduleNextInstance");
-    __asm volatile ("ISB");
+    __asm volatile( "BL scheduler_scheduleNextInstance" );
+    __asm volatile( "ISB" );
 
-    __asm volatile ("LDMIA R0!,{R4-R8,R10,R11,R14}");
-    __asm volatile ("TST R14, #16");
-    __asm volatile ("IT EQ");
-    __asm volatile ("VLDMIAEQ R0!,{S16-S31}"); /* If fp is true restore floating point registers on stack */
-    __asm volatile ("MSR PSP,R0");
-    __asm volatile ("ISB");
-	__asm volatile ("cpsie i" : : : "memory");
-    __asm volatile ("BX R14");
+    __asm volatile( "LDMIA R0!,{R4-R8,R10,R11,R14}" );
+    __asm volatile( "TST R14, #16" );
+    __asm volatile( "IT EQ" );
+    __asm volatile(
+        "VLDMIAEQ R0!,{S16-S31}" ); /* If fp is true restore floating point
+        registers on stack */
+    __asm volatile( "MSR PSP,R0" );
+    __asm volatile( "ISB" );
+    __asm volatile( "cpsie i" : : : "memory" );
+    __asm volatile( "BX R14" );
 }
 
 /********************************************************************************
@@ -170,18 +175,18 @@ __NAKED void PendSV_Handler(void)
   *
   * @return none
 ********************************************************************************/
-void SysTick_Handler( void )
+void
+SysTick_Handler( void )
 {
-	CosmOS_CoreVariableType * coreVar;
-	CosmOS_SchedulerVariableType * schedulerVar;
+    CosmOS_CoreVariableType * coreVar;
+    CosmOS_SchedulerVariableType * schedulerVar;
 
+    coreVar = core_getCoreVar();
+    schedulerVar = core_getCoreSchedulerVar( coreVar );
 
-	coreVar = core_getCoreVar();
-	schedulerVar = core_getCoreSchedulerVar( coreVar );
+    schedulerVar->rescheduleTriggerState = RESCHEDULE_TRIGGER_STATE_ENUM__TIMER;
 
-	schedulerVar->rescheduleTriggerState = RESCHEDULE_TRIGGER_STATE_ENUM__TIMER;
-
-	CILinterrupt_contextSwitchRoutineTrigger();
+    CILinterrupt_contextSwitchRoutineTrigger();
 }
 
 /********************************************************************************
@@ -195,13 +200,14 @@ void SysTick_Handler( void )
   *
   * @return none
 ********************************************************************************/
-__NAKED void SVC_Handler( void )
+__NAKED void
+SVC_Handler( void )
 {
-    __asm volatile ("TST LR, #4");
-    __asm volatile ("ITE EQ");
-    __asm volatile ("MRSEQ r0, MSP");
-    __asm volatile ("MRSNE r0, PSP");
-    __asm volatile ( "B CILsysCalls_dispatcher");
+    __asm volatile( "TST LR, #4" );
+    __asm volatile( "ITE EQ" );
+    __asm volatile( "MRSEQ r0, MSP" );
+    __asm volatile( "MRSNE r0, PSP" );
+    __asm volatile( "B CILsysCalls_dispatcher" );
 }
 /********************************************************************************
 **                        Function Definitions | Stop                          **

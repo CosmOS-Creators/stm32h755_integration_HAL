@@ -21,8 +21,8 @@
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
-#include "os.h"
 #include "cosmosAssert.h"
+#include "os.h"
 
 /* CIL interfaces */
 #include "CILcore.h"
@@ -136,14 +136,15 @@
   * @return BitWidthType
 ********************************************************************************/
 /* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
+__SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
-__OS_FUNC_SECTION BitWidthType CILcore_getCoreId(void)
+__OS_FUNC_SECTION BitWidthType
+CILcore_getCoreId( void )
 {
-    return (HAL_GetCurrentCPUID() == CM7_CPUID) ? CORE_0_ID : CORE_1_ID;
+    return ( HAL_GetCurrentCPUID() == CM7_CPUID ) ? CORE_0_ID : CORE_1_ID;
 }
 /* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
 
 /********************************************************************************
@@ -158,12 +159,12 @@ __SEC_STOP(__OS_FUNC_SECTION_STOP)
   * @return void
 ********************************************************************************/
 /* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
+__SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
-__OS_FUNC_SECTION void CILcore_setCoreVar(CosmOS_OsVariableType * osVar)
+__OS_FUNC_SECTION void
+CILcore_setCoreVar( CosmOS_OsVariableType * osVar )
 {
-    BitWidthType coreId,
-                numberOfCores;
+    BitWidthType coreId, numberOfCores;
 
     CosmOS_CoreVariableType * coreVar;
 
@@ -175,10 +176,10 @@ __OS_FUNC_SECTION void CILcore_setCoreVar(CosmOS_OsVariableType * osVar)
     coreVar = os_getCoreVar( osVar, coreId );
 
     //must be changed, not valid for all compilers
-    __asm volatile("MOV R9,%[coreVariable]" : [coreVariable] "=r" (coreVar));
+    __asm volatile( "MOV R9,%[coreVariable]" : [coreVariable] "=r"( coreVar ) );
 }
 /* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

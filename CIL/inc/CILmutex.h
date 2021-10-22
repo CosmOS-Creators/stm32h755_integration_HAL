@@ -7,13 +7,13 @@
 *****************************************************************************//**
 ** @file CILmutex.h
 *********************************************************************************
-<!--                 		  CILmutex Module Group Definition                    -->
+<!--                     CILmutex Module Group Definition                     -->
 *********************************************************************************
 ** @defgroup CILmutex_module CILmutex
 ** @brief CILmutex Module
 ** @details lorem
 *********************************************************************************
-<!--                  	  CILmutex Unit Group Definition                      -->
+<!--                      CILmutex Unit Group Definition                      -->
 *********************************************************************************
 ** @defgroup CILmutex_unit CILmutex Unit
 ** @ingroup CILmutex_module
@@ -47,14 +47,14 @@
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
-#include "sysDefs.h"
 #include "memoryMapping.h"
+#include "sysDefs.h"
 
 /* CIL interfaces */
 #include "CILstdTypes.h"
@@ -144,7 +144,8 @@
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILmutex_tryMutex(AddressType * mutexPointer, BitWidthType mutexId, BitWidthType schedulableId )
+  * @fn CILmutex_tryMutex(AddressType * mutexPointer, BitWidthType mutexId,
+  * BitWidthType schedulableId )
   *
   * @brief Try to get mutex DEMO CODE.
   *
@@ -152,12 +153,15 @@
   *
   * @return CosmOS_MutexStateType
 ********************************************************************************/
-__OS_FUNC_SECTION CosmOS_MutexStateType CILmutex_tryMutex(AddressType * mutexPointer);
+__OS_FUNC_SECTION CosmOS_MutexStateType
+CILmutex_tryMutex( AddressType * mutexPointer );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILmutex_releaseMutex(AddressType * mutexPointer, BitWidthType mutexId, BitWidthType schedulableId )
+  * @fn CILmutex_releaseMutex(AddressType * mutexPointer,
+  * BitWidthType mutexId,
+  * BitWidthType schedulableId )
   *
   * @brief Release mutex DEMO CODE.
   *
@@ -165,7 +169,8 @@ __OS_FUNC_SECTION CosmOS_MutexStateType CILmutex_tryMutex(AddressType * mutexPoi
   *
   * @return CosmOS_MutexStateType
 ********************************************************************************/
-__OS_FUNC_SECTION CosmOS_MutexStateType CILmutex_releaseMutex(AddressType * mutexPointer);
+__OS_FUNC_SECTION CosmOS_MutexStateType
+CILmutex_releaseMutex( AddressType * mutexPointer );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**

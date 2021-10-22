@@ -41,14 +41,15 @@
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
-#include "sysDefs.h"
 #include "memoryMapping.h"
+#include "sysDefs.h"
+
 
 /* CIL interfaces */
 #include "CILstdTypes.h"
@@ -138,7 +139,9 @@
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILstack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress)
+  * @fn CILstack_stackInit(AddressType stackLowAddress,
+  * AddressType stackHighAddress,
+  * AddressType handlerAddress)
   *
   * @brief Task stack initialization.
   *
@@ -148,7 +151,11 @@
   *
   * @return StackPointerType
 ********************************************************************************/
-__OS_FUNC_SECTION StackPointerType CILstack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress);
+__OS_FUNC_SECTION StackPointerType
+CILstack_stackInit(
+    AddressType stackLowAddress,
+    AddressType stackHighAddress,
+    AddressType handlerAddress );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
@@ -192,7 +199,8 @@ __OS_FUNC_SECTION StackPointerType CILstack_stackInit(AddressType stackLowAddres
   *
   * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION __NAKED void CILstack_setStackPointer(AddressType address);
+__OS_FUNC_SECTION __NAKED void
+CILstack_setStackPointer( AddressType address );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**

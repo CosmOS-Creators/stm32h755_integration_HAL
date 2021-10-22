@@ -120,7 +120,9 @@
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILstack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress)
+  * @fn CILstack_stackInit(AddressType stackLowAddress,
+  * AddressType stackHighAddress,
+  * AddressType handlerAddress)
   *
   * @brief Task stack initialization DEMO CODE.
   *
@@ -131,34 +133,39 @@
   * @return StackPointerType
 ********************************************************************************/
 /* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
+__SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
-__OS_FUNC_SECTION StackPointerType CILstack_stackInit(AddressType stackLowAddress, AddressType stackHighAddress, AddressType handlerAddress)
+__OS_FUNC_SECTION StackPointerType
+CILstack_stackInit(
+    AddressType stackLowAddress,
+    AddressType stackHighAddress,
+    AddressType handlerAddress )
 {
-    CosmOS_ContextType *stack = ( CosmOS_ContextType* )( stackHighAddress - (AddressType)sizeof(CosmOS_ContextType) );
+    CosmOS_ContextType * stack =
+        (CosmOS_ContextType *)( stackHighAddress - (AddressType)sizeof( CosmOS_ContextType ) );
 
-    stack->XPSR  = 0x01000000;
-    stack->PC    = handlerAddress;
-    stack->LR    = 0xFFFFFFFD;
-    stack->R12   = 0;
-    stack->R3    = 0;
-    stack->R2    = 0;
-    stack->R1    = 0;
-    stack->R0    = 0;
-    stack->R14   = 0xFFFFFFFD;
-    stack->R11   = 0;
-    stack->R10   = 0;
-    stack->R8    = 0;
-    stack->R7    = 0;
-    stack->R6    = 0;
-    stack->R5    = 0;
-    stack->R4    = 0;
+    stack->XPSR = 0x01000000;
+    stack->PC = handlerAddress;
+    stack->LR = 0xFFFFFFFD;
+    stack->R12 = 0;
+    stack->R3 = 0;
+    stack->R2 = 0;
+    stack->R1 = 0;
+    stack->R0 = 0;
+    stack->R14 = 0xFFFFFFFD;
+    stack->R11 = 0;
+    stack->R10 = 0;
+    stack->R8 = 0;
+    stack->R7 = 0;
+    stack->R6 = 0;
+    stack->R5 = 0;
+    stack->R4 = 0;
 
-	__SUPRESS_UNUSED_VAR(stackLowAddress);
-    return (StackPointerType)(&(stack->R4));
+    __SUPRESS_UNUSED_VAR( stackLowAddress );
+    return ( StackPointerType )( &( stack->R4 ) );
 }
 /* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
 
 /********************************************************************************
@@ -173,21 +180,22 @@ __SEC_STOP(__OS_FUNC_SECTION_STOP)
   * @return none
 ********************************************************************************/
 /* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
+__SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
-__OS_FUNC_SECTION __NAKED void CILstack_setStackPointer(AddressType address)
+__OS_FUNC_SECTION __NAKED void
+CILstack_setStackPointer( AddressType address )
 {
-    __asm volatile ("LDMIA R0!,{R4-R8,R10,R11,R14}");
-	__asm volatile ("MSR PSP,R0");
-    __asm volatile ("MOV R0, #0x3");
-    __asm volatile ("MSR CONTROL, R0");
-    __asm volatile ("ISB");
-    __asm volatile ("BX R14");
+    __asm volatile( "LDMIA R0!,{R4-R8,R10,R11,R14}" );
+    __asm volatile( "MSR PSP,R0" );
+    __asm volatile( "MOV R0, #0x3" );
+    __asm volatile( "MSR CONTROL, R0" );
+    __asm volatile( "ISB" );
+    __asm volatile( "BX R14" );
 
-	__SUPRESS_UNUSED_VAR(address);
+    __SUPRESS_UNUSED_VAR( address );
 }
 /* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

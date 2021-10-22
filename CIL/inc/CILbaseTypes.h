@@ -41,7 +41,7 @@
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 /********************************************************************************
 **                            Include Files | Start                            **
@@ -87,23 +87,24 @@
   * your processor registers bit width type with ARCH_NBIT
 ********************************************************************************/
 #ifdef ARCH_8BIT
-    typedef unsigned char         BitWidthType;
-    #define FORCE_ENUM            0xFF
-    #define SECURE_NUMBER       0xAA
+typedef unsigned char BitWidthType;
+#define FORCE_ENUM 0xFF
+#define SECURE_NUMBER 0xAA
 #elif ARCH_16BIT
-    typedef unsigned short        BitWidthType;
-    #define FORCE_ENUM            0xFFFF
-    #define SECURE_NUMBER       0xAAAA
+typedef unsigned short BitWidthType;
+#define FORCE_ENUM 0xFFFF
+#define SECURE_NUMBER 0xAAAA
 #elif ARCH_32BIT
-    typedef unsigned int          BitWidthType;
-    #define FORCE_ENUM            0xFFFFFFFF
-    #define SECURE_NUMBER       0xAAAAAAAA
+typedef unsigned int BitWidthType;
+#define FORCE_ENUM 0xFFFFFFFF
+#define SECURE_NUMBER 0xAAAAAAAA
 #elif ARCH_64BIT
-    typedef unsigned long long    BitWidthType;
-    #define FORCE_ENUM            0xFFFFFFFFFFFFFFFF
-    #define SECURE_NUMBER       0xAAAAAAAAAAAAAAAA
+typedef unsigned long long BitWidthType;
+#define FORCE_ENUM 0xFFFFFFFFFFFFFFFF
+#define SECURE_NUMBER 0xAAAAAAAAAAAAAAAA
 #else
-    #error "Please specify the BitWidth for your microprocessor! (ARCH_NBIT) => N = 8,16,32,64"
+#error \
+    "Please specify the BitWidth for your microprocessor! (ARCH_NBIT) => N = 8,16,32,64"
 #endif
 
 /********************************************************************************
@@ -112,15 +113,16 @@
   * @brief  AddressType based on addressable memory with ADDR_NBIT
 ********************************************************************************/
 #ifdef ADDR_8BIT
-    typedef unsigned char         AddressType;
+typedef unsigned char AddressType;
 #elif ADDR_16BIT
-    typedef unsigned short        AddressType;
+typedef unsigned short AddressType;
 #elif ADDR_32BIT
-    typedef unsigned int          AddressType;
+typedef unsigned int AddressType;
 #elif ADDR_64BIT
-    typedef unsigned long long    AddressType;
+typedef unsigned long long AddressType;
 #else
-    #error "Please specify the AddressType for your microprocessor! (ADDR_NBIT) => N = 8,16,32,64"
+#error \
+    "Please specify the AddressType for your microprocessor! (ADDR_NBIT) => N = 8,16,32,64"
 #endif
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
