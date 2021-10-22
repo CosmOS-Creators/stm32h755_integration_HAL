@@ -132,14 +132,15 @@
   * @return none
 ********************************************************************************/
 /* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
+__SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
-__OS_FUNC_SECTION void CILGPIO_togglePin(void *GPIOx, BitWidthType GPIO_Pin)
+__OS_FUNC_SECTION void
+CILGPIO_togglePin( void * GPIOx, BitWidthType GPIO_Pin )
 {
     HAL_GPIO_TogglePin( GPIOx, (uint16_t)GPIO_Pin );
 }
 /* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

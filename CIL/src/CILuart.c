@@ -132,22 +132,15 @@
   * @return none
 ********************************************************************************/
 /* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
+__SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
-__OS_FUNC_SECTION void CILuart_sysJob()
+__OS_FUNC_SECTION void
+CILuart_sysJob()
 {
 
-    //RX SIDE
-    //check where is user and switch him if his buffer is empty
-    //check if DMA is in red zone, if yes check if user is on the same buffer, then switch to the other if DMA is not active
-
-    //TX SIDE
-    //check where is DMA and switch it if its buffer is empty
-    //check if user is in red zone, if yes check if DMA is on the same buffer, then switch to the other
-    //HAL_UART_Receive_DMA()
 }
 /* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

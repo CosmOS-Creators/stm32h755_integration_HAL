@@ -41,14 +41,15 @@
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
-#include "sysDefs.h"
 #include "memoryMapping.h"
+#include "sysDefs.h"
+
 
 /* CIL interfaces */
 #include "CILstdTypes.h"
@@ -194,9 +195,10 @@
   *
   * @return none
 ********************************************************************************/
-__STATIC_FORCEINLINE void CILinterrupt_enableInterrupts(void)
+__STATIC_FORCEINLINE void
+CILinterrupt_enableInterrupts( void )
 {
-		__enable_irq();
+    __enable_irq();
 }
 
 /********************************************************************************
@@ -210,9 +212,10 @@ __STATIC_FORCEINLINE void CILinterrupt_enableInterrupts(void)
   *
   * @return none
 ********************************************************************************/
-__STATIC_FORCEINLINE void CILinterrupt_enableInterrupt(BitWidthType ISR)
+__STATIC_FORCEINLINE void
+CILinterrupt_enableInterrupt( BitWidthType ISR )
 {
-		__NVIC_EnableIRQ(ISR);
+    __NVIC_EnableIRQ( ISR );
 }
 
 /********************************************************************************
@@ -226,9 +229,10 @@ __STATIC_FORCEINLINE void CILinterrupt_enableInterrupt(BitWidthType ISR)
   *
   * @return none
 ********************************************************************************/
-__STATIC_FORCEINLINE void CILinterrupt_disableInterrupts(void)
+__STATIC_FORCEINLINE void
+CILinterrupt_disableInterrupts( void )
 {
-		__disable_irq();
+    __disable_irq();
 }
 
 /********************************************************************************
@@ -242,9 +246,10 @@ __STATIC_FORCEINLINE void CILinterrupt_disableInterrupts(void)
   *
   * @return none
 ********************************************************************************/
-__STATIC_FORCEINLINE void CILinterrupt_disableInterrupt(BitWidthType ISR)
+__STATIC_FORCEINLINE void
+CILinterrupt_disableInterrupt( BitWidthType ISR )
 {
-		__NVIC_DisableIRQ(ISR);
+    __NVIC_DisableIRQ( ISR );
 }
 
 /********************************************************************************
@@ -258,9 +263,10 @@ __STATIC_FORCEINLINE void CILinterrupt_disableInterrupt(BitWidthType ISR)
   *
   * @return none
 ********************************************************************************/
-__STATIC_FORCEINLINE void CILinterrupt_contextSwitchRoutineTrigger(void)
+__STATIC_FORCEINLINE void
+CILinterrupt_contextSwitchRoutineTrigger( void )
 {
-		SCB->ICSR |= SCB_ICSR_PENDSVSET_Msk;
+    SCB->ICSR |= SCB_ICSR_PENDSVSET_Msk;
 }
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **

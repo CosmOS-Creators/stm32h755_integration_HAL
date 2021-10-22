@@ -38,8 +38,9 @@
   * @ingroup Local_CILspinlock
   * @{
 ********************************************************************************/
-#if  USE_MULTI_CORE_SHARED_CODE IS_EQUAL_TO 0U
-	#error "Please define USE_MULTI_CORE_SHARED_CODE to ensure correct compilation of HAL libraries"
+#if USE_MULTI_CORE_SHARED_CODE IS_EQUAL_TO 0U AND STM32H755xx
+#error \
+    "Please define USE_MULTI_CORE_SHARED_CODE to ensure correct compilation of HAL libraries"
 #endif
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
@@ -126,7 +127,9 @@
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILspinlock_getSpinlock(AddressType * spinlockPointer, BitWidthType spinlockId, BitWidthType schedulableId )
+  * @fn CILspinlock_getSpinlock(AddressType * spinlockPointer,
+  * BitWidthType spinlockId,
+  * BitWidthType schedulableId )
   *
   * @brief Get spinlock DEMO CODE.
   *
@@ -137,50 +140,53 @@
   * @return CosmOS_SpinlockStateType
 ********************************************************************************/
 /* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
+__SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
-__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_getSpinlock(AddressType * spinlockPointer, \
-																	BitWidthType spinlockId, \
-																	BitWidthType schedulableId )
+__OS_FUNC_SECTION CosmOS_SpinlockStateType
+CILspinlock_getSpinlock(
+    AddressType * spinlockPointer,
+    BitWidthType spinlockId,
+    BitWidthType schedulableId )
 {
     CosmOS_SpinlockStateType spinlockState;
 
-	HAL_StatusTypeDef hsem_take_status;
+    HAL_StatusTypeDef hsem_take_status;
 
+    hsem_take_status = HAL_HSEM_Take( spinlockId, schedulableId );
+    while ( hsem_take_status IS_NOT_EQUAL_TO HAL_OK )
+    {
+        hsem_take_status = HAL_HSEM_Take( spinlockId, schedulableId );
+    }
 
-	hsem_take_status = HAL_HSEM_Take(spinlockId, schedulableId);
-	while ( hsem_take_status IS_NOT_EQUAL_TO HAL_OK )
-	{
-		hsem_take_status = HAL_HSEM_Take(spinlockId, schedulableId);
-	}
+    *spinlockPointer = 1;
+    spinlockState = SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED;
 
-	*spinlockPointer = 1;
-	spinlockState = SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED;
-
-	/* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
-	//__asm volatile("MOV R1, #0x1");
+    /* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
+    //__asm volatile("MOV R1, #0x1");
     //__asm volatile("tryLock:");
-	//__asm volatile("LDREXH R3, [R0]");
-	//__asm volatile("CMP R3, #0");
-	//__asm volatile("ITT EQ");
-	//__asm volatile("STREXHEQ R3, R1, [R0]");
-	//__asm volatile("CMPEQ R3, #0");
-	//__asm volatile("ITE EQ");
-	//__asm volatile("MOVEQ R1, #0x2");
-	//__asm volatile("BNE tryLock");
+    //__asm volatile("LDREXH R3, [R0]");
+    //__asm volatile("CMP R3, #0");
+    //__asm volatile("ITT EQ");
+    //__asm volatile("STREXHEQ R3, R1, [R0]");
+    //__asm volatile("CMPEQ R3, #0");
+    //__asm volatile("ITE EQ");
+    //__asm volatile("MOVEQ R1, #0x2");
+    //__asm volatile("BNE tryLock");
     //__asm volatile("MOV %[value], R1":  [value] "=r" (spinlockState) );
-	//__SUPRESS_UNUSED_VAR(spinlockPointer);
+    //__SUPRESS_UNUSED_VAR(spinlockPointer);
 
     return spinlockState;
 }
 /* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILspinlock_trySpinlock(AddressType * spinlockPointer, BitWidthType spinlockId, BitWidthType schedulableId )
+  * @fn CILspinlock_trySpinlock(AddressType * spinlockPointer,
+  * BitWidthType spinlockId,
+  * BitWidthType schedulableId )
   *
   * @brief Try to get spinlock DEMO CODE.
   *
@@ -191,52 +197,55 @@ __SEC_STOP(__OS_FUNC_SECTION_STOP)
   * @return CosmOS_SpinlockStateType
 ********************************************************************************/
 /* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
+__SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
-__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_trySpinlock(AddressType * spinlockPointer, \
-																	BitWidthType spinlockId, \
-																	BitWidthType schedulableId )
+__OS_FUNC_SECTION CosmOS_SpinlockStateType
+CILspinlock_trySpinlock(
+    AddressType * spinlockPointer,
+    BitWidthType spinlockId,
+    BitWidthType schedulableId )
 {
     CosmOS_SpinlockStateType spinlockState;
 
-	HAL_StatusTypeDef hsem_take_status;
+    HAL_StatusTypeDef hsem_take_status;
 
+    hsem_take_status = HAL_HSEM_Take( spinlockId, schedulableId );
+    if ( hsem_take_status IS_EQUAL_TO HAL_OK )
+    {
+        *spinlockPointer = 1;
+        spinlockState = SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED;
+    }
+    else
+    {
+        __SUPRESS_UNUSED_VAR( spinlockPointer );
+        spinlockState = SPINLOCK_STATE_ENUM__OCCUPIED;
+    }
 
-	hsem_take_status = HAL_HSEM_Take(spinlockId, schedulableId);
-	if ( hsem_take_status IS_EQUAL_TO HAL_OK)
-	{
-		*spinlockPointer = 1;
-		spinlockState = SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED;
-	}
-	else
-	{
-		__SUPRESS_UNUSED_VAR(spinlockPointer);
-		spinlockState = SPINLOCK_STATE_ENUM__OCCUPIED;
-	}
-
-	/* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
-	//__asm volatile("MOV R1, #0x1");
-	//__asm volatile("LDREXH R3, [R0]");
-	//__asm volatile("CMP R3, #0");
-	//__asm volatile("ITT EQ");
-	//__asm volatile("STREXHEQ R3, R1, [R0]");
-	//__asm volatile("CMPEQ R3, #0");
-	//__asm volatile("ITE NE");
-	//__asm volatile("MOVNE R1, #0x1");
-	//__asm volatile("MOVEQ R1, #0x2");
-	//__asm volatile("MOV %[value], R1":  [value] "=r" (spinlockState) );
-	//__SUPRESS_UNUSED_VAR(spinlockPointer);
+    /* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
+    //__asm volatile("MOV R1, #0x1");
+    //__asm volatile("LDREXH R3, [R0]");
+    //__asm volatile("CMP R3, #0");
+    //__asm volatile("ITT EQ");
+    //__asm volatile("STREXHEQ R3, R1, [R0]");
+    //__asm volatile("CMPEQ R3, #0");
+    //__asm volatile("ITE NE");
+    //__asm volatile("MOVNE R1, #0x1");
+    //__asm volatile("MOVEQ R1, #0x2");
+    //__asm volatile("MOV %[value], R1":  [value] "=r" (spinlockState) );
+    //__SUPRESS_UNUSED_VAR(spinlockPointer);
 
     return spinlockState;
 }
 /* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILspinlock_releaseSpinlock(AddressType * spinlockPointer, BitWidthType spinlockId, BitWidthType schedulableId )
+  * @fn CILspinlock_releaseSpinlock(AddressType * spinlockPointer,
+  * BitWidthType spinlockId,
+  * BitWidthType schedulableId )
   *
   * @brief Release spinlock DEMO CODE.
   *
@@ -247,39 +256,40 @@ __SEC_STOP(__OS_FUNC_SECTION_STOP)
   * @return CosmOS_SpinlockStateType
 ********************************************************************************/
 /* @cond S */
-__SEC_START(__OS_FUNC_SECTION_START)
+__SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
-__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_releaseSpinlock(AddressType * spinlockPointer, \
-																		BitWidthType spinlockId, \
-																		BitWidthType schedulableId )
+__OS_FUNC_SECTION CosmOS_SpinlockStateType
+CILspinlock_releaseSpinlock(
+    AddressType * spinlockPointer,
+    BitWidthType spinlockId,
+    BitWidthType schedulableId )
 {
     CosmOS_SpinlockStateType spinlockState;
 
+    HAL_HSEM_Release( spinlockId, schedulableId );
 
-	HAL_HSEM_Release(spinlockId, schedulableId);
+    *spinlockPointer = 0;
+    spinlockState = SPINLOCK_STATE_ENUM__RELEASED;
 
-	*spinlockPointer = 0;
-	spinlockState = SPINLOCK_STATE_ENUM__RELEASED;
-
-	/* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
-	//__asm volatile("MOV R1, #0x0");
+    /* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
+    //__asm volatile("MOV R1, #0x0");
     //__asm volatile("tryUnlock:");
-	//__asm volatile("LDREXH R3, [R0]");
-	//__asm volatile("CMP R3, #1");
-	//__asm volatile("ITTE EQ");
-	//__asm volatile("STREXHEQ R3, R1, [R0]");
-	//__asm volatile("CMPEQ R3, #0");
-	//__asm volatile("BNE released");
-	//__asm volatile("IT NE");
-	//__asm volatile("BNE tryUnlock");
-	//__asm volatile("released:");
+    //__asm volatile("LDREXH R3, [R0]");
+    //__asm volatile("CMP R3, #1");
+    //__asm volatile("ITTE EQ");
+    //__asm volatile("STREXHEQ R3, R1, [R0]");
+    //__asm volatile("CMPEQ R3, #0");
+    //__asm volatile("BNE released");
+    //__asm volatile("IT NE");
+    //__asm volatile("BNE tryUnlock");
+    //__asm volatile("released:");
     //__asm volatile("MOV %[value], R1":  [value] "=r" (spinlockState) );
-	//__SUPRESS_UNUSED_VAR(spinlockPointer);
+    //__SUPRESS_UNUSED_VAR(spinlockPointer);
 
     return spinlockState;
 }
 /* @cond S */
-__SEC_STOP(__OS_FUNC_SECTION_STOP)
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

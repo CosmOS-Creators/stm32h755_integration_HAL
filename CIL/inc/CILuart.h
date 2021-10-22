@@ -41,14 +41,15 @@
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
-#include "sysDefs.h"
 #include "memoryMapping.h"
+#include "sysDefs.h"
+
 
 /* CIL interfaces */
 #include "CILstdTypes.h"
@@ -120,7 +121,8 @@
   *
   * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION void CILuart_sysJob();
+__OS_FUNC_SECTION void
+CILuart_sysJob();
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**

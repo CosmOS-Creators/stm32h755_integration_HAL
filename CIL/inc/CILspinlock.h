@@ -47,14 +47,14 @@
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
-#include "sysDefs.h"
 #include "memoryMapping.h"
+#include "sysDefs.h"
 
 /* CIL interfaces */
 #include "CILstdTypes.h"
@@ -118,19 +118,23 @@
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILspinlock_getSpinlock(AddressType * spinlockPointer, BitWidthType spinlockId, BitWidthType schedulableId )
+  * @fn CILspinlock_getSpinlock(AddressType * spinlockPointer,
+  * BitWidthType spinlockId,
+  * BitWidthType schedulableId )
   *
   * @brief Get spinlock DEMO CODE.
   *
   * @param[in]  AddressType * spinlockPointer
   * @param[in]  BitWidthType spinlockId
   * @param[in]  BitWidthType schedulableId
-	*
+  *
   * @return CosmOS_SpinlockStateType
 ********************************************************************************/
-__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_getSpinlock(AddressType * spinlockPointer, \
-																	BitWidthType spinlockId, \
-																	BitWidthType schedulableId );
+__OS_FUNC_SECTION CosmOS_SpinlockStateType
+CILspinlock_getSpinlock(
+    AddressType * spinlockPointer,
+    BitWidthType spinlockId,
+    BitWidthType schedulableId );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
@@ -160,36 +164,44 @@ __OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_getSpinlock(AddressType *
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILspinlock_trySpinlock(AddressType * spinlockPointer, BitWidthType spinlockId, BitWidthType schedulableId )
+  * @fn CILspinlock_trySpinlock(AddressType * spinlockPointer,
+  * BitWidthType spinlockId,
+  * BitWidthType schedulableId )
   *
   * @brief Try to get spinlock DEMO CODE.
   *
   * @param[in]  AddressType * spinlockPointer
   * @param[in]  BitWidthType spinlockId
   * @param[in]  BitWidthType schedulableId
-	*
+  *
   * @return CosmOS_SpinlockStateType
 ********************************************************************************/
-__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_trySpinlock(AddressType * spinlockPointer,\
-																	BitWidthType spinlockId, \
-																	BitWidthType schedulableId );
+__OS_FUNC_SECTION CosmOS_SpinlockStateType
+CILspinlock_trySpinlock(
+    AddressType * spinlockPointer,
+    BitWidthType spinlockId,
+    BitWidthType schedulableId );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILspinlock_releaseSpinlock(AddressType * spinlockPointer, BitWidthType spinlockId, BitWidthType schedulableId )
+  * @fn CILspinlock_releaseSpinlock(AddressType * spinlockPointer,
+  * BitWidthType spinlockId,
+  * BitWidthType schedulableId )
   *
   * @brief Release spinlock DEMO CODE.
   *
   * @param[in]  AddressType * spinlockPointer
   * @param[in]  BitWidthType spinlockId
   * @param[in]  BitWidthType schedulableId
-	*
+  *
   * @return CosmOS_SpinlockStateType
 ********************************************************************************/
-__OS_FUNC_SECTION CosmOS_SpinlockStateType CILspinlock_releaseSpinlock(AddressType * spinlockPointer, \
-																		BitWidthType spinlockId, \
-																		BitWidthType schedulableId );
+__OS_FUNC_SECTION CosmOS_SpinlockStateType
+CILspinlock_releaseSpinlock(
+    AddressType * spinlockPointer,
+    BitWidthType spinlockId,
+    BitWidthType schedulableId );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**

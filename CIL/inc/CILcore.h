@@ -41,14 +41,15 @@
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
-#include "sysDefs.h"
 #include "memoryMapping.h"
+#include "sysDefs.h"
+
 
 /* CIL interfaces */
 #include "CILstdTypes.h"
@@ -120,7 +121,8 @@
   *
   * @return BitWidthType
 ********************************************************************************/
-__OS_FUNC_SECTION BitWidthType CILcore_getCoreId(void);
+__OS_FUNC_SECTION BitWidthType
+CILcore_getCoreId( void );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
@@ -145,7 +147,8 @@ __OS_FUNC_SECTION BitWidthType CILcore_getCoreId(void);
   *
   * @return void
 ********************************************************************************/
-__OS_FUNC_SECTION void CILcore_setCoreVar(CosmOS_OsVariableType * osVar);
+__OS_FUNC_SECTION void
+CILcore_setCoreVar( CosmOS_OsVariableType * osVar );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
@@ -189,10 +192,12 @@ __OS_FUNC_SECTION void CILcore_setCoreVar(CosmOS_OsVariableType * osVar);
   *
   * @return CosmOS_CoreVariableType *
 ********************************************************************************/
-__STATIC_FORCEINLINE CosmOS_CoreVariableType * CILcore_getCoreVar(void)
+__STATIC_FORCEINLINE CosmOS_CoreVariableType *
+CILcore_getCoreVar( void )
 {
     uint32_t result;
-    __asm volatile ("MOV %[resultVariable], R9":  [resultVariable] "=r" (result) );
+    __asm volatile( "MOV %[resultVariable], R9"
+                    : [resultVariable] "=r"( result ) );
     return (CosmOS_CoreVariableType *)result;
 }
 /********************************************************************************

@@ -41,14 +41,15 @@
 **                         START OF C++ SUPPORT SECTION                        **
 ********************************************************************************/
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 /********************************************************************************
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
-#include "sysDefs.h"
 #include "memoryMapping.h"
+#include "sysDefs.h"
+
 
 /* CIL interfaces */
 #include "CILstdTypes.h"
@@ -146,7 +147,8 @@
   *
   * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION void CILsysCalls_dispatcher(BitWidthType *sp);
+__OS_FUNC_SECTION void
+CILsysCalls_dispatcher( BitWidthType * sp );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
@@ -159,7 +161,8 @@ __OS_FUNC_SECTION void CILsysCalls_dispatcher(BitWidthType *sp);
   *
   * @return none
 ********************************************************************************/
-__OS_FUNC_SECTION void CILsysCalls_bitWidthType_ret_void(BitWidthType id);
+__OS_FUNC_SECTION void
+CILsysCalls_bitWidthType_ret_void( BitWidthType id );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
@@ -172,12 +175,14 @@ __OS_FUNC_SECTION void CILsysCalls_bitWidthType_ret_void(BitWidthType id);
   *
   * @return BitWidthType
 ********************************************************************************/
-__OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_ret_bitWidthType(BitWidthType id);
+__OS_FUNC_SECTION BitWidthType
+CILsysCalls_bitWidthType_ret_bitWidthType( BitWidthType id );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILsysCalls_bitWidthType_bitWidthType_ret_bitWidthType(BitWidthType id, BitWidthType arg)
+  * @fn CILsysCalls_bitWidthType_bitWidthType_ret_bitWidthType(BitWidthType id,
+  * BitWidthType arg)
   *
   * @brief System call for bitWidthType args and ret bitWidthType.
   *
@@ -186,12 +191,18 @@ __OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_ret_bitWidthType(BitWidt
   *
   * @return BitWidthType
 ********************************************************************************/
-__OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_bitWidthType_ret_bitWidthType(BitWidthType id, BitWidthType arg);
+__OS_FUNC_SECTION BitWidthType
+CILsysCalls_bitWidthType_bitWidthType_ret_bitWidthType(
+    BitWidthType id,
+    BitWidthType arg );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType(BitWidthType id, void * ptr, BitWidthType arg)
+  * @fn CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType(
+  * BitWidthType id,
+  * void * ptr,
+  * BitWidthType arg)
   *
   * @brief System call for voidPtr,bitWidthType args and ret bitWidthType.
   *
@@ -201,12 +212,17 @@ __OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_bitWidthType_ret_bitWidt
   *
   * @return BitWidthType
 ********************************************************************************/
-__OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType(BitWidthType id, void * ptr, BitWidthType arg);
+__OS_FUNC_SECTION BitWidthType
+CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType(
+    BitWidthType id,
+    void * ptr,
+    BitWidthType arg );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * *************************************************************************//**
-  * @fn CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType(BitWidthType id, void * ptr)
+  * @fn CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType(BitWidthType id,
+  * void * ptr)
   *
   * @brief System call for voidPtr and ret bitWidthType.
   *
@@ -215,7 +231,8 @@ __OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret
   *
   * @return BitWidthType
 ********************************************************************************/
-__OS_FUNC_SECTION BitWidthType CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType(BitWidthType id, void *ptr);
+__OS_FUNC_SECTION BitWidthType
+CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType( BitWidthType id, void * ptr );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
