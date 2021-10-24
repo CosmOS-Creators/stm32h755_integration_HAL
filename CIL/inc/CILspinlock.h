@@ -74,8 +74,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Macros_CILspinlock_h
+  * @} */
+/*  Macros_CILspinlock_h
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -93,8 +93,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Variables_CILspinlock_h
+  * @} */
+/*  Variables_CILspinlock_h
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -117,16 +117,19 @@ extern "C" {
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILspinlock_getSpinlock(AddressType * spinlockPointer,
   * BitWidthType spinlockId,
   * BitWidthType schedulableId )
   *
-  * @brief Get spinlock DEMO CODE.
+  * @brief Get spinlock. This function cannot
+  * be called from the unprivileged context directly. DEMO
   *
-  * @param[in]  AddressType * spinlockPointer
-  * @param[in]  BitWidthType spinlockId
-  * @param[in]  BitWidthType schedulableId
+  * @param[in]  spinlockPointer pointer to the spinlock variable that stores
+  * spinlock value
+  * @param[in]  spinlockId
+  * @param[in]  schedulableId
   *
   * @return CosmOS_SpinlockStateType
 ********************************************************************************/
@@ -138,8 +141,8 @@ CILspinlock_getSpinlock(
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Getters_CILspinlock_h
+  * @} */
+/*  Getters_CILspinlock_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -151,8 +154,8 @@ CILspinlock_getSpinlock(
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Setters_CILspinlock_h
+  * @} */
+/*  Setters_CILspinlock_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -163,16 +166,19 @@ CILspinlock_getSpinlock(
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILspinlock_trySpinlock(AddressType * spinlockPointer,
   * BitWidthType spinlockId,
   * BitWidthType schedulableId )
   *
-  * @brief Try to get spinlock DEMO CODE.
+  * @brief Try to get spinlock. This function cannot
+  * be called from the unprivileged context directly. DEMO
   *
-  * @param[in]  AddressType * spinlockPointer
-  * @param[in]  BitWidthType spinlockId
-  * @param[in]  BitWidthType schedulableId
+  * @param[in]  spinlockPointer pointer to the spinlock variable that stores
+  * spinlock value
+  * @param[in]  spinlockId
+  * @param[in]  schedulableId
   *
   * @return CosmOS_SpinlockStateType
 ********************************************************************************/
@@ -184,16 +190,19 @@ CILspinlock_trySpinlock(
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILspinlock_releaseSpinlock(AddressType * spinlockPointer,
   * BitWidthType spinlockId,
   * BitWidthType schedulableId )
   *
-  * @brief Release spinlock DEMO CODE.
+  * @brief Release spinlock. This function cannot
+  * be called from the unprivileged context directly. DEMO
   *
-  * @param[in]  AddressType * spinlockPointer
-  * @param[in]  BitWidthType spinlockId
-  * @param[in]  BitWidthType schedulableId
+  * @param[in]  spinlockPointer pointer to the spinlock variable that stores
+  * spinlock value
+  * @param[in]  spinlockId
+  * @param[in]  schedulableId
   *
   * @return CosmOS_SpinlockStateType
 ********************************************************************************/
@@ -205,8 +214,8 @@ CILspinlock_releaseSpinlock(
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * General_CILspinlock_h
+  * @} */
+/*  General_CILspinlock_h
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -224,8 +233,8 @@ CILspinlock_releaseSpinlock(
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Getters_CILspinlock_h
+  * @} */
+/*  Getters_CILspinlock_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -237,8 +246,8 @@ CILspinlock_releaseSpinlock(
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Setters_CILspinlock_h
+  * @} */
+/*  Setters_CILspinlock_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -250,8 +259,8 @@ CILspinlock_releaseSpinlock(
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * General_CILspinlock_h
+  * @} */
+/*  General_CILspinlock_h
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

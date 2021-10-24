@@ -68,8 +68,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Macros_CILsysTimer_h
+  * @} */
+/*  Macros_CILsysTimer_h
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -87,8 +87,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Variables_CILsysTimer_h
+  * @} */
+/*  Variables_CILsysTimer_h
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -112,8 +112,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Getters_CILsysTimer_h
+  * @} */
+/*  Getters_CILsysTimer_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -124,13 +124,16 @@ extern "C" {
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILsysTimer_startTimer(BitWidthType ticks, BitWidthType timerTickCount)
   *
-  * @brief Start system timer DEMO CODE.
+  * @brief Start system timer. This function cannot
+  * be called from the unprivileged context directly. DEMO
   *
-  * @param[in]  BitWidthType ticks
-  * @param[in]  BitWidthType timerTickCount
+  * @param[in]  ticks number of ticks to be set
+  * @param[in]  timerTickCount how many system timer ticks represent the
+  * one scheduler tick
   *
   * @return none
 ********************************************************************************/
@@ -138,13 +141,16 @@ __OS_FUNC_SECTION void
 CILsysTimer_startTimer( BitWidthType ticks, BitWidthType timerTickCount );
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILsysTimer_setTicks(BitWidthType ticks, BitWidthType timerTickCount)
   *
-  * @brief Set ticks on system timer DEMO CODE.
+  * @brief Set ticks on system timer. This function cannot
+  * be called from the unprivileged context directly. DEMO
   *
-  * @param[in]  BitWidthType ticks
-  * @param[in]  BitWidthType timerTickCount
+  * @param[in]  ticks number of ticks to be set
+  * @param[in]  timerTickCount how many system timer ticks represent the
+  * one scheduler tick
   *
   * @return none
 ********************************************************************************/
@@ -153,8 +159,8 @@ CILsysTimer_setTicks( BitWidthType ticks, BitWidthType timerTickCount );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Setters_CILsysTimer_h
+  * @} */
+/*  Setters_CILsysTimer_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -166,8 +172,8 @@ CILsysTimer_setTicks( BitWidthType ticks, BitWidthType timerTickCount );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * General_CILsysTimer_h
+  * @} */
+/*  General_CILsysTimer_h
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -185,8 +191,8 @@ CILsysTimer_setTicks( BitWidthType ticks, BitWidthType timerTickCount );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Getters_CILsysTimer_h
+  * @} */
+/*  Getters_CILsysTimer_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -198,8 +204,8 @@ CILsysTimer_setTicks( BitWidthType ticks, BitWidthType timerTickCount );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Setters_CILsysTimer_h
+  * @} */
+/*  Setters_CILsysTimer_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -211,8 +217,8 @@ CILsysTimer_setTicks( BitWidthType ticks, BitWidthType timerTickCount );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * General_CILsysTimer_h
+  * @} */
+/*  General_CILsysTimer_h
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **
