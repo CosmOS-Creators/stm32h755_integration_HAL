@@ -7,7 +7,7 @@
 *****************************************************************************//**
 ** @file CILmutex.c
 *********************************************************************************
-<!--                  CILmutex Unit Local Group Definition                 -->
+<!--                   CILmutex Unit Local Group Definition                   -->
 *********************************************************************************
 ** @defgroup Local_CILmutex Local
 ** @ingroup CILmutex_unit
@@ -22,9 +22,6 @@
 ********************************************************************************/
 /* CIL interfaces */
 #include "CILmutex.h"
-
-/* HAL interfaces */
-#include "stm32h7xx_hal.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -133,7 +130,7 @@ CILmutex_tryMutex( AddressType * mutexPointer )
 {
     CosmOS_MutexStateType mutexState;
 
-    __disable_irq();
+    __asm volatile( "cpsid i" : : : "memory" );
     __asm volatile( "MOV R1, #0x1" );
     __asm volatile( "LDR R3, [R0]" );
     __asm volatile( "CMP R3, #0" );
@@ -142,7 +139,7 @@ CILmutex_tryMutex( AddressType * mutexPointer )
     __asm volatile( "MOVEQ R1, #0x2" );
     __asm volatile( "MOVNE R1, #0x1" );
     __asm volatile( "MOV %[value], R1" : [value] "=r"( mutexState ) );
-    __enable_irq();
+    __asm volatile( "cpsie i" : : : "memory" );
 
     /* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
     //__asm volatile("MOV R1, #0x1");
@@ -183,11 +180,11 @@ CILmutex_releaseMutex( AddressType * mutexPointer )
 {
     CosmOS_MutexStateType mutexState;
 
-    __disable_irq();
+    __asm volatile( "cpsid i" : : : "memory" );
     __asm volatile( "MOV R1, #0x0" );
     __asm volatile( "STR R1, [R0]" );
     __asm volatile( "MOV %[value], R1" : [value] "=r"( mutexState ) );
-    __enable_irq();
+    __asm volatile( "cpsie i" : : : "memory" );
 
     /* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
     //__asm volatile("MOV R1, #0x0");
