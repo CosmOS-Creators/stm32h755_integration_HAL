@@ -10,7 +10,7 @@
 <!--                     CILinterrupt Unit Group Definition                   -->
 *********************************************************************************
 ** @defgroup CILinterrupt_unit CILinterrupt Unit
-** @ingroup CILmodule
+** @ingroup CIL_module
 ** @brief CILinterrupt Unit
 ** @details lorem
 *********************************************************************************

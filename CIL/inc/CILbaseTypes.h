@@ -10,7 +10,7 @@
 <!--                    CILbaseTypes Unit Group Definition                    -->
 *********************************************************************************
 ** @defgroup CILbaseTypes_unit CILbaseTypes Unit
-** @ingroup CILmodule
+** @ingroup CIL_module
 ** @brief CILbaseTypes Unit
 ** @details lorem
 *********************************************************************************

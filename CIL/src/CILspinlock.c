@@ -151,12 +151,12 @@ CILspinlock_getSpinlock(
 {
     CosmOS_SpinlockStateType spinlockState;
 
-    HAL_StatusTypeDef hsem_take_status;
+    HAL_StatusTypeDef hsemTakeStatus;
 
-    hsem_take_status = HAL_HSEM_Take( spinlockId, schedulableId );
-    while ( hsem_take_status IS_NOT_EQUAL_TO HAL_OK )
+    hsemTakeStatus = HAL_HSEM_Take( spinlockId, schedulableId );
+    while ( hsemTakeStatus IS_NOT_EQUAL_TO HAL_OK )
     {
-        hsem_take_status = HAL_HSEM_Take( spinlockId, schedulableId );
+        hsemTakeStatus = HAL_HSEM_Take( spinlockId, schedulableId );
     }
 
     *spinlockPointer = 1;
@@ -209,10 +209,10 @@ CILspinlock_trySpinlock(
 {
     CosmOS_SpinlockStateType spinlockState;
 
-    HAL_StatusTypeDef hsem_take_status;
+    HAL_StatusTypeDef hsemTakeStatus;
 
-    hsem_take_status = HAL_HSEM_Take( spinlockId, schedulableId );
-    if ( hsem_take_status IS_EQUAL_TO HAL_OK )
+    hsemTakeStatus = HAL_HSEM_Take( spinlockId, schedulableId );
+    if ( hsemTakeStatus IS_EQUAL_TO HAL_OK )
     {
         *spinlockPointer = 1;
         spinlockState = SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED;

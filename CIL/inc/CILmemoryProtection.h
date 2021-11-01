@@ -10,7 +10,7 @@
 <!--                 CILmemoryProtection Unit Group Definition                -->
 *********************************************************************************
 ** @defgroup CILmemoryProtection_unit CILmemoryProtection Unit
-** @ingroup CILmodule
+** @ingroup CIL_module
 ** @brief CILmemoryProtection Unit
 ** @details lorem
 *********************************************************************************

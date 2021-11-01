@@ -10,7 +10,7 @@
 <!--                     CILsysTimer Unit Group Definition                    -->
 *********************************************************************************
 ** @defgroup CILsysTimer_unit CILsysTimer Unit
-** @ingroup CILmodule
+** @ingroup CIL_module
 ** @brief CILsysTimer Unit
 ** @details lorem
 *********************************************************************************

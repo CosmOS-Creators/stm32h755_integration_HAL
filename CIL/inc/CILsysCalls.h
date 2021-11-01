@@ -10,7 +10,7 @@
 <!--                     CILsysCalls Unit Group Definition                    -->
 *********************************************************************************
 ** @defgroup CILsysCalls_unit CILsysCalls Unit
-** @ingroup CILmodule
+** @ingroup CIL_module
 ** @brief CILsysCalls Unit
 ** @details lorem
 *********************************************************************************

@@ -10,7 +10,7 @@
 <!--                       CILcore Unit Group Definition                      -->
 *********************************************************************************
 ** @defgroup CILcore_unit CILcore Unit
-** @ingroup CILmodule
+** @ingroup CIL_module
 ** @brief CILcore Unit
 ** @details lorem
 *********************************************************************************

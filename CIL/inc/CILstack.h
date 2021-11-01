@@ -10,7 +10,7 @@
 <!--                       CILstack Unit Group Definition                     -->
 *********************************************************************************
 ** @defgroup CILstack_unit CILstack Unit
-** @ingroup CILmodule
+** @ingroup CIL_module
 ** @brief CILstack Unit
 ** @details lorem
 *********************************************************************************

@@ -10,7 +10,7 @@
 <!--                      CILmacros Unit Group Definition                     -->
 *********************************************************************************
 ** @defgroup CILmacros_unit CILmacros Unit
-** @ingroup CILmodule
+** @ingroup CIL_module
 ** @brief CILmacros Unit
 ** @details lorem
 *********************************************************************************

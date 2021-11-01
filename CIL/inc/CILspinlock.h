@@ -7,16 +7,10 @@
 *****************************************************************************//**
 ** @file CILspinlock.h
 *********************************************************************************
-<!--                   CILspinlock Module Group Definition                    -->
-*********************************************************************************
-** @defgroup CILspinlock_module CILspinlock
-** @brief CILspinlock Module
-** @details lorem
-*********************************************************************************
-<!--                    CILspinlock Unit Group Definition                     -->
+<!--                     CILspinlock Unit Group Definition                    -->
 *********************************************************************************
 ** @defgroup CILspinlock_unit CILspinlock Unit
-** @ingroup CILspinlock_module
+** @ingroup CIL_module
 ** @brief CILspinlock Unit
 ** @details lorem
 *********************************************************************************

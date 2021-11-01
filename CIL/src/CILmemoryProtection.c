@@ -57,13 +57,6 @@
   * @ingroup Local_CILmemoryProtection
   * @{
 ********************************************************************************/
-extern unsigned char _s_os_section_consts[];
-extern unsigned char _e_os_section_consts[];
-extern unsigned char _s_os_section_vars[];
-extern unsigned char _e_os_section_vars[];
-extern unsigned char _s_unprotected_section[];
-extern unsigned char _e_unprotected_section[];
-
 /* @cond S */
 __SEC_START( __OS_CONSTS_SECTION_START )
 /* @endcond*/

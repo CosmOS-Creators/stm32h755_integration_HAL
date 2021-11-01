@@ -7,16 +7,10 @@
 *****************************************************************************//**
 ** @file CILmutex.h
 *********************************************************************************
-<!--                     CILmutex Module Group Definition                     -->
-*********************************************************************************
-** @defgroup CILmutex_module CILmutex
-** @brief CILmutex Module
-** @details lorem
-*********************************************************************************
 <!--                      CILmutex Unit Group Definition                      -->
 *********************************************************************************
 ** @defgroup CILmutex_unit CILmutex Unit
-** @ingroup CILmutex_module
+** @ingroup CIL_module
 ** @brief CILmutex Unit
 ** @details lorem
 *********************************************************************************
@@ -31,7 +25,7 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--                 CILmutex Unit Global Group Definition                 -->
+<!--                 CILmutex Unit Global Group Definition                    -->
 *********************************************************************************
 ** @defgroup Global_CILmutex Global
 ** @ingroup CILmutex_unit

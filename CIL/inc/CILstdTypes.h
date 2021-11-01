@@ -10,7 +10,7 @@
 <!--                     CILstdTypes Unit Group Definition                    -->
 *********************************************************************************
 ** @defgroup CILstdTypes_unit CILstdTypes Unit
-** @ingroup CILmodule
+** @ingroup CIL_module
 ** @brief CILstdTypes Unit
 ** @details lorem
 *********************************************************************************
