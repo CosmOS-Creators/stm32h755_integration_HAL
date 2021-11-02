@@ -130,6 +130,7 @@ CILmutex_tryMutex( AddressType * mutexPointer )
 {
     CosmOS_MutexStateType mutexState;
 
+    /* sad compare and swap implementation */
     __asm volatile( "cpsid i" : : : "memory" );
     __asm volatile( "MOV R1, #0x1" );
     __asm volatile( "LDR R3, [R0]" );

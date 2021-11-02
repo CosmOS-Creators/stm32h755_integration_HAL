@@ -159,6 +159,7 @@ CILsysCalls_dispatcher( AddressType * sp )
     sysCall = route_getRoutesFunc( routeVar, sp[0] );
     entityId = route_getRoutesEntityId( routeVar, sp[0] );
 
+    returnValue = 0;
     switch ( sysCallId )
     {
         case 0:
