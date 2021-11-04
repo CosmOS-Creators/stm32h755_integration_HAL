@@ -7,16 +7,10 @@
 *****************************************************************************//**
 ** @file CILmutex.h
 *********************************************************************************
-<!--                     CILmutex Module Group Definition                     -->
-*********************************************************************************
-** @defgroup CILmutex_module CILmutex
-** @brief CILmutex Module
-** @details lorem
-*********************************************************************************
 <!--                      CILmutex Unit Group Definition                      -->
 *********************************************************************************
 ** @defgroup CILmutex_unit CILmutex Unit
-** @ingroup CILmutex_module
+** @ingroup CIL_module
 ** @brief CILmutex Unit
 ** @details lorem
 *********************************************************************************
@@ -31,7 +25,7 @@
 ** @warning Modifying code can lead to unexpected behaviour of the whole system
 ** @copyright MIT License
 *********************************************************************************
-<!--                 CILmutex Unit Global Group Definition                 -->
+<!--                 CILmutex Unit Global Group Definition                    -->
 *********************************************************************************
 ** @defgroup Global_CILmutex Global
 ** @ingroup CILmutex_unit
@@ -74,8 +68,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Macros_CILmutex_h
+  * @} */
+/*  Macros_CILmutex_h
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -93,8 +87,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Variables_CILmutex_h
+  * @} */
+/*  Variables_CILmutex_h
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -118,8 +112,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Getters_CILmutex_h
+  * @} */
+/*  Getters_CILmutex_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -131,8 +125,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Setters_CILmutex_h
+  * @} */
+/*  Setters_CILmutex_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -143,13 +137,15 @@ extern "C" {
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CILmutex_tryMutex(AddressType * mutexPointer, BitWidthType mutexId,
-  * BitWidthType schedulableId )
+  * ****************************************************************************/
+/**
+  * @fn CILmutex_tryMutex(AddressType * mutexPointer)
   *
-  * @brief Try to get mutex DEMO CODE.
+  * @brief Try to get mutex. This function cannot
+  * be called from the unprivileged context directly. DEMO
   *
-  * @param[in]  AddressType * mutexPointer
+  * @param[in]  mutexPointer pointer to the mutex variable that stores mutex
+  * value
   *
   * @return CosmOS_MutexStateType
 ********************************************************************************/
@@ -158,14 +154,15 @@ CILmutex_tryMutex( AddressType * mutexPointer );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CILmutex_releaseMutex(AddressType * mutexPointer,
-  * BitWidthType mutexId,
-  * BitWidthType schedulableId )
+  * ****************************************************************************/
+/**
+  * @fn CILmutex_releaseMutex(AddressType * mutexPointer)
   *
-  * @brief Release mutex DEMO CODE.
+  * @brief Release mutex. This function cannot
+  * be called from the unprivileged context directly. DEMO
   *
-  * @param[in]  AddressType * mutexPointer
+  * @param[in]  mutexPointer pointer to the mutex variable that stores mutex
+  * value
   *
   * @return CosmOS_MutexStateType
 ********************************************************************************/
@@ -174,8 +171,8 @@ CILmutex_releaseMutex( AddressType * mutexPointer );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * General_CILmutex_h
+  * @} */
+/*  General_CILmutex_h
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -193,8 +190,8 @@ CILmutex_releaseMutex( AddressType * mutexPointer );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Getters_CILmutex_h
+  * @} */
+/*  Getters_CILmutex_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -206,8 +203,8 @@ CILmutex_releaseMutex( AddressType * mutexPointer );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Setters_CILmutex_h
+  * @} */
+/*  Setters_CILmutex_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -219,8 +216,8 @@ CILmutex_releaseMutex( AddressType * mutexPointer );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * General_CILmutex_h
+  * @} */
+/*  General_CILmutex_h
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

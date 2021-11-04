@@ -45,8 +45,8 @@
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Macros_CILcore_c
+  * @} */
+/* Macros_CILcore_c
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -64,8 +64,8 @@
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Variables_CILcore_c
+  * @} */
+/* Variables_CILcore_c
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -89,8 +89,8 @@
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Getters_CILcore_c
+  * @} */
+/* Getters_CILcore_c
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -102,8 +102,8 @@
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Setters_CILcore_c
+  * @} */
+/* Setters_CILcore_c
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -115,8 +115,8 @@
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * General_CILcore_c
+  * @} */
+/* General_CILcore_c
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -126,14 +126,13 @@
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILcore_getCoreId(void)
   *
-  * @brief Get core identificator.
-  *
-  * @param[in]  none
-  *
-  * @return BitWidthType
+  * @details The implementation contains obtaining of CPU ID by calling the
+  * HAL_GetCurrentCPUID function. If the CM7_CPUID is returned the CM7 macro
+  * is returned from the function, otherwise the CM4 macro is returned.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -141,7 +140,7 @@ __SEC_START( __OS_FUNC_SECTION_START )
 __OS_FUNC_SECTION BitWidthType
 CILcore_getCoreId( void )
 {
-    return ( HAL_GetCurrentCPUID() == CM7_CPUID ) ? CORE_0_ID : CORE_1_ID;
+    return ( HAL_GetCurrentCPUID() == CM7_CPUID ) ? CM7 : CM4;
 }
 /* @cond S */
 __SEC_STOP( __OS_FUNC_SECTION_STOP )
@@ -149,14 +148,15 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILcore_setCoreVar(CosmOS_OsVariableType * osVar)
   *
-  * @brief Set core variable to the R9 platform register.
-  *
-  * @param[in]  CosmOS_OsVariableType * osVar
-  *
-  * @return void
+  * @details The implementation contains obtaining of the core id by calling
+  * function CILcore_getCoreId. To ensure correctness of the core id the number
+  * of cores is obtained by calling function numberOfCores. If the core id is
+  * less than number of cores the core variable is obtained by calling function
+  * os_getCoreVar and its address is set to the platform register R9.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -175,7 +175,6 @@ CILcore_setCoreVar( CosmOS_OsVariableType * osVar )
 
     coreVar = os_getCoreVar( osVar, coreId );
 
-    //must be changed, not valid for all compilers
     __asm volatile( "MOV R9,%[coreVariable]" : [coreVariable] "=r"( coreVar ) );
 }
 /* @cond S */

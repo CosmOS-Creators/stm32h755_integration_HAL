@@ -10,7 +10,7 @@
 <!--                    CILbaseTypes Unit Group Definition                    -->
 *********************************************************************************
 ** @defgroup CILbaseTypes_unit CILbaseTypes Unit
-** @ingroup CILmodule
+** @ingroup CIL_module
 ** @brief CILbaseTypes Unit
 ** @details lorem
 *********************************************************************************
@@ -64,8 +64,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Macros_CILbaseTypes_h
+  * @} */
+/*  Macros_CILbaseTypes_h
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -82,9 +82,10 @@ extern "C" {
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @brief  BitWidthType based on processor register bit width type, please define
-  * your processor registers bit width type with ARCH_NBIT
+  * ****************************************************************************/
+/**
+  * @brief  BitWidthType based on processor register bit width defined with
+  * ARCH_NBIT
 ********************************************************************************/
 #ifdef ARCH_8BIT
 typedef unsigned char BitWidthType;
@@ -109,8 +110,9 @@ typedef unsigned long long BitWidthType;
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @brief  AddressType based on addressable memory with ADDR_NBIT
+  * ****************************************************************************/
+/**
+  * @brief  AddressType based on addressable memory defined with ADDR_NBIT
 ********************************************************************************/
 #ifdef ADDR_8BIT
 typedef unsigned char AddressType;
@@ -127,8 +129,8 @@ typedef unsigned long long AddressType;
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Typedefs_CILbaseTypes_h
+  * @} */
+/*  Typedefs_CILbaseTypes_h
 ********************************************************************************/
 /********************************************************************************
 **                              Typedefs | Stop                                **

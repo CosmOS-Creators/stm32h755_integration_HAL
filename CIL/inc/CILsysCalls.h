@@ -10,7 +10,7 @@
 <!--                     CILsysCalls Unit Group Definition                    -->
 *********************************************************************************
 ** @defgroup CILsysCalls_unit CILsysCalls Unit
-** @ingroup CILmodule
+** @ingroup CIL_module
 ** @brief CILsysCalls Unit
 ** @details lorem
 *********************************************************************************
@@ -69,8 +69,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Macros_CILsysCalls_h
+  * @} */
+/*  Macros_CILsysCalls_h
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -88,8 +88,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Variables_CILsysCalls_h
+  * @} */
+/*  Variables_CILsysCalls_h
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -113,8 +113,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Getters_CILsysCalls_h
+  * @} */
+/*  Getters_CILsysCalls_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -126,8 +126,8 @@ extern "C" {
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Setters_CILsysCalls_h
+  * @} */
+/*  Setters_CILsysCalls_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -138,26 +138,29 @@ extern "C" {
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
-  * @fn CILsysCalls_dispatcher(BitWidthType *sp)
+  * ****************************************************************************/
+/**
+  * @fn CILsysCalls_dispatcher(AddressType *sp)
   *
-  * @brief Selector of sysCall function.
+  * @brief Dispatcher of sysCall function. This function cannot
+  * be called from the unprivileged context directly.
   *
-  * @param[in] BitWidthType *sp
+  * @param[in] sp pointer to the current stack address
   *
   * @return none
 ********************************************************************************/
 __OS_FUNC_SECTION void
-CILsysCalls_dispatcher( BitWidthType * sp );
+CILsysCalls_dispatcher( AddressType * sp );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILsysCalls_bitWidthType_ret_void(BitWidthType id)
   *
-  * @brief System call handling general operating system functionalities.
+  * @brief System call for bitWidthType args and return none.
   *
-  * @param[in]  BitWidthType id
+  * @param[in]  id is used during the system call dispatching
   *
   * @return none
 ********************************************************************************/
@@ -166,12 +169,13 @@ CILsysCalls_bitWidthType_ret_void( BitWidthType id );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILsysCalls_bitWidthType_ret_bitWidthType(BitWidthType id)
   *
   * @brief System call for bitWidthType args and ret bitWidthType.
   *
-  * @param[in]  BitWidthType id
+  * @param[in]  id is used during the system call dispatching
   *
   * @return BitWidthType
 ********************************************************************************/
@@ -180,14 +184,15 @@ CILsysCalls_bitWidthType_ret_bitWidthType( BitWidthType id );
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILsysCalls_bitWidthType_bitWidthType_ret_bitWidthType(BitWidthType id,
   * BitWidthType arg)
   *
   * @brief System call for bitWidthType args and ret bitWidthType.
   *
-  * @param[in]  BitWidthType id
-  * @param[in]  BitWidthType arg
+  * @param[in]  id is used during the system call dispatching
+  * @param[in]  arg generic bitwidth type argument
   *
   * @return BitWidthType
 ********************************************************************************/
@@ -198,7 +203,8 @@ CILsysCalls_bitWidthType_bitWidthType_ret_bitWidthType(
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType(
   * BitWidthType id,
   * void * ptr,
@@ -206,9 +212,9 @@ CILsysCalls_bitWidthType_bitWidthType_ret_bitWidthType(
   *
   * @brief System call for voidPtr,bitWidthType args and ret bitWidthType.
   *
-  * @param[in]  BitWidthType id
-  * @param[in]  void * ptr
-  * @param[in]  BitWidthType arg
+  * @param[in]  id is used during the system call dispatching
+  * @param[in]  ptr void pointer to some address
+  * @param[in]  arg generic bitwidth type argument
   *
   * @return BitWidthType
 ********************************************************************************/
@@ -220,14 +226,15 @@ CILsysCalls_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType(
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType(BitWidthType id,
   * void * ptr)
   *
   * @brief System call for voidPtr and ret bitWidthType.
   *
-  * @param[in]  BitWidthType id
-  * @param[in]  void * ptr
+  * @param[in]  id is used during the system call dispatching
+  * @param[in]  ptr void pointer to some address
   *
   * @return BitWidthType
 ********************************************************************************/
@@ -236,8 +243,8 @@ CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType( BitWidthType id, void * ptr )
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * General_CILsysCalls_h
+  * @} */
+/*  General_CILsysCalls_h
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -255,8 +262,8 @@ CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType( BitWidthType id, void * ptr )
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Getters_CILsysCalls_h
+  * @} */
+/*  Getters_CILsysCalls_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -268,8 +275,8 @@ CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType( BitWidthType id, void * ptr )
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Setters_CILsysCalls_h
+  * @} */
+/*  Setters_CILsysCalls_h
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -281,8 +288,8 @@ CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType( BitWidthType id, void * ptr )
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * General_CILsysCalls_h
+  * @} */
+/*  General_CILsysCalls_h
 ********************************************************************************/
 /********************************************************************************
 **                        Function Definitions | Stop                          **

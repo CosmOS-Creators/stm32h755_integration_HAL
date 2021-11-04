@@ -41,8 +41,8 @@
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Macros_CILmemoryProtection_c
+  * @} */
+/*  Macros_CILmemoryProtection_c
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -57,13 +57,6 @@
   * @ingroup Local_CILmemoryProtection
   * @{
 ********************************************************************************/
-extern unsigned char _s_os_section_consts[];
-extern unsigned char _e_os_section_consts[];
-extern unsigned char _s_os_section_vars[];
-extern unsigned char _e_os_section_vars[];
-extern unsigned char _s_unprotected_section[];
-extern unsigned char _e_unprotected_section[];
-
 /* @cond S */
 __SEC_START( __OS_CONSTS_SECTION_START )
 /* @endcond*/
@@ -76,8 +69,8 @@ __SEC_STOP( __OS_CONSTS_SECTION_STOP )
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Variables_CILmemoryProtection_c
+  * @} */
+/*  Variables_CILmemoryProtection_c
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -101,8 +94,8 @@ __SEC_STOP( __OS_CONSTS_SECTION_STOP )
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Getters_CILmemoryProtection_c
+  * @} */
+/*  Getters_CILmemoryProtection_c
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -114,8 +107,8 @@ __SEC_STOP( __OS_CONSTS_SECTION_STOP )
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Setters_CILmemoryProtection_c
+  * @} */
+/*  Setters_CILmemoryProtection_c
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -125,10 +118,24 @@ __SEC_STOP( __OS_CONSTS_SECTION_STOP )
   * @{
 ********************************************************************************/
 /********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn CILmemoryProtection_fastLogBase2(BitWidthType size)
+  *
+  * @brief Calculate fast log with base 2.
+  *
+  * @param[in]  BitWidthType size
+  *
+  * @return none
+********************************************************************************/
+__STATIC_FORCEINLINE BitWidthType
+CILmemoryProtection_fastLogBase2( BitWidthType size );
+/********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * General_CILmemoryProtection_c
+  * @} */
+/*  General_CILmemoryProtection_c
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -138,7 +145,8 @@ __SEC_STOP( __OS_CONSTS_SECTION_STOP )
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILmemoryProtection_fastLogBase2(BitWidthType size)
   *
   * @brief Calculate fast log with base 2.
@@ -165,7 +173,8 @@ CILmemoryProtection_fastLogBase2( BitWidthType size )
 }
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILmemoryProtection_init(AddressType codeMemoryHighAddress,
   * AddressType codeMemoryLowAddress,
   * AddressType stackMemoryHighAddress,
@@ -298,7 +307,8 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILmemoryProtection_setStackOverflowProtection(
   * AddressType stackLowAddress,
   * AddressType stackHighAddress)
@@ -330,7 +340,7 @@ CILmemoryProtection_setStackOverflowProtection(
     MPU_InitStruct.Size = ( CILmemoryProtection_fastLogBase2(
         stackHighAddress - stackLowAddress ) );
     MPU_InitStruct.SubRegionDisable =
-        0b00000001;  /*this is waste of the memory btw,
+        0b00000001; /*this is waste of the memory btw,
         but it is able to catch stack overflows */
     MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
     MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
@@ -349,7 +359,8 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILmemoryProtection_setProgramMemoryProtection(AddressType lowAddress,
   * AddressType highAddress)
   *
@@ -397,7 +408,8 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILmemoryProtection_setSchedulablePeripheralProtection(
   * AddressType lowAddress,
   * AddressType highAddress)

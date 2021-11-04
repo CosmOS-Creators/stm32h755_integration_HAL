@@ -45,8 +45,8 @@
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Macros_CILspinlock
+  * @} */
+/*  Macros_CILspinlock
 ********************************************************************************/
 /********************************************************************************
 **                          Macro Definitions | Stop                           **
@@ -64,8 +64,8 @@
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Variables_CILspinlock
+  * @} */
+/*  Variables_CILspinlock
 ********************************************************************************/
 /********************************************************************************
 **                              Variables | Stop                               **
@@ -89,8 +89,8 @@
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Getters_CILspinlock_c
+  * @} */
+/*  Getters_CILspinlock_c
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -102,8 +102,8 @@
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * Setters_CILspinlock_c
+  * @} */
+/*  Setters_CILspinlock_c
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN START GROUP                                                        **
@@ -115,8 +115,8 @@
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
-  * @}
-  * General_CILspinlock_c
+  * @} */
+/*  General_CILspinlock_c
 ********************************************************************************/
 /********************************************************************************
 **                         Function Prototypes | Stop                          **
@@ -126,7 +126,8 @@
 ********************************************************************************/
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILspinlock_getSpinlock(AddressType * spinlockPointer,
   * BitWidthType spinlockId,
   * BitWidthType schedulableId )
@@ -150,12 +151,12 @@ CILspinlock_getSpinlock(
 {
     CosmOS_SpinlockStateType spinlockState;
 
-    HAL_StatusTypeDef hsem_take_status;
+    HAL_StatusTypeDef hsemTakeStatus;
 
-    hsem_take_status = HAL_HSEM_Take( spinlockId, schedulableId );
-    while ( hsem_take_status IS_NOT_EQUAL_TO HAL_OK )
+    hsemTakeStatus = HAL_HSEM_Take( spinlockId, schedulableId );
+    while ( hsemTakeStatus IS_NOT_EQUAL_TO HAL_OK )
     {
-        hsem_take_status = HAL_HSEM_Take( spinlockId, schedulableId );
+        hsemTakeStatus = HAL_HSEM_Take( spinlockId, schedulableId );
     }
 
     *spinlockPointer = 1;
@@ -183,7 +184,8 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILspinlock_trySpinlock(AddressType * spinlockPointer,
   * BitWidthType spinlockId,
   * BitWidthType schedulableId )
@@ -207,10 +209,10 @@ CILspinlock_trySpinlock(
 {
     CosmOS_SpinlockStateType spinlockState;
 
-    HAL_StatusTypeDef hsem_take_status;
+    HAL_StatusTypeDef hsemTakeStatus;
 
-    hsem_take_status = HAL_HSEM_Take( spinlockId, schedulableId );
-    if ( hsem_take_status IS_EQUAL_TO HAL_OK )
+    hsemTakeStatus = HAL_HSEM_Take( spinlockId, schedulableId );
+    if ( hsemTakeStatus IS_EQUAL_TO HAL_OK )
     {
         *spinlockPointer = 1;
         spinlockState = SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED;
@@ -242,7 +244,8 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
 
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * *************************************************************************//**
+  * ****************************************************************************/
+/**
   * @fn CILspinlock_releaseSpinlock(AddressType * spinlockPointer,
   * BitWidthType spinlockId,
   * BitWidthType schedulableId )
