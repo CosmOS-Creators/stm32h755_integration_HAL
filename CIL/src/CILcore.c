@@ -130,11 +130,9 @@
 /**
   * @fn CILcore_getCoreId(void)
   *
-  * @brief Get core identifier.
-  *
-  * @param[in]  none
-  *
-  * @return BitWidthType
+  * @details The implementation contains obtaining of CPU ID by calling the
+  * HAL_GetCurrentCPUID function. If the CM7_CPUID is returned the CM7 macro
+  * is returned from the function, otherwise the CM4 macro is returned.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -154,11 +152,11 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
 /**
   * @fn CILcore_setCoreVar(CosmOS_OsVariableType * osVar)
   *
-  * @brief Set core variable to the R9 platform register.
-  *
-  * @param[in]  CosmOS_OsVariableType * osVar
-  *
-  * @return void
+  * @details The implementation contains obtaining of the core id by calling
+  * function CILcore_getCoreId. To ensure correctness of the core id the number
+  * of cores is obtained by calling function numberOfCores. If the core id is
+  * less than number of cores the core variable is obtained by calling function
+  * os_getCoreVar and its address is set to the platform register R9.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -177,7 +175,6 @@ CILcore_setCoreVar( CosmOS_OsVariableType * osVar )
 
     coreVar = os_getCoreVar( osVar, coreId );
 
-    //must be changed, not valid for all compilers
     __asm volatile( "MOV R9,%[coreVariable]" : [coreVariable] "=r"( coreVar ) );
 }
 /* @cond S */
