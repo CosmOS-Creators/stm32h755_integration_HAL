@@ -132,13 +132,11 @@
   * BitWidthType spinlockId,
   * BitWidthType schedulableId )
   *
-  * @brief Get spinlock DEMO CODE.
-  *
-  * @param[in]  AddressType * spinlockPointer
-  * @param[in]  BitWidthType spinlockId
-  * @param[in]  BitWidthType schedulableId
-  *
-  * @return CosmOS_SpinlockStateType
+  * @details The implementation contains do-while loop that calls function
+  * HAL_HSEM_Take to take hardware semaphore based on the spinlock identifier
+  * and schedulable unique identifier till hsemTakeStatus is not HAL_OK. Then
+  * the value 1 is loaded to the spinlock address and spinlockState is set to the
+  * SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED and returned from the function.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -153,11 +151,10 @@ CILspinlock_getSpinlock(
 
     HAL_StatusTypeDef hsemTakeStatus;
 
-    hsemTakeStatus = HAL_HSEM_Take( spinlockId, schedulableId );
-    while ( hsemTakeStatus IS_NOT_EQUAL_TO HAL_OK )
+    do
     {
         hsemTakeStatus = HAL_HSEM_Take( spinlockId, schedulableId );
-    }
+    } while ( hsemTakeStatus IS_NOT_EQUAL_TO HAL_OK );
 
     *spinlockPointer = 1;
     spinlockState = SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED;
@@ -190,13 +187,13 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * BitWidthType spinlockId,
   * BitWidthType schedulableId )
   *
-  * @brief Try to get spinlock DEMO CODE.
-  *
-  * @param[in]  AddressType * spinlockPointer
-  * @param[in]  BitWidthType spinlockId
-  * @param[in]  BitWidthType schedulableId
-  *
-  * @return CosmOS_SpinlockStateType
+  * @details The implementation contains function HAL_HSEM_Take call intended
+  * to take hardware semaphore based on the spinlock identifier
+  * and schedulable unique identifier. If the hsemTakeStatus is equal to the
+  * the value 1 is loaded to the spinlock address and spinlockState is set to the
+  * SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED. Otherwise is spinlockState set to
+  * the SPINLOCK_STATE_ENUM__OCCUPIED. In the end is the spinlockState returned
+  * from the function.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -250,13 +247,11 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * BitWidthType spinlockId,
   * BitWidthType schedulableId )
   *
-  * @brief Release spinlock DEMO CODE.
-  *
-  * @param[in]  AddressType * spinlockPointer
-  * @param[in]  BitWidthType spinlockId
-  * @param[in]  BitWidthType schedulableId
-  *
-  * @return CosmOS_SpinlockStateType
+  * @details The implementation contains function HAL_HSEM_Release call intended
+  * to release hardware semaphore based on the spinlock identifier
+  * and schedulable unique identifier. Then the value 0 is loaded to the spinlock
+  * address and spinlockState is set to the  SPINLOCK_STATE_ENUM__RELEASED and
+  * returned from the function.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )

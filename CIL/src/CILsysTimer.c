@@ -126,12 +126,10 @@
 /**
   * @fn CILsysTimer_startTimer(BitWidthType ticks, BitWidthType timerTickCount)
   *
-  * @brief Start system timer DEMO CODE.
-  *
-  * @param[in]  BitWidthType ticks
-  * @param[in]  BitWidthType timerTickCount
-  *
-  * @return none
+  * @details The implementation contains configuration of system timer. The load
+  * value is calculated as ticks multiplied by the timerTickCount that represents
+  * value that has to be loaded to the timer to set it for one tick. Then the
+  * current timer value is set to zero and the timer is enabled.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -154,12 +152,12 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
 /**
   * @fn CILsysTimer_setTicks(BitWidthType ticks, BitWidthType timerTickCount)
   *
-  * @brief Set ticks on system timer DEMO CODE.
-  *
-  * @param[in]  BitWidthType ticks
-  * @param[in]  BitWidthType timerTickCount
-  *
-  * @return none
+  * @details The implementation contains configuration of system timer. First of
+  * all the timer is disabled. Then load value is calculated as ticks multiplied
+  * by the timerTickCount that represents value that has to be loaded to the
+  * timer to set it for one tick. From this value is subtracted the delay value
+  * which represents the time we spent in the scheduling algorithm. Then the
+  * current timer value is set to zero and the timer is enabled.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -170,8 +168,8 @@ CILsysTimer_setTicks( BitWidthType ticks, BitWidthType timerTickCount )
     SysTick->CTRL = 0;
 
     SysTick->LOAD = ( uint32_t )(
-        ( ( ticks * timerTickCount ) - ( SysTick->LOAD - SysTick->VAL ) ) -
-        1UL );
+        ( ( ( ticks * timerTickCount ) - 1UL ) -
+          ( SysTick->LOAD - SysTick->VAL ) ) );
 
     SysTick->VAL = 0UL;
     SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk |

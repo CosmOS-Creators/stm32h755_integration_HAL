@@ -116,11 +116,16 @@
 /**
   * @fn CILmutex_tryMutex(AddressType * mutexPointer)
   *
-  * @brief Try to get mutex DEMO CODE.
-  *
-  * @param[in]  AddressType * mutexPointer
-  *
-  * @return CosmOS_MutexStateType
+  * @details The implementation contains disabling interrupts before any other
+  * instructions are executed. Then the value 1 is loaded to the register R1.
+  * The R0 register as it has argument 1 role in the procedure call standard
+  * holds address of the mutex and the value from this address is then loaded to
+  * the R3 register to compare it with value 0. If the mutex is free (value in
+  * its address is 0) the value 1 is stored to the mutex address and state
+  * MUTEX_STATE_ENUM__SUCCESSFULLY_LOCKED to the register R1, otherwise the
+  * state stored to R1 is MUTEX_STATE_ENUM__OCCUPIED. The mutexState is then
+  * loaded with the R1 value. After this point interrupts are enabled again and
+  * the mutexState is returned from the function.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -130,7 +135,6 @@ CILmutex_tryMutex( AddressType * mutexPointer )
 {
     CosmOS_MutexStateType mutexState;
 
-    /* sad compare and swap implementation */
     __asm volatile( "cpsid i" : : : "memory" );
     __asm volatile( "MOV R1, #0x1" );
     __asm volatile( "LDR R3, [R0]" );
@@ -167,11 +171,12 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
 /**
   * @fn CILmutex_releaseMutex(AddressType * mutexPointer)
   *
-  * @brief Release mutex DEMO CODE.
-  *
-  * @param[in]  AddressType * mutexPointer
-  *
-  * @return CosmOS_mutexStateType
+  * @details The implementation contains disabling interrupts before any other
+  * instructions are executed. Then the value 0 is loaded to the register R1.
+  * The R0 register as it has argument 1 role in the procedure call standard
+  * holds address of the mutex. The R1 value is then stored to the mutex address.
+  * The mutexState is then loaded with the R1 value. After this point interrupts
+  * are enabled again and the mutexState is returned from the function.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
