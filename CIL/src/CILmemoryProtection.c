@@ -149,11 +149,9 @@ CILmemoryProtection_fastLogBase2( BitWidthType size );
 /**
   * @fn CILmemoryProtection_fastLogBase2(BitWidthType size)
   *
-  * @brief Calculate fast log with base 2.
-  *
-  * @param[in]  BitWidthType size
-  *
-  * @return none
+  * @details The implementation contains computation of the log base 2 of a
+  * 32-bit integer with a small table lookup and multiply. All credits to
+  * https://graphics.stanford.edu/~seander/bithacks.html
 ********************************************************************************/
 __STATIC_FORCEINLINE BitWidthType
 CILmemoryProtection_fastLogBase2( BitWidthType size )
@@ -181,15 +179,24 @@ CILmemoryProtection_fastLogBase2( BitWidthType size )
   * AddressType stackMemoryLowAddress,
   * AddressType unprotectedMemoryLowAddress,
   * AddressType unprotectedMemoryHighAddress)
-  * @brief Init memory protection DEMO CODE.
   *
-  * @param[in]  AddressType codeMemoryHighAddress
-  * @param[in]  AddressType codeMemoryLowAddress
-  * @param[in]  AddressType stackMemoryHighAddress
-  * @param[in]  AddressType unprotectedMemoryLowAddress
-  * @param[in]  AddressType unprotectedMemoryHighAddress
-  *
-  * @return none
+  * @details The implementation contains configuration of the all run-time
+  * static memory protected regions such as code memory, stack background memory,
+  * unprotected memory and OS configuration and variable partitions. In the
+  * beginning the memory protection is disabled by calling HAL_MPU_Disable
+  * function. Then the MPU for the code memory region is configured by setting
+  * MPU_InitStruct members and calling HAL_MPU_ConfigRegion function.
+  * Then the MPU for the stack background memory region is configured by setting
+  * MPU_InitStruct members and calling HAL_MPU_ConfigRegion function.
+  * Then the MPU for the OS configuration memory region is configured by setting
+  * MPU_InitStruct members and calling HAL_MPU_ConfigRegion function.
+  * Then the MPU for the OS variable memory region is configured by setting
+  * MPU_InitStruct members and calling HAL_MPU_ConfigRegion function.
+  * Then the MPU for the unprotected memory region is configured by setting
+  * MPU_InitStruct members and calling HAL_MPU_ConfigRegion function.
+  * The memory regions have a specific priority based on their number, this
+  * enables then insert another regions with higher priority during the run-time
+  * inside them to read/write from specific protected memory.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -313,12 +320,12 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * AddressType stackLowAddress,
   * AddressType stackHighAddress)
   *
-  * @brief Set stack overflow protection DEMO CODE.
-  *
-  * @param[in]  AddressType stackLowAddress
-  * @param[in]  AddressType stackHighAddress
-  *
-  * @return none
+  * @details The implementation contains configuration of stack "window" type
+  * memory protected region which is placed inside the stack memory static
+  * region. In the beginning the memory protection is disabled by calling
+  * HAL_MPU_Disable function. The MPU for the stack window memory region is
+  * configured by setting MPU_InitStruct members and calling
+  * HAL_MPU_ConfigRegion function.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -364,12 +371,12 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * @fn CILmemoryProtection_setProgramMemoryProtection(AddressType lowAddress,
   * AddressType highAddress)
   *
-  * @brief Set program memory protection DEMO CODE.
-  *
-  * @param[in]  AddressType lowAddress
-  * @param[in]  AddressType highAddress
-  *
-  * @return none
+  * @details The implementation contains configuration of program memory
+  * protected region which is placed inside the stack memory static region.
+  * In the beginning the memory protection is disabled by calling
+  * HAL_MPU_Disable function. The MPU for the stack window memory region is
+  * configured by setting MPU_InitStruct members and calling
+  * HAL_MPU_ConfigRegion function.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -414,12 +421,12 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * AddressType lowAddress,
   * AddressType highAddress)
   *
-  * @brief Set schedulable peripheral protection DEMO CODE.
-  *
-  * @param[in]  AddressType lowAddress
-  * @param[in]  AddressType highAddress
-  *
-  * @return none
+  * @details The implementation contains configuration of schedulable specific
+  * peripheral memory protected region which is placed inside the stack memory
+  * static region. In the beginning the memory protection is disabled by calling
+  * HAL_MPU_Disable function. The MPU for the stack window memory region is
+  * configured by setting MPU_InitStruct members and calling
+  * HAL_MPU_ConfigRegion function.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )

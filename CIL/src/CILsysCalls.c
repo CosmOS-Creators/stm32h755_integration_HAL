@@ -128,11 +128,18 @@
 /**
   * @fn CILsysCalls_dispatcher(AddressType *sp)
   *
-  * @brief Selector of sysCall function DEMO CODE.
-  *
-  * @param[in] AddressType *sp
-  *
-  * @return none
+  * @details The implementation contains retrieving of the program counter value
+  * based on the stack pointer address. Then the system call identifier is
+  * extracted out of the memory by decrementing the program counter. After this
+  * point the os variable is obtained by calling function os_getOsVar and then
+  * used in function os_getOsRoutes to get route variable. From the route
+  * variable is extracted sysCall function pointer based on the R0 register value
+  * as it has argument 1 role in the procedure call standard by calling
+  * function route_getRoutesFunc and the entity identifier by calling the
+  * function route_getRoutesEntityId. Then the switch statement is implemented
+  * that dispatch the system call based on the sysCallId to the generic function
+  * types based on the system call type. After the function is called and result
+  * obtained the returnValue is saved into the R0 position on the stack.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -219,11 +226,10 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
 /**
   * @fn CILsysCalls_bitWidthType_ret_void(BitWidthType id)
   *
-  * @brief System call handling general operating system functionalities.
-  *
-  * @param[in]  BitWidthType id
-  *
-  * @return none
+  * @details The implementation contains supervisor call instruction that causes
+  * the exception. The supervisor call number is later retrieved in the system
+  * call dispatcher that uses it to call the correct system call. In this case
+  * is this number is 0.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -245,11 +251,12 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
 /**
   * @fn CILsysCalls_bitWidthType_ret_bitWidthType(BitWidthType id)
   *
-  * @brief System call for bitWidthType args and ret bitWidthType.
-  *
-  * @param[in]  BitWidthType id
-  *
-  * @return BitWidthType
+  * @details The implementation contains supervisor call instruction that causes
+  * the exception. The supervisor call number is later retrieved in the system
+  * call dispatcher that uses it to call the correct system call. In this case
+  * is this number is 1. The R0 register as it has argument 1 role in the
+  * procedure call is used to extract the result of the system call and stored
+  * it to the returnValue which is then returned from the function.
 ********************************************************************************/
 __SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
@@ -275,12 +282,12 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * @fn CILsysCalls_bitWidthType_bitWidthType_ret_bitWidthType(BitWidthType id,
   * BitWidthType arg)
   *
-  * @brief System call for bitWidthType args and ret bitWidthType.
-  *
-  * @param[in]  BitWidthType id
-  * @param[in]  BitWidthType arg
-  *
-  * @return BitWidthType
+  * @details The implementation contains supervisor call instruction that causes
+  * the exception. The supervisor call number is later retrieved in the system
+  * call dispatcher that uses it to call the correct system call. In this case
+  * is this number is 2. The R0 register as it has argument 1 role in the
+  * procedure call is used to extract the result of the system call and stored
+  * it to the returnValue which is then returned from the function.
 ********************************************************************************/
 __SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
@@ -311,13 +318,12 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * void * ptr,
   * BitWidthType arg)
   *
-  * @brief System call for voidPtr,bitWidthType args and ret bitWidthType.
-  *
-  * @param[in]  BitWidthType id
-  * @param[in]  void * ptr
-  * @param[in]  BitWidthType arg
-  *
-  * @return BitWidthType
+  * @details The implementation contains supervisor call instruction that causes
+  * the exception. The supervisor call number is later retrieved in the system
+  * call dispatcher that uses it to call the correct system call. In this case
+  * is this number is 3. The R0 register as it has argument 1 role in the
+  * procedure call is used to extract the result of the system call and stored
+  * it to the returnValue which is then returned from the function.
 ********************************************************************************/
 __SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
@@ -348,12 +354,12 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * @fn CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType(BitWidthType id,
   * void * ptr)
   *
-  * @brief System call for voidPtr and ret bitWidthType.
-  *
-  * @param[in]  BitWidthType id
-  * @param[in]  void * ptr
-  *
-  * @return BitWidthType
+  * @details The implementation contains supervisor call instruction that causes
+  * the exception. The supervisor call number is later retrieved in the system
+  * call dispatcher that uses it to call the correct system call. In this case
+  * is this number is 4. The R0 register as it has argument 1 role in the
+  * procedure call is used to extract the result of the system call and stored
+  * it to the returnValue which is then returned from the function.
 ********************************************************************************/
 __SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
