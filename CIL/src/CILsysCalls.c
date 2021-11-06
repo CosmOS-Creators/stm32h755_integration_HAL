@@ -131,7 +131,7 @@
   * @details The implementation contains retrieving of the program counter value
   * based on the stack pointer address. Then the system call identifier is
   * extracted out of the memory by decrementing the program counter. After this
-  * point the os variable is obtained by calling function os_getOsVar and then
+  * point the os variable is obtained by calling function os_getOsCfg and then
   * used in function os_getOsRoutes to get route variable. From the route
   * variable is extracted sysCall function pointer based on the R0 register value
   * as it has argument 1 role in the procedure call standard by calling
@@ -150,18 +150,18 @@ CILsysCalls_dispatcher( AddressType * sp )
     BitWidthType returnValue, entityId;
 
     CosmOS_GenericVoidType sysCall;
-    CosmOS_OsVariableType * osVar;
+    CosmOS_OsConfigurationType * osCfg;
     CosmOS_RoutesConfigurationType * routeVar;
 
     uint8_t * pc = (uint8_t *)( sp[6] );
 
     pc -= 2;
 
-    osVar = os_getOsVar();
+    osCfg = os_getOsCfg();
 
     uint8_t sysCallId = *pc;
 
-    routeVar = os_getOsRoutes( osVar );
+    routeVar = os_getOsRoutes( osCfg );
 
     sysCall = route_getRoutesFunc( routeVar, sp[0] );
     entityId = route_getRoutesEntityId( routeVar, sp[0] );

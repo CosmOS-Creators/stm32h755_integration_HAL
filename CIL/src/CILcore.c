@@ -150,32 +150,33 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
-  * @fn CILcore_setCoreVar(CosmOS_OsVariableType * osVar)
+  * @fn CILcore_setCoreVar(CosmOS_OsConfigurationType * os)
   *
   * @details The implementation contains obtaining of the core id by calling
   * function CILcore_getCoreId. To ensure correctness of the core id the number
   * of cores is obtained by calling function numberOfCores. If the core id is
   * less than number of cores the core variable is obtained by calling function
-  * os_getCoreVar and its address is set to the platform register R9.
+  * os_getCoreCfg and its address is set to the platform register R9.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
 __OS_FUNC_SECTION void
-CILcore_setCoreVar( CosmOS_OsVariableType * osVar )
+CILcore_setCoreVar( CosmOS_OsConfigurationType * os )
 {
     BitWidthType coreId, numberOfCores;
 
-    CosmOS_CoreVariableType * coreVar;
+    CosmOS_CoreConfigurationType * coreCfg;
 
     coreId = CILcore_getCoreId();
-    numberOfCores = os_getOsNumberOfCores( osVar );
+    numberOfCores = os_getOsNumberOfCores( os );
 
     cosmosAssert( coreId < numberOfCores );
 
-    coreVar = os_getCoreVar( osVar, coreId );
+    coreCfg = os_getCoreCfg( os, coreId );
 
-    __asm volatile( "MOV R9,%[coreVariable]" : [coreVariable] "=r"( coreVar ) );
+    __asm volatile( "MOV R9,%[coreConfiguration]"
+                    : [coreConfiguration] "=r"( coreCfg ) );
 }
 /* @cond S */
 __SEC_STOP( __OS_FUNC_SECTION_STOP )
