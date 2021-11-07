@@ -197,13 +197,14 @@ PendSV_Handler( void )
 void
 SysTick_Handler( void )
 {
-    CosmOS_CoreVariableType * coreVar;
-    CosmOS_SchedulerVariableType * schedulerVar;
+    CosmOS_CoreConfigurationType * coreCfg;
+    CosmOS_SchedulerConfigurationType * schedulerCfg;
 
-    coreVar = core_getCoreVar();
-    schedulerVar = core_getCoreSchedulerVar( coreVar );
+    coreCfg = core_getCoreVar();
+    schedulerCfg = core_getCoreScheduler( coreCfg );
 
-    schedulerVar->rescheduleTriggerState = RESCHEDULE_TRIGGER_STATE_ENUM__TIMER;
+    schedulerCfg->var->rescheduleTriggerState =
+        RESCHEDULE_TRIGGER_STATE_ENUM__TIMER;
 
     CILinterrupt_contextSwitchRoutineTrigger();
 }
