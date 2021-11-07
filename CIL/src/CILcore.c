@@ -150,7 +150,7 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
-  * @fn CILcore_setCoreVar(CosmOS_OsConfigurationType * os)
+  * @fn CILcore_setCoreCfg(CosmOS_OsConfigurationType * os)
   *
   * @details The implementation contains obtaining of the core id by calling
   * function CILcore_getCoreId. To ensure correctness of the core id the number
@@ -162,7 +162,7 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
 __SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
 __OS_FUNC_SECTION void
-CILcore_setCoreVar( CosmOS_OsConfigurationType * os )
+CILcore_setCoreCfg( CosmOS_OsConfigurationType * os )
 {
     BitWidthType coreId, numberOfCores;
 

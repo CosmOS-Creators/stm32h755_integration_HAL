@@ -215,7 +215,6 @@ CILspinlock_getSpinlock(
     BitWidthType spinlockId,
     BitWidthType schedulableId )
 {
-    CosmOS_BooleanType spinlockLocked = False;
     CosmOS_SpinlockStateType spinlockState;
 
     //SOLUTION TO BE ABLE TEST SPINLOCKS

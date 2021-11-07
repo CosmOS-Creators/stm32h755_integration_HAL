@@ -143,7 +143,7 @@ CILcore_getCoreId( void );
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
-  * @fn CILcore_setCoreVar(CosmOS_OsConfigurationType * os)
+  * @fn CILcore_setCoreCfg(CosmOS_OsConfigurationType * os)
   *
   * @brief Set core variable to the R9 platform register. This function cannot
   * be called from the unprivileged context directly.
@@ -153,7 +153,7 @@ CILcore_getCoreId( void );
   * @return void
 ********************************************************************************/
 __OS_FUNC_SECTION void
-CILcore_setCoreVar( CosmOS_OsConfigurationType * os );
+CILcore_setCoreCfg( CosmOS_OsConfigurationType * os );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
@@ -190,7 +190,7 @@ CILcore_setCoreVar( CosmOS_OsConfigurationType * os );
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
-  * @fn CILcore_getCoreVar(void)
+  * @fn CILcore_getCoreCfg(void)
   *
   * @brief Get coreVar. DEMO
   *
@@ -199,7 +199,7 @@ CILcore_setCoreVar( CosmOS_OsConfigurationType * os );
   * @return CosmOS_CoreConfigurationType *
 ********************************************************************************/
 __STATIC_FORCEINLINE CosmOS_CoreConfigurationType *
-CILcore_getCoreVar( void )
+CILcore_getCoreCfg( void )
 {
     uint32_t result;
     __asm volatile( "MOV %[resultVariable], R9"
