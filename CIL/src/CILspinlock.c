@@ -61,6 +61,22 @@
   * @ingroup Local_CILspinlock
   * @{
 ********************************************************************************/
+/* @cond S */
+__SEC_START( __OS_CONSTS_SECTION_START )
+/* @endcond*/
+BitWidthType n = SCHEDULABLE_NUM;
+/* @cond S */
+__SEC_START( __OS_CONSTS_SECTION_STOP )
+/* @endcond*/
+
+/* @cond S */
+__SEC_START( __OS_VARS_SECTION_START )
+/* @endcond*/
+BitWidthType flag[SCHEDULABLE_NUM] = { 0 };
+BitWidthType turn = 0;
+/* @cond S */
+__SEC_STOP( __OS_VARS_SECTION_STOP )
+/* @endcond*/
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
@@ -128,6 +144,58 @@
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
+  * @fn lock( BitWidthType self )
+  *
+  * @details The implementation contains Peterson algorithm for n processes
+  * all credits to https://gist.github.com/Rajpra786
+********************************************************************************/
+void
+lock( BitWidthType self )
+{
+    //flag[self]=1 show that process self want to enter in critical section
+    if ( self <= n - 1 && self >= 0 )
+    {
+        flag[self] = 1;
+    }
+
+    // first give chance to another process
+    turn = n - self;
+    //wait untill other process are in critical section
+    if ( n - 1 - self != self )
+    {
+        while ( flag[n - 1 - self] == 1 && turn == n - self )
+            ;
+    }
+    else if ( n - 2 - self >= 0 )
+    {
+        while ( flag[n - 2 - self] == 1 && turn == n - self )
+            ;
+    }
+}
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn unlock( BitWidthType self )
+  *
+  * @details The implementation contains Peterson algorithm for n processes
+  * all credits to https://gist.github.com/Rajpra786
+********************************************************************************/
+void
+unlock( BitWidthType self )
+{
+    //flag[self] = 0 show that process self going out of critical section
+    if ( self <= n && self >= 0 )
+    {
+        flag[self] = 0;
+    }
+}
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
   * @fn CILspinlock_getSpinlock(AddressType * spinlockPointer,
   * BitWidthType spinlockId,
   * BitWidthType schedulableId )
@@ -147,17 +215,38 @@ CILspinlock_getSpinlock(
     BitWidthType spinlockId,
     BitWidthType schedulableId )
 {
+    CosmOS_BooleanType spinlockLocked = False;
     CosmOS_SpinlockStateType spinlockState;
 
-    HAL_StatusTypeDef hsemTakeStatus;
-
+    //SOLUTION TO BE ABLE TEST SPINLOCKS
     do
     {
-        hsemTakeStatus = HAL_HSEM_Take( spinlockId, schedulableId );
-    } while ( hsemTakeStatus IS_NOT_EQUAL_TO HAL_OK );
+        lock( schedulableId );
+        //critical section start
+        if ( *spinlockPointer )
+        {
+            spinlockState = SPINLOCK_STATE_ENUM__OCCUPIED;
+        }
+        else
+        {
+            *spinlockPointer = 1;
+            spinlockState = SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED;
+        }
+        //critical section end
+        unlock( schedulableId );
+    } while (
+        spinlockState IS_NOT_EQUAL_TO SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED );
 
-    *spinlockPointer = 1;
-    spinlockState = SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED;
+    //THIS SOLUTION WAS NOT WORKING PROPERLY/NEED TO CHECK IT LATER
+    // HAL_StatusTypeDef hsemTakeStatus;
+
+    // do
+    // {
+    //     hsemTakeStatus = HAL_HSEM_Take( spinlockId, schedulableId );
+    // } while ( hsemTakeStatus IS_NOT_EQUAL_TO HAL_OK );
+
+    // *spinlockPointer = 1;
+    // spinlockState = SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED;
 
     /* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
     //__asm volatile("MOV R1, #0x1");
@@ -206,19 +295,35 @@ CILspinlock_trySpinlock(
 {
     CosmOS_SpinlockStateType spinlockState;
 
-    HAL_StatusTypeDef hsemTakeStatus;
-
-    hsemTakeStatus = HAL_HSEM_Take( spinlockId, schedulableId );
-    if ( hsemTakeStatus IS_EQUAL_TO HAL_OK )
+    //SOLUTION TO BE ABLE TEST SPINLOCKS
+    lock( schedulableId );
+    //critical section start
+    if ( *spinlockPointer )
+    {
+        spinlockState = SPINLOCK_STATE_ENUM__OCCUPIED;
+    }
+    else
     {
         *spinlockPointer = 1;
         spinlockState = SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED;
     }
-    else
-    {
-        __SUPRESS_UNUSED_VAR( spinlockPointer );
-        spinlockState = SPINLOCK_STATE_ENUM__OCCUPIED;
-    }
+    //critical section end
+    unlock( schedulableId );
+
+    //THIS SOLUTION WAS NOT WORKING PROPERLY/NEED TO CHECK IT LATER
+    // HAL_StatusTypeDef hsemTakeStatus;
+
+    // hsemTakeStatus = HAL_HSEM_Take( spinlockId, schedulableId );
+    // if ( hsemTakeStatus IS_EQUAL_TO HAL_OK )
+    // {
+    //     *spinlockPointer = 1;
+    //     spinlockState = SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED;
+    // }
+    // else
+    // {
+    //     __SUPRESS_UNUSED_VAR( spinlockPointer );
+    //     spinlockState = SPINLOCK_STATE_ENUM__OCCUPIED;
+    // }
 
     /* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
     //__asm volatile("MOV R1, #0x1");
@@ -264,10 +369,19 @@ CILspinlock_releaseSpinlock(
 {
     CosmOS_SpinlockStateType spinlockState;
 
-    HAL_HSEM_Release( spinlockId, schedulableId );
-
+    //SOLUTION TO BE ABLE TEST SPINLOCKS
+    lock( schedulableId );
+    //critical section start
     *spinlockPointer = 0;
     spinlockState = SPINLOCK_STATE_ENUM__RELEASED;
+    //critical section end
+    unlock( schedulableId );
+
+    //THIS SOLUTION WAS NOT WORKING PROPERLY/NEED TO CHECK IT LATER
+    // HAL_HSEM_Release( spinlockId, schedulableId );
+
+    // *spinlockPointer = 0;
+    // spinlockState = SPINLOCK_STATE_ENUM__RELEASED;
 
     /* THIS CODE CAN BE USED IF THE GLOBAL MONITOR IS IMPLEMENTED */
     //__asm volatile("MOV R1, #0x0");
