@@ -146,7 +146,7 @@ __SEC_STOP( __OS_VARS_SECTION_STOP )
 /**
   * @fn lock( BitWidthType self )
   *
-  * @details The implementation contains Peterson algorithm for n processes
+  * @details The implementation contains Peterson's algorithm for n processes
   * all credits to https://gist.github.com/Rajpra786
 ********************************************************************************/
 void
@@ -179,7 +179,7 @@ lock( BitWidthType self )
 /**
   * @fn unlock( BitWidthType self )
   *
-  * @details The implementation contains Peterson algorithm for n processes
+  * @details The implementation contains Peterson's algorithm for n processes
   * all credits to https://gist.github.com/Rajpra786
 ********************************************************************************/
 void
@@ -205,6 +205,9 @@ unlock( BitWidthType self )
   * and schedulable unique identifier till hsemTakeStatus is not HAL_OK. Then
   * the value 1 is loaded to the spinlock address and spinlockState is set to the
   * SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED and returned from the function.
+  * ! This implementation is currently not used cause there
+  * were problems with it, instead Peterson's algorithm for multiple processes
+  * is used for testing purposes.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -281,7 +284,9 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * the value 1 is loaded to the spinlock address and spinlockState is set to the
   * SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED. Otherwise is spinlockState set to
   * the SPINLOCK_STATE_ENUM__OCCUPIED. In the end is the spinlockState returned
-  * from the function.
+  * from the function. ! This implementation is currently not used cause there
+  * were problems with it, instead Peterson's algorithm for multiple processes
+  * is used for testing purposes.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -355,7 +360,9 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * to release hardware semaphore based on the spinlock identifier
   * and schedulable unique identifier. Then the value 0 is loaded to the spinlock
   * address and spinlockState is set to the  SPINLOCK_STATE_ENUM__RELEASED and
-  * returned from the function.
+  * returned from the function. ! This implementation is currently not used cause
+  * there were problems with it, instead Peterson's algorithm for multiple
+  * processes is used for testing purposes.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )

@@ -50,7 +50,6 @@ extern "C" {
 #include "memoryMapping.h"
 #include "sysDefs.h"
 
-
 /* CIL interfaces */
 #include "CILstdTypes.h"
 /********************************************************************************
@@ -145,8 +144,8 @@ CILcore_getCoreId( void );
 /**
   * @fn CILcore_setCoreCfg(CosmOS_OsConfigurationType * os)
   *
-  * @brief Set core variable to the R9 platform register. This function cannot
-  * be called from the unprivileged context directly.
+  * @brief Set core configuration to the R9 platform register.
+  * This function cannot be called from the unprivileged context directly.
   *
   * @param[in]  os configuration pointer
   *

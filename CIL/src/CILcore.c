@@ -155,8 +155,8 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * @details The implementation contains obtaining of the core id by calling
   * function CILcore_getCoreId. To ensure correctness of the core id the number
   * of cores is obtained by calling function numberOfCores. If the core id is
-  * less than number of cores the core variable is obtained by calling function
-  * os_getCoreCfg and its address is set to the platform register R9.
+  * less than number of cores the core configuration is obtained by calling
+  * function os_getCoreCfg and its address is set to the platform register R9.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
