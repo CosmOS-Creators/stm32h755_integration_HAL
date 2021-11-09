@@ -150,19 +150,19 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
-  * @fn CILcore_setCoreVar(CosmOS_OsConfigurationType * os)
+  * @fn CILcore_setCoreCfg(CosmOS_OsConfigurationType * os)
   *
   * @details The implementation contains obtaining of the core id by calling
   * function CILcore_getCoreId. To ensure correctness of the core id the number
   * of cores is obtained by calling function numberOfCores. If the core id is
-  * less than number of cores the core variable is obtained by calling function
-  * os_getCoreCfg and its address is set to the platform register R9.
+  * less than number of cores the core configuration is obtained by calling
+  * function os_getCoreCfg and its address is set to the platform register R9.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
 /* @endcond*/
 __OS_FUNC_SECTION void
-CILcore_setCoreVar( CosmOS_OsConfigurationType * os )
+CILcore_setCoreCfg( CosmOS_OsConfigurationType * os )
 {
     BitWidthType coreId, numberOfCores;
 

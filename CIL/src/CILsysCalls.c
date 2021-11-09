@@ -198,12 +198,19 @@ CILsysCalls_dispatcher( AddressType * sp )
                                 sysCall )( entityId, (void *)sp[1], sp[2] );
             break;
         }
-
         case 4:
         {
             returnValue = ( (
                 CosmOS_Generic_bitWidthType_voidPtr_ret_bitWidthType)sysCall )(
                 entityId, (void *)sp[1] );
+            break;
+        }
+        case 5:
+        {
+            returnValue = ( (
+                CosmOS_Generic_bitWidthType_voidPtr_voidPtr_bitWidthType_ret_bitWidthType)
+                                sysCall )(
+                entityId, (void *)sp[1], (void *)sp[2], sp[3] );
             break;
         }
 
@@ -373,6 +380,47 @@ CILsysCalls_bitWidthType_voidPtr_ret_bitWidthType( BitWidthType id, void * ptr )
 
     __SUPRESS_UNUSED_VAR( id );
     __SUPRESS_UNUSED_VAR( ptr );
+    return returnValue;
+}
+/* @cond S */
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
+/* @endcond*/
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn CILsysCalls_bitWidthType_voidPtr_voidPtr_bitWidthType_ret_bitWidthType(
+  * BitWidthType id,
+  * void * ptr,
+  * void * ptr1,
+  * BitWidthType arg)
+  *
+  * @details The implementation contains supervisor call instruction that causes
+  * the exception. The supervisor call number is later retrieved in the system
+  * call dispatcher that uses it to call the correct system call. In this case
+  * is this number is 5. The R0 register as it has argument 1 role in the
+  * procedure call is used to extract the result of the system call and stored
+  * it to the returnValue which is then returned from the function.
+********************************************************************************/
+__SEC_START( __OS_FUNC_SECTION_START )
+/* @endcond*/
+__OS_FUNC_SECTION BitWidthType
+CILsysCalls_bitWidthType_voidPtr_voidPtr_bitWidthType_ret_bitWidthType(
+    BitWidthType id,
+    void * ptr,
+    void * ptr1,
+    BitWidthType arg )
+{
+    BitWidthType returnValue;
+
+    __asm volatile( "SVC #5" );
+    __asm volatile( "MOV %0, R0" : "=r"( returnValue ):: );
+
+    __SUPRESS_UNUSED_VAR( id );
+    __SUPRESS_UNUSED_VAR( ptr );
+    __SUPRESS_UNUSED_VAR( ptr1 );
+    __SUPRESS_UNUSED_VAR( arg );
     return returnValue;
 }
 /* @cond S */

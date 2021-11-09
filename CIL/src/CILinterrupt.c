@@ -187,9 +187,9 @@ PendSV_Handler( void )
 /**
   * @fn SysTick_Handler(void)
   *
-  * @details The implementation contains obtaining of the core variable by
-  * calling function core_getCoreVar. The core variable is then used to get the
-  * scheduler variable for the current core. After this point the reschedule
+  * @details The implementation contains obtaining of the core configuration by
+  * calling function core_getCoreCfg. The core configuration is then used to get
+  * the scheduler variable for the current core. After this point the reschedule
   * state of the scheduler variable set to the
   * RESCHEDULE_TRIGGER_STATE_ENUM__TIMER and the function to trigger scheduling
   * algorithm CILinterrupt_contextSwitchRoutineTrigger called.
@@ -200,7 +200,7 @@ SysTick_Handler( void )
     CosmOS_CoreConfigurationType * coreCfg;
     CosmOS_SchedulerConfigurationType * schedulerCfg;
 
-    coreCfg = core_getCoreVar();
+    coreCfg = core_getCoreCfg();
     schedulerCfg = core_getCoreScheduler( coreCfg );
 
     schedulerCfg->var->rescheduleTriggerState =
