@@ -72,8 +72,9 @@ __SEC_START( __OS_CONSTS_SECTION_STOP )
 /* @cond S */
 __SEC_START( __OS_VARS_SECTION_START )
 /* @endcond*/
-BitWidthType flag[SCHEDULABLE_NUM] = { 0 };
-BitWidthType turn = 0;
+/* volatile if optimization would change */ BitWidthType flag[SCHEDULABLE_NUM] =
+    { 0 };
+/* volatile if optimization would change */ BitWidthType turn = 0;
 /* @cond S */
 __SEC_STOP( __OS_VARS_SECTION_STOP )
 /* @endcond*/
