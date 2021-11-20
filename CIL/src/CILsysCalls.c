@@ -24,6 +24,7 @@
 #include "os.h"
 #include "route.h"
 #include "routeCfg.h"
+#include "sysCalls.h"
 
 /* CIL interfaces */
 #include "CILsysCalls.h"
@@ -136,10 +137,8 @@
   * variable is extracted sysCall function pointer based on the R0 register value
   * as it has argument 1 role in the procedure call standard by calling
   * function route_getRoutesFunc and the entity identifier by calling the
-  * function route_getRoutesEntityId. Then the switch statement is implemented
-  * that dispatch the system call based on the sysCallId to the generic function
-  * types based on the system call type. After the function is called and result
-  * obtained the returnValue is saved into the R0 position on the stack.
+  * function route_getRoutesEntityId. Then sysCalls_dispatcher is called and
+  * returned result is saved into the R0 position on the stack.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -147,7 +146,7 @@ __SEC_START( __OS_FUNC_SECTION_START )
 __OS_FUNC_SECTION void
 CILsysCalls_dispatcher( AddressType * sp )
 {
-    BitWidthType returnValue, entityId;
+    BitWidthType entityId;
 
     CosmOS_GenericVoidType sysCall;
     CosmOS_OsConfigurationType * osCfg;
@@ -166,62 +165,7 @@ CILsysCalls_dispatcher( AddressType * sp )
     sysCall = route_getRoutesFunc( routeVar, sp[0] );
     entityId = route_getRoutesEntityId( routeVar, sp[0] );
 
-    returnValue = 0;
-    switch ( sysCallId )
-    {
-        case 0:
-        {
-            ( (CosmOS_Generic_bitWidthType_ret_void)sysCall )( entityId );
-            break;
-        }
-
-        case 1:
-        {
-            returnValue =
-                ( (CosmOS_Generic_bitWidthType_ret_bitWidthType)sysCall )(
-                    entityId );
-            break;
-        }
-
-        case 2:
-        {
-            returnValue =
-                ( (CosmOS_Generic_bitWidthType_bitWidthType_ret_bitWidthType)
-                      sysCall )( entityId, (BitWidthType)sp[1] );
-            break;
-        }
-
-        case 3:
-        {
-            returnValue = ( (
-                CosmOS_Generic_bitWidthType_voidPtr_bitWidthType_ret_bitWidthType)
-                                sysCall )( entityId, (void *)sp[1], sp[2] );
-            break;
-        }
-        case 4:
-        {
-            returnValue = ( (
-                CosmOS_Generic_bitWidthType_voidPtr_ret_bitWidthType)sysCall )(
-                entityId, (void *)sp[1] );
-            break;
-        }
-        case 5:
-        {
-            returnValue = ( (
-                CosmOS_Generic_bitWidthType_voidPtr_voidPtr_bitWidthType_ret_bitWidthType)
-                                sysCall )(
-                entityId, (void *)sp[1], (void *)sp[2], sp[3] );
-            break;
-        }
-
-        default:
-        {
-            /* PANIC */
-            break;
-        }
-    }
-
-    sp[0] = returnValue;
+    sp[0] = sysCalls_dispatcher( sysCallId, entityId, sysCall, sp );
 }
 /* @cond S */
 __SEC_STOP( __OS_FUNC_SECTION_STOP )
