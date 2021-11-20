@@ -151,11 +151,39 @@ CILsysTimer_startTimer( BitWidthType ticks, BitWidthType timerTickCount );
   * @param[in]  ticks number of ticks to be set
   * @param[in]  timerTickCount how many system timer ticks represent the
   * one scheduler tick
+  * @param[in]  timerOffset offset caused by the system timer setting max period for
+  * scheduling algorithm execution
   *
   * @return none
 ********************************************************************************/
 __OS_FUNC_SECTION void
-CILsysTimer_setTicks( BitWidthType ticks, BitWidthType timerTickCount );
+CILsysTimer_setTicks(
+    BitWidthType ticks,
+    BitWidthType timerTickCount,
+    BitWidthType timerOffset );
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn CILsysTimer_setTicks(BitWidthType ticks, BitWidthType timerTickCount)
+  *
+  * @brief Set ticks on system timer and save timer offset. This function cannot
+  * be called from the unprivileged context directly. DEMO
+  *
+  * @param[in]  ticks number of ticks to be set
+  * @param[in]  timerTickCount how many system timer ticks represent the
+  * one scheduler tick
+  * @param[in]  timerOffset pointer to the scheduler timer offset structure
+  * member
+  *
+  * @return none
+********************************************************************************/
+__OS_FUNC_SECTION void
+CILsysTimer_setTicksSaveOffset(
+    BitWidthType ticks,
+    BitWidthType timerTickCount,
+    AddressType * timerOffset );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
