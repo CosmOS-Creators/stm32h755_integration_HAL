@@ -150,7 +150,10 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
-  * @fn CILsysTimer_setTicks(BitWidthType ticks, BitWidthType timerTickCount)
+  * @fn CILsysTimer_setTicks(
+  * BitWidthType ticks,
+  * BitWidthType timerTickCount,
+  * BitWidthType timerOffset )
   *
   * @details The implementation contains configuration of system timer. First of
   * all the timer is disabled. Then load value is calculated as ticks multiplied
@@ -186,13 +189,17 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
-  * @fn CILsysTimer_setTicks(BitWidthType ticks, BitWidthType timerTickCount)
+  * @fn CILsysTimer_setTicksSaveOffset(
+  * BitWidthType ticks,
+  * BitWidthType timerTickCount,
+  * AddressType * timerOffset )
   *
   * @details The implementation contains configuration of system timer. First of
   * all the timer is disabled. Then load value is calculated as ticks multiplied
   * by the timerTickCount that represents value that has to be loaded to the
   * timer to set it for one tick. From this value is subtracted the delay value
-  * which represents the time we spent in the scheduling algorithm. Then the
+  * which represents the time we spent in the scheduling algorithm and this value
+  * is also saved to the timerOffset address. Then the
   * current timer value is set to zero and the timer is enabled.
 ********************************************************************************/
 /* @cond S */
