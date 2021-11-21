@@ -132,10 +132,13 @@
   * @details The implementation contains moving the process stack pointer to the
   * R0 register as it has argument 1 role in the procedure call standard, which
   * is then later used inside the scheduler_scheduleNextInstance function. Then
-  * the EXC_RETURN[4] bit is tested and if it is set the Z flag is 0, this means
-  * that the FPU instruction was not used during the task/thread execution as it
-  * is referenced in the Cortex-M4(F) Lazy Stacking and Context Switching -
-  * Application Note 298 https://developer.arm.com/documentation/dai0298/a/.
+  * the instance type is loaded from the core configuration stored in platform
+  * register and checked if the current schedulable is task or thread. If it is
+  * task the context save is skipped. Then the EXC_RETURN[4] bit is tested and
+  * if it is set the Z flag is 0, this means that the FPU instruction was not
+  * used during the task/thread execution as it is referenced in the
+  * Cortex-M4(F) Lazy Stacking and Context Switching - Application Note 298
+  * https://developer.arm.com/documentation/dai0298/a/.
   * If the FPU instruction was used the context of the FPU is saved. Then the
   * standard context registers are stored except the platform register R9. After
   * this point the scheduler_scheduleNextInstance is called to schedule next
@@ -159,11 +162,19 @@ PendSV_Handler( void )
     __asm volatile( "MRS R0,PSP" );
     __asm volatile( "ISB" );
 
+    __asm volatile( "LDR R2, [R9]" );
+    __asm volatile( "LDR R3, [R2, #8]" );
+    __asm volatile( "TST R3, #1" );
+    __asm volatile( "IT EQ" );
+    __asm volatile( "BEQ skipSaveContext" );
+
+    __asm volatile( "saveContext:" );
     __asm volatile( "TST R14, #16" );
     __asm volatile( "IT EQ" );
     __asm volatile( "VSTMDBEQ R0!,{S16-S31}" );
-
     __asm volatile( "STMDB R0!,{R4-R8,R10,R11,R14}" );
+
+    __asm volatile( "skipSaveContext:" );
     __asm volatile( "BL scheduler_scheduleNextInstance" );
     __asm volatile( "ISB" );
     __asm volatile( "LDMIA R0!,{R4-R8,R10,R11,R14}" );
