@@ -143,7 +143,10 @@ CILsysTimer_startTimer( BitWidthType ticks, BitWidthType timerTickCount );
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
-  * @fn CILsysTimer_setTicks(BitWidthType ticks, BitWidthType timerTickCount)
+  * @fn CILsysTimer_setTicks(
+  * BitWidthType ticks,
+  * BitWidthType timerTickCount,
+  * BitWidthType timerOffset )
   *
   * @brief Set ticks on system timer. This function cannot
   * be called from the unprivileged context directly. DEMO
@@ -151,8 +154,8 @@ CILsysTimer_startTimer( BitWidthType ticks, BitWidthType timerTickCount );
   * @param[in]  ticks number of ticks to be set
   * @param[in]  timerTickCount how many system timer ticks represent the
   * one scheduler tick
-  * @param[in]  timerOffset offset caused by the system timer setting max period for
-  * scheduling algorithm execution
+  * @param[in]  timerOffset offset caused by the system timer setting max period
+  * for scheduling algorithm execution
   *
   * @return none
 ********************************************************************************/
@@ -166,7 +169,10 @@ CILsysTimer_setTicks(
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
-  * @fn CILsysTimer_setTicks(BitWidthType ticks, BitWidthType timerTickCount)
+  * @fn CILsysTimer_setTicksSaveOffset(
+  * BitWidthType ticks,
+  * BitWidthType timerTickCount,
+  * AddressType * timerOffset )
   *
   * @brief Set ticks on system timer and save timer offset. This function cannot
   * be called from the unprivileged context directly. DEMO

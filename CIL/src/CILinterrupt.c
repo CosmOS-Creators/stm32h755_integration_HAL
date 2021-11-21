@@ -129,8 +129,7 @@
 /**
   * @fn PendSV_Handler(void)
   *
-  * @details The implementation contains disabling interrupts before any other
-  * instructions are executed. The process stack pointer is then moved to the
+  * @details The implementation contains moving the process stack pointer to the
   * R0 register as it has argument 1 role in the procedure call standard, which
   * is then later used inside the scheduler_scheduleNextInstance function. Then
   * the EXC_RETURN[4] bit is tested and if it is set the Z flag is 0, this means
@@ -150,14 +149,13 @@
   * Stacking and Context Switching - Application Note 298
   * https://developer.arm.com/documentation/dai0298/a/. If the FPU instruction
   * was used the context of the FPU is restored. Then the PSP is set to the
-  * value of the R0 register. Another instruction barrier is implemented and
-  * interrupts are enabled again. After this point the branch and exchange
-  * instruction is called based on the value of the R14 register.
+  * value of the R0 register. Another instruction barrier is implemented. After
+  * this point the branch and exchange instruction is called based on the value
+  * of the R14 register.
 ********************************************************************************/
 __NAKED void
 PendSV_Handler( void )
 {
-    __asm volatile( "cpsid i" : : : "memory" );
     __asm volatile( "MRS R0,PSP" );
     __asm volatile( "ISB" );
 
@@ -176,7 +174,6 @@ PendSV_Handler( void )
     __asm volatile( "MSR PSP,R0" );
 
     __asm volatile( "ISB" );
-    __asm volatile( "cpsie i" : : : "memory" );
     __asm volatile( "BX R14" );
 }
 
