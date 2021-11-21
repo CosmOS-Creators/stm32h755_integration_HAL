@@ -163,8 +163,9 @@ PendSV_Handler( void )
     __asm volatile( "ISB" );
 
     __asm volatile( "LDR R2, [R9]" );
-    __asm volatile( "LDR R3, [R2, #8]" );
-    __asm volatile( "TST R3, #1" );
+    __asm volatile( "LDR R3, [R2]" );
+    __asm volatile( "LDR R2, [R3, #8]" );
+    __asm volatile( "TST R2, #1" );
     __asm volatile( "IT EQ" );
     __asm volatile( "BEQ skipSaveContext" );
 
