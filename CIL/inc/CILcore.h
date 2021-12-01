@@ -52,6 +52,9 @@ extern "C" {
 
 /* CIL interfaces */
 #include "CILstdTypes.h"
+
+/* HAL interfaces */
+#include "stm32h7xx_hal.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -200,10 +203,32 @@ CILcore_setCoreCfg( CosmOS_OsConfigurationType * os );
 __STATIC_FORCEINLINE CosmOS_CoreConfigurationType *
 CILcore_getCoreCfg( void )
 {
-    uint32_t result;
+    BitWidthType result;
     __asm volatile( "MOV %[resultVariable], R9"
                     : [resultVariable] "=r"( result ) );
     return (CosmOS_CoreConfigurationType *)result;
+}
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn CILcore_isInPrivilegedMode(void)
+  *
+  * @brief Is core in privileged mode. DEMO
+  *
+  * @param[in]  none
+  *
+  * @return CosmOS_BooleanType
+********************************************************************************/
+__STATIC_FORCEINLINE CosmOS_BooleanType
+CILcore_isInPrivilegedMode( void )
+{
+    BitWidthType controlRegister;
+
+    controlRegister = __get_CONTROL();
+
+    return (controlRegister & CONTROL_nPRIV_Msk) ? False : True;
 }
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
