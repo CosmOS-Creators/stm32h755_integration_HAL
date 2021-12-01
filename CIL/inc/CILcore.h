@@ -208,28 +208,6 @@ CILcore_getCoreCfg( void )
                     : [resultVariable] "=r"( result ) );
     return (CosmOS_CoreConfigurationType *)result;
 }
-
-/********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * ****************************************************************************/
-/**
-  * @fn CILcore_isInPrivilegedMode(void)
-  *
-  * @brief Is core in privileged mode. DEMO
-  *
-  * @param[in]  none
-  *
-  * @return CosmOS_BooleanType
-********************************************************************************/
-__STATIC_FORCEINLINE CosmOS_BooleanType
-CILcore_isInPrivilegedMode( void )
-{
-    BitWidthType controlRegister;
-
-    controlRegister = __get_CONTROL();
-
-    return (controlRegister & CONTROL_nPRIV_Msk) ? False : True;
-}
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
@@ -256,6 +234,27 @@ CILcore_isInPrivilegedMode( void )
   * @ingroup Apis_CILcore_h
   * @{
 ********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn CILcore_isInPrivilegedMode(void)
+  *
+  * @brief Is core in privileged mode. DEMO
+  *
+  * @param[in]  none
+  *
+  * @return CosmOS_BooleanType
+********************************************************************************/
+__STATIC_FORCEINLINE CosmOS_BooleanType
+CILcore_isInPrivilegedMode( void )
+{
+    BitWidthType controlRegister;
+
+    controlRegister = __get_CONTROL();
+
+    return (controlRegister & CONTROL_nPRIV_Msk) ? False : True;
+}
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
