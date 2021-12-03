@@ -140,7 +140,11 @@ __SEC_START( __OS_FUNC_SECTION_START )
 __OS_FUNC_SECTION BitWidthType
 CILcore_getCoreId( void )
 {
-    return ( HAL_GetCurrentCPUID() == CM7_CPUID ) ? CM7 : CM4;
+    BitWidthType cpuId;
+
+    cpuId = SCB->CPUID;
+
+    return ( ( ( ( cpuId & 0x000000F0U ) >> 4 ) == 0x7U ) ? CM7 : CM4 );
 }
 /* @cond S */
 __SEC_STOP( __OS_FUNC_SECTION_STOP )

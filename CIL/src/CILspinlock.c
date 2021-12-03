@@ -208,7 +208,7 @@ unlock( BitWidthType self )
   * SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED and returned from the function.
   * ! This implementation is currently not used cause there
   * were problems with it, instead Peterson's algorithm for multiple processes
-  * is used for testing purposes.
+  * is used for testing purposes. This solution is not safe on multicore system
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -221,7 +221,7 @@ CILspinlock_getSpinlock(
 {
     CosmOS_SpinlockStateType spinlockState;
 
-    //SOLUTION TO BE ABLE TEST SPINLOCKS
+    //SOLUTION TO BE ABLE TEST SPINLOCKS, DEFINITELY NOT SAFE ON MULTICORE SYSTEM
     do
     {
         lock( schedulableId );
@@ -285,9 +285,10 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * the value 1 is loaded to the spinlock address and spinlockState is set to the
   * SPINLOCK_STATE_ENUM__SUCCESSFULLY_LOCKED. Otherwise is spinlockState set to
   * the SPINLOCK_STATE_ENUM__OCCUPIED. In the end is the spinlockState returned
-  * from the function. ! This implementation is currently not used cause there
+  * from the function.
+  * ! This implementation is currently not used cause there
   * were problems with it, instead Peterson's algorithm for multiple processes
-  * is used for testing purposes.
+  * is used for testing purposes. This solution is not safe on multicore system
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -300,7 +301,7 @@ CILspinlock_trySpinlock(
 {
     CosmOS_SpinlockStateType spinlockState;
 
-    //SOLUTION TO BE ABLE TEST SPINLOCKS
+    //SOLUTION TO BE ABLE TEST SPINLOCKS, DEFINITELY NOT SAFE ON MULTICORE SYSTEM
     lock( schedulableId );
     //critical section start
     if ( *spinlockPointer )
@@ -361,9 +362,10 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * to release hardware semaphore based on the spinlock identifier
   * and schedulable unique identifier. Then the value 0 is loaded to the spinlock
   * address and spinlockState is set to the  SPINLOCK_STATE_ENUM__RELEASED and
-  * returned from the function. ! This implementation is currently not used cause
-  * there were problems with it, instead Peterson's algorithm for multiple
-  * processes is used for testing purposes.
+  * returned from the function.
+  * ! This implementation is currently not used cause there
+  * were problems with it, instead Peterson's algorithm for multiple processes
+  * is used for testing purposes. This solution is not safe on multicore system
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -376,7 +378,7 @@ CILspinlock_releaseSpinlock(
 {
     CosmOS_SpinlockStateType spinlockState;
 
-    //SOLUTION TO BE ABLE TEST SPINLOCKS
+    //SOLUTION TO BE ABLE TEST SPINLOCKS, DEFINITELY NOT SAFE ON MULTICORE SYSTEM
     lock( schedulableId );
     //critical section start
     *spinlockPointer = 0;

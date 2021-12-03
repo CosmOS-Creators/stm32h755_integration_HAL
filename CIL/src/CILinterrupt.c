@@ -21,9 +21,14 @@
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
+#include "core.h"
+#include "cosmosApiInternal.h"
+#include "os.h"
+#include "osEvent.h"
 #include "scheduler.h"
 
 /* CIL interfaces */
+#include "CILcore.h"
 #include "CILinterrupt.h"
 
 /* HAL interfaces */
@@ -237,6 +242,86 @@ SVC_Handler( void )
     __asm volatile( "MRSEQ R0, MSP" );
     __asm volatile( "MRSNE R0, PSP" );
     __asm volatile( "B CILsysCalls_dispatcher" );
+}
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn SysTick_Handler(void)
+  *
+  * @details The implementation contains scheduler_timerISRCallback function
+  * call.
+********************************************************************************/
+void
+CM7_SEV_IRQHandler( void )
+{
+    BitWidthType coreId;
+    CosmOS_OsStateType osState;
+
+    CosmOS_OsConfigurationType * osCfg;
+    CosmOS_CoreConfigurationType * coreCfg;
+
+    CosmOS_BooleanType coreInPrivilegedMode;
+
+    coreInPrivilegedMode = CILcore_isInPrivilegedMode();
+
+    if ( coreInPrivilegedMode )
+    {
+        coreId = CILcore_getCoreId();
+    }
+    else
+    {
+        coreId = cosmosApiInternal_CILcore_getCoreId();
+    }
+    osCfg = os_getOsCfg();
+    coreCfg = os_getCoreCfg( osCfg, coreId );
+    osState = core_getCoreOsState( coreCfg );
+
+    if ( osState IS_EQUAL_TO OS_STATE_ENUM__STARTED )
+    {
+        osEvent_dispatchEvent();
+    }
+}
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn SysTick_Handler(void)
+  *
+  * @details The implementation contains scheduler_timerISRCallback function
+  * call.
+********************************************************************************/
+void
+CM4_SEV_IRQHandler( void )
+{
+    BitWidthType coreId;
+    CosmOS_OsStateType osState;
+
+    CosmOS_OsConfigurationType * osCfg;
+    CosmOS_CoreConfigurationType * coreCfg;
+
+    CosmOS_BooleanType coreInPrivilegedMode;
+
+    coreInPrivilegedMode = CILcore_isInPrivilegedMode();
+
+    if ( coreInPrivilegedMode )
+    {
+        coreId = CILcore_getCoreId();
+    }
+    else
+    {
+        coreId = cosmosApiInternal_CILcore_getCoreId();
+    }
+    osCfg = os_getOsCfg();
+    coreCfg = os_getCoreCfg( osCfg, coreId );
+    osState = core_getCoreOsState( coreCfg );
+
+    if ( osState IS_EQUAL_TO OS_STATE_ENUM__STARTED )
+    {
+        osEvent_dispatchEvent();
+    }
 }
 /********************************************************************************
 **                        Function Definitions | Stop                          **

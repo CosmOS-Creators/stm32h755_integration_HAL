@@ -249,11 +249,46 @@ CILcore_getCoreCfg( void )
 __STATIC_FORCEINLINE CosmOS_BooleanType
 CILcore_isInPrivilegedMode( void )
 {
-    BitWidthType controlRegister;
+    return (
+        ( __get_IPSR() __OR IS_NOT( __get_CONTROL() & CONTROL_nPRIV_Msk ) )
+            ? True
+            : False );
+}
 
-    controlRegister = __get_CONTROL();
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn CILcore_reset(void)
+  *
+  * @brief This function causes system reset. DEMO
+  *
+  * @param[in]  none
+  *
+  * @return none
+********************************************************************************/
+__STATIC_FORCEINLINE void
+CILcore_systemReset( void )
+{
+    NVIC_SystemReset();
+}
 
-    return (controlRegister & CONTROL_nPRIV_Msk) ? False : True;
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn CILcore_triggerEvent(void)
+  *
+  * @brief This function triggers event for every cpu in multicore system. DEMO
+  *
+  * @param[in]  none
+  *
+  * @return none
+********************************************************************************/
+__STATIC_FORCEINLINE void
+CILcore_triggerEvent( void )
+{
+    __asm volatile( "SEV" );
 }
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
