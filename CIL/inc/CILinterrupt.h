@@ -287,8 +287,8 @@ CILinterrupt_contextSwitchRoutineTrigger( void )
 
     schedulerState = scheduler_getSchedulerState( schedulerCfg );
 
-    if ( schedulerState IS_NOT_EQUAL_TO
-             SCHEDULER_STATE_ENUM__TASK_EXECUTED_IN_WCET_CHECK )
+    if ( schedulerState IS_EQUAL_TO
+             SCHEDULER_STATE_ENUM__WAITING_FOR_START_TIME )
     {
         SCB->ICSR |= SCB_ICSR_PENDSVSET_Msk;
     }
