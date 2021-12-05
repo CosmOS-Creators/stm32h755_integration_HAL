@@ -248,10 +248,11 @@ SVC_Handler( void )
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
-  * @fn SysTick_Handler(void)
+  * @fn CM7_SEV_IRQHandler(void)
   *
-  * @details The implementation contains scheduler_timerISRCallback function
-  * call.
+  * @details The implementation contains logic to check if the operating system
+  * is already running on the specific core. If yes then the event dispatch
+  * function can be called, otherwised there is no action.
 ********************************************************************************/
 void
 CM7_SEV_IRQHandler( void )
@@ -288,10 +289,11 @@ CM7_SEV_IRQHandler( void )
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
-  * @fn SysTick_Handler(void)
+  * @fn CM4_SEV_IRQHandler(void)
   *
-  * @details The implementation contains scheduler_timerISRCallback function
-  * call.
+  * @details The implementation contains logic to check if the operating system
+  * is already running on the specific core. If yes then the event dispatch
+  * function can be called, otherwised there is no action.
 ********************************************************************************/
 void
 CM4_SEV_IRQHandler( void )
