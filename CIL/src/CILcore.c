@@ -160,7 +160,7 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   * function CILcore_getCoreId. To ensure correctness of the core id the number
   * of cores is obtained by calling function numberOfCores. If the core id is
   * less than number of cores the core configuration is obtained by calling
-  * function os_getCoreCfg and its address is set to the platform register R9.
+  * function os_getCore and its address is set to the platform register R9.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -177,7 +177,7 @@ CILcore_setCoreCfg( CosmOS_OsConfigurationType * os )
 
     cosmosAssert( coreId < numberOfCores );
 
-    coreCfg = os_getCoreCfg( os, coreId );
+    coreCfg = os_getCore( os, coreId );
 
     __asm volatile( "MOV R9,%[coreConfiguration]"
                     : [coreConfiguration] "=r"( coreCfg ) );

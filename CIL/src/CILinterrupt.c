@@ -276,7 +276,7 @@ CM7_SEV_IRQHandler( void )
         coreId = cosmosApiInternal_CILcore_getCoreId();
     }
     osCfg = os_getOsCfg();
-    coreCfg = os_getCoreCfg( osCfg, coreId );
+    coreCfg = os_getCore( osCfg, coreId );
     osState = core_getCoreOsState( coreCfg );
 
     if ( osState IS_EQUAL_TO OS_STATE_ENUM__STARTED )
@@ -317,7 +317,7 @@ CM4_SEV_IRQHandler( void )
         coreId = cosmosApiInternal_CILcore_getCoreId();
     }
     osCfg = os_getOsCfg();
-    coreCfg = os_getCoreCfg( osCfg, coreId );
+    coreCfg = os_getCore( osCfg, coreId );
     osState = core_getCoreOsState( coreCfg );
 
     if ( osState IS_EQUAL_TO OS_STATE_ENUM__STARTED )
