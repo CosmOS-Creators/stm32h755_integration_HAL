@@ -110,29 +110,6 @@ extern "C" {
   * @{
 ********************************************************************************/
 /********************************************************************************
-  * DOXYGEN DOCUMENTATION INFORMATION                                          **
-  * ****************************************************************************/
-/**
-  * @fn CILspinlock_getSpinlock(AddressType * spinlockPointer,
-  * BitWidthType spinlockId,
-  * BitWidthType schedulableId )
-  *
-  * @brief Get spinlock. This function cannot
-  * be called from the unprivileged context directly. DEMO
-  *
-  * @param[in]  spinlockPointer pointer to the spinlock variable that stores
-  * spinlock value
-  * @param[in]  spinlockId
-  * @param[in]  schedulableId
-  *
-  * @return CosmOS_SpinlockStateType
-********************************************************************************/
-__OS_FUNC_SECTION CosmOS_SpinlockStateType
-CILspinlock_getSpinlock(
-    AddressType * spinlockPointer,
-    BitWidthType spinlockId,
-    BitWidthType schedulableId );
-/********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**
   * @} */
