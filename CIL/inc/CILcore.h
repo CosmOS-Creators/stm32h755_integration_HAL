@@ -52,6 +52,9 @@ extern "C" {
 
 /* CIL interfaces */
 #include "CILstdTypes.h"
+
+/* HAL interfaces */
+#include "stm32h7xx_hal.h"
 /********************************************************************************
 **                            Include Files | Stop                             **
 ********************************************************************************/
@@ -200,7 +203,7 @@ CILcore_setCoreCfg( CosmOS_OsConfigurationType * os );
 __STATIC_FORCEINLINE CosmOS_CoreConfigurationType *
 CILcore_getCoreCfg( void )
 {
-    uint32_t result;
+    BitWidthType result;
     __asm volatile( "MOV %[resultVariable], R9"
                     : [resultVariable] "=r"( result ) );
     return (CosmOS_CoreConfigurationType *)result;
@@ -231,6 +234,62 @@ CILcore_getCoreCfg( void )
   * @ingroup Apis_CILcore_h
   * @{
 ********************************************************************************/
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn CILcore_isInPrivilegedMode(void)
+  *
+  * @brief Is core in privileged mode. DEMO
+  *
+  * @param[in]  none
+  *
+  * @return CosmOS_BooleanType
+********************************************************************************/
+__STATIC_FORCEINLINE CosmOS_BooleanType
+CILcore_isInPrivilegedMode( void )
+{
+    return (
+        ( __get_IPSR() __OR IS_NOT( __get_CONTROL() & CONTROL_nPRIV_Msk ) )
+            ? True
+            : False );
+}
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn CILcore_reset(void)
+  *
+  * @brief This function causes system reset. DEMO
+  *
+  * @param[in]  none
+  *
+  * @return none
+********************************************************************************/
+__STATIC_FORCEINLINE void
+CILcore_systemReset( void )
+{
+    NVIC_SystemReset();
+}
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn CILcore_triggerEvent(void)
+  *
+  * @brief This function triggers event for every cpu in multicore system. DEMO
+  *
+  * @param[in]  none
+  *
+  * @return none
+********************************************************************************/
+__STATIC_FORCEINLINE void
+CILcore_triggerEvent( void )
+{
+    __asm volatile( "SEV" );
+}
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**

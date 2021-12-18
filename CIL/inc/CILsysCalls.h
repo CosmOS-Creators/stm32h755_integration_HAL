@@ -267,6 +267,34 @@ CILsysCalls_bitWidthType_voidPtr_voidPtr_bitWidthType_ret_bitWidthType(
     void * ptr,
     void * ptr1,
     BitWidthType arg );
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn
+  * CILsysCalls_bitWidthType_voidPtr_bitWidthType_bitWidthType_ret_bitWidthType(
+  * BitWidthType id,
+  * void * ptr,
+  * BitWidthType arg,
+  * BitWidthType arg1)
+  *
+  * @brief System call for voidPtr,bitWidthType,bitWidthType args and ret
+  * bitWidthType.
+  *
+  * @param[in]  id is used during the system call dispatching
+  * @param[in]  ptr void pointer to some address
+  * @param[in]  arg generic bitwidth type argument
+  * @param[in]  arg1 generic bitwidth type argument
+  *
+  * @return BitWidthType
+********************************************************************************/
+__OS_FUNC_SECTION BitWidthType
+CILsysCalls_bitWidthType_voidPtr_bitWidthType_bitWidthType_ret_bitWidthType(
+    BitWidthType id,
+    void * ptr,
+    BitWidthType arg,
+    BitWidthType arg1 );
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**

@@ -84,28 +84,27 @@ extern "C" {
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
-  * @brief  BitWidthType based on processor register bit width defined with
-  * ARCH_NBIT
+  * @brief  BitWidthType based on processor architecture ARCH_NBIT
 ********************************************************************************/
 #ifdef ARCH_8BIT
 typedef unsigned char BitWidthType;
-#define FORCE_ENUM 0xFF
+#define FORCE_ENUM 0x7F
 #define SECURE_NUMBER 0xAA
 #elif ARCH_16BIT
 typedef unsigned short BitWidthType;
-#define FORCE_ENUM 0xFFFF
+#define FORCE_ENUM 0x7FFF
 #define SECURE_NUMBER 0xAAAA
 #elif ARCH_32BIT
 typedef unsigned int BitWidthType;
-#define FORCE_ENUM 0xFFFFFFFF
+#define FORCE_ENUM 0x7FFFFFFF
 #define SECURE_NUMBER 0xAAAAAAAA
 #elif ARCH_64BIT
 typedef unsigned long long BitWidthType;
-#define FORCE_ENUM 0xFFFFFFFFFFFFFFFF
+#define FORCE_ENUM 0x7FFFFFFFFFFFFFFF
 #define SECURE_NUMBER 0xAAAAAAAAAAAAAAAA
 #else
 #error \
-    "Please specify the BitWidth for your microprocessor! (ARCH_NBIT) => N = 8,16,32,64"
+    "Please specify the BitWidth for your processor! (ARCH_NBIT) => N = 8,16,32,64"
 #endif
 
 /********************************************************************************
@@ -124,7 +123,7 @@ typedef unsigned int AddressType;
 typedef unsigned long long AddressType;
 #else
 #error \
-    "Please specify the AddressType for your microprocessor! (ADDR_NBIT) => N = 8,16,32,64"
+    "Please specify the AddressType for your processor! (ADDR_NBIT) => N = 8,16,32,64"
 #endif
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **

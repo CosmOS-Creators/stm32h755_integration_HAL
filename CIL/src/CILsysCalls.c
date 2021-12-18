@@ -370,6 +370,48 @@ CILsysCalls_bitWidthType_voidPtr_voidPtr_bitWidthType_ret_bitWidthType(
 /* @cond S */
 __SEC_STOP( __OS_FUNC_SECTION_STOP )
 /* @endcond*/
+
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @fn
+  * CILsysCalls_bitWidthType_voidPtr_bitWidthType_bitWidthType_ret_bitWidthType(
+  * BitWidthType id,
+  * void * ptr,
+  * BitWidthType arg,
+  * BitWidthType arg1 )
+  *
+  * @details The implementation contains supervisor call instruction that causes
+  * the exception. The supervisor call number is later retrieved in the system
+  * call dispatcher that uses it to call the correct system call. In this case
+  * is this number is 6. The R0 register as it has argument 1 role in the
+  * procedure call is used to extract the result of the system call and stored
+  * it to the returnValue which is then returned from the function.
+********************************************************************************/
+__SEC_START( __OS_FUNC_SECTION_START )
+/* @endcond*/
+__OS_FUNC_SECTION BitWidthType
+CILsysCalls_bitWidthType_voidPtr_bitWidthType_bitWidthType_ret_bitWidthType(
+    BitWidthType id,
+    void * ptr,
+    BitWidthType arg,
+    BitWidthType arg1 )
+{
+    BitWidthType returnValue;
+
+    __asm volatile( "SVC #6" );
+    __asm volatile( "MOV %0, R0" : "=r"( returnValue ):: );
+
+    __SUPRESS_UNUSED_VAR( id );
+    __SUPRESS_UNUSED_VAR( ptr );
+    __SUPRESS_UNUSED_VAR( arg );
+    __SUPRESS_UNUSED_VAR( arg1 );
+    return returnValue;
+}
+/* @cond S */
+__SEC_STOP( __OS_FUNC_SECTION_STOP )
+/* @endcond*/
 /********************************************************************************
 **                        Function Definitions | Stop                          **
 ********************************************************************************/

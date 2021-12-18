@@ -47,7 +47,9 @@ extern "C" {
 **                            Include Files | Start                            **
 ********************************************************************************/
 /* CORE interfaces */
+#include "core.h"
 #include "memoryMapping.h"
+#include "scheduler.h"
 #include "sysDefs.h"
 
 /* CIL interfaces */
@@ -275,7 +277,21 @@ CILinterrupt_disableInterrupt( BitWidthType ISR )
 __STATIC_FORCEINLINE void
 CILinterrupt_contextSwitchRoutineTrigger( void )
 {
-    SCB->ICSR |= SCB_ICSR_PENDSVSET_Msk;
+    CosmOS_CoreConfigurationType * coreCfg;
+    CosmOS_SchedulerConfigurationType * schedulerCfg;
+
+    CosmOS_SchedulerStateType schedulerState;
+
+    coreCfg = core_getCoreCfg();
+    schedulerCfg = core_getCoreScheduler( coreCfg );
+
+    schedulerState = scheduler_getSchedulerState( schedulerCfg );
+
+    if ( schedulerState IS_EQUAL_TO
+             SCHEDULER_STATE_ENUM__WAITING_FOR_START_TIME )
+    {
+        SCB->ICSR |= SCB_ICSR_PENDSVSET_Msk;
+    }
 }
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
