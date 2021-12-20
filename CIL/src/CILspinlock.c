@@ -43,15 +43,15 @@
     "Please define USE_MULTI_CORE_SHARED_CODE to ensure correct compilation of HAL libraries"
 #endif
 
-// #if SPINLOCK_NUM > 16
-// #error \
-//     "Please reduce number of spinlocks, the current hardware can only handle 16 spinlocks"
-// #endif
+#if SPINLOCK_NUM_PREPROCESSOR > 16
+#error \
+    "Please reduce number of spinlocks, the current hardware can only handle 16 spinlocks"
+#endif
 
-// #if SCHEDULABLE_NUM > 256
-// #error \
-//     "Please reduce number of schedulables, the current hardware can only handle 256 schedulables"
-// #endif
+#if SCHEDULABLE_NUM_PREPROCESSOR > 256
+#error \
+    "Please reduce number of schedulables, the current hardware can only handle 256 schedulables"
+#endif
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
   * *************************************************************************//**

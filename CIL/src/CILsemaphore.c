@@ -38,22 +38,23 @@
   * @ingroup Local_CILsemaphore
   * @{
 ********************************************************************************/
-#if USE_MULTI_CORE_SHARED_CODE IS_EQUAL_TO 0U AND STM32H755xx
+#if ( USE_MULTI_CORE_SHARED_CODE IS_EQUAL_TO 0U AND STM32H755xx )
 #error \
     "Please define USE_MULTI_CORE_SHARED_CODE to ensure correct compilation of HAL libraries"
 #endif
 
-// #if SPINLOCK_NUM > 16
-// #error \
-//     "Please reduce number of spinlocks, the current hardware can only handle 16 spinlocks"
-// #endif
+#if SEMAPHORE_NUM_PREPROCESSOR > 16
+#error \
+    "Please reduce number of semaphores, the current hardware can only handle 16 semaphores"
+#endif
 
-// #if SCHEDULABLE_NUM > 256
-// #error \
-//     "Please reduce number of schedulables, the current hardware can only handle 256 schedulables"
-// #endif
+#if SCHEDULABLE_NUM_PREPROCESSOR > 256
+#error \
+    "Please reduce number of schedulables, the current hardware can only handle 256 schedulables"
+#endif
 
-//SEMAPHORE_OFFSET divides the HSEM to two parts, one for spinlocks and one for the semaphores
+/* SEMAPHORE_OFFSET divides the HSEM into two parts, one for spinlocks and one
+for the semaphores */
 #define SEMAPHORE_OFFSET (BitWidthType)16
 /********************************************************************************
   * DOXYGEN STOP GROUP                                                         **
@@ -148,10 +149,10 @@
   * @details The implementation contains function HAL_HSEM_Take call intended
   * to take hardware semaphore based on the semaphore identifier
   * and schedulable unique identifier. If the hsemTakeStatus is equal to the
-  * the value 1 is loaded to the semaphore address and semaphoreState is set to the
-  * SEMAPHORE_STATE_ENUM__SUCCESSFULLY_LOCKED. Otherwise is semaphoreState set to
-  * the SEMAPHORE_STATE_ENUM__OCCUPIED. In the end is the semaphoreState returned
-  * from the function.
+  * the value 1 is loaded to the semaphore address and semaphoreState is set to
+  * the SEMAPHORE_STATE_ENUM__SUCCESSFULLY_LOCKED.
+  * Otherwise is semaphoreState set to the SEMAPHORE_STATE_ENUM__OCCUPIED. In
+  * the end is the semaphoreState returned from the function.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
@@ -208,9 +209,9 @@ __SEC_STOP( __OS_FUNC_SECTION_STOP )
   *
   * @details The implementation contains function HAL_HSEM_Release call intended
   * to release hardware semaphore based on the semaphore identifier
-  * and schedulable unique identifier. Then the value 0 is loaded to the semaphore
-  * address and semaphoreState is set to the  SEMAPHORE_STATE_ENUM__RELEASED and
-  * returned from the function.
+  * and schedulable unique identifier. Then the value 0 is loaded to the
+  * semaphore address and semaphoreState is set to the
+  * SEMAPHORE_STATE_ENUM__RELEASED and returned from the function.
 ********************************************************************************/
 /* @cond S */
 __SEC_START( __OS_FUNC_SECTION_START )
