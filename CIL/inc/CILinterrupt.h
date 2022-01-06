@@ -220,7 +220,7 @@ CILinterrupt_enableInterrupts( void )
 __STATIC_FORCEINLINE void
 CILinterrupt_enableInterrupt( BitWidthType ISR )
 {
-    __NVIC_EnableIRQ( ISR );
+    __NVIC_EnableIRQ( ( IRQn_Type )ISR );
 }
 
 /********************************************************************************
@@ -258,7 +258,7 @@ CILinterrupt_disableInterrupts( void )
 __STATIC_FORCEINLINE void
 CILinterrupt_disableInterrupt( BitWidthType ISR )
 {
-    __NVIC_DisableIRQ( ISR );
+    __NVIC_DisableIRQ( ( IRQn_Type )ISR );
 }
 
 /********************************************************************************
