@@ -80,25 +80,43 @@ extern "C" {
   * @ingroup Global_CILbaseTypes
   * @{
 ********************************************************************************/
+#ifdef ARCH_8BIT
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
   * @brief  BitWidthType based on processor architecture ARCH_NBIT
 ********************************************************************************/
-#ifdef ARCH_8BIT
 typedef unsigned char BitWidthType;
 #define FORCE_ENUM 0x7F
 #define SECURE_NUMBER 0xAA
 #elif ARCH_16BIT
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @brief  BitWidthType based on processor architecture ARCH_NBIT
+********************************************************************************/
 typedef unsigned short BitWidthType;
 #define FORCE_ENUM 0x7FFF
 #define SECURE_NUMBER 0xAAAA
 #elif ARCH_32BIT
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @brief  BitWidthType based on processor architecture ARCH_NBIT
+********************************************************************************/
 typedef unsigned int BitWidthType;
 #define FORCE_ENUM 0x7FFFFFFF
 #define SECURE_NUMBER 0xAAAAAAAA
 #elif ARCH_64BIT
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @brief  BitWidthType based on processor architecture ARCH_NBIT
+********************************************************************************/
 typedef unsigned long long BitWidthType;
 #define FORCE_ENUM 0x7FFFFFFFFFFFFFFF
 #define SECURE_NUMBER 0xAAAAAAAAAAAAAAAA
@@ -107,19 +125,37 @@ typedef unsigned long long BitWidthType;
     "Please specify the BitWidth for your processor! (ARCH_NBIT) => N = 8,16,32,64"
 #endif
 
+#ifdef ADDR_8BIT
 /********************************************************************************
   * DOXYGEN DOCUMENTATION INFORMATION                                          **
   * ****************************************************************************/
 /**
   * @brief  AddressType based on addressable memory defined with ADDR_NBIT
 ********************************************************************************/
-#ifdef ADDR_8BIT
 typedef unsigned char AddressType;
 #elif ADDR_16BIT
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @brief  AddressType based on addressable memory defined with ADDR_NBIT
+********************************************************************************/
 typedef unsigned short AddressType;
 #elif ADDR_32BIT
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @brief  AddressType based on addressable memory defined with ADDR_NBIT
+********************************************************************************/
 typedef unsigned int AddressType;
 #elif ADDR_64BIT
+/********************************************************************************
+  * DOXYGEN DOCUMENTATION INFORMATION                                          **
+  * ****************************************************************************/
+/**
+  * @brief  AddressType based on addressable memory defined with ADDR_NBIT
+********************************************************************************/
 typedef unsigned long long AddressType;
 #else
 #error \
