@@ -1,58 +1,58 @@
 {
-	"version": "1.1.0",
-	"checksum": "5901ad39baf3a6839f3a64e610d2f4b8",
-	"ui": {
-		"use_page": "os_partitions"
-	},
-	"attributes": {},
-	"elements": {
-		"partition_0": [
-			{
-				"target": "osPartitionsAttributes/:name",
-				"value": "consts"
-			},
-			{
-				"target": "osPartitionsAttributes/:memory",
-				"value": "SRAM4"
-			},
-			{
-				"target": "osPartitionsAttributes/:size",
-				"value": "0x8000"
-			},
-			{
-				"target": "osPartitionsAttributes/:boot",
-				"value": true
-			},
-			{
-				"target": "osPartitionsAttributes/:lowAddress"
-			},
-			{
-				"target": "osPartitionsAttributes/:highAddress"
-			}
-		],
-		"partition_1": [
-			{
-				"target": "osPartitionsAttributes/:name",
-				"value": "vars"
-			},
-			{
-				"target": "osPartitionsAttributes/:memory",
-				"value": "SRAM4"
-			},
-			{
-				"target": "osPartitionsAttributes/:size",
-				"value": "0x8000"
-			},
-			{
-				"target": "osPartitionsAttributes/:boot",
-				"value": true
-			},
-			{
-				"target": "osPartitionsAttributes/:lowAddress"
-			},
-			{
-				"target": "osPartitionsAttributes/:highAddress"
-			}
-		]
-	}
+    "version": "1.1.0",
+    "checksum": "5901ad39baf3a6839f3a64e610d2f4b8",
+    "ui": {
+        "use_page": "os_partitions"
+    },
+    "attributes": {},
+    "elements": {
+        "partition_0": [
+            {
+                "target": "osPartitionsAttributes/:name",
+                "value": "consts"
+            },
+            {
+                "target": "osPartitionsAttributes/:memory",
+                "value": "SRAM4"
+            },
+            {
+                "target": "osPartitionsAttributes/:size",
+                "value": "0x8000"
+            },
+            {
+                "target": "osPartitionsAttributes/:boot",
+                "value": true
+            },
+            {
+                "target": "osPartitionsAttributes/:lowAddress"
+            },
+            {
+                "target": "osPartitionsAttributes/:highAddress"
+            }
+        ],
+        "partition_1": [
+            {
+                "target": "osPartitionsAttributes/:name",
+                "value": "vars"
+            },
+            {
+                "target": "osPartitionsAttributes/:memory",
+                "value": "SRAM4"
+            },
+            {
+                "target": "osPartitionsAttributes/:size",
+                "value": "0x8000"
+            },
+            {
+                "target": "osPartitionsAttributes/:boot",
+                "value": true
+            },
+            {
+                "target": "osPartitionsAttributes/:lowAddress"
+            },
+            {
+                "target": "osPartitionsAttributes/:highAddress"
+            }
+        ]
+    }
 }

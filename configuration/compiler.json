@@ -1,64 +1,64 @@
 {
-	"version": "1.1.0",
-	"checksum": "b98366ae70eb34abe86415c993ee6ca0",
-	"ui": {
-		"use_page": "compiler"
-	},
-	"attributes": {},
-	"elements": {
-		"CM7": [
-			{
-				"target": "compilerAttributes/:core",
-				"value": "cores/core_0"
-			},
-			{
-				"target": "compilerAttributes/:buildName",
-				"value": "CM7"
-			},
-			{
-				"target": "compilerAttributes/:flags",
-				"value": [
-					"-ffixed-r9"
-				]
-			},
-			{
-				"target": "compilerAttributes/:defines",
-				"value": [
-					"CORE_CM7",
-					"STM32H755xx",
-					"USE_HAL_DRIVER",
-					"ARCH_32BIT",
-					"ADDR_32BIT",
-					"USE_MULTI_CORE_SHARED_CODE"
-				]
-			}
-		],
-		"CM4": [
-			{
-				"target": "compilerAttributes/:core",
-				"value": "cores/core_1"
-			},
-			{
-				"target": "compilerAttributes/:buildName",
-				"value": "CM4"
-			},
-			{
-				"target": "compilerAttributes/:flags",
-				"value": [
-					"-ffixed-r9"
-				]
-			},
-			{
-				"target": "compilerAttributes/:defines",
-				"value": [
-					"CORE_CM4",
-					"STM32H755xx",
-					"USE_HAL_DRIVER",
-					"ARCH_32BIT",
-					"ADDR_32BIT",
-					"USE_MULTI_CORE_SHARED_CODE"
-				]
-			}
-		]
-	}
+    "version": "1.1.0",
+    "checksum": "b98366ae70eb34abe86415c993ee6ca0",
+    "ui": {
+        "use_page": "compiler"
+    },
+    "attributes": {},
+    "elements": {
+        "CM7": [
+            {
+                "target": "compilerAttributes/:core",
+                "value": "cores/core_0"
+            },
+            {
+                "target": "compilerAttributes/:buildName",
+                "value": "CM7"
+            },
+            {
+                "target": "compilerAttributes/:flags",
+                "value": [
+                    "-ffixed-r9"
+                ]
+            },
+            {
+                "target": "compilerAttributes/:defines",
+                "value": [
+                    "CORE_CM7",
+                    "STM32H755xx",
+                    "USE_HAL_DRIVER",
+                    "ARCH_32BIT",
+                    "ADDR_32BIT",
+                    "USE_MULTI_CORE_SHARED_CODE"
+                ]
+            }
+        ],
+        "CM4": [
+            {
+                "target": "compilerAttributes/:core",
+                "value": "cores/core_1"
+            },
+            {
+                "target": "compilerAttributes/:buildName",
+                "value": "CM4"
+            },
+            {
+                "target": "compilerAttributes/:flags",
+                "value": [
+                    "-ffixed-r9"
+                ]
+            },
+            {
+                "target": "compilerAttributes/:defines",
+                "value": [
+                    "CORE_CM4",
+                    "STM32H755xx",
+                    "USE_HAL_DRIVER",
+                    "ARCH_32BIT",
+                    "ADDR_32BIT",
+                    "USE_MULTI_CORE_SHARED_CODE"
+                ]
+            }
+        ]
+    }
 }

@@ -1,225 +1,225 @@
 {
-	"version": "1.1.0",
-	"checksum": "4a1a1f473636224b9c58ef9cfe40b6c7",
-	"ui": {
-		"use_page": "memories"
-	},
-	"attributes": {},
-	"elements": {
-		"memory_0": [
-			{
-				"target": "memoriesAttributes/:freeChunks"
-			},
-			{
-				"target": "memoriesAttributes/:name",
-				"value": "DTCM"
-			},
-			{
-				"target": "memoriesAttributes/:size",
-				"value": "0x20000"
-			},
-			{
-				"target": "memoriesAttributes/:lowAddress",
-				"value": "0x20000000"
-			},
-			{
-				"target": "memoriesAttributes/:cores",
-				"value": [
-					"cores/core_0"
-				]
-			}
-		],
-		"memory_1": [
-			{
-				"target": "memoriesAttributes/:freeChunks"
-			},
-			{
-				"target": "memoriesAttributes/:name",
-				"value": "SRAM1"
-			},
-			{
-				"target": "memoriesAttributes/:size",
-				"value": "0x20000"
-			},
-			{
-				"target": "memoriesAttributes/:lowAddress",
-				"value": "0x10000000"
-			},
-			{
-				"target": "memoriesAttributes/:cores",
-				"value": [
-					"cores/core_0",
-					"cores/core_1"
-				]
-			}
-		],
-		"memory_2": [
-			{
-				"target": "memoriesAttributes/:freeChunks"
-			},
-			{
-				"target": "memoriesAttributes/:name",
-				"value": "SRAM4"
-			},
-			{
-				"target": "memoriesAttributes/:size",
-				"value": "0x10000"
-			},
-			{
-				"target": "memoriesAttributes/:lowAddress",
-				"value": "0x38000000"
-			},
-			{
-				"target": "memoriesAttributes/:cores",
-				"value": [
-					"cores/core_0",
-					"cores/core_1"
-				]
-			}
-		],
-		"memory_3": [
-			{
-				"target": "memoriesAttributes/:freeChunks"
-			},
-			{
-				"target": "memoriesAttributes/:name",
-				"value": "SRAM2"
-			},
-			{
-				"target": "memoriesAttributes/:size",
-				"value": "0x10000"
-			},
-			{
-				"target": "memoriesAttributes/:lowAddress",
-				"value": "0x30020000"
-			},
-			{
-				"target": "memoriesAttributes/:cores",
-				"value": [
-					"cores/core_0",
-					"cores/core_1"
-				]
-			}
-		],
-		"memory_4": [
-			{
-				"target": "memoriesAttributes/:freeChunks"
-			},
-			{
-				"target": "memoriesAttributes/:name",
-				"value": "SRAM3"
-			},
-			{
-				"target": "memoriesAttributes/:size",
-				"value": "0x8000"
-			},
-			{
-				"target": "memoriesAttributes/:lowAddress",
-				"value": "0x30040000"
-			},
-			{
-				"target": "memoriesAttributes/:cores",
-				"value": [
-					"cores/core_0",
-					"cores/core_1"
-				]
-			}
-		],
-		"memory_5": [
-			{
-				"target": "memoriesAttributes/:freeChunks"
-			},
-			{
-				"target": "memoriesAttributes/:name",
-				"value": "AXI_SRAM"
-			},
-			{
-				"target": "memoriesAttributes/:size",
-				"value": "0x80000"
-			},
-			{
-				"target": "memoriesAttributes/:lowAddress",
-				"value": "0x24000000"
-			},
-			{
-				"target": "memoriesAttributes/:cores",
-				"value": [
-					"cores/core_0",
-					"cores/core_1"
-				]
-			}
-		],
-		"memory_6": [
-			{
-				"target": "memoriesAttributes/:freeChunks"
-			},
-			{
-				"target": "memoriesAttributes/:name",
-				"value": "Backup_RAM"
-			},
-			{
-				"target": "memoriesAttributes/:size",
-				"value": "0x1000"
-			},
-			{
-				"target": "memoriesAttributes/:lowAddress",
-				"value": "0x38800000"
-			},
-			{
-				"target": "memoriesAttributes/:cores",
-				"value": [
-					"cores/core_0",
-					"cores/core_1"
-				]
-			}
-		],
-		"memory_7": [
-			{
-				"target": "memoriesAttributes/:freeChunks"
-			},
-			{
-				"target": "memoriesAttributes/:name",
-				"value": "Flash_bank_1"
-			},
-			{
-				"target": "memoriesAttributes/:size",
-				"value": "0x100000"
-			},
-			{
-				"target": "memoriesAttributes/:lowAddress",
-				"value": "0x8000000"
-			},
-			{
-				"target": "memoriesAttributes/:cores",
-				"value": [
-					"cores/core_0",
-					"cores/core_1"
-				]
-			}
-		],
-		"memory_8": [
-			{
-				"target": "memoriesAttributes/:freeChunks"
-			},
-			{
-				"target": "memoriesAttributes/:name",
-				"value": "Flash_bank_2"
-			},
-			{
-				"target": "memoriesAttributes/:size",
-				"value": "0x100000"
-			},
-			{
-				"target": "memoriesAttributes/:lowAddress",
-				"value": "0x8100000"
-			},
-			{
-				"target": "memoriesAttributes/:cores",
-				"value": [
-					"cores/core_0",
-					"cores/core_1"
-				]
-			}
-		]
-	}
+    "version": "1.1.0",
+    "checksum": "4bf0e7b74a8a8d1507b98e4334046f71",
+    "ui": {
+        "use_page": "memories"
+    },
+    "attributes": {},
+    "elements": {
+        "memory_0": [
+            {
+                "target": "memoriesAttributes/:freeChunks"
+            },
+            {
+                "target": "memoriesAttributes/:name",
+                "value": "DTCM"
+            },
+            {
+                "target": "memoriesAttributes/:size",
+                "value": "0x20000"
+            },
+            {
+                "target": "memoriesAttributes/:lowAddress",
+                "value": "0x20000000"
+            },
+            {
+                "target": "memoriesAttributes/:cores",
+                "value": [
+                    "cores/core_0"
+                ]
+            }
+        ],
+        "memory_1": [
+            {
+                "target": "memoriesAttributes/:freeChunks"
+            },
+            {
+                "target": "memoriesAttributes/:name",
+                "value": "SRAM1"
+            },
+            {
+                "target": "memoriesAttributes/:size",
+                "value": "0x20000"
+            },
+            {
+                "target": "memoriesAttributes/:lowAddress",
+                "value": "0x10000000"
+            },
+            {
+                "target": "memoriesAttributes/:cores",
+                "value": [
+                    "cores/core_0",
+                    "cores/core_1"
+                ]
+            }
+        ],
+        "memory_2": [
+            {
+                "target": "memoriesAttributes/:freeChunks"
+            },
+            {
+                "target": "memoriesAttributes/:name",
+                "value": "SRAM4"
+            },
+            {
+                "target": "memoriesAttributes/:size",
+                "value": "0x10000"
+            },
+            {
+                "target": "memoriesAttributes/:lowAddress",
+                "value": "0x38000000"
+            },
+            {
+                "target": "memoriesAttributes/:cores",
+                "value": [
+                    "cores/core_0",
+                    "cores/core_1"
+                ]
+            }
+        ],
+        "memory_3": [
+            {
+                "target": "memoriesAttributes/:freeChunks"
+            },
+            {
+                "target": "memoriesAttributes/:name",
+                "value": "SRAM2"
+            },
+            {
+                "target": "memoriesAttributes/:size",
+                "value": "0x10000"
+            },
+            {
+                "target": "memoriesAttributes/:lowAddress",
+                "value": "0x30020000"
+            },
+            {
+                "target": "memoriesAttributes/:cores",
+                "value": [
+                    "cores/core_0",
+                    "cores/core_1"
+                ]
+            }
+        ],
+        "memory_4": [
+            {
+                "target": "memoriesAttributes/:freeChunks"
+            },
+            {
+                "target": "memoriesAttributes/:name",
+                "value": "SRAM3"
+            },
+            {
+                "target": "memoriesAttributes/:size",
+                "value": "0x8000"
+            },
+            {
+                "target": "memoriesAttributes/:lowAddress",
+                "value": "0x30040000"
+            },
+            {
+                "target": "memoriesAttributes/:cores",
+                "value": [
+                    "cores/core_0",
+                    "cores/core_1"
+                ]
+            }
+        ],
+        "memory_5": [
+            {
+                "target": "memoriesAttributes/:freeChunks"
+            },
+            {
+                "target": "memoriesAttributes/:name",
+                "value": "AXI_SRAM"
+            },
+            {
+                "target": "memoriesAttributes/:size",
+                "value": "0x80000"
+            },
+            {
+                "target": "memoriesAttributes/:lowAddress",
+                "value": "0x24000000"
+            },
+            {
+                "target": "memoriesAttributes/:cores",
+                "value": [
+                    "cores/core_0",
+                    "cores/core_1"
+                ]
+            }
+        ],
+        "memory_6": [
+            {
+                "target": "memoriesAttributes/:freeChunks"
+            },
+            {
+                "target": "memoriesAttributes/:name",
+                "value": "Backup_RAM"
+            },
+            {
+                "target": "memoriesAttributes/:size",
+                "value": "0x1000"
+            },
+            {
+                "target": "memoriesAttributes/:lowAddress",
+                "value": "0x38800000"
+            },
+            {
+                "target": "memoriesAttributes/:cores",
+                "value": [
+                    "cores/core_0",
+                    "cores/core_1"
+                ]
+            }
+        ],
+        "memory_7": [
+            {
+                "target": "memoriesAttributes/:freeChunks"
+            },
+            {
+                "target": "memoriesAttributes/:name",
+                "value": "Flash_bank_1"
+            },
+            {
+                "target": "memoriesAttributes/:size",
+                "value": "0x100000"
+            },
+            {
+                "target": "memoriesAttributes/:lowAddress",
+                "value": "0x8000000"
+            },
+            {
+                "target": "memoriesAttributes/:cores",
+                "value": [
+                    "cores/core_0",
+                    "cores/core_1"
+                ]
+            }
+        ],
+        "memory_8": [
+            {
+                "target": "memoriesAttributes/:freeChunks"
+            },
+            {
+                "target": "memoriesAttributes/:name",
+                "value": "Flash_bank_2"
+            },
+            {
+                "target": "memoriesAttributes/:size",
+                "value": "0x100000"
+            },
+            {
+                "target": "memoriesAttributes/:lowAddress",
+                "value": "0x8100000"
+            },
+            {
+                "target": "memoriesAttributes/:cores",
+                "value": [
+                    "cores/core_0",
+                    "cores/core_1"
+                ]
+            }
+        ]
+    }
 }
