@@ -1,28 +1,28 @@
 {
-	"version": "1.1.0",
-	"checksum": "19682aecb0c3e85db037f4548d5b7f3e",
-	"ui": {
-		"use_page": "mcu"
-	},
-	"attributes": {},
-	"elements": {
-		"MCU": [
-			{
-				"target": "mcuAttributes/:mcuName",
-				"value": "stm32h755"
-			},
-			{
-				"target": "mcuAttributes/:cpuBitWidth",
-				"value": 32
-			},
-			{
-				"target": "mcuAttributes/:addressBitWidth",
-				"value": 32
-			},
-			{
-				"target": "mcuAttributes/:architecture",
-				"value": "ARMv7"
-			}
-		]
-	}
+    "version": "1.1.0",
+    "checksum": "19682aecb0c3e85db037f4548d5b7f3e",
+    "ui": {
+        "use_page": "mcu"
+    },
+    "attributes": {},
+    "elements": {
+        "MCU": [
+            {
+                "target": "mcuAttributes/:mcuName",
+                "value": "stm32h755"
+            },
+            {
+                "target": "mcuAttributes/:cpuBitWidth",
+                "value": 32
+            },
+            {
+                "target": "mcuAttributes/:addressBitWidth",
+                "value": 32
+            },
+            {
+                "target": "mcuAttributes/:architecture",
+                "value": "ARMv7"
+            }
+        ]
+    }
 }

@@ -1,16 +1,16 @@
 {
-	"version": "1.1.0",
-	"checksum": "55558bf4e8de881d08640a741f052090",
-	"ui": {
-		"use_page": "sys_jobs_list"
-	},
-	"attributes": {},
-	"elements": {
-		"sysJob_0": [
-			{
-				"target": "sysJobsListAttributes/:name",
-				"value": "CILuart_sysJob"
-			}
-		]
-	}
+    "version": "1.1.0",
+    "checksum": "55558bf4e8de881d08640a741f052090",
+    "ui": {
+        "use_page": "sys_jobs_list"
+    },
+    "attributes": {},
+    "elements": {
+        "sysJob_0": [
+            {
+                "target": "sysJobsListAttributes/:name",
+                "value": "CILuart_sysJob"
+            }
+        ]
+    }
 }
