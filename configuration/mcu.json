@@ -4,6 +4,7 @@
     "ui": {
         "use_page": "mcu"
     },
+    "use_restriction": "mcu_restrictions",
     "attributes": {},
     "elements": {
         "MCU": [

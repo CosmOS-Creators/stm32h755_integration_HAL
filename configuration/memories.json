@@ -4,6 +4,7 @@
     "ui": {
         "use_page": "memories"
     },
+    "use_restriction": "memory_restrictions",
     "attributes": {},
     "elements": {
         "memory_0": [

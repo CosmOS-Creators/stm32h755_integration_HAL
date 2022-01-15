@@ -4,6 +4,7 @@
     "ui": {
         "use_page": "cpus"
     },
+    "use_restriction": "cpu_restrictions",
     "attributes": {},
     "elements": {
         "CM7": [
